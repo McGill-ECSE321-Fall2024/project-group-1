@@ -1,7 +1,7 @@
 # project-group-1
 ## Team Name: Samy's Video Game Kingdom 🤴🏾🏰🐴
 
-[Project Deliverable 1](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1)
+[Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1)
 
 | Team members | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
 | :---:   | :---: | :---: | :---: |  :---: |  :---: |
