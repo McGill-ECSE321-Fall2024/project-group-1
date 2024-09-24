@@ -4,5 +4,5 @@ Team Members: Alan Brotherton, Samy Harras, Vivek Motta, Zachary Trouve, and Iva
 
 | Name | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
 | :---:   | :---: | :---: | :---: |  :---: |  :---: |
-| Role | Project manager and Developer   | Developer   | Developer | Developer | Developer |
+| Role | Project Manager and Developer   | Developer   | Developer | Developer | Developer |
 | Hours worked | 1   | 1   | 1 | 1 | 1 |
