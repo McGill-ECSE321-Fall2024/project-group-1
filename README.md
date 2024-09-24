@@ -1,5 +1,5 @@
 # project-group-1
-## Team Name: Samy's Video Game Kingdom  
+## Team Name: Samy's Video Game Kingdom 🤴🏾🏰🐴
 
 | Team members | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
 | :---:   | :---: | :---: | :---: |  :---: |  :---: |
