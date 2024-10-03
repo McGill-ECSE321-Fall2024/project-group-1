@@ -1,4 +1,4 @@
-# project-group-1
+# Group Project 1
 ## Team Name: Samy's Video Game Kingdom 🤴🏾🏰🐴
 
 ## Table of Contents
