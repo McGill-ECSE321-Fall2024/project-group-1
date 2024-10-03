@@ -20,6 +20,8 @@ Stay tuned for future reports and deliverables :)
 ## Deliverable 3 Report
 Stay tuned for future reports and deliverables :)
 
+## Project Scope
+For this project we will be creating an online storefront for an independant game shop. This storefront will allow the owners and employees to manage the store and game inventory, and allow customers to browse and purchase games, and leave reviews.  
 
 ## Individual Efforts
 | Team members | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
