@@ -13,7 +13,8 @@
 ## Deliverable 1 Report
 ### Find our deliverable 1 report on the wiki page [Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1)  
 
-### Individual Efforts
+
+## Individual Efforts
 | Team members | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
 | :---:   | :---: | :---: | :---: |  :---: |  :---: |
 | Role | Project manager and Developer   | Developer   | Developer | Developer | Developer |
