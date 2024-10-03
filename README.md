@@ -12,7 +12,13 @@ Welcome to our group's repository. Below, you will find a table of contents to n
 
 
 ## Deliverable 1 Report
-### Find our deliverable 1 report on the wiki page [Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1)  
+Find our deliverable 1 report on the wiki page [Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1)  
+
+## Deliverable 2 Report
+Stay tuned for future reports and deliverables :)
+
+## Deliverable 3 Report
+Stay tuned for future reports and deliverables :)
 
 
 ## Individual Efforts
