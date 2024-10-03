@@ -18,7 +18,7 @@ Welcome to our group's repository. Below, you will find a table of contents to n
 ## Individual Efforts
 | Team members | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
 | :---:   | :---: | :---: | :---: |  :---: |  :---: |
-| Role | Project manager and Developer   | Developer   | Developer | Developer | Developer |
+| Role | Project Manager and Back-End Engineer   | Full-Stack Engineer   | Front-End Engineer | Back-End Lead Engineer | Front-End Lead Engineer |
 | D1 Hours worked | 6   | 5.5   | 5 | 5.5 | 5 |
 | D2 Hours worked | 0   | 0   | 0 | 0 | 0 |
 | D3 Hours worked | 0   | 0   | 0 | 0 | 0 |
