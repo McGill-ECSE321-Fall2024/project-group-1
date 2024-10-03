@@ -1,15 +1,16 @@
 # Group Project 1
-## Welcome to Samy's Video Game Kingdom 🤴🏾🏰🐴!
-Welcome to our amazing video game store and github repository. Get to know our [project](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki#project-introduction) and our [team](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki#team-introduction) in the wiki. Below, you will also find a table of contents to naviguate the details of the project and learn more about our work. You will also find group members, their roles, and individual efforts for each deliverable. We wish you a great shopping experience ! 
 
 ## Table of Contents
 
+- [Welcome](https://github.com/McGill-ECSE321-Fall2024/project-group-1?tab=readme-ov-file#welcome-to-samys-video-game-kingdom-)
 - [Project Overview](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki#project-introduction)
 - [Team Introduction](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki#team-introduction)
 - [Deliverable 1](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1)
 - [Deliverable 2](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-2)
 - [Deliverable 3](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-3)
 
+## Welcome to Samy's Video Game Kingdom 🤴🏾🏰🐴!
+Welcome to our amazing video game store and github repository. Get to know our [project](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki#project-introduction) and our [team](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki#team-introduction) in the wiki. Below, you will also find a table of contents to naviguate the details of the project and learn more about our work. You will also find group members, their roles, and individual efforts for each deliverable. We wish you a great shopping experience ! 
 
 ## Deliverable 1 Report
 Find our deliverable 1 report on the wiki page [Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1)  
