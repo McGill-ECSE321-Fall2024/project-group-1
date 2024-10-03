@@ -1,5 +1,6 @@
-# Group Project 1
-## Team Name: Samy's Video Game Kingdom 🤴🏾🏰🐴
+# Group Project 1 / Samy's Video Game Kingdom 🤴🏾🏰🐴
+## Welcome !
+Welcome to our group's repository. Below, you will find a table of contents to naviguate the project and learn more. You will also find group members, their roles, and individual efforts.
 
 ## Table of Contents
 
