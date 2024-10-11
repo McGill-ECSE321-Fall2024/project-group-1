@@ -5,7 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 45 "../../../../../../model.ump"
-// line 134 "../../../../../../model.ump"
+// line 125 "../../../../../../model.ump"
 public class Category
 {
 

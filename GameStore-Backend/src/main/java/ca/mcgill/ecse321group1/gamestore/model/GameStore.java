@@ -5,7 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 4 "../../../../../../model.ump"
-// line 91 "../../../../../../model.ump"
+// line 82 "../../../../../../model.ump"
 public class GameStore
 {
 
@@ -14,7 +14,7 @@ public class GameStore
   //------------------------
 
   //GameStore Associations
-  private List<User> users;
+  private List<Person> persons;
   private List<VideoGame> videoGames;
   private List<Category> categories;
 
@@ -24,7 +24,7 @@ public class GameStore
 
   public GameStore()
   {
-    users = new ArrayList<User>();
+    persons = new ArrayList<Person>();
     videoGames = new ArrayList<VideoGame>();
     categories = new ArrayList<Category>();
   }
@@ -33,33 +33,33 @@ public class GameStore
   // INTERFACE
   //------------------------
   /* Code from template association_GetMany */
-  public User getUser(int index)
+  public Person getPerson(int index)
   {
-    User aUser = users.get(index);
-    return aUser;
+    Person aPerson = persons.get(index);
+    return aPerson;
   }
 
-  public List<User> getUsers()
+  public List<Person> getPersons()
   {
-    List<User> newUsers = Collections.unmodifiableList(users);
-    return newUsers;
+    List<Person> newPersons = Collections.unmodifiableList(persons);
+    return newPersons;
   }
 
-  public int numberOfUsers()
+  public int numberOfPersons()
   {
-    int number = users.size();
+    int number = persons.size();
     return number;
   }
 
-  public boolean hasUsers()
+  public boolean hasPersons()
   {
-    boolean has = users.size() > 0;
+    boolean has = persons.size() > 0;
     return has;
   }
 
-  public int indexOfUser(User aUser)
+  public int indexOfPerson(Person aPerson)
   {
-    int index = users.indexOf(aUser);
+    int index = persons.indexOf(aPerson);
     return index;
   }
   /* Code from template association_GetMany */
@@ -123,74 +123,71 @@ public class GameStore
     return index;
   }
   /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfUsers()
+  public static int minimumNumberOfPersons()
   {
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public User addUser()
-  {
-    return new User(this);
-  }
 
-  public boolean addUser(User aUser)
+
+  public boolean addPerson(Person aPerson)
   {
     boolean wasAdded = false;
-    if (users.contains(aUser)) { return false; }
-    GameStore existingGameStore = aUser.getGameStore();
+    if (persons.contains(aPerson)) { return false; }
+    GameStore existingGameStore = aPerson.getGameStore();
     boolean isNewGameStore = existingGameStore != null && !this.equals(existingGameStore);
     if (isNewGameStore)
     {
-      aUser.setGameStore(this);
+      aPerson.setGameStore(this);
     }
     else
     {
-      users.add(aUser);
+      persons.add(aPerson);
     }
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeUser(User aUser)
+  public boolean removePerson(Person aPerson)
   {
     boolean wasRemoved = false;
-    //Unable to remove aUser, as it must always have a gameStore
-    if (!this.equals(aUser.getGameStore()))
+    //Unable to remove aPerson, as it must always have a gameStore
+    if (!this.equals(aPerson.getGameStore()))
     {
-      users.remove(aUser);
+      persons.remove(aPerson);
       wasRemoved = true;
     }
     return wasRemoved;
   }
   /* Code from template association_AddIndexControlFunctions */
-  public boolean addUserAt(User aUser, int index)
+  public boolean addPersonAt(Person aPerson, int index)
   {  
     boolean wasAdded = false;
-    if(addUser(aUser))
+    if(addPerson(aPerson))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfUsers()) { index = numberOfUsers() - 1; }
-      users.remove(aUser);
-      users.add(index, aUser);
+      if(index > numberOfPersons()) { index = numberOfPersons() - 1; }
+      persons.remove(aPerson);
+      persons.add(index, aPerson);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveUserAt(User aUser, int index)
+  public boolean addOrMovePersonAt(Person aPerson, int index)
   {
     boolean wasAdded = false;
-    if(users.contains(aUser))
+    if(persons.contains(aPerson))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfUsers()) { index = numberOfUsers() - 1; }
-      users.remove(aUser);
-      users.add(index, aUser);
+      if(index > numberOfPersons()) { index = numberOfPersons() - 1; }
+      persons.remove(aPerson);
+      persons.add(index, aPerson);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addUserAt(aUser, index);
+      wasAdded = addPersonAt(aPerson, index);
     }
     return wasAdded;
   }
@@ -341,11 +338,11 @@ public class GameStore
 
   public void delete()
   {
-    while (users.size() > 0)
+    while (persons.size() > 0)
     {
-      User aUser = users.get(users.size() - 1);
-      aUser.delete();
-      users.remove(aUser);
+      Person aPerson = persons.get(persons.size() - 1);
+      aPerson.delete();
+      persons.remove(aPerson);
     }
     
     while (videoGames.size() > 0)

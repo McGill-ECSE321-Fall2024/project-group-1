@@ -5,8 +5,8 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 17 "../../../../../../model.ump"
-// line 111 "../../../../../../model.ump"
-public class Customer extends User
+// line 102 "../../../../../../model.ump"
+public class Customer extends Person
 {
 
   //------------------------
@@ -27,9 +27,9 @@ public class Customer extends User
   // CONSTRUCTOR
   //------------------------
 
-  public Customer(GameStore aGameStore, String aAddress, String aPhoneNumber, Order aOrder)
+  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, Order aOrder)
   {
-    super(aGameStore);
+    super(aUsername, aEmail, aPasswordHash, aGameStore);
     address = aAddress;
     phoneNumber = aPhoneNumber;
     wishlist = new ArrayList<VideoGame>();
@@ -42,9 +42,9 @@ public class Customer extends User
     reviews = new ArrayList<Review>();
   }
 
-  public Customer(GameStore aGameStore, String aAddress, String aPhoneNumber, String aDateForOrder, String aPriceForOrder, String aQuantityForOrder, String aOffersAppliedForOrder, String aAddressForOrder)
+  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, String aDateForOrder, String aPriceForOrder, String aQuantityForOrder, String aOffersAppliedForOrder, String aAddressForOrder)
   {
-    super(aGameStore);
+    super(aUsername, aEmail, aPasswordHash, aGameStore);
     address = aAddress;
     phoneNumber = aPhoneNumber;
     wishlist = new ArrayList<VideoGame>();

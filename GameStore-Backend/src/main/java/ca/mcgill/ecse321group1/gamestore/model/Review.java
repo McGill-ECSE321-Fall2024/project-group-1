@@ -5,7 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 60 "../../../../../model.ump"
-// line 147 "../../../../../model.ump"
+// line 138 "../../../../../model.ump"
 public class Review
 {
 
