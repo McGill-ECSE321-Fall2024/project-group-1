@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
-
+package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
-// line 48 "model.ump"
-// line 137 "model.ump"
+// line 50 "../../../../../../model.ump"
+// line 139 "../../../../../../model.ump"
 public class Order
 {
 
@@ -43,7 +43,7 @@ public class Order
     customer = aCustomer;
   }
 
-  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, String aUsernameForCustomer, String aEmailForCustomer, String aPasswordHashForCustomer, GameStore aGameStoreForCustomer, String aAddressForCustomer, String aPhoneNumberForCustomer)
+  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, GameStore aGameStoreForCustomer, String aAddressForCustomer, String aPhoneNumberForCustomer)
   {
     date = aDate;
     price = aPrice;
@@ -51,7 +51,7 @@ public class Order
     offersApplied = aOffersApplied;
     address = aAddress;
     purchased = new ArrayList<VideoGame>();
-    customer = new Customer(aUsernameForCustomer, aEmailForCustomer, aPasswordHashForCustomer, aGameStoreForCustomer, aAddressForCustomer, aPhoneNumberForCustomer, this);
+    customer = new Customer(aGameStoreForCustomer, aAddressForCustomer, aPhoneNumberForCustomer, this);
   }
 
   //------------------------

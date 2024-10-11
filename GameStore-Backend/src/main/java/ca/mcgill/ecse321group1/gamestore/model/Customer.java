@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
-
+package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
-// line 15 "model.ump"
-// line 109 "model.ump"
+// line 17 "../../../../../../model.ump"
+// line 111 "../../../../../../model.ump"
 public class Customer extends User
 {
 
@@ -27,9 +27,9 @@ public class Customer extends User
   // CONSTRUCTOR
   //------------------------
 
-  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, Order aOrder)
+  public Customer(GameStore aGameStore, String aAddress, String aPhoneNumber, Order aOrder)
   {
-    super(aUsername, aEmail, aPasswordHash, aGameStore);
+    super(aGameStore);
     address = aAddress;
     phoneNumber = aPhoneNumber;
     wishlist = new ArrayList<VideoGame>();
@@ -42,9 +42,9 @@ public class Customer extends User
     reviews = new ArrayList<Review>();
   }
 
-  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, String aDateForOrder, String aPriceForOrder, String aQuantityForOrder, String aOffersAppliedForOrder, String aAddressForOrder)
+  public Customer(GameStore aGameStore, String aAddress, String aPhoneNumber, String aDateForOrder, String aPriceForOrder, String aQuantityForOrder, String aOffersAppliedForOrder, String aAddressForOrder)
   {
-    super(aUsername, aEmail, aPasswordHash, aGameStore);
+    super(aGameStore);
     address = aAddress;
     phoneNumber = aPhoneNumber;
     wishlist = new ArrayList<VideoGame>();
