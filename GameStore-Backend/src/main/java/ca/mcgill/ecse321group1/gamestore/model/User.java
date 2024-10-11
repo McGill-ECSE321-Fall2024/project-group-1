@@ -1,10 +1,10 @@
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+package main.java.ca.mcgill.ecse321group1.gamestore.model;/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 
 
-// line 20 "model.ump"
-// line 116 "model.ump"
+// line 8 "model.ump"
+// line 104 "model.ump"
 public abstract class User
 {
 

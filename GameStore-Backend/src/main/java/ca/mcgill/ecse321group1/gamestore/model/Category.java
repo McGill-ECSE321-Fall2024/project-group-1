@@ -1,19 +1,13 @@
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+package main.java.ca.mcgill.ecse321group1.gamestore.model;/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 
 import java.util.*;
 
-// line 56 "model.ump"
-// line 144 "model.ump"
+// line 43 "model.ump"
+// line 132 "model.ump"
 public class Category
 {
-
-  //------------------------
-  // ENUMERATIONS
-  //------------------------
-
-  public enum Status { Pending, Active, Inactive }
 
   //------------------------
   // MEMBER VARIABLES
@@ -132,7 +126,7 @@ public class Category
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public VideoGame addVideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, Status aStatus, GameStore aGameStore)
+  public VideoGame addVideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, VideoGame.Status aStatus, GameStore aGameStore)
   {
     return new VideoGame(aName, aDescription, aPrice, aQuantity, aDate, aStatus, aGameStore, this);
   }

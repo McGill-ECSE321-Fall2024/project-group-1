@@ -1,27 +1,13 @@
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+package main.java.ca.mcgill.ecse321group1.gamestore.model;/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 
 import java.util.*;
 
-/**
- * 1. namespace
- * 2. classes + attributes
- * 3. associations
- * 4. composition at highest level
- * namespace ca.mcgill.ecse.snorelam.model;
- * namespace ca.mcgill.ecse.wareflow.model;
- */
-// line 11 "model.ump"
-// line 101 "model.ump"
+// line 2 "model.ump"
+// line 89 "model.ump"
 public class GameStore
 {
-
-  //------------------------
-  // ENUMERATIONS
-  //------------------------
-
-  public enum Status { Pending, Active, Inactive }
 
   //------------------------
   // MEMBER VARIABLES
@@ -53,10 +39,6 @@ public class GameStore
     return aUser;
   }
 
-  /**
-   * add composition relationships
-   * subclasses, other compositions (part) and enumerations don't have compositions with the main class
-   */
   public List<User> getUsers()
   {
     List<User> newUsers = Collections.unmodifiableList(users);
@@ -215,7 +197,7 @@ public class GameStore
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public VideoGame addVideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, Status aStatus, Category aCategory)
+  public VideoGame addVideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, VideoGame.Status aStatus, Category aCategory)
   {
     return new VideoGame(aName, aDescription, aPrice, aQuantity, aDate, aStatus, this, aCategory);
   }

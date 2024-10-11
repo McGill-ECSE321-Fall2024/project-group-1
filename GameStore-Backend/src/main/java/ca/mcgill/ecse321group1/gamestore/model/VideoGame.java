@@ -1,11 +1,11 @@
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+package main.java.ca.mcgill.ecse321group1.gamestore.model;/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 
 import java.util.*;
 
-// line 45 "model.ump"
-// line 139 "model.ump"
+// line 33 "model.ump"
+// line 127 "model.ump"
 public class VideoGame
 {
 
@@ -29,7 +29,6 @@ public class VideoGame
 
   //VideoGame Associations
   private GameStore gameStore;
-  private List<Order> orders;
   private List<Review> reviews;
   private Category category;
 
@@ -50,7 +49,6 @@ public class VideoGame
     {
       throw new RuntimeException("Unable to create videoGame due to gameStore. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    orders = new ArrayList<Order>();
     reviews = new ArrayList<Review>();
     boolean didAddCategory = setCategory(aCategory);
     if (!didAddCategory)
@@ -146,36 +144,6 @@ public class VideoGame
     return gameStore;
   }
   /* Code from template association_GetMany */
-  public Order getOrder(int index)
-  {
-    Order aOrder = orders.get(index);
-    return aOrder;
-  }
-
-  public List<Order> getOrders()
-  {
-    List<Order> newOrders = Collections.unmodifiableList(orders);
-    return newOrders;
-  }
-
-  public int numberOfOrders()
-  {
-    int number = orders.size();
-    return number;
-  }
-
-  public boolean hasOrders()
-  {
-    boolean has = orders.size() > 0;
-    return has;
-  }
-
-  public int indexOfOrder(Order aOrder)
-  {
-    int index = orders.indexOf(aOrder);
-    return index;
-  }
-  /* Code from template association_GetMany */
   public Review getReview(int index)
   {
     Review aReview = reviews.get(index);
@@ -228,78 +196,6 @@ public class VideoGame
     gameStore.addVideoGame(this);
     wasSet = true;
     return wasSet;
-  }
-  /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfOrders()
-  {
-    return 0;
-  }
-  /* Code from template association_AddManyToOne */
-  public Order addOrder(String aDate, String aPrice, String aOffersApplied, String aAddress, Customer aCustomer)
-  {
-    return new Order(aDate, aPrice, aOffersApplied, aAddress, this, aCustomer);
-  }
-
-  public boolean addOrder(Order aOrder)
-  {
-    boolean wasAdded = false;
-    if (orders.contains(aOrder)) { return false; }
-    VideoGame existingVideoGame = aOrder.getVideoGame();
-    boolean isNewVideoGame = existingVideoGame != null && !this.equals(existingVideoGame);
-    if (isNewVideoGame)
-    {
-      aOrder.setVideoGame(this);
-    }
-    else
-    {
-      orders.add(aOrder);
-    }
-    wasAdded = true;
-    return wasAdded;
-  }
-
-  public boolean removeOrder(Order aOrder)
-  {
-    boolean wasRemoved = false;
-    //Unable to remove aOrder, as it must always have a videoGame
-    if (!this.equals(aOrder.getVideoGame()))
-    {
-      orders.remove(aOrder);
-      wasRemoved = true;
-    }
-    return wasRemoved;
-  }
-  /* Code from template association_AddIndexControlFunctions */
-  public boolean addOrderAt(Order aOrder, int index)
-  {  
-    boolean wasAdded = false;
-    if(addOrder(aOrder))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfOrders()) { index = numberOfOrders() - 1; }
-      orders.remove(aOrder);
-      orders.add(index, aOrder);
-      wasAdded = true;
-    }
-    return wasAdded;
-  }
-
-  public boolean addOrMoveOrderAt(Order aOrder, int index)
-  {
-    boolean wasAdded = false;
-    if(orders.contains(aOrder))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfOrders()) { index = numberOfOrders() - 1; }
-      orders.remove(aOrder);
-      orders.add(index, aOrder);
-      wasAdded = true;
-    } 
-    else 
-    {
-      wasAdded = addOrderAt(aOrder, index);
-    }
-    return wasAdded;
   }
   /* Code from template association_MinimumNumberOfMethod */
   public static int minimumNumberOfReviews()
@@ -400,11 +296,6 @@ public class VideoGame
     if(placeholderGameStore != null)
     {
       placeholderGameStore.removeVideoGame(this);
-    }
-    for(int i=orders.size(); i > 0; i--)
-    {
-      Order aOrder = orders.get(i - 1);
-      aOrder.delete();
     }
     for(int i=reviews.size(); i > 0; i--)
     {
