@@ -2,9 +2,11 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import jakarta.persistence.*;
 
-// line 68 "../../../../../../model.ump"
-// line 149 "../../../../../../model.ump"
+// line 64 "../../../../../../model.ump"
+// line 132 "../../../../../../model.ump"
+@Entity
 public class Reply
 {
 
@@ -13,18 +15,23 @@ public class Reply
   //------------------------
 
   //Reply Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private String id;
   private String content;
   private String date;
 
   //Reply Associations
+  @OneToOne
   private Review review;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Reply(String aContent, String aDate, Review aReview)
+  public Reply(String aId, String aContent, String aDate, Review aReview)
   {
+    id = aId;
     content = aContent;
     date = aDate;
     boolean didAddReview = setReview(aReview);
@@ -37,6 +44,14 @@ public class Reply
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(String aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setContent(String aContent)
   {
@@ -54,6 +69,11 @@ public class Reply
     return wasSet;
   }
 
+  public String getId()
+  {
+    return id;
+  }
+
   public String getContent()
   {
     return content;
@@ -68,33 +88,42 @@ public class Reply
   {
     return review;
   }
-  /* Code from template association_SetOneToMany */
-  public boolean setReview(Review aReview)
+  /* Code from template association_SetOneToOptionalOne */
+  public boolean setReview(Review aNewReview)
   {
     boolean wasSet = false;
-    if (aReview == null)
+    if (aNewReview == null)
     {
+      //Unable to setReview to null, as reply must always be associated to a review
       return wasSet;
     }
-
-    Review existingReview = review;
-    review = aReview;
-    if (existingReview != null && !existingReview.equals(aReview))
+    
+    Reply existingReply = aNewReview.getReply();
+    if (existingReply != null && !equals(existingReply))
     {
-      existingReview.removeReply(this);
+      //Unable to setReview, the current review already has a reply, which would be orphaned if it were re-assigned
+      return wasSet;
     }
-    review.addReply(this);
+    
+    Review anOldReview = review;
+    review = aNewReview;
+    review.setReply(this);
+
+    if (anOldReview != null)
+    {
+      anOldReview.setReply(null);
+    }
     wasSet = true;
     return wasSet;
   }
 
   public void delete()
   {
-    Review placeholderReview = review;
-    this.review = null;
-    if(placeholderReview != null)
+    Review existingReview = review;
+    review = null;
+    if (existingReview != null)
     {
-      placeholderReview.removeReply(this);
+      existingReview.setReply(null);
     }
   }
 
@@ -102,6 +131,7 @@ public class Reply
   public String toString()
   {
     return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
             "content" + ":" + getContent()+ "," +
             "date" + ":" + getDate()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");

@@ -2,10 +2,14 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import jakarta.persistence.*;
+
 import java.util.*;
 
-// line 17 "../../../../../../model.ump"
-// line 102 "../../../../../../model.ump"
+// line 11 "../../../../../../model.ump"
+// line 85 "../../../../../../model.ump"
+@Entity
+@DiscriminatorValue("Customer")
 public class Customer extends Person
 {
 
@@ -18,38 +22,27 @@ public class Customer extends Person
   private String phoneNumber;
 
   //Customer Associations
+  @OneToMany
   private List<VideoGame> wishlist;
+  @OneToMany
   private List<VideoGame> cart;
-  private Order order;
+  @OneToMany
+  private List<Order> orders;
+  @OneToMany
   private List<Review> reviews;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, Order aOrder)
+  public Customer(String aUsername, String aEmail, String aPasswordHash, String aAddress, String aPhoneNumber)
   {
-    super(aUsername, aEmail, aPasswordHash, aGameStore);
+    super(aUsername, aEmail, aPasswordHash);
     address = aAddress;
     phoneNumber = aPhoneNumber;
     wishlist = new ArrayList<VideoGame>();
     cart = new ArrayList<VideoGame>();
-    if (aOrder == null || aOrder.getCustomer() != null)
-    {
-      throw new RuntimeException("Unable to create Customer due to aOrder. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
-    order = aOrder;
-    reviews = new ArrayList<Review>();
-  }
-
-  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, String aDateForOrder, String aPriceForOrder, String aQuantityForOrder, String aOffersAppliedForOrder, String aAddressForOrder)
-  {
-    super(aUsername, aEmail, aPasswordHash, aGameStore);
-    address = aAddress;
-    phoneNumber = aPhoneNumber;
-    wishlist = new ArrayList<VideoGame>();
-    cart = new ArrayList<VideoGame>();
-    order = new Order(aDateForOrder, aPriceForOrder, aQuantityForOrder, aOffersAppliedForOrder, aAddressForOrder, this);
+    orders = new ArrayList<Order>();
     reviews = new ArrayList<Review>();
   }
 
@@ -142,10 +135,35 @@ public class Customer extends Person
     int index = cart.indexOf(aCart);
     return index;
   }
-  /* Code from template association_GetOne */
-  public Order getOrder()
+  /* Code from template association_GetMany */
+  public Order getOrder(int index)
   {
-    return order;
+    Order aOrder = orders.get(index);
+    return aOrder;
+  }
+
+  public List<Order> getOrders()
+  {
+    List<Order> newOrders = Collections.unmodifiableList(orders);
+    return newOrders;
+  }
+
+  public int numberOfOrders()
+  {
+    int number = orders.size();
+    return number;
+  }
+
+  public boolean hasOrders()
+  {
+    boolean has = orders.size() > 0;
+    return has;
+  }
+
+  public int indexOfOrder(Order aOrder)
+  {
+    int index = orders.indexOf(aOrder);
+    return index;
   }
   /* Code from template association_GetMany */
   public Review getReview(int index)
@@ -292,14 +310,86 @@ public class Customer extends Person
     return wasAdded;
   }
   /* Code from template association_MinimumNumberOfMethod */
+  public static int minimumNumberOfOrders()
+  {
+    return 0;
+  }
+  /* Code from template association_AddManyToOne */
+  public Order addOrder(String aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress)
+  {
+    return new Order(aId, aDate, aPrice, aQuantity, aOffersApplied, aAddress, this);
+  }
+
+  public boolean addOrder(Order aOrder)
+  {
+    boolean wasAdded = false;
+    if (orders.contains(aOrder)) { return false; }
+    Customer existingCustomer = aOrder.getCustomer();
+    boolean isNewCustomer = existingCustomer != null && !this.equals(existingCustomer);
+    if (isNewCustomer)
+    {
+      aOrder.setCustomer(this);
+    }
+    else
+    {
+      orders.add(aOrder);
+    }
+    wasAdded = true;
+    return wasAdded;
+  }
+
+  public boolean removeOrder(Order aOrder)
+  {
+    boolean wasRemoved = false;
+    //Unable to remove aOrder, as it must always have a customer
+    if (!this.equals(aOrder.getCustomer()))
+    {
+      orders.remove(aOrder);
+      wasRemoved = true;
+    }
+    return wasRemoved;
+  }
+  /* Code from template association_AddIndexControlFunctions */
+  public boolean addOrderAt(Order aOrder, int index)
+  {  
+    boolean wasAdded = false;
+    if(addOrder(aOrder))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfOrders()) { index = numberOfOrders() - 1; }
+      orders.remove(aOrder);
+      orders.add(index, aOrder);
+      wasAdded = true;
+    }
+    return wasAdded;
+  }
+
+  public boolean addOrMoveOrderAt(Order aOrder, int index)
+  {
+    boolean wasAdded = false;
+    if(orders.contains(aOrder))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfOrders()) { index = numberOfOrders() - 1; }
+      orders.remove(aOrder);
+      orders.add(index, aOrder);
+      wasAdded = true;
+    } 
+    else 
+    {
+      wasAdded = addOrderAt(aOrder, index);
+    }
+    return wasAdded;
+  }
+  /* Code from template association_MinimumNumberOfMethod */
   public static int minimumNumberOfReviews()
   {
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aContent, String aDate, String aRating, VideoGame aReviewed)
+  public Review addReview(String aId, String aContent, String aDate, String aRating, VideoGame aReviewed)
   {
-    return new Review(aContent, aDate, aRating, aReviewed, this);
+    return new Review(aId, aContent, aDate, aRating, aReviewed, this);
   }
 
   public boolean addReview(Review aReview)
@@ -368,11 +458,10 @@ public class Customer extends Person
   {
     wishlist.clear();
     cart.clear();
-    Order existingOrder = order;
-    order = null;
-    if (existingOrder != null)
+    for(int i=orders.size(); i > 0; i--)
     {
-      existingOrder.delete();
+      Order aOrder = orders.get(i - 1);
+      aOrder.delete();
     }
     for(int i=reviews.size(); i > 0; i--)
     {
@@ -387,7 +476,6 @@ public class Customer extends Person
   {
     return super.toString() + "["+
             "address" + ":" + getAddress()+ "," +
-            "phoneNumber" + ":" + getPhoneNumber()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "order = "+(getOrder()!=null?Integer.toHexString(System.identityHashCode(getOrder())):"null");
+            "phoneNumber" + ":" + getPhoneNumber()+ "]";
   }
 }

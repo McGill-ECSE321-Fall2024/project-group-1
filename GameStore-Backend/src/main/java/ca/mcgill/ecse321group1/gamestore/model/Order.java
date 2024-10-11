@@ -3,9 +3,11 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
+import jakarta.persistence.*;
 
-// line 50 "../../../../../../model.ump"
-// line 130 "../../../../../../model.ump"
+// line 44 "../../../../../../model.ump"
+// line 113 "../../../../../../model.ump"
+@Entity
 public class Order
 {
 
@@ -14,6 +16,9 @@ public class Order
   //------------------------
 
   //Order Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private String id;
   private String date;
   private String price;
   private String quantity;
@@ -21,42 +26,42 @@ public class Order
   private String address;
 
   //Order Associations
+  @OneToMany
   private List<VideoGame> purchased;
+  @ManyToOne
   private Customer customer;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
+  public Order(String aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
   {
+    id = aId;
     date = aDate;
     price = aPrice;
     quantity = aQuantity;
     offersApplied = aOffersApplied;
     address = aAddress;
     purchased = new ArrayList<VideoGame>();
-    if (aCustomer == null || aCustomer.getOrder() != null)
+    boolean didAddCustomer = setCustomer(aCustomer);
+    if (!didAddCustomer)
     {
-      throw new RuntimeException("Unable to create Order due to aCustomer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create order due to customer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    customer = aCustomer;
-  }
-
-  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, String aUsernameForCustomer, String aEmailForCustomer, String aPasswordHashForCustomer, GameStore aGameStoreForCustomer, String aAddressForCustomer, String aPhoneNumberForCustomer)
-  {
-    date = aDate;
-    price = aPrice;
-    quantity = aQuantity;
-    offersApplied = aOffersApplied;
-    address = aAddress;
-    purchased = new ArrayList<VideoGame>();
-    customer = new Customer(aUsernameForCustomer, aEmailForCustomer, aPasswordHashForCustomer, aGameStoreForCustomer, aAddressForCustomer, aPhoneNumberForCustomer, this);
   }
 
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(String aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setDate(String aDate)
   {
@@ -96,6 +101,11 @@ public class Order
     address = aAddress;
     wasSet = true;
     return wasSet;
+  }
+
+  public String getId()
+  {
+    return id;
   }
 
   public String getDate()
@@ -214,15 +224,34 @@ public class Order
     }
     return wasAdded;
   }
+  /* Code from template association_SetOneToMany */
+  public boolean setCustomer(Customer aCustomer)
+  {
+    boolean wasSet = false;
+    if (aCustomer == null)
+    {
+      return wasSet;
+    }
+
+    Customer existingCustomer = customer;
+    customer = aCustomer;
+    if (existingCustomer != null && !existingCustomer.equals(aCustomer))
+    {
+      existingCustomer.removeOrder(this);
+    }
+    customer.addOrder(this);
+    wasSet = true;
+    return wasSet;
+  }
 
   public void delete()
   {
     purchased.clear();
-    Customer existingCustomer = customer;
-    customer = null;
-    if (existingCustomer != null)
+    Customer placeholderCustomer = customer;
+    this.customer = null;
+    if(placeholderCustomer != null)
     {
-      existingCustomer.delete();
+      placeholderCustomer.removeOrder(this);
     }
   }
 
@@ -230,6 +259,7 @@ public class Order
   public String toString()
   {
     return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
             "date" + ":" + getDate()+ "," +
             "price" + ":" + getPrice()+ "," +
             "quantity" + ":" + getQuantity()+ "," +
