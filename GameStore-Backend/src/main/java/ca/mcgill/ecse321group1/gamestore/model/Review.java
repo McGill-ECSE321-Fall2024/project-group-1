@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
-
+package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
-// line 58 "model.ump"
-// line 145 "model.ump"
+// line 60 "../../../../../model.ump"
+// line 147 "../../../../../model.ump"
 public class Review
 {
 

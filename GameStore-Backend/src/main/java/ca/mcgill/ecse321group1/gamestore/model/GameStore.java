@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
-
+package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
-// line 2 "model.ump"
-// line 89 "model.ump"
+// line 4 "../../../../../../model.ump"
+// line 91 "../../../../../../model.ump"
 public class GameStore
 {
 
@@ -128,7 +128,10 @@ public class GameStore
     return 0;
   }
   /* Code from template association_AddManyToOne */
-
+  public User addUser()
+  {
+    return new User(this);
+  }
 
   public boolean addUser(User aUser)
   {
