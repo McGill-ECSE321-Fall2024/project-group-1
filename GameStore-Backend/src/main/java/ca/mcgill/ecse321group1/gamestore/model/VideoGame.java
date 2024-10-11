@@ -6,6 +6,7 @@ import java.util.*;
 
 // line 35 "../../../../../../model.ump"
 // line 120 "../../../../../../model.ump"
+@jakarta.persistence.Entity
 public class VideoGame
 {
 

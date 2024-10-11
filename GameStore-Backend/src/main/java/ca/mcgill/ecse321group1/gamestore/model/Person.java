@@ -5,6 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 
 // line 10 "../../../../../../model.ump"
 // line 97 "../../../../../../model.ump"
+@jakarta.persistence.Entity
 public abstract class Person
 {
 

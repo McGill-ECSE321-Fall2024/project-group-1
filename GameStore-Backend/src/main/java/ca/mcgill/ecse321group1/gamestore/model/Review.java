@@ -2,10 +2,10 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
-import java.util.*;
 
 // line 60 "../../../../../model.ump"
 // line 138 "../../../../../model.ump"
+@jakarta.persistence.Entity
 public class Review
 {
 
@@ -21,7 +21,7 @@ public class Review
   //Review Associations
   private VideoGame reviewed;
   private Customer reviewer;
-  private List<Reply> replies;
+  private Reply reply;
 
   //Helper Variables
   private int cachedHashCode;
@@ -50,7 +50,6 @@ public class Review
     {
       throw new RuntimeException("Unable to create review due to reviewer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    replies = new ArrayList<Reply>();
   }
 
   //------------------------
@@ -105,35 +104,16 @@ public class Review
   {
     return reviewer;
   }
-  /* Code from template association_GetMany */
-  public Reply getReply(int index)
+  /* Code from template association_GetOne */
+  public Reply getReply()
   {
-    Reply aReply = replies.get(index);
-    return aReply;
+    return reply;
   }
 
-  public List<Reply> getReplies()
+  public boolean hasReply()
   {
-    List<Reply> newReplies = Collections.unmodifiableList(replies);
-    return newReplies;
-  }
-
-  public int numberOfReplies()
-  {
-    int number = replies.size();
-    return number;
-  }
-
-  public boolean hasReplies()
-  {
-    boolean has = replies.size() > 0;
+    boolean has = reply != null;
     return has;
-  }
-
-  public int indexOfReply(Reply aReply)
-  {
-    int index = replies.indexOf(aReply);
-    return index;
   }
   /* Code from template association_SetOneToManyAssociationClass */
   public boolean setReviewed(VideoGame aReviewed)
@@ -189,77 +169,32 @@ public class Review
     }
     return wasSet;
   }
-  /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfReplies()
+  /* Code from template association_SetOptionalOneToOne */
+  public boolean setReply(Reply aNewReply)
   {
-    return 0;
-  }
-  /* Code from template association_AddManyToOne */
-  public Reply addReply(String aContent, String aDate)
-  {
-    return new Reply(aContent, aDate, this);
-  }
+    boolean wasSet = false;
+    if (reply != null && !reply.equals(aNewReply) && equals(reply.getReview()))
+    {
+      //Unable to setReply, as existing reply would become an orphan
+      return wasSet;
+    }
 
-  public boolean addReply(Reply aReply)
-  {
-    boolean wasAdded = false;
-    if (replies.contains(aReply)) { return false; }
-    Review existingReview = aReply.getReview();
-    boolean isNewReview = existingReview != null && !this.equals(existingReview);
-    if (isNewReview)
-    {
-      aReply.setReview(this);
-    }
-    else
-    {
-      replies.add(aReply);
-    }
-    wasAdded = true;
-    return wasAdded;
-  }
+    reply = aNewReply;
+    Review anOldReview = aNewReply != null ? aNewReply.getReview() : null;
 
-  public boolean removeReply(Reply aReply)
-  {
-    boolean wasRemoved = false;
-    //Unable to remove aReply, as it must always have a review
-    if (!this.equals(aReply.getReview()))
+    if (!this.equals(anOldReview))
     {
-      replies.remove(aReply);
-      wasRemoved = true;
+      if (anOldReview != null)
+      {
+        anOldReview.reply = null;
+      }
+      if (reply != null)
+      {
+        reply.setReview(this);
+      }
     }
-    return wasRemoved;
-  }
-  /* Code from template association_AddIndexControlFunctions */
-  public boolean addReplyAt(Reply aReply, int index)
-  {  
-    boolean wasAdded = false;
-    if(addReply(aReply))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfReplies()) { index = numberOfReplies() - 1; }
-      replies.remove(aReply);
-      replies.add(index, aReply);
-      wasAdded = true;
-    }
-    return wasAdded;
-  }
-
-  public boolean addOrMoveReplyAt(Reply aReply, int index)
-  {
-    boolean wasAdded = false;
-    if(replies.contains(aReply))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfReplies()) { index = numberOfReplies() - 1; }
-      replies.remove(aReply);
-      replies.add(index, aReply);
-      wasAdded = true;
-    } 
-    else 
-    {
-      wasAdded = addReplyAt(aReply, index);
-    }
-    return wasAdded;
+    wasSet = true;
+    return wasSet;
   }
 
   public boolean equals(Object obj)
@@ -333,13 +268,13 @@ public class Review
     {
       placeholderReviewer.removeReview(this);
     }
-    while (replies.size() > 0)
+    Reply existingReply = reply;
+    reply = null;
+    if (existingReply != null)
     {
-      Reply aReply = replies.get(replies.size() - 1);
-      aReply.delete();
-      replies.remove(aReply);
+      existingReply.delete();
+      existingReply.setReview(null);
     }
-    
   }
 
 
@@ -350,6 +285,7 @@ public class Review
             "date" + ":" + getDate()+ "," +
             "rating" + ":" + getRating()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "reviewed = "+(getReviewed()!=null?Integer.toHexString(System.identityHashCode(getReviewed())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "reviewer = "+(getReviewer()!=null?Integer.toHexString(System.identityHashCode(getReviewer())):"null");
+            "  " + "reviewer = "+(getReviewer()!=null?Integer.toHexString(System.identityHashCode(getReviewer())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "reply = "+(getReply()!=null?Integer.toHexString(System.identityHashCode(getReply())):"null");
   }
 }

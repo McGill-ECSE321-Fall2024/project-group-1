@@ -6,6 +6,7 @@ import java.util.*;
 
 // line 50 "../../../../../../model.ump"
 // line 130 "../../../../../../model.ump"
+@jakarta.persistence.Entity
 public class Order
 {
 
