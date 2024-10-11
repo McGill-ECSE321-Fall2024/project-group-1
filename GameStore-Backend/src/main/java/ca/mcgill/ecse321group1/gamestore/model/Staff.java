@@ -4,8 +4,8 @@
 package ca.mcgill.ecse321group1.gamestore.model;
 
 // line 26 "../../../../../../model.ump"
-// line 119 "../../../../../../model.ump"
-public class Staff extends User
+// line 110 "../../../../../../model.ump"
+public class Staff extends Person
 {
 
   //------------------------
@@ -16,9 +16,9 @@ public class Staff extends User
   // CONSTRUCTOR
   //------------------------
 
-  public Staff(GameStore aGameStore)
+  public Staff(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore)
   {
-    super(aGameStore);
+    super(aUsername, aEmail, aPasswordHash, aGameStore);
   }
 
   //------------------------

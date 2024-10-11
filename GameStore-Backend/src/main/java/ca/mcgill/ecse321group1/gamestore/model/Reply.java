@@ -4,7 +4,7 @@
 package ca.mcgill.ecse321group1.gamestore.model;
 
 // line 68 "../../../../../../model.ump"
-// line 158 "../../../../../../model.ump"
+// line 149 "../../../../../../model.ump"
 public class Reply
 {
 

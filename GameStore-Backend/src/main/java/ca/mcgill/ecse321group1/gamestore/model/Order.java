@@ -5,7 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 50 "../../../../../../model.ump"
-// line 139 "../../../../../../model.ump"
+// line 130 "../../../../../../model.ump"
 public class Order
 {
 
@@ -43,7 +43,7 @@ public class Order
     customer = aCustomer;
   }
 
-  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, GameStore aGameStoreForCustomer, String aAddressForCustomer, String aPhoneNumberForCustomer)
+  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, String aUsernameForCustomer, String aEmailForCustomer, String aPasswordHashForCustomer, GameStore aGameStoreForCustomer, String aAddressForCustomer, String aPhoneNumberForCustomer)
   {
     date = aDate;
     price = aPrice;
@@ -51,7 +51,7 @@ public class Order
     offersApplied = aOffersApplied;
     address = aAddress;
     purchased = new ArrayList<VideoGame>();
-    customer = new Customer(aGameStoreForCustomer, aAddressForCustomer, aPhoneNumberForCustomer, this);
+    customer = new Customer(aUsernameForCustomer, aEmailForCustomer, aPasswordHashForCustomer, aGameStoreForCustomer, aAddressForCustomer, aPhoneNumberForCustomer, this);
   }
 
   //------------------------

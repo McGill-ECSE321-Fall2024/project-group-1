@@ -4,7 +4,7 @@
 package ca.mcgill.ecse321group1.gamestore.model;
 
 // line 31 "../../../../../../model.ump"
-// line 124 "../../../../../../model.ump"
+// line 115 "../../../../../../model.ump"
 public class Owner extends Staff
 {
 
@@ -16,9 +16,9 @@ public class Owner extends Staff
   // CONSTRUCTOR
   //------------------------
 
-  public Owner(GameStore aGameStore)
+  public Owner(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore)
   {
-    super(aGameStore);
+    super(aUsername, aEmail, aPasswordHash, aGameStore);
   }
 
   //------------------------
