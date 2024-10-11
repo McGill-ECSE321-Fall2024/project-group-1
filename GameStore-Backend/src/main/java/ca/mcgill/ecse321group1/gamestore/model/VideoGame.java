@@ -3,9 +3,11 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
+import jakarta.persistence.*;
 
-// line 35 "../../../../../../model.ump"
-// line 122 "../../../../../../model.ump"
+// line 29 "../../../../../../model.ump"
+// line 103 "../../../../../../model.ump"
+@Entity
 public class VideoGame
 {
 
@@ -20,6 +22,7 @@ public class VideoGame
   //------------------------
 
   //VideoGame Attributes
+  @Id
   private String name;
   private String description;
   private String price;
@@ -28,15 +31,16 @@ public class VideoGame
   private Status status;
 
   //VideoGame Associations
-  private GameStore gameStore;
+  @OneToMany
   private List<Review> reviews;
+  @ManyToOne
   private Category category;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public VideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, Status aStatus, GameStore aGameStore, Category aCategory)
+  public VideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, Status aStatus, Category aCategory)
   {
     name = aName;
     description = aDescription;
@@ -44,11 +48,6 @@ public class VideoGame
     quantity = aQuantity;
     date = aDate;
     status = aStatus;
-    boolean didAddGameStore = setGameStore(aGameStore);
-    if (!didAddGameStore)
-    {
-      throw new RuntimeException("Unable to create videoGame due to gameStore. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
     reviews = new ArrayList<Review>();
     boolean didAddCategory = setCategory(aCategory);
     if (!didAddCategory)
@@ -138,11 +137,6 @@ public class VideoGame
   {
     return status;
   }
-  /* Code from template association_GetOne */
-  public GameStore getGameStore()
-  {
-    return gameStore;
-  }
   /* Code from template association_GetMany */
   public Review getReview(int index)
   {
@@ -177,25 +171,6 @@ public class VideoGame
   public Category getCategory()
   {
     return category;
-  }
-  /* Code from template association_SetOneToMany */
-  public boolean setGameStore(GameStore aGameStore)
-  {
-    boolean wasSet = false;
-    if (aGameStore == null)
-    {
-      return wasSet;
-    }
-
-    GameStore existingGameStore = gameStore;
-    gameStore = aGameStore;
-    if (existingGameStore != null && !existingGameStore.equals(aGameStore))
-    {
-      existingGameStore.removeVideoGame(this);
-    }
-    gameStore.addVideoGame(this);
-    wasSet = true;
-    return wasSet;
   }
   /* Code from template association_MinimumNumberOfMethod */
   public static int minimumNumberOfReviews()
@@ -291,12 +266,6 @@ public class VideoGame
 
   public void delete()
   {
-    GameStore placeholderGameStore = gameStore;
-    this.gameStore = null;
-    if(placeholderGameStore != null)
-    {
-      placeholderGameStore.removeVideoGame(this);
-    }
     for(int i=reviews.size(); i > 0; i--)
     {
       Review aReview = reviews.get(i - 1);
@@ -320,7 +289,6 @@ public class VideoGame
             "quantity" + ":" + getQuantity()+ "," +
             "date" + ":" + getDate()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "status" + "=" + (getStatus() != null ? !getStatus().equals(this)  ? getStatus().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "gameStore = "+(getGameStore()!=null?Integer.toHexString(System.identityHashCode(getGameStore())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "category = "+(getCategory()!=null?Integer.toHexString(System.identityHashCode(getCategory())):"null");
   }
 }

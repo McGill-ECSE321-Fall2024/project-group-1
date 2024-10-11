@@ -3,8 +3,13 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 
-// line 31 "../../../../../../model.ump"
-// line 117 "../../../../../../model.ump"
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+
+// line 25 "../../../../../../model.ump"
+// line 98 "../../../../../../model.ump"
+@Entity
+@DiscriminatorValue("Owner")
 public class Owner extends Staff
 {
 
@@ -16,9 +21,9 @@ public class Owner extends Staff
   // CONSTRUCTOR
   //------------------------
 
-  public Owner(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore)
+  public Owner(String aUsername, String aEmail, String aPasswordHash)
   {
-    super(aUsername, aEmail, aPasswordHash, aGameStore);
+    super(aUsername, aEmail, aPasswordHash);
   }
 
   //------------------------

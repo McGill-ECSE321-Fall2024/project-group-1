@@ -3,8 +3,11 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 
-// line 61 "../../../../../model.ump"
-// line 140 "../../../../../model.ump"
+import jakarta.persistence.*;
+
+// line 55 "../../../../../model.ump"
+// line 121 "../../../../../model.ump"
+@Entity
 public class Review
 {
 
@@ -13,14 +16,19 @@ public class Review
   //------------------------
 
   //Review Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private String id;
   private String content;
   private String date;
   private String rating;
 
   //Review Associations
+  @ManyToOne
   private VideoGame reviewed;
+  @ManyToOne
   private Customer reviewer;
+  @OneToOne
   private Reply reply;
 
   //Helper Variables

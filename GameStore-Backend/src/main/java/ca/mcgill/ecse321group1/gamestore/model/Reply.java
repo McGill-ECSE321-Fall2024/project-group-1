@@ -2,9 +2,11 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import jakarta.persistence.*;
 
-// line 70 "../../../../../../model.ump"
-// line 151 "../../../../../../model.ump"
+// line 64 "../../../../../../model.ump"
+// line 132 "../../../../../../model.ump"
+@Entity
 public class Reply
 {
 
@@ -13,18 +15,23 @@ public class Reply
   //------------------------
 
   //Reply Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private String id;
   private String content;
   private String date;
 
   //Reply Associations
+  @OneToOne
   private Review review;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Reply(String aContent, String aDate, Review aReview)
+  public Reply(String aId, String aContent, String aDate, Review aReview)
   {
+    id = aId;
     content = aContent;
     date = aDate;
     boolean didAddReview = setReview(aReview);
@@ -37,6 +44,14 @@ public class Reply
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(String aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setContent(String aContent)
   {
@@ -52,6 +67,11 @@ public class Reply
     date = aDate;
     wasSet = true;
     return wasSet;
+  }
+
+  public String getId()
+  {
+    return id;
   }
 
   public String getContent()
@@ -111,6 +131,7 @@ public class Reply
   public String toString()
   {
     return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
             "content" + ":" + getContent()+ "," +
             "date" + ":" + getDate()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");
