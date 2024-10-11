@@ -5,7 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 17 "../../../../../../model.ump"
-// line 102 "../../../../../../model.ump"
+// line 104 "../../../../../../model.ump"
 public class Customer extends Person
 {
 
@@ -42,14 +42,14 @@ public class Customer extends Person
     reviews = new ArrayList<Review>();
   }
 
-  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, String aDateForOrder, String aPriceForOrder, String aQuantityForOrder, String aOffersAppliedForOrder, String aAddressForOrder)
+  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, String aIdForOrder, String aDateForOrder, String aPriceForOrder, String aQuantityForOrder, String aOffersAppliedForOrder, String aAddressForOrder)
   {
     super(aUsername, aEmail, aPasswordHash, aGameStore);
     address = aAddress;
     phoneNumber = aPhoneNumber;
     wishlist = new ArrayList<VideoGame>();
     cart = new ArrayList<VideoGame>();
-    order = new Order(aDateForOrder, aPriceForOrder, aQuantityForOrder, aOffersAppliedForOrder, aAddressForOrder, this);
+    order = new Order(aIdForOrder, aDateForOrder, aPriceForOrder, aQuantityForOrder, aOffersAppliedForOrder, aAddressForOrder, this);
     reviews = new ArrayList<Review>();
   }
 
@@ -297,9 +297,9 @@ public class Customer extends Person
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aContent, String aDate, String aRating, VideoGame aReviewed)
+  public Review addReview(String aId, String aContent, String aDate, String aRating, VideoGame aReviewed)
   {
-    return new Review(aContent, aDate, aRating, aReviewed, this);
+    return new Review(aId, aContent, aDate, aRating, aReviewed, this);
   }
 
   public boolean addReview(Review aReview)

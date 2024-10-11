@@ -5,7 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 4 "../../../../../../model.ump"
-// line 82 "../../../../../../model.ump"
+// line 84 "../../../../../../model.ump"
 public class GameStore
 {
 

@@ -3,9 +3,8 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 
-// line 60 "../../../../../model.ump"
-// line 138 "../../../../../model.ump"
-@jakarta.persistence.Entity
+// line 61 "../../../../../model.ump"
+// line 140 "../../../../../model.ump"
 public class Review
 {
 
@@ -14,6 +13,7 @@ public class Review
   //------------------------
 
   //Review Attributes
+  private String id;
   private String content;
   private String date;
   private String rating;
@@ -32,11 +32,12 @@ public class Review
   // CONSTRUCTOR
   //------------------------
 
-  public Review(String aContent, String aDate, String aRating, VideoGame aReviewed, Customer aReviewer)
+  public Review(String aId, String aContent, String aDate, String aRating, VideoGame aReviewed, Customer aReviewer)
   {
     cachedHashCode = -1;
     canSetReviewed = true;
     canSetReviewer = true;
+    id = aId;
     content = aContent;
     date = aDate;
     rating = aRating;
@@ -55,6 +56,14 @@ public class Review
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(String aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setContent(String aContent)
   {
@@ -78,6 +87,11 @@ public class Review
     rating = aRating;
     wasSet = true;
     return wasSet;
+  }
+
+  public String getId()
+  {
+    return id;
   }
 
   public String getContent()
@@ -281,6 +295,7 @@ public class Review
   public String toString()
   {
     return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
             "content" + ":" + getContent()+ "," +
             "date" + ":" + getDate()+ "," +
             "rating" + ":" + getRating()+ "]" + System.getProperties().getProperty("line.separator") +

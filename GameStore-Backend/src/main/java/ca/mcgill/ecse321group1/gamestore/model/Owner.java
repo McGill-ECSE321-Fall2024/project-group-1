@@ -4,7 +4,7 @@
 package ca.mcgill.ecse321group1.gamestore.model;
 
 // line 31 "../../../../../../model.ump"
-// line 115 "../../../../../../model.ump"
+// line 117 "../../../../../../model.ump"
 public class Owner extends Staff
 {
 

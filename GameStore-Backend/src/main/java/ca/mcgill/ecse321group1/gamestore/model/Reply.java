@@ -3,8 +3,8 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 
-// line 68 "../../../../../../model.ump"
-// line 149 "../../../../../../model.ump"
+// line 70 "../../../../../../model.ump"
+// line 151 "../../../../../../model.ump"
 public class Reply
 {
 

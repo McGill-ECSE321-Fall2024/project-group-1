@@ -4,7 +4,7 @@
 package ca.mcgill.ecse321group1.gamestore.model;
 
 // line 26 "../../../../../../model.ump"
-// line 110 "../../../../../../model.ump"
+// line 112 "../../../../../../model.ump"
 public class Staff extends Person
 {
 

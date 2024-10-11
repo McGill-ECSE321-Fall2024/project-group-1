@@ -5,8 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 50 "../../../../../../model.ump"
-// line 130 "../../../../../../model.ump"
-@jakarta.persistence.Entity
+// line 132 "../../../../../../model.ump"
 public class Order
 {
 
@@ -15,6 +14,7 @@ public class Order
   //------------------------
 
   //Order Attributes
+  private String id;
   private String date;
   private String price;
   private String quantity;
@@ -29,8 +29,9 @@ public class Order
   // CONSTRUCTOR
   //------------------------
 
-  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
+  public Order(String aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
   {
+    id = aId;
     date = aDate;
     price = aPrice;
     quantity = aQuantity;
@@ -44,8 +45,9 @@ public class Order
     customer = aCustomer;
   }
 
-  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, String aUsernameForCustomer, String aEmailForCustomer, String aPasswordHashForCustomer, GameStore aGameStoreForCustomer, String aAddressForCustomer, String aPhoneNumberForCustomer)
+  public Order(String aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, String aUsernameForCustomer, String aEmailForCustomer, String aPasswordHashForCustomer, GameStore aGameStoreForCustomer, String aAddressForCustomer, String aPhoneNumberForCustomer)
   {
+    id = aId;
     date = aDate;
     price = aPrice;
     quantity = aQuantity;
@@ -58,6 +60,14 @@ public class Order
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(String aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setDate(String aDate)
   {
@@ -97,6 +107,11 @@ public class Order
     address = aAddress;
     wasSet = true;
     return wasSet;
+  }
+
+  public String getId()
+  {
+    return id;
   }
 
   public String getDate()
@@ -231,6 +246,7 @@ public class Order
   public String toString()
   {
     return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
             "date" + ":" + getDate()+ "," +
             "price" + ":" + getPrice()+ "," +
             "quantity" + ":" + getQuantity()+ "," +

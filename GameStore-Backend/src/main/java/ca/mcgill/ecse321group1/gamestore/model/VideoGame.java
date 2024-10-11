@@ -5,8 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 
 // line 35 "../../../../../../model.ump"
-// line 120 "../../../../../../model.ump"
-@jakarta.persistence.Entity
+// line 122 "../../../../../../model.ump"
 public class VideoGame
 {
 
@@ -204,9 +203,9 @@ public class VideoGame
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aContent, String aDate, String aRating, Customer aReviewer)
+  public Review addReview(String aId, String aContent, String aDate, String aRating, Customer aReviewer)
   {
-    return new Review(aContent, aDate, aRating, this, aReviewer);
+    return new Review(aId, aContent, aDate, aRating, this, aReviewer);
   }
 
   public boolean addReview(Review aReview)
