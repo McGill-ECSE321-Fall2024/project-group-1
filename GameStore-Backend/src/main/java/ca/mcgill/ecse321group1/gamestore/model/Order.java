@@ -1,10 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 
+import java.util.*;
 
-// line 61 "model.ump"
-// line 149 "model.ump"
+// line 48 "model.ump"
+// line 137 "model.ump"
 public class Order
 {
 
@@ -15,41 +16,42 @@ public class Order
   //Order Attributes
   private String date;
   private String price;
+  private String quantity;
   private String offersApplied;
   private String address;
 
   //Order Associations
-  private VideoGame videoGame;
+  private List<VideoGame> purchased;
   private Customer customer;
-
-  //Helper Variables
-  private int cachedHashCode;
-  private boolean canSetVideoGame;
-  private boolean canSetCustomer;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Order(String aDate, String aPrice, String aOffersApplied, String aAddress, VideoGame aVideoGame, Customer aCustomer)
+  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
   {
-    cachedHashCode = -1;
-    canSetVideoGame = true;
-    canSetCustomer = true;
     date = aDate;
     price = aPrice;
+    quantity = aQuantity;
     offersApplied = aOffersApplied;
     address = aAddress;
-    boolean didAddVideoGame = setVideoGame(aVideoGame);
-    if (!didAddVideoGame)
+    purchased = new ArrayList<VideoGame>();
+    if (aCustomer == null || aCustomer.getOrder() != null)
     {
-      throw new RuntimeException("Unable to create order due to videoGame. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create Order due to aCustomer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    boolean didAddCustomer = setCustomer(aCustomer);
-    if (!didAddCustomer)
-    {
-      throw new RuntimeException("Unable to create order due to customer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-    }
+    customer = aCustomer;
+  }
+
+  public Order(String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, String aUsernameForCustomer, String aEmailForCustomer, String aPasswordHashForCustomer, GameStore aGameStoreForCustomer, String aAddressForCustomer, String aPhoneNumberForCustomer)
+  {
+    date = aDate;
+    price = aPrice;
+    quantity = aQuantity;
+    offersApplied = aOffersApplied;
+    address = aAddress;
+    purchased = new ArrayList<VideoGame>();
+    customer = new Customer(aUsernameForCustomer, aEmailForCustomer, aPasswordHashForCustomer, aGameStoreForCustomer, aAddressForCustomer, aPhoneNumberForCustomer, this);
   }
 
   //------------------------
@@ -68,6 +70,14 @@ public class Order
   {
     boolean wasSet = false;
     price = aPrice;
+    wasSet = true;
+    return wasSet;
+  }
+
+  public boolean setQuantity(String aQuantity)
+  {
+    boolean wasSet = false;
+    quantity = aQuantity;
     wasSet = true;
     return wasSet;
   }
@@ -98,6 +108,11 @@ public class Order
     return price;
   }
 
+  public String getQuantity()
+  {
+    return quantity;
+  }
+
   public String getOffersApplied()
   {
     return offersApplied;
@@ -107,141 +122,107 @@ public class Order
   {
     return address;
   }
-  /* Code from template association_GetOne */
-  public VideoGame getVideoGame()
+  /* Code from template association_GetMany */
+  public VideoGame getPurchased(int index)
   {
-    return videoGame;
+    VideoGame aPurchased = purchased.get(index);
+    return aPurchased;
+  }
+
+  public List<VideoGame> getPurchased()
+  {
+    List<VideoGame> newPurchased = Collections.unmodifiableList(purchased);
+    return newPurchased;
+  }
+
+  public int numberOfPurchased()
+  {
+    int number = purchased.size();
+    return number;
+  }
+
+  public boolean hasPurchased()
+  {
+    boolean has = purchased.size() > 0;
+    return has;
+  }
+
+  public int indexOfPurchased(VideoGame aPurchased)
+  {
+    int index = purchased.indexOf(aPurchased);
+    return index;
   }
   /* Code from template association_GetOne */
   public Customer getCustomer()
   {
     return customer;
   }
-  /* Code from template association_SetOneToManyAssociationClass */
-  public boolean setVideoGame(VideoGame aVideoGame)
+  /* Code from template association_MinimumNumberOfMethod */
+  public static int minimumNumberOfPurchased()
   {
-    boolean wasSet = false;
-    if (!canSetVideoGame) { return false; }
-    if (aVideoGame == null)
-    {
-      return wasSet;
-    }
-
-    VideoGame existingVideoGame = videoGame;
-    videoGame = aVideoGame;
-    if (existingVideoGame != null && !existingVideoGame.equals(aVideoGame))
-    {
-      existingVideoGame.removeOrder(this);
-    }
-    if (!videoGame.addOrder(this))
-    {
-      videoGame = existingVideoGame;
-      wasSet = false;
-    }
-    else
-    {
-      wasSet = true;
-    }
-    return wasSet;
+    return 0;
   }
-  /* Code from template association_SetOneToManyAssociationClass */
-  public boolean setCustomer(Customer aCustomer)
+  /* Code from template association_AddUnidirectionalMany */
+  public boolean addPurchased(VideoGame aPurchased)
   {
-    boolean wasSet = false;
-    if (!canSetCustomer) { return false; }
-    if (aCustomer == null)
-    {
-      return wasSet;
-    }
-
-    Customer existingCustomer = customer;
-    customer = aCustomer;
-    if (existingCustomer != null && !existingCustomer.equals(aCustomer))
-    {
-      existingCustomer.removeOrder(this);
-    }
-    if (!customer.addOrder(this))
-    {
-      customer = existingCustomer;
-      wasSet = false;
-    }
-    else
-    {
-      wasSet = true;
-    }
-    return wasSet;
+    boolean wasAdded = false;
+    if (purchased.contains(aPurchased)) { return false; }
+    purchased.add(aPurchased);
+    wasAdded = true;
+    return wasAdded;
   }
 
-  public boolean equals(Object obj)
+  public boolean removePurchased(VideoGame aPurchased)
   {
-    if (obj == null) { return false; }
-    if (!getClass().equals(obj.getClass())) { return false; }
-
-    Order compareTo = (Order)obj;
-  
-    if (getVideoGame() == null && compareTo.getVideoGame() != null)
+    boolean wasRemoved = false;
+    if (purchased.contains(aPurchased))
     {
-      return false;
+      purchased.remove(aPurchased);
+      wasRemoved = true;
     }
-    else if (getVideoGame() != null && !getVideoGame().equals(compareTo.getVideoGame()))
+    return wasRemoved;
+  }
+  /* Code from template association_AddIndexControlFunctions */
+  public boolean addPurchasedAt(VideoGame aPurchased, int index)
+  {  
+    boolean wasAdded = false;
+    if(addPurchased(aPurchased))
     {
-      return false;
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfPurchased()) { index = numberOfPurchased() - 1; }
+      purchased.remove(aPurchased);
+      purchased.add(index, aPurchased);
+      wasAdded = true;
     }
-
-    if (getCustomer() == null && compareTo.getCustomer() != null)
-    {
-      return false;
-    }
-    else if (getCustomer() != null && !getCustomer().equals(compareTo.getCustomer()))
-    {
-      return false;
-    }
-
-    return true;
+    return wasAdded;
   }
 
-  public int hashCode()
+  public boolean addOrMovePurchasedAt(VideoGame aPurchased, int index)
   {
-    if (cachedHashCode != -1)
+    boolean wasAdded = false;
+    if(purchased.contains(aPurchased))
     {
-      return cachedHashCode;
-    }
-    cachedHashCode = 17;
-    if (getVideoGame() != null)
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfPurchased()) { index = numberOfPurchased() - 1; }
+      purchased.remove(aPurchased);
+      purchased.add(index, aPurchased);
+      wasAdded = true;
+    } 
+    else 
     {
-      cachedHashCode = cachedHashCode * 23 + getVideoGame().hashCode();
+      wasAdded = addPurchasedAt(aPurchased, index);
     }
-    else
-    {
-      cachedHashCode = cachedHashCode * 23;
-    }
-    if (getCustomer() != null)
-    {
-      cachedHashCode = cachedHashCode * 23 + getCustomer().hashCode();
-    }
-    else
-    {
-      cachedHashCode = cachedHashCode * 23;
-    }
-
-    canSetVideoGame = false;
-    canSetCustomer = false;
-    return cachedHashCode;
+    return wasAdded;
   }
 
   public void delete()
   {
-    VideoGame placeholderVideoGame = videoGame;
-    this.videoGame = null;
-    if(placeholderVideoGame != null)
+    purchased.clear();
+    Customer existingCustomer = customer;
+    customer = null;
+    if (existingCustomer != null)
     {
-      placeholderVideoGame.removeOrder(this);
-    }
-    Customer placeholderCustomer = customer;
-    this.customer = null;
-    if(placeholderCustomer != null)
-    {
-      placeholderCustomer.removeOrder(this);
+      existingCustomer.delete();
     }
   }
 
@@ -251,9 +232,9 @@ public class Order
     return super.toString() + "["+
             "date" + ":" + getDate()+ "," +
             "price" + ":" + getPrice()+ "," +
+            "quantity" + ":" + getQuantity()+ "," +
             "offersApplied" + ":" + getOffersApplied()+ "," +
             "address" + ":" + getAddress()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "videoGame = "+(getVideoGame()!=null?Integer.toHexString(System.identityHashCode(getVideoGame())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "customer = "+(getCustomer()!=null?Integer.toHexString(System.identityHashCode(getCustomer())):"null");
   }
 }

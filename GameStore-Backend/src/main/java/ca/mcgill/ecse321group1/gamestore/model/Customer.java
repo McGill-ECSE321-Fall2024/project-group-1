@@ -1,19 +1,13 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 
 import java.util.*;
 
-// line 27 "model.ump"
-// line 121 "model.ump"
+// line 15 "model.ump"
+// line 109 "model.ump"
 public class Customer extends User
 {
-
-  //------------------------
-  // ENUMERATIONS
-  //------------------------
-
-  public enum Status { Pending, Active, Inactive }
 
   //------------------------
   // MEMBER VARIABLES
@@ -24,23 +18,38 @@ public class Customer extends User
   private String phoneNumber;
 
   //Customer Associations
-  private List<VideoGame> purchased;
   private List<VideoGame> wishlist;
-  private List<Order> orders;
+  private List<VideoGame> cart;
+  private Order order;
   private List<Review> reviews;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber)
+  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, Order aOrder)
   {
     super(aUsername, aEmail, aPasswordHash, aGameStore);
     address = aAddress;
     phoneNumber = aPhoneNumber;
-    purchased = new ArrayList<VideoGame>();
     wishlist = new ArrayList<VideoGame>();
-    orders = new ArrayList<Order>();
+    cart = new ArrayList<VideoGame>();
+    if (aOrder == null || aOrder.getCustomer() != null)
+    {
+      throw new RuntimeException("Unable to create Customer due to aOrder. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+    }
+    order = aOrder;
+    reviews = new ArrayList<Review>();
+  }
+
+  public Customer(String aUsername, String aEmail, String aPasswordHash, GameStore aGameStore, String aAddress, String aPhoneNumber, String aDateForOrder, String aPriceForOrder, String aQuantityForOrder, String aOffersAppliedForOrder, String aAddressForOrder)
+  {
+    super(aUsername, aEmail, aPasswordHash, aGameStore);
+    address = aAddress;
+    phoneNumber = aPhoneNumber;
+    wishlist = new ArrayList<VideoGame>();
+    cart = new ArrayList<VideoGame>();
+    order = new Order(aDateForOrder, aPriceForOrder, aQuantityForOrder, aOffersAppliedForOrder, aAddressForOrder, this);
     reviews = new ArrayList<Review>();
   }
 
@@ -74,36 +83,6 @@ public class Customer extends User
     return phoneNumber;
   }
   /* Code from template association_GetMany */
-  public VideoGame getPurchased(int index)
-  {
-    VideoGame aPurchased = purchased.get(index);
-    return aPurchased;
-  }
-
-  public List<VideoGame> getPurchased()
-  {
-    List<VideoGame> newPurchased = Collections.unmodifiableList(purchased);
-    return newPurchased;
-  }
-
-  public int numberOfPurchased()
-  {
-    int number = purchased.size();
-    return number;
-  }
-
-  public boolean hasPurchased()
-  {
-    boolean has = purchased.size() > 0;
-    return has;
-  }
-
-  public int indexOfPurchased(VideoGame aPurchased)
-  {
-    int index = purchased.indexOf(aPurchased);
-    return index;
-  }
-  /* Code from template association_GetMany */
   public VideoGame getWishlist(int index)
   {
     VideoGame aWishlist = wishlist.get(index);
@@ -134,34 +113,39 @@ public class Customer extends User
     return index;
   }
   /* Code from template association_GetMany */
-  public Order getOrder(int index)
+  public VideoGame getCart(int index)
   {
-    Order aOrder = orders.get(index);
-    return aOrder;
+    VideoGame aCart = cart.get(index);
+    return aCart;
   }
 
-  public List<Order> getOrders()
+  public List<VideoGame> getCart()
   {
-    List<Order> newOrders = Collections.unmodifiableList(orders);
-    return newOrders;
+    List<VideoGame> newCart = Collections.unmodifiableList(cart);
+    return newCart;
   }
 
-  public int numberOfOrders()
+  public int numberOfCart()
   {
-    int number = orders.size();
+    int number = cart.size();
     return number;
   }
 
-  public boolean hasOrders()
+  public boolean hasCart()
   {
-    boolean has = orders.size() > 0;
+    boolean has = cart.size() > 0;
     return has;
   }
 
-  public int indexOfOrder(Order aOrder)
+  public int indexOfCart(VideoGame aCart)
   {
-    int index = orders.indexOf(aOrder);
+    int index = cart.indexOf(aCart);
     return index;
+  }
+  /* Code from template association_GetOne */
+  public Order getOrder()
+  {
+    return order;
   }
   /* Code from template association_GetMany */
   public Review getReview(int index)
@@ -192,63 +176,6 @@ public class Customer extends User
   {
     int index = reviews.indexOf(aReview);
     return index;
-  }
-  /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfPurchased()
-  {
-    return 0;
-  }
-  /* Code from template association_AddUnidirectionalMany */
-  public boolean addPurchased(VideoGame aPurchased)
-  {
-    boolean wasAdded = false;
-    if (purchased.contains(aPurchased)) { return false; }
-    purchased.add(aPurchased);
-    wasAdded = true;
-    return wasAdded;
-  }
-
-  public boolean removePurchased(VideoGame aPurchased)
-  {
-    boolean wasRemoved = false;
-    if (purchased.contains(aPurchased))
-    {
-      purchased.remove(aPurchased);
-      wasRemoved = true;
-    }
-    return wasRemoved;
-  }
-  /* Code from template association_AddIndexControlFunctions */
-  public boolean addPurchasedAt(VideoGame aPurchased, int index)
-  {  
-    boolean wasAdded = false;
-    if(addPurchased(aPurchased))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfPurchased()) { index = numberOfPurchased() - 1; }
-      purchased.remove(aPurchased);
-      purchased.add(index, aPurchased);
-      wasAdded = true;
-    }
-    return wasAdded;
-  }
-
-  public boolean addOrMovePurchasedAt(VideoGame aPurchased, int index)
-  {
-    boolean wasAdded = false;
-    if(purchased.contains(aPurchased))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfPurchased()) { index = numberOfPurchased() - 1; }
-      purchased.remove(aPurchased);
-      purchased.add(index, aPurchased);
-      wasAdded = true;
-    } 
-    else 
-    {
-      wasAdded = addPurchasedAt(aPurchased, index);
-    }
-    return wasAdded;
   }
   /* Code from template association_MinimumNumberOfMethod */
   public static int minimumNumberOfWishlist()
@@ -308,74 +235,59 @@ public class Customer extends User
     return wasAdded;
   }
   /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfOrders()
+  public static int minimumNumberOfCart()
   {
     return 0;
   }
-  /* Code from template association_AddManyToOne */
-  public Order addOrder(String aDate, String aPrice, String aOffersApplied, String aAddress, VideoGame aVideoGame)
-  {
-    return new Order(aDate, aPrice, aOffersApplied, aAddress, aVideoGame, this);
-  }
-
-  public boolean addOrder(Order aOrder)
+  /* Code from template association_AddUnidirectionalMany */
+  public boolean addCart(VideoGame aCart)
   {
     boolean wasAdded = false;
-    if (orders.contains(aOrder)) { return false; }
-    Customer existingCustomer = aOrder.getCustomer();
-    boolean isNewCustomer = existingCustomer != null && !this.equals(existingCustomer);
-    if (isNewCustomer)
-    {
-      aOrder.setCustomer(this);
-    }
-    else
-    {
-      orders.add(aOrder);
-    }
+    if (cart.contains(aCart)) { return false; }
+    cart.add(aCart);
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeOrder(Order aOrder)
+  public boolean removeCart(VideoGame aCart)
   {
     boolean wasRemoved = false;
-    //Unable to remove aOrder, as it must always have a customer
-    if (!this.equals(aOrder.getCustomer()))
+    if (cart.contains(aCart))
     {
-      orders.remove(aOrder);
+      cart.remove(aCart);
       wasRemoved = true;
     }
     return wasRemoved;
   }
   /* Code from template association_AddIndexControlFunctions */
-  public boolean addOrderAt(Order aOrder, int index)
+  public boolean addCartAt(VideoGame aCart, int index)
   {  
     boolean wasAdded = false;
-    if(addOrder(aOrder))
+    if(addCart(aCart))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfOrders()) { index = numberOfOrders() - 1; }
-      orders.remove(aOrder);
-      orders.add(index, aOrder);
+      if(index > numberOfCart()) { index = numberOfCart() - 1; }
+      cart.remove(aCart);
+      cart.add(index, aCart);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveOrderAt(Order aOrder, int index)
+  public boolean addOrMoveCartAt(VideoGame aCart, int index)
   {
     boolean wasAdded = false;
-    if(orders.contains(aOrder))
+    if(cart.contains(aCart))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfOrders()) { index = numberOfOrders() - 1; }
-      orders.remove(aOrder);
-      orders.add(index, aOrder);
+      if(index > numberOfCart()) { index = numberOfCart() - 1; }
+      cart.remove(aCart);
+      cart.add(index, aCart);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addOrderAt(aOrder, index);
+      wasAdded = addCartAt(aCart, index);
     }
     return wasAdded;
   }
@@ -454,12 +366,13 @@ public class Customer extends User
 
   public void delete()
   {
-    purchased.clear();
     wishlist.clear();
-    for(int i=orders.size(); i > 0; i--)
+    cart.clear();
+    Order existingOrder = order;
+    order = null;
+    if (existingOrder != null)
     {
-      Order aOrder = orders.get(i - 1);
-      aOrder.delete();
+      existingOrder.delete();
     }
     for(int i=reviews.size(); i > 0; i--)
     {
@@ -474,6 +387,7 @@ public class Customer extends User
   {
     return super.toString() + "["+
             "address" + ":" + getAddress()+ "," +
-            "phoneNumber" + ":" + getPhoneNumber()+ "]";
+            "phoneNumber" + ":" + getPhoneNumber()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "order = "+(getOrder()!=null?Integer.toHexString(System.identityHashCode(getOrder())):"null");
   }
 }

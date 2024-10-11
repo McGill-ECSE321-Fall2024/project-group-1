@@ -1,10 +1,10 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.34.0.7242.6b8819789 modeling language!*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 
 
-// line 36 "model.ump"
-// line 129 "model.ump"
+// line 24 "model.ump"
+// line 117 "model.ump"
 public class Staff extends User
 {
 
