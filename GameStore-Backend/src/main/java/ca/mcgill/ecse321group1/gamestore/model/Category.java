@@ -28,6 +28,9 @@ public class Category
   // CONSTRUCTOR
   //------------------------
 
+  public Category(){
+    videoGames = new ArrayList<VideoGame>();
+  }
   public Category(String aName, String aDescription)
   {
     name = aName;

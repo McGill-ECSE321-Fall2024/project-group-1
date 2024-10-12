@@ -1,9 +1,11 @@
 package ca.mcgill.ecse321group1.gamestore.repository;
 
 import org.springframework.data.repository.CrudRepository;
+
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 
 public interface CustomerRepository extends CrudRepository<Customer, String> {
 
-	public Customer findCustomerByUsername(String username);
+	Customer findCustomerByUsername(String username);
+
 }

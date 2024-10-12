@@ -2,9 +2,8 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
-import jakarta.persistence.*;
-
 import java.util.*;
+import jakarta.persistence.*;
 
 // line 11 "../../../../../../model.ump"
 // line 85 "../../../../../../model.ump"
@@ -26,8 +25,8 @@ public class Customer extends Person
   private List<VideoGame> wishlist;
   @OneToMany
   private List<VideoGame> cart;
-  @OneToMany
-  private List<Order> orders;
+  @OneToMany(mappedBy = "customer")
+  private List<CustomerOrder> customerOrders;
   @OneToMany
   private List<Review> reviews;
 
@@ -35,6 +34,13 @@ public class Customer extends Person
   // CONSTRUCTOR
   //------------------------
 
+  public Customer(){
+    super();
+    wishlist = new ArrayList<VideoGame>();
+    cart = new ArrayList<VideoGame>();
+    customerOrders = new ArrayList<CustomerOrder>();
+    reviews = new ArrayList<Review>();
+  }
   public Customer(String aUsername, String aEmail, String aPasswordHash, String aAddress, String aPhoneNumber)
   {
     super(aUsername, aEmail, aPasswordHash);
@@ -42,7 +48,7 @@ public class Customer extends Person
     phoneNumber = aPhoneNumber;
     wishlist = new ArrayList<VideoGame>();
     cart = new ArrayList<VideoGame>();
-    orders = new ArrayList<Order>();
+    customerOrders = new ArrayList<CustomerOrder>();
     reviews = new ArrayList<Review>();
   }
 
@@ -136,33 +142,33 @@ public class Customer extends Person
     return index;
   }
   /* Code from template association_GetMany */
-  public Order getOrder(int index)
+  public CustomerOrder getCustomerOrder(int index)
   {
-    Order aOrder = orders.get(index);
-    return aOrder;
+    CustomerOrder aCustomerOrder = customerOrders.get(index);
+    return aCustomerOrder;
   }
 
-  public List<Order> getOrders()
+  public List<CustomerOrder> getCustomerOrders()
   {
-    List<Order> newOrders = Collections.unmodifiableList(orders);
-    return newOrders;
+    List<CustomerOrder> newCustomerOrders = Collections.unmodifiableList(customerOrders);
+    return newCustomerOrders;
   }
 
-  public int numberOfOrders()
+  public int numberOfCustomerOrders()
   {
-    int number = orders.size();
+    int number = customerOrders.size();
     return number;
   }
 
-  public boolean hasOrders()
+  public boolean hasCustomerOrders()
   {
-    boolean has = orders.size() > 0;
+    boolean has = customerOrders.size() > 0;
     return has;
   }
 
-  public int indexOfOrder(Order aOrder)
+  public int indexOfCustomerOrder(CustomerOrder aCustomerOrder)
   {
-    int index = orders.indexOf(aOrder);
+    int index = customerOrders.indexOf(aCustomerOrder);
     return index;
   }
   /* Code from template association_GetMany */
@@ -310,74 +316,74 @@ public class Customer extends Person
     return wasAdded;
   }
   /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfOrders()
+  public static int minimumNumberOfCustomerOrders()
   {
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Order addOrder(String aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress)
+  public CustomerOrder addCustomerOrder(int aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress)
   {
-    return new Order(aId, aDate, aPrice, aQuantity, aOffersApplied, aAddress, this);
+    return new CustomerOrder(aId, aDate, aPrice, aQuantity, aOffersApplied, aAddress, this);
   }
 
-  public boolean addOrder(Order aOrder)
+  public boolean addCustomerOrder(CustomerOrder aCustomerOrder)
   {
     boolean wasAdded = false;
-    if (orders.contains(aOrder)) { return false; }
-    Customer existingCustomer = aOrder.getCustomer();
+    if (customerOrders.contains(aCustomerOrder)) { return false; }
+    Customer existingCustomer = aCustomerOrder.getCustomer();
     boolean isNewCustomer = existingCustomer != null && !this.equals(existingCustomer);
     if (isNewCustomer)
     {
-      aOrder.setCustomer(this);
+      aCustomerOrder.setCustomer(this);
     }
     else
     {
-      orders.add(aOrder);
+      customerOrders.add(aCustomerOrder);
     }
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeOrder(Order aOrder)
+  public boolean removeCustomerOrder(CustomerOrder aCustomerOrder)
   {
     boolean wasRemoved = false;
-    //Unable to remove aOrder, as it must always have a customer
-    if (!this.equals(aOrder.getCustomer()))
+    //Unable to remove aCustomerOrder, as it must always have a customer
+    if (!this.equals(aCustomerOrder.getCustomer()))
     {
-      orders.remove(aOrder);
+      customerOrders.remove(aCustomerOrder);
       wasRemoved = true;
     }
     return wasRemoved;
   }
   /* Code from template association_AddIndexControlFunctions */
-  public boolean addOrderAt(Order aOrder, int index)
+  public boolean addCustomerOrderAt(CustomerOrder aCustomerOrder, int index)
   {  
     boolean wasAdded = false;
-    if(addOrder(aOrder))
+    if(addCustomerOrder(aCustomerOrder))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfOrders()) { index = numberOfOrders() - 1; }
-      orders.remove(aOrder);
-      orders.add(index, aOrder);
+      if(index > numberOfCustomerOrders()) { index = numberOfCustomerOrders() - 1; }
+      customerOrders.remove(aCustomerOrder);
+      customerOrders.add(index, aCustomerOrder);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveOrderAt(Order aOrder, int index)
+  public boolean addOrMoveCustomerOrderAt(CustomerOrder aCustomerOrder, int index)
   {
     boolean wasAdded = false;
-    if(orders.contains(aOrder))
+    if(customerOrders.contains(aCustomerOrder))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfOrders()) { index = numberOfOrders() - 1; }
-      orders.remove(aOrder);
-      orders.add(index, aOrder);
+      if(index > numberOfCustomerOrders()) { index = numberOfCustomerOrders() - 1; }
+      customerOrders.remove(aCustomerOrder);
+      customerOrders.add(index, aCustomerOrder);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addOrderAt(aOrder, index);
+      wasAdded = addCustomerOrderAt(aCustomerOrder, index);
     }
     return wasAdded;
   }
@@ -387,9 +393,9 @@ public class Customer extends Person
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aId, String aContent, String aDate, String aRating, VideoGame aReviewed)
+  public Review addReview(String aContent, String aDate, String aRating, VideoGame aReviewed)
   {
-    return new Review(aId, aContent, aDate, aRating, aReviewed, this);
+    return new Review(aContent, aDate, aRating, aReviewed, this);
   }
 
   public boolean addReview(Review aReview)
@@ -458,10 +464,10 @@ public class Customer extends Person
   {
     wishlist.clear();
     cart.clear();
-    for(int i=orders.size(); i > 0; i--)
+    for(int i=customerOrders.size(); i > 0; i--)
     {
-      Order aOrder = orders.get(i - 1);
-      aOrder.delete();
+      CustomerOrder aCustomerOrder = customerOrders.get(i - 1);
+      aCustomerOrder.delete();
     }
     for(int i=reviews.size(); i > 0; i--)
     {

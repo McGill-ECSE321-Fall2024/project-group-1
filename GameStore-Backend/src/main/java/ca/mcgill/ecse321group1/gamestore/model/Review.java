@@ -2,11 +2,10 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
-
 import jakarta.persistence.*;
 
 // line 55 "../../../../../model.ump"
-// line 121 "../../../../../model.ump"
+// line 119 "../../../../../model.ump"
 @Entity
 public class Review
 {
@@ -18,17 +17,17 @@ public class Review
   //Review Attributes
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private String id;
+  private Long id;
   private String content;
   private String date;
   private String rating;
 
   //Review Associations
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
   private VideoGame reviewed;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
   private Customer reviewer;
-  @OneToOne
+  @OneToOne(mappedBy = "review", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
   private Reply reply;
 
   //Helper Variables
@@ -40,22 +39,23 @@ public class Review
   // CONSTRUCTOR
   //------------------------
 
-  public Review(String aId, String aContent, String aDate, String aRating, VideoGame aReviewed, Customer aReviewer)
+  public Review(){
+
+  }
+  public Review(String aContent, String aDate, String aRating, VideoGame aReviewed, Customer aReviewer)
   {
-    cachedHashCode = -1;
-    canSetReviewed = true;
-    canSetReviewer = true;
-    id = aId;
     content = aContent;
     date = aDate;
     rating = aRating;
+    this.setReviewed(aReviewed);
+    this.setReviewer(aReviewer);
     boolean didAddReviewed = setReviewed(aReviewed);
-    if (!didAddReviewed)
+    if (aReviewed == null)
     {
       throw new RuntimeException("Unable to create review due to reviewed. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
     boolean didAddReviewer = setReviewer(aReviewer);
-    if (!didAddReviewer)
+    if (aReviewer == null)
     {
       throw new RuntimeException("Unable to create review due to reviewer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
@@ -64,14 +64,6 @@ public class Review
   //------------------------
   // INTERFACE
   //------------------------
-
-  public boolean setId(String aId)
-  {
-    boolean wasSet = false;
-    id = aId;
-    wasSet = true;
-    return wasSet;
-  }
 
   public boolean setContent(String aContent)
   {
@@ -97,11 +89,9 @@ public class Review
     return wasSet;
   }
 
-  public String getId()
-  {
+  public Long getId() {
     return id;
   }
-
   public String getContent()
   {
     return content;
@@ -225,7 +215,7 @@ public class Review
     if (!getClass().equals(obj.getClass())) { return false; }
 
     Review compareTo = (Review)obj;
-  
+
     if (getReviewed() == null && compareTo.getReviewed() != null)
     {
       return false;
@@ -303,7 +293,6 @@ public class Review
   public String toString()
   {
     return super.toString() + "["+
-            "id" + ":" + getId()+ "," +
             "content" + ":" + getContent()+ "," +
             "date" + ":" + getDate()+ "," +
             "rating" + ":" + getRating()+ "]" + System.getProperties().getProperty("line.separator") +

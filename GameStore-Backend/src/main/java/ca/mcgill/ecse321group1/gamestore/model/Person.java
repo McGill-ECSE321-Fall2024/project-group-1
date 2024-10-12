@@ -2,10 +2,10 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import jakarta.persistence.*;
 
 // line 4 "../../../../../../model.ump"
 // line 80 "../../../../../../model.ump"
-import jakarta.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "AccountType")
@@ -26,6 +26,9 @@ public abstract class Person
   // CONSTRUCTOR
   //------------------------
 
+  public Person() {
+
+  }
   public Person(String aUsername, String aEmail, String aPasswordHash)
   {
     username = aUsername;

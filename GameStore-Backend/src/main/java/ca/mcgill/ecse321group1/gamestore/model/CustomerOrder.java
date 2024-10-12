@@ -8,24 +8,24 @@ import jakarta.persistence.*;
 // line 44 "../../../../../../model.ump"
 // line 113 "../../../../../../model.ump"
 @Entity
-public class Order
+public class CustomerOrder
 {
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
-  //Order Attributes
+  //CustomerOrder Attributes
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private String id;
+  private int id;
   private String date;
   private String price;
   private String quantity;
   private String offersApplied;
   private String address;
 
-  //Order Associations
+  //CustomerOrder Associations
   @OneToMany
   private List<VideoGame> purchased;
   @ManyToOne
@@ -35,7 +35,10 @@ public class Order
   // CONSTRUCTOR
   //------------------------
 
-  public Order(String aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
+  public CustomerOrder(){
+    purchased = new ArrayList<VideoGame>();
+  }
+  public CustomerOrder(int aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
   {
     id = aId;
     date = aDate;
@@ -47,7 +50,7 @@ public class Order
     boolean didAddCustomer = setCustomer(aCustomer);
     if (!didAddCustomer)
     {
-      throw new RuntimeException("Unable to create order due to customer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create customerOrder due to customer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
   }
 
@@ -55,7 +58,7 @@ public class Order
   // INTERFACE
   //------------------------
 
-  public boolean setId(String aId)
+  public boolean setId(int aId)
   {
     boolean wasSet = false;
     id = aId;
@@ -103,7 +106,7 @@ public class Order
     return wasSet;
   }
 
-  public String getId()
+  public int getId()
   {
     return id;
   }
@@ -237,9 +240,9 @@ public class Order
     customer = aCustomer;
     if (existingCustomer != null && !existingCustomer.equals(aCustomer))
     {
-      existingCustomer.removeOrder(this);
+      existingCustomer.removeCustomerOrder(this);
     }
-    customer.addOrder(this);
+    customer.addCustomerOrder(this);
     wasSet = true;
     return wasSet;
   }
@@ -251,7 +254,7 @@ public class Order
     this.customer = null;
     if(placeholderCustomer != null)
     {
-      placeholderCustomer.removeOrder(this);
+      placeholderCustomer.removeCustomerOrder(this);
     }
   }
 

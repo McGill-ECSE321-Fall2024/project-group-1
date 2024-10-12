@@ -2,7 +2,6 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
-
 import jakarta.persistence.*;
 
 // line 20 "../../../../../../model.ump"
@@ -20,6 +19,9 @@ public class Staff extends Person
   // CONSTRUCTOR
   //------------------------
 
+  public Staff(){
+    super();
+  }
   public Staff(String aUsername, String aEmail, String aPasswordHash)
   {
     super(aUsername, aEmail, aPasswordHash);

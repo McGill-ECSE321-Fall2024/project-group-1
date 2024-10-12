@@ -23,6 +23,8 @@ public class VideoGame
 
   //VideoGame Attributes
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
   private String name;
   private String description;
   private String price;
@@ -31,7 +33,7 @@ public class VideoGame
   private Status status;
 
   //VideoGame Associations
-  @OneToMany
+  @OneToMany(mappedBy = "reviewed", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Review> reviews;
   @ManyToOne
   private Category category;
@@ -40,6 +42,9 @@ public class VideoGame
   // CONSTRUCTOR
   //------------------------
 
+  public VideoGame(){
+    reviews = new ArrayList<Review>();
+  }
   public VideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, Status aStatus, Category aCategory)
   {
     name = aName;
@@ -106,6 +111,10 @@ public class VideoGame
     status = aStatus;
     wasSet = true;
     return wasSet;
+  }
+
+  public Long getId() {
+    return id;
   }
 
   public String getName()
@@ -178,9 +187,9 @@ public class VideoGame
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aId, String aContent, String aDate, String aRating, Customer aReviewer)
+  public Review addReview(String aContent, String aDate, String aRating, Customer aReviewer)
   {
-    return new Review(aId, aContent, aDate, aRating, this, aReviewer);
+    return new Review(aContent, aDate, aRating, this, aReviewer);
   }
 
   public boolean addReview(Review aReview)

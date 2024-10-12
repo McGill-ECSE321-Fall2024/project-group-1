@@ -2,9 +2,7 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
-
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 // line 25 "../../../../../../model.ump"
 // line 98 "../../../../../../model.ump"
@@ -21,6 +19,9 @@ public class Owner extends Staff
   // CONSTRUCTOR
   //------------------------
 
+  public Owner(){
+    super();
+  }
   public Owner(String aUsername, String aEmail, String aPasswordHash)
   {
     super(aUsername, aEmail, aPasswordHash);
