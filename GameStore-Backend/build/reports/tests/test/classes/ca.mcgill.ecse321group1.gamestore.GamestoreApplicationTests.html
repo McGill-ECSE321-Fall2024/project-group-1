@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.329s</div>
+<div class="counter">0.490s</div>
 <p>duration</p>
 </div>
 </td>
@@ -82,7 +82,7 @@
 </thead>
 <tr>
 <td class="success">contextLoads()</td>
-<td class="success">0.329s</td>
+<td class="success">0.490s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -90,8 +90,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>14:55:57.015 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests]: GamestoreApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-14:55:57.064 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests
+<pre>20:46:51.489 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests]: GamestoreApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:46:51.578 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -102,28 +102,28 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2024-10-11T14:55:57.241-04:00  INFO 19206 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : Starting GamestoreApplicationTests using Java 21.0.4 with PID 19206 (started by zachary in /Users/zachary/Documents/ECSE/ECSE321/project-group-1/GameStore-Backend)
-2024-10-11T14:55:57.241-04:00  INFO 19206 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-10-11T14:55:57.514-04:00  INFO 19206 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-11T14:55:57.525-04:00  INFO 19206 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
-2024-10-11T14:55:57.734-04:00  INFO 19206 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-11T14:55:57.759-04:00  INFO 19206 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-10-11T14:55:57.774-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-10-11T14:55:57.925-04:00  INFO 19206 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-11T14:55:57.940-04:00  INFO 19206 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-10-11T14:55:58.081-04:00  INFO 19206 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@72110818
-2024-10-11T14:55:58.082-04:00  INFO 19206 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-10-11T14:55:58.102-04:00  WARN 19206 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-10-11T14:55:58.450-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Reply (class must be instantiated by Interceptor)
-2024-10-11T14:55:58.479-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.VideoGame (class must be instantiated by Interceptor)
-2024-10-11T14:55:58.494-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Review (class must be instantiated by Interceptor)
-2024-10-11T14:55:58.510-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Customer (class must be instantiated by Interceptor)
-2024-10-11T14:55:58.515-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Staff (class must be instantiated by Interceptor)
-2024-10-11T14:55:58.523-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Order (class must be instantiated by Interceptor)
-2024-10-11T14:55:58.529-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Category (class must be instantiated by Interceptor)
-2024-10-11T14:55:58.536-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Owner (class must be instantiated by Interceptor)
-2024-10-11T14:55:58.652-04:00  INFO 19206 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-11T14:55:58.716-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;create table order (id varchar(255) generated by default as identity, address varchar(255), date varchar(255), offers_applied varchar(255), price varchar(255), quantity varchar(255), customer_username varchar(255), primary key (id))&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
+2024-10-11T20:46:51.931-04:00  INFO 49631 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : Starting GamestoreApplicationTests using Java 21.0.4 with PID 49631 (started by alanmb in /Users/alanmb/Desktop/Fall 2024/ECSE 321/project-group-1/GameStore-Backend)
+2024-10-11T20:46:51.932-04:00  INFO 49631 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-10-11T20:46:52.514-04:00  INFO 49631 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-11T20:46:52.579-04:00  INFO 49631 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 9 JPA repository interfaces.
+2024-10-11T20:46:53.006-04:00  INFO 49631 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-11T20:46:53.048-04:00  INFO 49631 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-11T20:46:53.074-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-11T20:46:53.342-04:00  INFO 49631 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-11T20:46:53.372-04:00  INFO 49631 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-11T20:46:53.566-04:00  INFO 49631 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2dd3d39d
+2024-10-11T20:46:53.569-04:00  INFO 49631 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-11T20:46:53.602-04:00  WARN 49631 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-11T20:46:54.257-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Reply (class must be instantiated by Interceptor)
+2024-10-11T20:46:54.298-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.VideoGame (class must be instantiated by Interceptor)
+2024-10-11T20:46:54.323-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Review (class must be instantiated by Interceptor)
+2024-10-11T20:46:54.354-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Customer (class must be instantiated by Interceptor)
+2024-10-11T20:46:54.361-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Staff (class must be instantiated by Interceptor)
+2024-10-11T20:46:54.373-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Order (class must be instantiated by Interceptor)
+2024-10-11T20:46:54.382-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Category (class must be instantiated by Interceptor)
+2024-10-11T20:46:54.389-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: ca.mcgill.ecse321group1.gamestore.model.Owner (class must be instantiated by Interceptor)
+2024-10-11T20:46:54.571-04:00  INFO 49631 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-11T20:46:54.624-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;create table order (id varchar(255) generated by default as identity, address varchar(255), date varchar(255), offers_applied varchar(255), price varchar(255), quantity varchar(255), customer_username varchar(255), primary key (id))&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
   Position: 14]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &quot;create table order (id varchar(255) generated by default as identity, address varchar(255), date varchar(255), offers_applied varchar(255), price varchar(255), quantity varchar(255), customer_username varchar(255), primary key (id))&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
@@ -272,7 +272,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near &qu
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	... 127 common frames omitted
 
-2024-10-11T14:55:58.735-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;create table reply (id varchar(255) generated by default as identity, content varchar(255), date varchar(255), review_id varchar(255), primary key (id))&quot; via JDBC [ERROR: identity column type must be smallint, integer, or bigint]
+2024-10-11T20:46:54.635-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;create table reply (id varchar(255) generated by default as identity, content varchar(255), date varchar(255), review_id varchar(255), primary key (id))&quot; via JDBC [ERROR: identity column type must be smallint, integer, or bigint]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &quot;create table reply (id varchar(255) generated by default as identity, content varchar(255), date varchar(255), review_id varchar(255), primary key (id))&quot; via JDBC [ERROR: identity column type must be smallint, integer, or bigint]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
@@ -418,7 +418,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: identity column type must b
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	... 127 common frames omitted
 
-2024-10-11T14:55:58.740-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;create table review (id varchar(255) generated by default as identity, cached_hash_code integer not null, can_set_reviewed boolean not null, can_set_reviewer boolean not null, content varchar(255), date varchar(255), rating varchar(255), reply_id varchar(255), reviewed_name varchar(255), reviewer_username varchar(255), primary key (id))&quot; via JDBC [ERROR: identity column type must be smallint, integer, or bigint]
+2024-10-11T20:46:54.644-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;create table review (id varchar(255) generated by default as identity, cached_hash_code integer not null, can_set_reviewed boolean not null, can_set_reviewer boolean not null, content varchar(255), date varchar(255), rating varchar(255), reply_id varchar(255), reviewed_name varchar(255), reviewer_username varchar(255), primary key (id))&quot; via JDBC [ERROR: identity column type must be smallint, integer, or bigint]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &quot;create table review (id varchar(255) generated by default as identity, cached_hash_code integer not null, can_set_reviewed boolean not null, can_set_reviewer boolean not null, content varchar(255), date varchar(255), rating varchar(255), reply_id varchar(255), reviewed_name varchar(255), reviewer_username varchar(255), primary key (id))&quot; via JDBC [ERROR: identity column type must be smallint, integer, or bigint]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
@@ -564,29 +564,15 @@ Caused by: org.postgresql.util.PSQLException: ERROR: identity column type must b
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	... 127 common frames omitted
 
-2024-10-11T14:55:58.749-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.749-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint &quot;uk5emowg3gkgjgeqr64wv0q9ojc&quot; of relation &quot;category_video_games&quot; does not exist, skipping
-2024-10-11T14:55:58.750-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.750-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint &quot;uk9o6y2xc956fdx4ibjbkma5he8&quot; of relation &quot;order_purchased&quot; does not exist, skipping
-2024-10-11T14:55:58.751-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.752-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint &quot;uk95fretvtm1jsoqiaq5dv65jlt&quot; of relation &quot;person_cart&quot; does not exist, skipping
-2024-10-11T14:55:58.753-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.753-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint &quot;uk1w49vwb5gf3v4i5pyvml9y4ym&quot; of relation &quot;person_orders&quot; does not exist, skipping
-2024-10-11T14:55:58.755-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.755-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint &quot;uk8qjq7fflm4pvjsedu0ek2tlds&quot; of relation &quot;person_reviews&quot; does not exist, skipping
-2024-10-11T14:55:58.756-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.756-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint &quot;ukh53qfaeor3ufsxha73ak2vo26&quot; of relation &quot;person_wishlist&quot; does not exist, skipping
-2024-10-11T14:55:58.757-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.757-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;reply&quot; does not exist, skipping
-2024-10-11T14:55:58.757-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.757-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;reply&quot; does not exist, skipping
-2024-10-11T14:55:58.758-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.758-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
-2024-10-11T14:55:58.758-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.758-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
-2024-10-11T14:55:58.758-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.759-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint &quot;uk3uv38txgnd2gqiw3441p04irc&quot; of relation &quot;video_game_reviews&quot; does not exist, skipping
-2024-10-11T14:55:58.764-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists order add constraint FKo3p38ca2bw5vtepcmy4gxlnt foreign key (customer_username) references person&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
+2024-10-11T20:46:54.653-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-10-11T20:46:54.654-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;reply&quot; does not exist, skipping
+2024-10-11T20:46:54.654-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-10-11T20:46:54.654-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;reply&quot; does not exist, skipping
+2024-10-11T20:46:54.655-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-10-11T20:46:54.655-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
+2024-10-11T20:46:54.656-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-10-11T20:46:54.656-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
+2024-10-11T20:46:54.682-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists order add constraint FKo3p38ca2bw5vtepcmy4gxlnt foreign key (customer_username) references person&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
   Position: 23]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &quot;alter table if exists order add constraint FKo3p38ca2bw5vtepcmy4gxlnt foreign key (customer_username) references person&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
@@ -734,7 +720,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near &qu
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	... 126 common frames omitted
 
-2024-10-11T14:55:58.767-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists order_purchased add constraint FKmab5os4c7ig9mjqlcn6289da7 foreign key (order_id) references order&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
+2024-10-11T20:46:54.696-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists order_purchased add constraint FKmab5os4c7ig9mjqlcn6289da7 foreign key (order_id) references order&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
   Position: 116]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &quot;alter table if exists order_purchased add constraint FKmab5os4c7ig9mjqlcn6289da7 foreign key (order_id) references order&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
@@ -882,7 +868,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near &qu
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	... 126 common frames omitted
 
-2024-10-11T14:55:58.771-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists person_orders add constraint FKbfhysa5dmh3v73ykv4pt3sogw foreign key (orders_id) references order&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
+2024-10-11T20:46:54.722-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists person_orders add constraint FKbfhysa5dmh3v73ykv4pt3sogw foreign key (orders_id) references order&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
   Position: 115]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &quot;alter table if exists person_orders add constraint FKbfhysa5dmh3v73ykv4pt3sogw foreign key (orders_id) references order&quot; via JDBC [ERROR: syntax error at or near &quot;order&quot;
@@ -1030,7 +1016,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near &qu
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	... 126 common frames omitted
 
-2024-10-11T14:55:58.774-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists person_reviews add constraint FKmtndw0fto7slg7x4ej3q97he foreign key (reviews_id) references review&quot; via JDBC [ERROR: relation &quot;review&quot; does not exist]
+2024-10-11T20:46:54.736-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists person_reviews add constraint FKmtndw0fto7slg7x4ej3q97he foreign key (reviews_id) references review&quot; via JDBC [ERROR: relation &quot;review&quot; does not exist]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &quot;alter table if exists person_reviews add constraint FKmtndw0fto7slg7x4ej3q97he foreign key (reviews_id) references review&quot; via JDBC [ERROR: relation &quot;review&quot; does not exist]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
@@ -1175,15 +1161,15 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;review&quot;
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	... 126 common frames omitted
 
-2024-10-11T14:55:58.778-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.778-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;reply&quot; does not exist, skipping
-2024-10-11T14:55:58.778-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.778-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
-2024-10-11T14:55:58.779-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.779-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
-2024-10-11T14:55:58.779-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-10-11T14:55:58.779-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
-2024-10-11T14:55:58.780-04:00  WARN 19206 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists video_game_reviews add constraint FK87xok7xtpfvquh0gcf6hgg4mu foreign key (reviews_id) references review&quot; via JDBC [ERROR: relation &quot;review&quot; does not exist]
+2024-10-11T20:46:54.749-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-10-11T20:46:54.749-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;reply&quot; does not exist, skipping
+2024-10-11T20:46:54.750-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-10-11T20:46:54.750-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
+2024-10-11T20:46:54.751-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-10-11T20:46:54.751-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
+2024-10-11T20:46:54.752-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-10-11T20:46:54.752-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation &quot;review&quot; does not exist, skipping
+2024-10-11T20:46:54.771-04:00  WARN 49631 --- [gamestore] [    Test worker] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL &quot;alter table if exists video_game_reviews add constraint FK87xok7xtpfvquh0gcf6hgg4mu foreign key (reviews_id) references review&quot; via JDBC [ERROR: relation &quot;review&quot; does not exist]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL &quot;alter table if exists video_game_reviews add constraint FK87xok7xtpfvquh0gcf6hgg4mu foreign key (reviews_id) references review&quot; via JDBC [ERROR: relation &quot;review&quot; does not exist]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
@@ -1328,16 +1314,16 @@ Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;review&quot;
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	... 126 common frames omitted
 
-2024-10-11T14:55:58.784-04:00  INFO 19206 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-11T14:55:58.866-04:00  WARN 19206 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-10-11T14:55:59.090-04:00  INFO 19206 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : Started GamestoreApplicationTests in 1.963 seconds (process running for 2.527)
+2024-10-11T20:46:54.774-04:00  INFO 49631 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-11T20:46:54.939-04:00  WARN 49631 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-11T20:46:55.990-04:00  INFO 49631 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : Started GamestoreApplicationTests in 4.275 seconds (process running for 5.21)
 </pre>
 </span>
 </div>
 <div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>WARNING: A Java agent has been loaded dynamically (/Users/zachary/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
+<pre>WARNING: A Java agent has been loaded dynamically (/Users/alanmb/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
@@ -1352,7 +1338,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Oct 11, 2024, 2:55:59 PM</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Oct 11, 2024, 8:46:56 PM</p>
 </div>
 </div>
 </body>
