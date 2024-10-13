@@ -4,8 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 
-public interface CustomerRepository extends CrudRepository<Customer, String> {
+public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
-	Customer findCustomerByUsername(String username);
+	Customer findCustomerById(int id);
 
 }

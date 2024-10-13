@@ -3,9 +3,8 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import jakarta.persistence.*;
-
-// line 25 "../../../../../../model.ump"
-// line 98 "../../../../../../model.ump"
+// line 26 "../../../../../../model.ump"
+// line 102 "../../../../../../model.ump"
 @Entity
 @DiscriminatorValue("Owner")
 public class Owner extends Staff

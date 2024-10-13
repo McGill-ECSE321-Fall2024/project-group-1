@@ -4,8 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import ca.mcgill.ecse321group1.gamestore.model.Reply;
 
-public interface ReplyRepository extends CrudRepository<Reply, Long> {
+public interface ReplyRepository extends CrudRepository<Reply, Integer> {
 
-	Reply findReplyById(Long id);
+	Reply findReplyById(int id);
 
 }

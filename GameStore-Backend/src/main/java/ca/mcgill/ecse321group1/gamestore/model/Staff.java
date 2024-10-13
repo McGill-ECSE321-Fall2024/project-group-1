@@ -3,9 +3,8 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import jakarta.persistence.*;
-
-// line 20 "../../../../../../model.ump"
-// line 93 "../../../../../../model.ump"
+// line 21 "../../../../../../model.ump"
+// line 97 "../../../../../../model.ump"
 @Entity
 @DiscriminatorValue("Staff")
 public class Staff extends Person

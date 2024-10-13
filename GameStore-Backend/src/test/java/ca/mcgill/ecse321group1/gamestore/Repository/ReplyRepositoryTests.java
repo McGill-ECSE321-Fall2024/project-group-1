@@ -13,6 +13,9 @@ import ca.mcgill.ecse321group1.gamestore.model.Reply;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.model.Category;
 
+import java.sql.Date;
+import java.util.*;
+
 @SpringBootTest
 public class ReplyRepositoryTests {
 
@@ -42,31 +45,58 @@ public class ReplyRepositoryTests {
 
     @Test
     public void testPersistAndLoadReply() {
-        // Step 1: Create and save a category
-        Category category = new Category("Action", "Action games");
+        // Create and Save Category
+        String name = "Action";
+        String description = "Focuses on physical challenges";
+        Category category = new Category(name, description);
         category = categoryRepository.save(category);
 
-        // Step 2: Create and save a video game
-        VideoGame videoGame = new VideoGame("Halo", "A popular FPS game", "59.99", "100", "2024-10-10", VideoGame.Status.Active, category);
+        // Create and Save Video Game
+        String videoGameName = "Rainbow Six Siege";
+        String videoGameDescription = "5v5 Shooter Game";
+        Float price = 29.99f;
+        Integer quantity = 5;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2024, Calendar.FEBRUARY, 1);
+        Date videoGameDate = new java.sql.Date(calendar.getTimeInMillis());
+        VideoGame.Status status = VideoGame.Status.Active;
+        VideoGame videoGame = new VideoGame(videoGameName, videoGameDescription, price, quantity, videoGameDate, status, category);
         videoGame = videoGameRepository.save(videoGame);
 
-        // Step 3: Create and save a customer
-        Customer customer = new Customer("GameFan", "gamefan@example.com", "password123", "789 Gaming Blvd", "1231231234");
+        // Create and Save Customer
+        String username = "AlanBrotherton";
+        String email = "alanbrotherton@example.com";
+        String passwordHash = "password123";
+        String address = "1600 Pennsylvania Avenue NW";
+        String phoneNumber = "4703237795";
+        Customer customer = new Customer(username, email, passwordHash, address, phoneNumber);
         customer = customerRepository.save(customer);
 
-        // Step 4: Create and save a review
-        Review review = new Review("Awesome game!", "2024-10-11", "5 stars", videoGame, customer);
+        // Create and Save Review
+        String content = "Amazing game, 10/10 would reccomend";
+        Calendar reviewCalendar = Calendar.getInstance();
+        reviewCalendar.set(2024, Calendar.MARCH, 1);
+        Date reviewDate = new java.sql.Date(calendar.getTimeInMillis());
+        Review.Rating rating = Review.Rating.fourStar;
+        Review review = new Review(content, reviewDate, rating, videoGame, customer);
         review = reviewRepository.save(review);
 
-        // Step 5: Create and save a reply
-        Reply reply = new Reply("Thank you for your review!", "2024-10-12", review);
+        // Create and Save Reply
+        String replyContent = "I am glad you enjoyed the game!";
+        Calendar replyCalendar = Calendar.getInstance();
+        replyCalendar.set(2024, Calendar.APRIL, 1);
+        Date replyDate = new java.sql.Date(calendar.getTimeInMillis());
+        Reply reply = new Reply(replyContent, replyDate, review);
         reply = replyRepository.save(reply);
 
-        // Assert that the reply was saved and loaded correctly
-        Reply loadedReply = replyRepository.findReplyById(reply.getId());
-        assertNotNull(loadedReply);
-        assertEquals("Thank you for your review!", loadedReply.getContent());
-        assertEquals("2024-10-12", loadedReply.getDate());
-        assertEquals(review.getId(), loadedReply.getReview().getId());
+        // Read owner from database
+        int id = reply.getId();
+        Reply replyFromDb = replyRepository.findReplyById(id);
+
+        // Assert correct response
+        assertNotNull(replyFromDb);
+        assertEquals(replyFromDb.getContent(), replyContent);
+        assertEquals(replyFromDb.getDate().toLocalDate(), replyDate.toLocalDate());
+        assertEquals(replyFromDb.getReview().getId(), review.getId());
     }
 }

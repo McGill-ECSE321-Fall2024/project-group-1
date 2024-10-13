@@ -9,6 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import ca.mcgill.ecse321group1.gamestore.model.Staff;
 
+import java.sql.Date;
+import java.util.*;
+
 @SpringBootTest
 public class StaffRepositoryTests {
 
@@ -22,18 +25,16 @@ public class StaffRepositoryTests {
 
     @Test
     public void testPersistAndLoadStaff() {
-        // Create staff member
-        String username = "StaffUser";
-        String email = "staffuser@example.com";
-        String passwordHash = "staffpassword";
+        // Create and Save Staff
+        String username = "MrStaff";
+        String email = "mrstaff@example.com";
+        String passwordHash = "password789";
         Staff staff = new Staff(username, email, passwordHash);
-
-        // Save staff member
         staff = staffRepository.save(staff);
-        String savedUsername = staff.getUsername();
 
-        // Read staff member from database
-        Staff staffFromDb = staffRepository.findStaffByUsername(savedUsername);
+        // Read staff from database
+        int id = staff.getId();
+        Staff staffFromDb = staffRepository.findStaffById(id);
 
         // Assert correct response
         assertNotNull(staffFromDb);

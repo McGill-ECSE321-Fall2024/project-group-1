@@ -2,32 +2,41 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import java.sql.Date;
 import jakarta.persistence.*;
 
-// line 55 "../../../../../model.ump"
-// line 119 "../../../../../model.ump"
+// line 58 "../../../../../model.ump"
+// line 126 "../../../../../model.ump"
 @Entity
 public class Review
 {
+
+  //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+  private static int nextId = 1;
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Review Attributes
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
   private String content;
-  private String date;
-  private String rating;
+  private Date date;
+  private Rating rating;
+
+  //Autounique Attributes
+  @Id
+  private int id;
 
   //Review Associations
-  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+
+  @ManyToOne
   private VideoGame reviewed;
-  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+  @ManyToOne
   private Customer reviewer;
-  @OneToOne(mappedBy = "review", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+  @OneToOne
   private Reply reply;
 
   //Helper Variables
@@ -39,23 +48,27 @@ public class Review
   // CONSTRUCTOR
   //------------------------
 
+  // Empty Constructor
+
   public Review(){
 
   }
-  public Review(String aContent, String aDate, String aRating, VideoGame aReviewed, Customer aReviewer)
+  public Review(String aContent, Date aDate, Rating aRating, VideoGame aReviewed, Customer aReviewer)
   {
+    cachedHashCode = -1;
+    canSetReviewed = true;
+    canSetReviewer = true;
     content = aContent;
     date = aDate;
     rating = aRating;
-    this.setReviewed(aReviewed);
-    this.setReviewer(aReviewer);
+    id = nextId++;
     boolean didAddReviewed = setReviewed(aReviewed);
-    if (aReviewed == null)
+    if (!didAddReviewed)
     {
       throw new RuntimeException("Unable to create review due to reviewed. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
     boolean didAddReviewer = setReviewer(aReviewer);
-    if (aReviewer == null)
+    if (!didAddReviewer)
     {
       throw new RuntimeException("Unable to create review due to reviewer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
@@ -73,7 +86,7 @@ public class Review
     return wasSet;
   }
 
-  public boolean setDate(String aDate)
+  public boolean setDate(Date aDate)
   {
     boolean wasSet = false;
     date = aDate;
@@ -81,7 +94,7 @@ public class Review
     return wasSet;
   }
 
-  public boolean setRating(String aRating)
+  public boolean setRating(Rating aRating)
   {
     boolean wasSet = false;
     rating = aRating;
@@ -89,22 +102,24 @@ public class Review
     return wasSet;
   }
 
-  public Long getId() {
-    return id;
-  }
   public String getContent()
   {
     return content;
   }
 
-  public String getDate()
+  public Date getDate()
   {
     return date;
   }
 
-  public String getRating()
+  public Rating getRating()
   {
     return rating;
+  }
+
+  public int getId()
+  {
+    return id;
   }
   /* Code from template association_GetOne */
   public VideoGame getReviewed()
@@ -293,11 +308,19 @@ public class Review
   public String toString()
   {
     return super.toString() + "["+
-            "content" + ":" + getContent()+ "," +
-            "date" + ":" + getDate()+ "," +
-            "rating" + ":" + getRating()+ "]" + System.getProperties().getProperty("line.separator") +
+            "id" + ":" + getId()+ "," +
+            "content" + ":" + getContent()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "rating" + "=" + (getRating() != null ? !getRating().equals(this)  ? getRating().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "reviewed = "+(getReviewed()!=null?Integer.toHexString(System.identityHashCode(getReviewed())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "reviewer = "+(getReviewer()!=null?Integer.toHexString(System.identityHashCode(getReviewer())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "reply = "+(getReply()!=null?Integer.toHexString(System.identityHashCode(getReply())):"null");
   }
+  //------------------------
+  // DEVELOPER CODE - PROVIDED AS-IS
+  //------------------------
+
+  // line 65 ../../../../../model.ump
+  public static enum Rating {oneStar, twoStar, threeStar, fourStar, fiveStar}
+
 }

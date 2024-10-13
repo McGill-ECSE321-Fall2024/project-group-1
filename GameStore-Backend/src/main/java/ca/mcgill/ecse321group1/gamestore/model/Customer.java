@@ -3,10 +3,12 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
+import java.sql.Date;
 import jakarta.persistence.*;
 
-// line 11 "../../../../../../model.ump"
-// line 85 "../../../../../../model.ump"
+
+// line 12 "../../../../../../model.ump"
+// line 89 "../../../../../../model.ump"
 @Entity
 @DiscriminatorValue("Customer")
 public class Customer extends Person
@@ -25,7 +27,7 @@ public class Customer extends Person
   private List<VideoGame> wishlist;
   @OneToMany
   private List<VideoGame> cart;
-  @OneToMany(mappedBy = "customer")
+  @OneToMany
   private List<CustomerOrder> customerOrders;
   @OneToMany
   private List<Review> reviews;
@@ -228,7 +230,7 @@ public class Customer extends Person
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addWishlistAt(VideoGame aWishlist, int index)
-  {  
+  {
     boolean wasAdded = false;
     if(addWishlist(aWishlist))
     {
@@ -251,8 +253,8 @@ public class Customer extends Person
       wishlist.remove(aWishlist);
       wishlist.add(index, aWishlist);
       wasAdded = true;
-    } 
-    else 
+    }
+    else
     {
       wasAdded = addWishlistAt(aWishlist, index);
     }
@@ -285,7 +287,7 @@ public class Customer extends Person
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addCartAt(VideoGame aCart, int index)
-  {  
+  {
     boolean wasAdded = false;
     if(addCart(aCart))
     {
@@ -308,8 +310,8 @@ public class Customer extends Person
       cart.remove(aCart);
       cart.add(index, aCart);
       wasAdded = true;
-    } 
-    else 
+    }
+    else
     {
       wasAdded = addCartAt(aCart, index);
     }
@@ -321,9 +323,9 @@ public class Customer extends Person
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public CustomerOrder addCustomerOrder(int aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress)
+  public CustomerOrder addCustomerOrder(Date aDate, float aPrice, int aQuantity, String aOffersApplied, String aAddress)
   {
-    return new CustomerOrder(aId, aDate, aPrice, aQuantity, aOffersApplied, aAddress, this);
+    return new CustomerOrder(aDate, aPrice, aQuantity, aOffersApplied, aAddress, this);
   }
 
   public boolean addCustomerOrder(CustomerOrder aCustomerOrder)
@@ -357,7 +359,7 @@ public class Customer extends Person
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addCustomerOrderAt(CustomerOrder aCustomerOrder, int index)
-  {  
+  {
     boolean wasAdded = false;
     if(addCustomerOrder(aCustomerOrder))
     {
@@ -380,8 +382,8 @@ public class Customer extends Person
       customerOrders.remove(aCustomerOrder);
       customerOrders.add(index, aCustomerOrder);
       wasAdded = true;
-    } 
-    else 
+    }
+    else
     {
       wasAdded = addCustomerOrderAt(aCustomerOrder, index);
     }
@@ -393,7 +395,7 @@ public class Customer extends Person
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aContent, String aDate, String aRating, VideoGame aReviewed)
+  public Review addReview(String aContent, Date aDate, Review.Rating aRating, VideoGame aReviewed)
   {
     return new Review(aContent, aDate, aRating, aReviewed, this);
   }
@@ -429,7 +431,7 @@ public class Customer extends Person
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addReviewAt(Review aReview, int index)
-  {  
+  {
     boolean wasAdded = false;
     if(addReview(aReview))
     {
@@ -452,8 +454,8 @@ public class Customer extends Person
       reviews.remove(aReview);
       reviews.add(index, aReview);
       wasAdded = true;
-    } 
-    else 
+    }
+    else
     {
       wasAdded = addReviewAt(aReview, index);
     }

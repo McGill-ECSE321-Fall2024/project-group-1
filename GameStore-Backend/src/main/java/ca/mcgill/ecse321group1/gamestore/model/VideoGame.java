@@ -2,11 +2,12 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import java.sql.Date;
 import java.util.*;
 import jakarta.persistence.*;
 
-// line 29 "../../../../../../model.ump"
-// line 103 "../../../../../../model.ump"
+// line 30 "../../../../../../model.ump"
+// line 108 "../../../../../../model.ump"
 @Entity
 public class VideoGame
 {
@@ -18,22 +19,30 @@ public class VideoGame
   public enum Status { Pending, Active, Inactive }
 
   //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+
+  private static int nextId = 1;
+
+  //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //VideoGame Attributes
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
   private String name;
   private String description;
-  private String price;
-  private String quantity;
-  private String date;
+  private float price;
+  private int quantity;
+  private Date date;
   private Status status;
 
+  //Autounique Attributes
+  @Id
+  private int id;
+
   //VideoGame Associations
-  @OneToMany(mappedBy = "reviewed", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @OneToMany
   private List<Review> reviews;
   @ManyToOne
   private Category category;
@@ -45,7 +54,7 @@ public class VideoGame
   public VideoGame(){
     reviews = new ArrayList<Review>();
   }
-  public VideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, Status aStatus, Category aCategory)
+  public VideoGame(String aName, String aDescription, float aPrice, int aQuantity, Date aDate, Status aStatus, Category aCategory)
   {
     name = aName;
     description = aDescription;
@@ -53,6 +62,7 @@ public class VideoGame
     quantity = aQuantity;
     date = aDate;
     status = aStatus;
+    id = nextId++;
     reviews = new ArrayList<Review>();
     boolean didAddCategory = setCategory(aCategory);
     if (!didAddCategory)
@@ -81,7 +91,7 @@ public class VideoGame
     return wasSet;
   }
 
-  public boolean setPrice(String aPrice)
+  public boolean setPrice(float aPrice)
   {
     boolean wasSet = false;
     price = aPrice;
@@ -89,7 +99,7 @@ public class VideoGame
     return wasSet;
   }
 
-  public boolean setQuantity(String aQuantity)
+  public boolean setQuantity(int aQuantity)
   {
     boolean wasSet = false;
     quantity = aQuantity;
@@ -97,7 +107,7 @@ public class VideoGame
     return wasSet;
   }
 
-  public boolean setDate(String aDate)
+  public boolean setDate(Date aDate)
   {
     boolean wasSet = false;
     date = aDate;
@@ -113,10 +123,6 @@ public class VideoGame
     return wasSet;
   }
 
-  public Long getId() {
-    return id;
-  }
-
   public String getName()
   {
     return name;
@@ -127,17 +133,17 @@ public class VideoGame
     return description;
   }
 
-  public String getPrice()
+  public float getPrice()
   {
     return price;
   }
 
-  public String getQuantity()
+  public int getQuantity()
   {
     return quantity;
   }
 
-  public String getDate()
+  public Date getDate()
   {
     return date;
   }
@@ -145,6 +151,11 @@ public class VideoGame
   public Status getStatus()
   {
     return status;
+  }
+
+  public int getId()
+  {
+    return id;
   }
   /* Code from template association_GetMany */
   public Review getReview(int index)
@@ -187,7 +198,7 @@ public class VideoGame
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aContent, String aDate, String aRating, Customer aReviewer)
+  public Review addReview(String aContent, Date aDate, Review.Rating aRating, Customer aReviewer)
   {
     return new Review(aContent, aDate, aRating, this, aReviewer);
   }
@@ -223,7 +234,7 @@ public class VideoGame
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addReviewAt(Review aReview, int index)
-  {  
+  {
     boolean wasAdded = false;
     if(addReview(aReview))
     {
@@ -246,8 +257,8 @@ public class VideoGame
       reviews.remove(aReview);
       reviews.add(index, aReview);
       wasAdded = true;
-    } 
-    else 
+    }
+    else
     {
       wasAdded = addReviewAt(aReview, index);
     }
@@ -292,11 +303,12 @@ public class VideoGame
   public String toString()
   {
     return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
             "name" + ":" + getName()+ "," +
             "description" + ":" + getDescription()+ "," +
             "price" + ":" + getPrice()+ "," +
-            "quantity" + ":" + getQuantity()+ "," +
-            "date" + ":" + getDate()+ "]" + System.getProperties().getProperty("line.separator") +
+            "quantity" + ":" + getQuantity()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "status" + "=" + (getStatus() != null ? !getStatus().equals(this)  ? getStatus().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "category = "+(getCategory()!=null?Integer.toHexString(System.identityHashCode(getCategory())):"null");
   }

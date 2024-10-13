@@ -3,24 +3,35 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
+import java.sql.Date;
 import jakarta.persistence.*;
 
-// line 39 "../../../../../../model.ump"
-// line 108 "../../../../../../model.ump"
+// line 41 "../../../../../../model.ump"
+// line 112 "../../../../../../model.ump"
 @Entity
 public class Category
 {
+
+  //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+  private static int nextId = 1;
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Category Attributes
-  @Id
   private String name;
   private String description;
 
+  //Autounique Attributes
+  @Id
+  private int id;
+
   //Category Associations
+
   @OneToMany
   private List<VideoGame> videoGames;
 
@@ -28,6 +39,7 @@ public class Category
   // CONSTRUCTOR
   //------------------------
 
+  // Empty constructor
   public Category(){
     videoGames = new ArrayList<VideoGame>();
   }
@@ -35,6 +47,7 @@ public class Category
   {
     name = aName;
     description = aDescription;
+    id = nextId++;
     videoGames = new ArrayList<VideoGame>();
   }
 
@@ -66,6 +79,11 @@ public class Category
   public String getDescription()
   {
     return description;
+  }
+
+  public int getId()
+  {
+    return id;
   }
   /* Code from template association_GetMany */
   public VideoGame getVideoGame(int index)
@@ -103,7 +121,7 @@ public class Category
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public VideoGame addVideoGame(String aName, String aDescription, String aPrice, String aQuantity, String aDate, VideoGame.Status aStatus)
+  public VideoGame addVideoGame(String aName, String aDescription, float aPrice, int aQuantity, Date aDate, VideoGame.Status aStatus)
   {
     return new VideoGame(aName, aDescription, aPrice, aQuantity, aDate, aStatus, this);
   }
@@ -139,7 +157,7 @@ public class Category
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addVideoGameAt(VideoGame aVideoGame, int index)
-  {  
+  {
     boolean wasAdded = false;
     if(addVideoGame(aVideoGame))
     {
@@ -162,8 +180,8 @@ public class Category
       videoGames.remove(aVideoGame);
       videoGames.add(index, aVideoGame);
       wasAdded = true;
-    } 
-    else 
+    }
+    else
     {
       wasAdded = addVideoGameAt(aVideoGame, index);
     }
@@ -183,6 +201,7 @@ public class Category
   public String toString()
   {
     return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
             "name" + ":" + getName()+ "," +
             "description" + ":" + getDescription()+ "]";
   }

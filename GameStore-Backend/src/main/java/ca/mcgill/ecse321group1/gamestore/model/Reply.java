@@ -1,25 +1,32 @@
 //PLEASE DO NOT EDIT THIS CODE/
 //This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!/
+ package ca.mcgill.ecse321group1.gamestore.model;
+  import java.sql.Date;
+  import jakarta.persistence.*;
 
-package ca.mcgill.ecse321group1.gamestore.model;
-import jakarta.persistence.*;
-
-// line 63 "../../../../../../model.ump"
-// line 130 "../../../../../../model.ump"
+// line 68 "../../../../../../model.ump"
+// line 137 "../../../../../../model.ump"
 @Entity
 public class Reply
 {
+
+  //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+  private static int nextId = 1;
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Reply Attributes
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
   private String content;
-  private String date;
+  private Date date;
+
+  //Autounique Attributes
+  @Id
+  private int id;
 
   //Reply Associations
   @OneToOne
@@ -29,13 +36,14 @@ public class Reply
   // CONSTRUCTOR
   //------------------------
 
-  public Reply() {
+  public Reply(){
 
   }
-  public Reply(String aContent, String aDate, Review aReview)
+  public Reply(String aContent, Date aDate, Review aReview)
   {
     content = aContent;
     date = aDate;
+    id = nextId++;
     boolean didAddReview = setReview(aReview);
     if (!didAddReview)
     {
@@ -55,7 +63,7 @@ public class Reply
     return wasSet;
   }
 
-  public boolean setDate(String aDate)
+  public boolean setDate(Date aDate)
   {
     boolean wasSet = false;
     date = aDate;
@@ -68,13 +76,14 @@ public class Reply
     return content;
   }
 
-  public Long getId() {
-    return id;
-  }
-
-  public String getDate()
+  public Date getDate()
   {
     return date;
+  }
+
+  public int getId()
+  {
+    return id;
   }
   /* Code from template association_GetOne */
   public Review getReview()
@@ -124,8 +133,9 @@ public class Reply
   public String toString()
   {
     return super.toString() + "["+
-            "content" + ":" + getContent()+ "," +
-            "date" + ":" + getDate()+ "]" + System.getProperties().getProperty("line.separator") +
+            "id" + ":" + getId()+ "," +
+            "content" + ":" + getContent()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");
   }
 }

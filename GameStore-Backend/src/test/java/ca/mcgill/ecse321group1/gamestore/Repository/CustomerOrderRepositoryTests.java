@@ -10,12 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 import ca.mcgill.ecse321group1.gamestore.model.CustomerOrder;
 
+import java.sql.Date;
+import java.util.*;
+
 @SpringBootTest
 public class CustomerOrderRepositoryTests {
-
     @Autowired
     private CustomerOrderRepository customerOrderRepository;
-
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -27,43 +28,36 @@ public class CustomerOrderRepositoryTests {
 
     @Test
     public void testPersistAndLoadCustomerOrder() {
-        // Create customer
-        String username = "JaneDoe";
-        String email = "janedoe@example.com";
-        String passwordHash = "securepassword";
-        String address = "456 Market St";
-        String phoneNumber = "0987654321";
+        // Create and Save Customer
+        String username = "AlanBrotherton";
+        String email = "alanbrotherton@example.com";
+        String passwordHash = "password123";
+        String address = "1600 Pennsylvania Avenue NW";
+        String phoneNumber = "4703237795";
         Customer customer = new Customer(username, email, passwordHash, address, phoneNumber);
         customer = customerRepository.save(customer);
 
-        // Create customer order
-        String date = "2024-10-12";
-        String price = "59.99";
-        String quantity = "1";
-        String offersApplied = "None";
-        String orderAddress = "456 Market St";
-        CustomerOrder customerOrder = new CustomerOrder();
-        customerOrder.setDate(date);
-        customerOrder.setPrice(price);
-        customerOrder.setQuantity(quantity);
-        customerOrder.setOffersApplied(offersApplied);
-        customerOrder.setAddress(orderAddress);
-        customerOrder.setCustomer(customer);
-
-        // Save customer order
+        // Create and Save Customer Order
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2024, Calendar.JANUARY, 1);
+        Date date = new java.sql.Date(calendar.getTimeInMillis());
+        Float price = 79.99f;
+        Integer quanity = 10;
+        String offers = "20% Off!";
+        String orderAddress = "7700 Bd Decarie";
+        CustomerOrder customerOrder = new CustomerOrder(date, price, quanity, offers, orderAddress, customer);
         customerOrder = customerOrderRepository.save(customerOrder);
-        int savedId = customerOrder.getId();
 
-        // Read customer order from database
-        CustomerOrder customerOrderFromDb = customerOrderRepository.findCustomerOrderById(savedId);
+        // Read Customer Order from database
+        int id = customerOrder.getId();
+        CustomerOrder customerOrderFromDb = customerOrderRepository.findCustomerOrderById(id);
 
         // Assert correct response
         assertNotNull(customerOrderFromDb);
-        assertEquals(customerOrderFromDb.getId(), savedId);
-        assertEquals(customerOrderFromDb.getDate(), date);
+        assertEquals(customerOrderFromDb.getDate().toLocalDate(), date.toLocalDate());
         assertEquals(customerOrderFromDb.getPrice(), price);
-        assertEquals(customerOrderFromDb.getQuantity(), quantity);
-        assertEquals(customerOrderFromDb.getOffersApplied(), offersApplied);
+        assertEquals(customerOrderFromDb.getQuantity(), quanity);
+        assertEquals(customerOrderFromDb.getOffersApplied(), offers);
         assertEquals(customerOrderFromDb.getAddress(), orderAddress);
         assertEquals(customerOrderFromDb.getCustomer().getUsername(), username);
     }

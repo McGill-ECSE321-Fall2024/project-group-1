@@ -2,28 +2,37 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import java.sql.Date;
 import java.util.*;
 import jakarta.persistence.*;
 
-// line 44 "../../../../../../model.ump"
-// line 113 "../../../../../../model.ump"
+// line 47 "../../../../../../model.ump"
+// line 117 "../../../../../../model.ump"
 @Entity
 public class CustomerOrder
 {
+
+  //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+
+  private static int nextId = 1;
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //CustomerOrder Attributes
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
-  private String date;
-  private String price;
-  private String quantity;
+  private Date date;
+  private float price;
+  private int quantity;
   private String offersApplied;
   private String address;
+
+  //Autounique Attributes
+  @Id
+  private int id;
 
   //CustomerOrder Associations
   @OneToMany
@@ -38,14 +47,14 @@ public class CustomerOrder
   public CustomerOrder(){
     purchased = new ArrayList<VideoGame>();
   }
-  public CustomerOrder(int aId, String aDate, String aPrice, String aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
+  public CustomerOrder(Date aDate, float aPrice, int aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
   {
-    id = aId;
     date = aDate;
     price = aPrice;
     quantity = aQuantity;
     offersApplied = aOffersApplied;
     address = aAddress;
+    id = nextId++;
     purchased = new ArrayList<VideoGame>();
     boolean didAddCustomer = setCustomer(aCustomer);
     if (!didAddCustomer)
@@ -58,15 +67,7 @@ public class CustomerOrder
   // INTERFACE
   //------------------------
 
-  public boolean setId(int aId)
-  {
-    boolean wasSet = false;
-    id = aId;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setDate(String aDate)
+  public boolean setDate(Date aDate)
   {
     boolean wasSet = false;
     date = aDate;
@@ -74,7 +75,7 @@ public class CustomerOrder
     return wasSet;
   }
 
-  public boolean setPrice(String aPrice)
+  public boolean setPrice(float aPrice)
   {
     boolean wasSet = false;
     price = aPrice;
@@ -82,7 +83,7 @@ public class CustomerOrder
     return wasSet;
   }
 
-  public boolean setQuantity(String aQuantity)
+  public boolean setQuantity(int aQuantity)
   {
     boolean wasSet = false;
     quantity = aQuantity;
@@ -106,22 +107,17 @@ public class CustomerOrder
     return wasSet;
   }
 
-  public int getId()
-  {
-    return id;
-  }
-
-  public String getDate()
+  public Date getDate()
   {
     return date;
   }
 
-  public String getPrice()
+  public float getPrice()
   {
     return price;
   }
 
-  public String getQuantity()
+  public int getQuantity()
   {
     return quantity;
   }
@@ -134,6 +130,11 @@ public class CustomerOrder
   public String getAddress()
   {
     return address;
+  }
+
+  public int getId()
+  {
+    return id;
   }
   /* Code from template association_GetMany */
   public VideoGame getPurchased(int index)
@@ -263,11 +264,11 @@ public class CustomerOrder
   {
     return super.toString() + "["+
             "id" + ":" + getId()+ "," +
-            "date" + ":" + getDate()+ "," +
             "price" + ":" + getPrice()+ "," +
             "quantity" + ":" + getQuantity()+ "," +
             "offersApplied" + ":" + getOffersApplied()+ "," +
             "address" + ":" + getAddress()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "customer = "+(getCustomer()!=null?Integer.toHexString(System.identityHashCode(getCustomer())):"null");
   }
 }

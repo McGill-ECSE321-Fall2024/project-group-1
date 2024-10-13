@@ -9,6 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import ca.mcgill.ecse321group1.gamestore.model.Owner;
 
+import java.sql.Date;
+import java.util.*;
+
 @SpringBootTest
 public class OwnerRepositoryTests {
 
@@ -22,18 +25,16 @@ public class OwnerRepositoryTests {
 
     @Test
     public void testPersistAndLoadOwner() {
-        // Create owner
-        String username = "AdminOwner";
-        String email = "adminowner@example.com";
-        String passwordHash = "adminpassword";
+        // Create and Save owner
+        String username = "MrOwner";
+        String email = "mrowner@example.com";
+        String passwordHash = "password456";
         Owner owner = new Owner(username, email, passwordHash);
-
-        // Save owner
         owner = ownerRepository.save(owner);
-        String savedUsername = owner.getUsername();
 
         // Read owner from database
-        Owner ownerFromDb = ownerRepository.findOwnerByUsername(savedUsername);
+        int id = owner.getId();
+        Owner ownerFromDb = ownerRepository.findOwnerById(id);
 
         // Assert correct response
         assertNotNull(ownerFromDb);

@@ -9,9 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import ca.mcgill.ecse321group1.gamestore.model.Category;
 
+import java.sql.Date;
+import java.util.*;
+
 @SpringBootTest
 public class CategoryRepositoryTests {
-
     @Autowired
     private CategoryRepository categoryRepository;
 
@@ -22,23 +24,19 @@ public class CategoryRepositoryTests {
 
     @Test
     public void testPersistAndLoadCategory() {
-        // Create category
+        // Create and Save Category
         String name = "Action";
-        String description = "Action games category";
-        Category actionCategory = new Category();
-        actionCategory.setName(name);
-        actionCategory.setDescription(description);
+        String description = "Focuses on physical challenges";
+        Category category = new Category(name, description);
+        category = categoryRepository.save(category);
 
-        // Save category
-        actionCategory = categoryRepository.save(actionCategory);
-        String savedName = actionCategory.getName();
+        // Read Category from database
+        int id = category.getId();
+        Category categoryFromDb = categoryRepository.findCategoryById(id);
 
-        // Read category from database
-        Category actionCategoryFromDb = categoryRepository.findCategoryByName(savedName);
-
-        // Assert correct response
-        assertNotNull(actionCategoryFromDb);
-        assertEquals(actionCategoryFromDb.getName(), name);
-        assertEquals(actionCategoryFromDb.getDescription(), description);
+        // Assert Correct Responses
+        assertNotNull(categoryFromDb);
+        assertEquals(categoryFromDb.getName(), name);
+        assertEquals(categoryFromDb.getDescription(), description);
     }
 }

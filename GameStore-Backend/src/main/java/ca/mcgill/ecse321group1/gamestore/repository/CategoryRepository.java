@@ -4,8 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import ca.mcgill.ecse321group1.gamestore.model.Category;
 
-public interface CategoryRepository extends CrudRepository<Category, String> {
+public interface CategoryRepository extends CrudRepository<Category, Integer> {
 
-	Category findCategoryByName(String name);
+	Category findCategoryById(int id);
 
 }

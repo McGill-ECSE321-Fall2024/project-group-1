@@ -3,37 +3,47 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import jakarta.persistence.*;
-
 // line 4 "../../../../../../model.ump"
-// line 80 "../../../../../../model.ump"
+// line 83 "../../../../../../model.ump"
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "AccountType")
+@DiscriminatorColumn(name = "PersonType")
 public abstract class Person
 {
+
+  //------------------------
+  // STATIC VARIABLES
+  //------------------------
+
+
+  private static int nextId = 1;
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Person Attributes
-  @Id
   private String username;
   private String email;
   private String passwordHash;
+
+  //Autounique Attributes
+  @Id
+  private int id;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Person() {
-
+  public Person(){
+    
   }
   public Person(String aUsername, String aEmail, String aPasswordHash)
   {
     username = aUsername;
     email = aEmail;
     passwordHash = aPasswordHash;
+    id = nextId++;
   }
 
   //------------------------
@@ -79,6 +89,11 @@ public abstract class Person
     return passwordHash;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
   public void delete()
   {}
 
@@ -86,6 +101,7 @@ public abstract class Person
   public String toString()
   {
     return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
             "username" + ":" + getUsername()+ "," +
             "email" + ":" + getEmail()+ "," +
             "passwordHash" + ":" + getPasswordHash()+ "]";

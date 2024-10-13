@@ -4,8 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import ca.mcgill.ecse321group1.gamestore.model.Person;
 
-public interface PersonRepository extends CrudRepository<Person, String> {
+public interface PersonRepository extends CrudRepository<Person, Integer> {
 
-	Person findPersonByUsername(String username);
+	Person findPersonById(int id);
 
 }

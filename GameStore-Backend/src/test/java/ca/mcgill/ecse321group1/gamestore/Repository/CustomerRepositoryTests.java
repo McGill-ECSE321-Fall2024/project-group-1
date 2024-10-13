@@ -9,6 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 
+import java.sql.Date;
+import java.util.*;
+
 @SpringBootTest
 public class CustomerRepositoryTests {
 
@@ -22,28 +25,20 @@ public class CustomerRepositoryTests {
 
     @Test
     public void testPersistAndLoadCustomer() {
-        // Create customer
-        String username = "JohnDoe";
-        String email = "johndoe@example.com";
+        // Create and Save Customer
+        String username = "AlanBrotherton";
+        String email = "alanbrotherton@example.com";
         String passwordHash = "password123";
-        String address = "123 Main St";
-        String phoneNumber = "1234567890";
-
-        Customer customer = new Customer();
-        customer.setUsername(username);
-        customer.setEmail(email);
-        customer.setPasswordHash(passwordHash);
-        customer.setAddress(address);
-        customer.setPhoneNumber(phoneNumber);
-
-        // Save customer
+        String address = "1600 Pennsylvania Avenue NW";
+        String phoneNumber = "4703237795";
+        Customer customer = new Customer(username, email, passwordHash, address, phoneNumber);
         customer = customerRepository.save(customer);
-        String savedUsername = customer.getUsername();
 
-        // Read customer from database
-        Customer customerFromDb = customerRepository.findCustomerByUsername(savedUsername);
+        // Read Customer from database
+        int id = customer.getId();
+        Customer customerFromDb = customerRepository.findCustomerById(id);
 
-        // Assert correct response
+        // Assert correct responses
         assertNotNull(customerFromDb);
         assertEquals(customerFromDb.getUsername(), username);
         assertEquals(customerFromDb.getEmail(), email);
