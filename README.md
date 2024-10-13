@@ -38,6 +38,9 @@ Stay tuned for future reports and deliverables :)
 | :---:   | :---: | :---: | :---: |  :---: |  :---: |
 | Role | Project Manager and Back-End Engineer   | Full-Stack Engineer   | Front-End Engineer | Back-End Lead Engineer | Front-End Lead Engineer |
 | D1 Hours worked | 25   | 25   | 12.5 | 13.5 | 12.5 |
+| D1 Contributions |    |    |  |  |  |
 | D2 Hours worked | 0   | 0   | 0 | 0 | 0 |
+| D2 Contributions |    |    |  |  |  |
 | D3 Hours worked | 0   | 0   | 0 | 0 | 0 |
+| D3 Contributions |    |    |  |  |  |
 
