@@ -37,7 +37,7 @@ Stay tuned for future reports and deliverables :)
 | Team members | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
 | :---:   | :---: | :---: | :---: |  :---: |  :---: |
 | Role | Project Manager and Back-End Engineer   | Full-Stack Engineer   | Front-End Engineer | Back-End Lead Engineer | Front-End Lead Engineer |
-| D1 Hours worked | 10   | 10   | 9 | 9.5 | 9 |
+| D1 Hours worked | 25   | 25   | 12.5 | 13.5 | 12.5 |
 | D2 Hours worked | 0   | 0   | 0 | 0 | 0 |
 | D3 Hours worked | 0   | 0   | 0 | 0 | 0 |
 
