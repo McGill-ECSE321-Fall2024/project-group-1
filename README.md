@@ -1,7 +1,7 @@
 # Group Project 1
 
 ## README Table of Contents
-- [Wiki Table of Contents](https://github.com/McGill-ECSE321-Fall2024/project-group-1?tab=readme-ov-file#deliverable-2-report)
+- [Wiki Table of Contents]([https://github.com/McGill-ECSE321-Fall2024/project-group-1?tab=readme-ov-file#deliverable-2-report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki#explore-our-wiki))
 - [Welcome message](https://github.com/McGill-ECSE321-Fall2024/project-group-1?tab=readme-ov-file#welcome-to-samys-video-game-kingdom-)  
 - [Project Scope](https://github.com/McGill-ECSE321-Fall2024/project-group-1?tab=readme-ov-file#project-scope)  
 - [Deliverable 1 Report](https://github.com/McGill-ECSE321-Fall2024/project-group-1?tab=readme-ov-file#deliverable-1-report)  
