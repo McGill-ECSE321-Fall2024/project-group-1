@@ -37,8 +37,8 @@ Stay tuned for future reports and deliverables :)
 | Team members | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
 | :---:   | :---: | :---: | :---: |  :---: |  :---: |
 | Role | Project Manager and Back-End Engineer   | Full-Stack Engineer   | Front-End Engineer | Back-End Lead Engineer | Front-End Lead Engineer |
-| D1 Hours worked | 25   | 25   | 12.5 | 13.5 | 12.5 |
-| D1 Contributions |    |    |  |  |  |
+| D1 Hours worked | 22   | 22   | 16.5 | 17.5 | 16.5 |
+| D1 Contributions |  Wiki, Build System, Persistence Layer, Testing of Persistence Layer  |  Wiki, Domain Model, Testing of Persistence Layer   | Requirements, Use Case Diagrams  | Domain Model, JPA Annotations | Requirements, ReadME |
 | D2 Hours worked | 0   | 0   | 0 | 0 | 0 |
 | D2 Contributions |    |    |  |  |  |
 | D3 Hours worked | 0   | 0   | 0 | 0 | 0 |
