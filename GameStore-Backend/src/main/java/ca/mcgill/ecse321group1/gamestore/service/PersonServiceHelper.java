@@ -15,7 +15,7 @@ public class PersonServiceHelper {
             throw new IllegalArgumentException("Usernames must be at least 6 characters long!");
         }
         if (email == null || !email.contains("@")) {
-            throw new IllegalArgumentException("Emails must contain an\"@\" sign!");
+            throw new IllegalArgumentException("Emails must contain an \"@\" sign!");
         }
         if (password == null || password.length() < 8 || !password.matches(".*\\d.*") || !password.matches(".*[A-Z].*") || !password.matches(".*[a-z].*"))
             throw new IllegalArgumentException("Passwords must be at least 8 characters long, contain an uppercase and lowercase letter, and at least one number.");

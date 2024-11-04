@@ -115,12 +115,12 @@ public class CustomerServiceTests {
         //when(repo.findCategoryById(id)).thenReturn();
 
         // Act
-        service.deleteCategory(id);
+        service.deleteCustomer(id);
 
         // Assert
         verify(repo, times(1)).deleteById(id);
     }
-*/
+
     @Test
     public void testDeleteCustomerByInvalidID() {
         // Arrange
@@ -129,81 +129,43 @@ public class CustomerServiceTests {
 
         // Act
         // Assert
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.deleteCategory(id));
-        assertEquals(id + " cannot be deleted as it does not correspond to an extant Category!", e.getMessage());
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.deleteCustomer(id));
+        assertEquals(id + " cannot be deleted as it does not correspond to an extant Customer!", e.getMessage());
     }
 
     @Test
     public void testCreateInvalidDuplicateCustomer() {
         // Arrange
-        String name = "ACTION";
-        String description = "Fighting, movement, violence!";
-        String description2 = "Action deserves poetry! Choreography! Passion!";
-        Category action = new Category();
-        action.setName(name);
-        action.setDescription(description);
+        when(repo.findAll()).thenReturn(new ArrayList<>(Collections.singleton(BOB))); // Simulating that BOB already exists
 
         // Act
-        //service.createCategory(name, description);
-        ArrayList<Category> list = new ArrayList<>();
-        list.add(action);
-        when(repo.findAll()).thenReturn(list);
 
         // Assert
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.createCategory(name, description2));
-        assertEquals("Category with name \"" + name + "\" already exists!", e.getMessage());
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.createCustomer(fields[0], fields[1], fields[2], fields[3], fields[4]));
+        assertEquals("Customer with username \"" + fields[0] + "\" already exists!", e.getMessage());
     }
 
     @Test
     public void testEditValidCustomer() {
         //Arrange
-        int id = 12; // Set a unique ID for the category
-        String name = "ACTION";
-        String description = "Fighting, movement, violence!";
-        String name2 = "Action";
-        String description2 = "Action deserves poetry! Choreography! Passion!";
+        String new_username = "Jane Doe";
+        String new_email = "PullitzerPrize@WashingtonPst.com"; //not a scam
 
-        Category action = new Category();
-        action.setId(id); // Ensure the ID is set
-        action.setName(name);
-        action.setDescription(description);
 
         // Mock behavior of repository
-        when(repo.findById(id)).thenReturn(Optional.of(action));
-        when(repo.save(any(Category.class))).thenReturn(action);
+        when(repo.findById(ID)).thenReturn(Optional.of(BOB));
+        when(repo.save(any(Customer.class))).thenReturn(BOB);
 
         // Act
-        Category edited = service.editCategory(id, name2, description2);
+        Customer edited = service.editCustomer(ID, new_username, new_email, fields[2], fields[3], fields[4]);
 
         // Assert
         assertNotNull(edited);
-        assertEquals(name2, edited.getName());
-        assertEquals(description2, edited.getDescription());
-        verify(repo, times(1)).save(action);
+        assertEquals(new_username, edited.getUsername());
+        assertEquals(new_email, edited.getEmail());
+        assertEquals(PersonServiceTestHelper.hash_password(fields[2]), edited.getPasswordHash());
+        assertEquals(fields[3], edited.getAddress());
+        assertEquals(fields[4], edited.getPhoneNumber());
+        verify(repo, times(1)).save(BOB);
     }
-
-    @Test
-    public void testEditCustomerInvalidPassword() {
-        //Arrange
-        int id = 12; // Set a unique ID for the category
-        String name = "ACTION";
-        String description = "Fighting, movement, violence!";
-        String description2 = "aa";
-
-        Category action = new Category();
-        action.setId(id); // Ensure the ID is set
-        action.setName(name);
-        action.setDescription(description);
-
-        // Mock behavior of repository
-        when(repo.findById(id)).thenReturn(Optional.of(action));
-        when(repo.save(any(Category.class))).thenReturn(action);
-
-        // Act
-
-        // Assert
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.editCategory(id, name, description2));
-        assertEquals("Category descriptions must be at least 3 characters long!", e.getMessage());
-    }
-}*/
 }
