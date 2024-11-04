@@ -206,4 +206,9 @@ public class Category
             "name" + ":" + getName()+ "," +
             "description" + ":" + getDescription()+ "]";
   }
+
+  public boolean equals(Object obj) {
+    if (!(obj instanceof Category tbc)) return false;
+    return this.name.equals(tbc.name) && this.description.equals(tbc.description) && this.id == tbc.id;
+  }
 }
