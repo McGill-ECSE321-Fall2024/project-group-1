@@ -272,4 +272,16 @@ public class CustomerOrder
             "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "customer = "+(getCustomer()!=null?Integer.toHexString(System.identityHashCode(getCustomer())):"null");
   }
+
+  public boolean equals(Object obj) {
+    if (obj instanceof CustomerOrder order) return
+            order.id == this.id &&
+                    Math.pow(this.price - order.price, 2) < 1E-3 &&
+            order.quantity == this.quantity &&
+            order.offersApplied.equals(this.offersApplied) &&
+            order.address.equals(this.address) &&
+            order.date.equals(this.date) &&
+            order.customer.equals(this.customer);
+    else return false;
+  }
 }

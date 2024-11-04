@@ -314,4 +314,12 @@ public class VideoGame
             "  " + "status" + "=" + (getStatus() != null ? !getStatus().equals(this)  ? getStatus().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "category = "+(getCategory()!=null?Integer.toHexString(System.identityHashCode(getCategory())):"null");
   }
+
+  public boolean equals (Object obj) {
+    if (obj instanceof VideoGame game) return
+    game.id == this.id && Math.pow(this.price - game.price, 2) < 1E-3 &&
+            this.name.equals(game.name) && this.description.equals(game.description) &&
+            this.quantity == game.quantity && this.date.equals(game.date) && this.status.equals(game.status) && this.category.equals(game.category);
+    return false;
+  }
 }

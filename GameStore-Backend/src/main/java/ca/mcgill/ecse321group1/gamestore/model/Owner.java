@@ -36,4 +36,8 @@ public class Owner extends Staff
     super.delete();
   }
 
+  public boolean equals (Object obj) {
+    return obj instanceof Owner && super.equals(obj);
+  }
+
 }

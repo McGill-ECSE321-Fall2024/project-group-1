@@ -36,4 +36,8 @@ public class Staff extends Person
     super.delete();
   }
 
+  public boolean equals (Object obj) {
+    return obj instanceof Staff && super.equals(obj);
+  }
+
 }

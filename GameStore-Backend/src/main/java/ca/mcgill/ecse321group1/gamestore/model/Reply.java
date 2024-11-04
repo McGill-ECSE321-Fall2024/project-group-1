@@ -140,4 +140,9 @@ public class Reply
             "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "review = "+(getReview()!=null?Integer.toHexString(System.identityHashCode(getReview())):"null");
   }
+
+  public boolean equals (Object obj) {
+    if (obj instanceof Reply reply) return this.id == reply.id && this.content.equals(reply.content) && this.date.equals(reply.date) && this.review.equals(reply.review);
+    return false;
+  }
 }

@@ -487,4 +487,12 @@ public class Customer extends Person
             "address" + ":" + getAddress()+ "," +
             "phoneNumber" + ":" + getPhoneNumber()+ "]";
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof Customer cust) return super.equals(cust) &&
+                cust.getAddress().equals(this.getAddress()) &&
+                cust.getPhoneNumber().equals(this.getPhoneNumber());
+    else return false;
+  }
 }

@@ -107,4 +107,12 @@ public abstract class Person
             "email" + ":" + getEmail()+ "," +
             "passwordHash" + ":" + getPasswordHash()+ "]";
   }
+
+  public boolean equals (Object obj) {
+    if (obj instanceof Person pers) return
+                    pers.getUsername().equals(this.getUsername()) &&
+                    pers.getEmail().equals(this.getEmail()) &&
+                    pers.getPasswordHash().equals(this.getPasswordHash());
+    else return false;
+  }
 }

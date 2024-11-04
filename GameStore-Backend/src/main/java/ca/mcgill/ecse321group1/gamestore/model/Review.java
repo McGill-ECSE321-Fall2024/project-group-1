@@ -314,12 +314,13 @@ public class Review
             "  " + "reviewed = "+(getReviewed()!=null?Integer.toHexString(System.identityHashCode(getReviewed())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "reviewer = "+(getReviewer()!=null?Integer.toHexString(System.identityHashCode(getReviewer())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "reply = "+(getReply()!=null?Integer.toHexString(System.identityHashCode(getReply())):"null");
-  }  
+  }
+
   //------------------------
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
   // line 65 ../../../../../model.ump
   public static enum Rating {oneStar, twoStar, threeStar, fourStar, fiveStar}
-  
+
 }
