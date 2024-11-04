@@ -2,6 +2,7 @@ package ca.mcgill.ecse321group1.gamestore.Repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class CustomerOrderRepositoryTests {
     }
 
     @Test
+    @Transactional
     public void testPersistAndLoadCustomerOrder() {
         // Create and Save Customer
         String username = "AlanBrotherton";

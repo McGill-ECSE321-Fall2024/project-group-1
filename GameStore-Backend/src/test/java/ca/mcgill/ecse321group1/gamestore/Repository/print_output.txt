@@ -1,0 +1,11 @@
+true
+true
+ca.mcgill.ecse321group1.gamestore.model.VideoGame@65d3e2ba[id:133,name:Rainbow Six Siege,description:5v5 Shooter Game,price:29.99,quantity:5]
+  date=2024-02-01
+  status=Active
+  category = 1cafb30
+
+
+ca.mcgill.ecse321group1.gamestore.model.Customer@193f5509[id:199,username:AlanBrotherton,email:alanbrotherton@example.com,passwordHash:password123][address:1600 Pennsylvania Avenue NW,phoneNumber:4703237795]
+
+

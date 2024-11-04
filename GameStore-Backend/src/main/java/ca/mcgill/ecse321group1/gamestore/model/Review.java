@@ -33,8 +33,8 @@ public class Review
 
   //Helper Variables
   private int cachedHashCode;
-  private boolean canSetReviewed;
-  private boolean canSetReviewer;
+  private boolean canSetReviewed = true;
+  private boolean canSetReviewer = true;
 
   //------------------------
   // CONSTRUCTOR

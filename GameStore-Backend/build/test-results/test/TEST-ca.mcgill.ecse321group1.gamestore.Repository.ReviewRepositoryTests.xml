@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-11-04T00:47:56" hostname="Zacharys-MBP" time="0.02">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-04T01:37:02" hostname="Zacharys-MBP" time="0.056">
   <properties/>
-  <testcase name="testPersistAndLoadReview()" classname="ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests" time="0.02">
-    <failure message="java.lang.NullPointerException: Cannot invoke &quot;ca.mcgill.ecse321group1.gamestore.model.VideoGame.getId()&quot; because the return value of &quot;ca.mcgill.ecse321group1.gamestore.model.Review.getReviewed()&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;ca.mcgill.ecse321group1.gamestore.model.VideoGame.getId()&quot; because the return value of &quot;ca.mcgill.ecse321group1.gamestore.model.Review.getReviewed()&quot; is null
-	at ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests.testPersistAndLoadReview(ReviewRepositoryTests.java:113)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-</failure>
-  </testcase>
-  <system-out><![CDATA[2024-11-03T19:47:56.831-05:00  INFO 51015 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests]: ReviewRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-03T19:47:56.832-05:00  INFO 51015 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests
+  <testcase name="testPersistAndLoadReview()" classname="ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests" time="0.056"/>
+  <system-out><![CDATA[2024-11-03T20:37:02.409-05:00  INFO 52941 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests]: ReviewRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-03T20:37:02.410-05:00  INFO 52941 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

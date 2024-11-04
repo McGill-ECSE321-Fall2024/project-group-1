@@ -1,0 +1,8 @@
+about to check if CAN set review
+about to check if CAN set review
+about to check if CAN set review ca.mcgill.ecse321group1.gamestore.model.Customer@cfe881a[id:163,username:AlanBrotherton,email:alanbrotherton@example.com,passwordHash:password123][address:1600 Pennsylvania Avenue NW,phoneNumber:4703237795]
+about to check if CAN set review ca.mcgill.ecse321group1.gamestore.model.Customer@2ff4d61b[id:167,username:AlanBrotherton,email:alanbrotherton@example.com,passwordHash:password123][address:1600 Pennsylvania Avenue NW,phoneNumber:4703237795]
+false
+about to check if CAN set review ca.mcgill.ecse321group1.gamestore.model.Customer@10d8769e[id:169,username:AlanBrotherton,email:alanbrotherton@example.com,passwordHash:password123][address:1600 Pennsylvania Avenue NW,phoneNumber:4703237795]
+false
+about to check if CAN set review ca.mcgill.ecse321group1.gamestore.model.Customer@3c5797c6[id:173,username:AlanBrotherton,email:alanbrotherton@example.com,passwordHash:password123][address:1600 Pennsylvania Avenue NW,phoneNumber:4703237795]

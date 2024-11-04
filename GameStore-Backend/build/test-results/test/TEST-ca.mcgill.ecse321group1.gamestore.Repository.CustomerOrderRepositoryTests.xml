@@ -1,21 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-11-04T00:47:56" hostname="Zacharys-MBP" time="0.036">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-04T01:37:01" hostname="Zacharys-MBP" time="0.419">
   <properties/>
-  <testcase name="testPersistAndLoadCustomerOrder()" classname="ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests" time="0.036">
-    <failure message="org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: ca.mcgill.ecse321group1.gamestore.model.CustomerOrder.purchased: could not initialize proxy - no Session" type="org.hibernate.LazyInitializationException">org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: ca.mcgill.ecse321group1.gamestore.model.CustomerOrder.purchased: could not initialize proxy - no Session
-	at app//org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:636)
-	at app//org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219)
-	at app//org.hibernate.collection.spi.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:150)
-	at app//org.hibernate.collection.spi.PersistentBag.size(PersistentBag.java:353)
-	at java.base@21.0.4/java.util.Collections$UnmodifiableCollection.size(Collections.java:1065)
-	at app//ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests.testPersistAndLoadCustomerOrder(CustomerOrderRepositoryTests.java:115)
-	at java.base@21.0.4/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base@21.0.4/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base@21.0.4/java.util.ArrayList.forEach(ArrayList.java:1596)
-</failure>
-  </testcase>
-  <system-out><![CDATA[2024-11-03T19:47:56.733-05:00  INFO 51015 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests]: CustomerOrderRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-03T19:47:56.734-05:00  INFO 51015 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests
+  <testcase name="testPersistAndLoadCustomerOrder()" classname="ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests" time="0.419"/>
+  <system-out><![CDATA[20:36:59.709 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests]: CustomerOrderRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:36:59.761 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2024-11-03T20:36:59.938-05:00  INFO 52941 --- [gamestore] [    Test worker] c.m.e.g.R.CustomerOrderRepositoryTests   : Starting CustomerOrderRepositoryTests using Java 21.0.4 with PID 52941 (started by zachary in /Users/zachary/Documents/ECSE/ECSE321/project-group-1/GameStore-Backend)
+2024-11-03T20:36:59.938-05:00  INFO 52941 --- [gamestore] [    Test worker] c.m.e.g.R.CustomerOrderRepositoryTests   : No active profile set, falling back to 1 default profile: "default"
+2024-11-03T20:37:00.225-05:00  INFO 52941 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-03T20:37:00.258-05:00  INFO 52941 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 9 JPA repository interfaces.
+2024-11-03T20:37:00.487-05:00  INFO 52941 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-03T20:37:00.512-05:00  INFO 52941 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-03T20:37:00.528-05:00  INFO 52941 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-03T20:37:00.680-05:00  INFO 52941 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-03T20:37:00.694-05:00  INFO 52941 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-03T20:37:00.799-05:00  INFO 52941 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@194911c1
+2024-11-03T20:37:00.800-05:00  INFO 52941 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-03T20:37:00.817-05:00  WARN 52941 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-03T20:37:01.368-05:00  INFO 52941 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-03T20:37:01.537-05:00  INFO 52941 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-03T20:37:01.617-05:00  WARN 52941 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-03T20:37:01.978-05:00  INFO 52941 --- [gamestore] [    Test worker] c.m.e.g.R.CustomerOrderRepositoryTests   : Started CustomerOrderRepositoryTests in 2.153 seconds (process running for 2.739)
 ]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/zachary/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
 </testsuite>
