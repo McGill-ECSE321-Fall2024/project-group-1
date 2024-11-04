@@ -2,6 +2,7 @@ package ca.mcgill.ecse321group1.gamestore.service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,10 +29,17 @@ public class CategoryService {
     /**Creates a new Category object with given attributes, and stores it into the databases*/
     @Transactional
     public Category createCategory(String name, String description) {
-        //if (password == null || password.length() < 8) {
-        //    throw new IllegalArgumentException("Password too short.");
-        //}
-        //TODO:maybe check for category already exists?
+        if (name == null || name.length() < 3) {
+            throw new IllegalArgumentException("Category names must be at least 3 characters long!");
+        }
+        if (description == null || description.length() < 3) {
+            throw new IllegalArgumentException("Category descriptions must be at least 3 characters long!");
+        }
+        Iterator<Category> iter = categoryRepo.findAll().iterator();
+        iter.forEachRemaining(a -> {
+            if (a.getName().equals(name)) throw new IllegalArgumentException("Category with name \"" + name + "\" already exists!");
+        });
+
         Category categoryToCreate = new Category();
         categoryToCreate.setName(name);
         categoryToCreate.setDescription(description);
@@ -46,13 +54,22 @@ public class CategoryService {
         if (category == null)
             throw new IllegalArgumentException(id + " does not correspond to an extant Category!");
 
-
-        if (name.length() < 3) {
+        if (name == null || name.length() < 3) {
             throw new IllegalArgumentException("Category names must be at least 3 characters long!");
+        }
+        if (description == null || description.length() < 3) {
+            throw new IllegalArgumentException("Category descriptions must be at least 3 characters long!");
         }
 
         category.setName(name);
         category.setDescription(description);
         return categoryRepo.save(category);
+    }
+    /**Deletes a Category, permanently.*/
+    @Transactional
+    public void deleteCategory(int id) {
+        if (!categoryRepo.existsById(id))
+            throw new IllegalArgumentException(id + " cannot be deleted as it does not correspond to an extant Category!");
+        categoryRepo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong
     }
 }

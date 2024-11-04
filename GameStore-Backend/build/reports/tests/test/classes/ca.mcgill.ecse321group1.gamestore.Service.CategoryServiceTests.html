@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">3</div>
+<div class="counter">8</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.044s</div>
+<div class="counter">0.066s</div>
 <p>duration</p>
 </div>
 </td>
@@ -81,8 +81,38 @@
 </tr>
 </thead>
 <tr>
+<td class="success">testCreateInvalidDuplicateCategory()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">testCreateValidCategory()</td>
-<td class="success">0.035s</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testDeleteCategoryByInvalidID()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testDeleteCategoryByValidID()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testEditCategoryInvalidDescription()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testEditValidCategory()</td>
+<td class="success">0.041s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testReadCategoryByInvalidId()</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -90,18 +120,13 @@
 <td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
-<tr>
-<td class="success">testReadPersonByInvalidId()</td>
-<td class="success">0.005s</td>
-<td class="success">passed</td>
-</tr>
 </table>
 </div>
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>21:27:27.945 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests]: CategoryServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-21:27:27.998 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests
+<pre>23:13:14.150 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests]: CategoryServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:13:14.202 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -112,22 +137,22 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2024-11-03T21:27:28.178-05:00  INFO 53780 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : Starting CategoryServiceTests using Java 21.0.4 with PID 53780 (started by zachary in /Users/zachary/Documents/ECSE/ECSE321/project-group-1/GameStore-Backend)
-2024-11-03T21:27:28.179-05:00  INFO 53780 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-11-03T21:27:28.459-05:00  INFO 53780 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-03T21:27:28.491-05:00  INFO 53780 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 9 JPA repository interfaces.
-2024-11-03T21:27:28.734-05:00  INFO 53780 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-03T21:27:28.760-05:00  INFO 53780 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-11-03T21:27:28.778-05:00  INFO 53780 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-03T21:27:28.934-05:00  INFO 53780 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-03T21:27:28.949-05:00  INFO 53780 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-03T21:27:29.056-05:00  INFO 53780 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4a04ca74
-2024-11-03T21:27:29.057-05:00  INFO 53780 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-03T21:27:29.075-05:00  WARN 53780 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-03T21:27:29.657-05:00  INFO 53780 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-03T21:27:29.816-05:00  INFO 53780 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-03T21:27:30.076-05:00  WARN 53780 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-03T21:27:30.298-05:00  INFO 53780 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : Started CategoryServiceTests in 2.238 seconds (process running for 2.843)
+2024-11-03T23:13:14.383-05:00  INFO 55894 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : Starting CategoryServiceTests using Java 21.0.4 with PID 55894 (started by zachary in /Users/zachary/Documents/ECSE/ECSE321/project-group-1/GameStore-Backend)
+2024-11-03T23:13:14.384-05:00  INFO 55894 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-11-03T23:13:14.678-05:00  INFO 55894 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-03T23:13:14.710-05:00  INFO 55894 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 9 JPA repository interfaces.
+2024-11-03T23:13:14.942-05:00  INFO 55894 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-03T23:13:14.967-05:00  INFO 55894 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-03T23:13:14.988-05:00  INFO 55894 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-03T23:13:15.135-05:00  INFO 55894 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-03T23:13:15.148-05:00  INFO 55894 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-03T23:13:15.243-05:00  INFO 55894 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@455cbf18
+2024-11-03T23:13:15.244-05:00  INFO 55894 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-03T23:13:15.263-05:00  WARN 55894 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-03T23:13:15.828-05:00  INFO 55894 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-03T23:13:15.990-05:00  INFO 55894 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-03T23:13:16.245-05:00  WARN 55894 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-03T23:13:16.452-05:00  INFO 55894 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : Started CategoryServiceTests in 2.187 seconds (process running for 2.787)
 </pre>
 </span>
 </div>
@@ -149,7 +174,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 3, 2024, 9:27:31 PM</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 3, 2024, 11:13:17 PM</p>
 </div>
 </div>
 </body>

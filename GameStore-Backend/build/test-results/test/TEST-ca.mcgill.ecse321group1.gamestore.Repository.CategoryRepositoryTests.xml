@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-04T02:27:30" hostname="Zacharys-MBP" time="0.159">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-04T04:13:16" hostname="Zacharys-MBP" time="0.154">
   <properties/>
-  <testcase name="testPersistAndLoadCategory()" classname="ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests" time="0.159"/>
-  <system-out><![CDATA[2024-11-03T21:27:30.797-05:00  INFO 53780 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests]: CategoryRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-03T21:27:30.805-05:00  INFO 53780 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests
+  <testcase name="testPersistAndLoadCategory()" classname="ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests" time="0.154"/>
+  <system-out><![CDATA[2024-11-03T23:13:16.958-05:00  INFO 55894 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests]: CategoryRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-03T23:13:16.966-05:00  INFO 55894 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

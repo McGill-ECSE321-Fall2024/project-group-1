@@ -10,6 +10,9 @@ import static org.mockito.Mockito.when;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
 import ca.mcgill.ecse321group1.gamestore.service.CategoryService;
@@ -36,10 +39,6 @@ public class CategoryServiceTests {
         action.setName(name);
         action.setDescription(description);
         when(repo.save(any(Category.class))).thenReturn(action);
-        // You could also do it with thenAnswer(), which is more flexible but more
-        // verbose
-        // when(repo.save(notNull(Person.class))).thenAnswer((InvocationOnMock iom) ->
-        // iom.getArgument(0));
 
         // Act
         Category createdCategory = service.createCategory(name, description);
@@ -70,7 +69,7 @@ public class CategoryServiceTests {
     }
 
     @Test
-    public void testReadPersonByInvalidId() {
+    public void testReadCategoryByInvalidId() {
         // Set up
         int id = 42;
         // Default is to return null, so you could omit this
@@ -80,12 +79,104 @@ public class CategoryServiceTests {
         // Assert
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.getCategory(id));
         assertEquals("There is no category with ID " + id + ".", e.getMessage());
-        // assertThrows is basically like the following:
-        // try {
-        // service.findPersonById(id);
-        // fail("No exception was thrown.");
-        // } catch (IllegalArgumentException e) {
-        // assertEquals("There is no person with ID " + id + ".", e.getMessage());
-        // }
+    }
+
+    @Test
+    public void testDeleteCategoryByValidID() {
+        // Arrange
+        int id = 12;
+        when(repo.existsById(id)).thenReturn(true);
+        //when(repo.findCategoryById(id)).thenReturn();
+
+        // Act
+        service.deleteCategory(id);
+
+        // Assert
+        verify(repo, times(1)).deleteById(id);
+    }
+
+    @Test
+    public void testDeleteCategoryByInvalidID() {
+        // Arrange
+        int id = 42;
+        when(repo.existsById(id)).thenReturn(false);
+
+        // Act
+        // Assert
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.deleteCategory(id));
+        assertEquals(id + " cannot be deleted as it does not correspond to an extant Category!", e.getMessage());
+    }
+
+    @Test
+    public void testCreateInvalidDuplicateCategory() {
+        // Arrange
+        String name = "ACTION";
+        String description = "Fighting, movement, violence!";
+        String description2 = "Action deserves poetry! Choreography! Passion!";
+        Category action = new Category();
+        action.setName(name);
+        action.setDescription(description);
+
+        // Act
+        //service.createCategory(name, description);
+        ArrayList<Category> list = new ArrayList<>();
+        list.add(action);
+        when(repo.findAll()).thenReturn(list);
+
+        // Assert
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.createCategory(name, description2));
+        assertEquals("Category with name \"" + name + "\" already exists!", e.getMessage());
+    }
+
+    @Test
+    public void testEditValidCategory() {
+        //Arrange
+        int id = 12; // Set a unique ID for the category
+        String name = "ACTION";
+        String description = "Fighting, movement, violence!";
+        String name2 = "Action";
+        String description2 = "Action deserves poetry! Choreography! Passion!";
+
+        Category action = new Category();
+        action.setId(id); // Ensure the ID is set
+        action.setName(name);
+        action.setDescription(description);
+
+        // Mock behavior of repository
+        when(repo.findById(id)).thenReturn(Optional.of(action));
+        when(repo.save(any(Category.class))).thenReturn(action);
+
+        // Act
+        Category edited = service.editCategory(id, name2, description2);
+
+        // Assert
+        assertNotNull(edited);
+        assertEquals(name2, edited.getName());
+        assertEquals(description2, edited.getDescription());
+        verify(repo, times(1)).save(action);
+    }
+
+    @Test
+    public void testEditCategoryInvalidDescription() {
+        //Arrange
+        int id = 12; // Set a unique ID for the category
+        String name = "ACTION";
+        String description = "Fighting, movement, violence!";
+        String description2 = "aa";
+
+        Category action = new Category();
+        action.setId(id); // Ensure the ID is set
+        action.setName(name);
+        action.setDescription(description);
+
+        // Mock behavior of repository
+        when(repo.findById(id)).thenReturn(Optional.of(action));
+        when(repo.save(any(Category.class))).thenReturn(action);
+
+        // Act
+
+        // Assert
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.editCategory(id, name, description2));
+        assertEquals("Category descriptions must be at least 3 characters long!", e.getMessage());
     }
 }
