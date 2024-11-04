@@ -12,26 +12,18 @@ public class Review
 {
 
   //------------------------
-  // STATIC VARIABLES
-  //------------------------
-
-  private static int nextId = 1;
-
-  //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Review Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
   private String content;
   private Date date;
   private Rating rating;
 
-  //Autounique Attributes
-  @Id
-  private int id;
-
   //Review Associations
-
   @ManyToOne
   private VideoGame reviewed;
   @ManyToOne
@@ -48,20 +40,19 @@ public class Review
   // CONSTRUCTOR
   //------------------------
 
-  // Empty Constructor
-
   public Review(){
 
   }
-  public Review(String aContent, Date aDate, Rating aRating, VideoGame aReviewed, Customer aReviewer)
+
+  public Review(int aId, String aContent, Date aDate, Rating aRating, VideoGame aReviewed, Customer aReviewer)
   {
     cachedHashCode = -1;
     canSetReviewed = true;
     canSetReviewer = true;
+    id = aId;
     content = aContent;
     date = aDate;
     rating = aRating;
-    id = nextId++;
     boolean didAddReviewed = setReviewed(aReviewed);
     if (!didAddReviewed)
     {
@@ -77,6 +68,14 @@ public class Review
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(int aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setContent(String aContent)
   {
@@ -102,6 +101,11 @@ public class Review
     return wasSet;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
   public String getContent()
   {
     return content;
@@ -115,11 +119,6 @@ public class Review
   public Rating getRating()
   {
     return rating;
-  }
-
-  public int getId()
-  {
-    return id;
   }
   /* Code from template association_GetOne */
   public VideoGame getReviewed()
@@ -230,7 +229,7 @@ public class Review
     if (!getClass().equals(obj.getClass())) { return false; }
 
     Review compareTo = (Review)obj;
-
+  
     if (getReviewed() == null && compareTo.getReviewed() != null)
     {
       return false;
@@ -315,12 +314,12 @@ public class Review
             "  " + "reviewed = "+(getReviewed()!=null?Integer.toHexString(System.identityHashCode(getReviewed())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "reviewer = "+(getReviewer()!=null?Integer.toHexString(System.identityHashCode(getReviewer())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "reply = "+(getReply()!=null?Integer.toHexString(System.identityHashCode(getReply())):"null");
-  }
+  }  
   //------------------------
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
-
+  
   // line 65 ../../../../../model.ump
   public static enum Rating {oneStar, twoStar, threeStar, fourStar, fiveStar}
-
+  
 }

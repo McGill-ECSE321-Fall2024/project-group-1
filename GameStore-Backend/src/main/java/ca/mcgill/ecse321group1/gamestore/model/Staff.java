@@ -21,9 +21,10 @@ public class Staff extends Person
   public Staff(){
     super();
   }
-  public Staff(String aUsername, String aEmail, String aPasswordHash)
+
+  public Staff(int aId, String aUsername, String aEmail, String aPasswordHash)
   {
-    super(aUsername, aEmail, aPasswordHash);
+    super(aId, aUsername, aEmail, aPasswordHash);
   }
 
   //------------------------

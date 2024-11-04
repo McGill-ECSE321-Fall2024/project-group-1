@@ -1,4 +1,4 @@
-package ca.mcgill.ecse321group1.gamestore.repository;
+package ca.mcgill.ecse321group1.gamestore.Repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
-
-import java.sql.Date;
-import java.util.*;
+import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
 
 @SpringBootTest
 public class CustomerRepositoryTests {
@@ -31,7 +29,13 @@ public class CustomerRepositoryTests {
         String passwordHash = "password123";
         String address = "1600 Pennsylvania Avenue NW";
         String phoneNumber = "4703237795";
-        Customer customer = new Customer(username, email, passwordHash, address, phoneNumber);
+
+        Customer customer = new Customer();
+        customer.setUsername(username);
+        customer.setEmail(email);
+        customer.setPasswordHash(passwordHash);
+        customer.setAddress(address);
+        customer.setPhoneNumber(phoneNumber);
         customer = customerRepository.save(customer);
 
         // Read Customer from database
@@ -40,10 +44,10 @@ public class CustomerRepositoryTests {
 
         // Assert correct responses
         assertNotNull(customerFromDb);
-        assertEquals(customerFromDb.getUsername(), username);
-        assertEquals(customerFromDb.getEmail(), email);
-        assertEquals(customerFromDb.getPasswordHash(), passwordHash);
-        assertEquals(customerFromDb.getAddress(), address);
-        assertEquals(customerFromDb.getPhoneNumber(), phoneNumber);
+        assertEquals(username, customerFromDb.getUsername());
+        assertEquals(email, customerFromDb.getEmail());
+        assertEquals(passwordHash, customerFromDb.getPasswordHash());
+        assertEquals(address, customerFromDb.getAddress());
+        assertEquals(phoneNumber, customerFromDb.getPhoneNumber());
     }
 }

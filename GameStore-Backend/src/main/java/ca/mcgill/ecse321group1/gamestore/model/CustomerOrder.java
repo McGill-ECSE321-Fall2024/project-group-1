@@ -13,26 +13,18 @@ public class CustomerOrder
 {
 
   //------------------------
-  // STATIC VARIABLES
-  //------------------------
-
-
-  private static int nextId = 1;
-
-  //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //CustomerOrder Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
   private Date date;
   private float price;
   private int quantity;
   private String offersApplied;
   private String address;
-
-  //Autounique Attributes
-  @Id
-  private int id;
 
   //CustomerOrder Associations
   @OneToMany
@@ -47,14 +39,15 @@ public class CustomerOrder
   public CustomerOrder(){
     purchased = new ArrayList<VideoGame>();
   }
-  public CustomerOrder(Date aDate, float aPrice, int aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
+
+  public CustomerOrder(int aId, Date aDate, float aPrice, int aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
   {
+    id = aId;
     date = aDate;
     price = aPrice;
     quantity = aQuantity;
     offersApplied = aOffersApplied;
     address = aAddress;
-    id = nextId++;
     purchased = new ArrayList<VideoGame>();
     boolean didAddCustomer = setCustomer(aCustomer);
     if (!didAddCustomer)
@@ -66,6 +59,14 @@ public class CustomerOrder
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(int aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setDate(Date aDate)
   {
@@ -107,6 +108,11 @@ public class CustomerOrder
     return wasSet;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
   public Date getDate()
   {
     return date;
@@ -130,11 +136,6 @@ public class CustomerOrder
   public String getAddress()
   {
     return address;
-  }
-
-  public int getId()
-  {
-    return id;
   }
   /* Code from template association_GetMany */
   public VideoGame getPurchased(int index)

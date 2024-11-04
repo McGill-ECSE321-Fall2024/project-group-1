@@ -5,7 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.util.*;
 import java.sql.Date;
 import jakarta.persistence.*;
-
+import ca.mcgill.ecse321group1.gamestore.model.Review.Rating;
 
 // line 12 "../../../../../../model.ump"
 // line 89 "../../../../../../model.ump"
@@ -43,9 +43,10 @@ public class Customer extends Person
     customerOrders = new ArrayList<CustomerOrder>();
     reviews = new ArrayList<Review>();
   }
-  public Customer(String aUsername, String aEmail, String aPasswordHash, String aAddress, String aPhoneNumber)
+
+  public Customer(int aId, String aUsername, String aEmail, String aPasswordHash, String aAddress, String aPhoneNumber)
   {
-    super(aUsername, aEmail, aPasswordHash);
+    super(aId, aUsername, aEmail, aPasswordHash);
     address = aAddress;
     phoneNumber = aPhoneNumber;
     wishlist = new ArrayList<VideoGame>();
@@ -230,7 +231,7 @@ public class Customer extends Person
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addWishlistAt(VideoGame aWishlist, int index)
-  {
+  {  
     boolean wasAdded = false;
     if(addWishlist(aWishlist))
     {
@@ -253,8 +254,8 @@ public class Customer extends Person
       wishlist.remove(aWishlist);
       wishlist.add(index, aWishlist);
       wasAdded = true;
-    }
-    else
+    } 
+    else 
     {
       wasAdded = addWishlistAt(aWishlist, index);
     }
@@ -287,7 +288,7 @@ public class Customer extends Person
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addCartAt(VideoGame aCart, int index)
-  {
+  {  
     boolean wasAdded = false;
     if(addCart(aCart))
     {
@@ -310,8 +311,8 @@ public class Customer extends Person
       cart.remove(aCart);
       cart.add(index, aCart);
       wasAdded = true;
-    }
-    else
+    } 
+    else 
     {
       wasAdded = addCartAt(aCart, index);
     }
@@ -323,9 +324,9 @@ public class Customer extends Person
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public CustomerOrder addCustomerOrder(Date aDate, float aPrice, int aQuantity, String aOffersApplied, String aAddress)
+  public CustomerOrder addCustomerOrder(int aId, Date aDate, float aPrice, int aQuantity, String aOffersApplied, String aAddress)
   {
-    return new CustomerOrder(aDate, aPrice, aQuantity, aOffersApplied, aAddress, this);
+    return new CustomerOrder(aId, aDate, aPrice, aQuantity, aOffersApplied, aAddress, this);
   }
 
   public boolean addCustomerOrder(CustomerOrder aCustomerOrder)
@@ -359,7 +360,7 @@ public class Customer extends Person
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addCustomerOrderAt(CustomerOrder aCustomerOrder, int index)
-  {
+  {  
     boolean wasAdded = false;
     if(addCustomerOrder(aCustomerOrder))
     {
@@ -382,8 +383,8 @@ public class Customer extends Person
       customerOrders.remove(aCustomerOrder);
       customerOrders.add(index, aCustomerOrder);
       wasAdded = true;
-    }
-    else
+    } 
+    else 
     {
       wasAdded = addCustomerOrderAt(aCustomerOrder, index);
     }
@@ -395,9 +396,9 @@ public class Customer extends Person
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aContent, Date aDate, Review.Rating aRating, VideoGame aReviewed)
+  public Review addReview(int aId, String aContent, Date aDate, Rating aRating, VideoGame aReviewed)
   {
-    return new Review(aContent, aDate, aRating, aReviewed, this);
+    return new Review(aId, aContent, aDate, aRating, aReviewed, this);
   }
 
   public boolean addReview(Review aReview)
@@ -431,7 +432,7 @@ public class Customer extends Person
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addReviewAt(Review aReview, int index)
-  {
+  {  
     boolean wasAdded = false;
     if(addReview(aReview))
     {
@@ -454,8 +455,8 @@ public class Customer extends Person
       reviews.remove(aReview);
       reviews.add(index, aReview);
       wasAdded = true;
-    }
-    else
+    } 
+    else 
     {
       wasAdded = addReviewAt(aReview, index);
     }

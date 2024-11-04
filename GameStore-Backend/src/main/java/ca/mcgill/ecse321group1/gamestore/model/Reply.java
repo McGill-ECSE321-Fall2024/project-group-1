@@ -1,8 +1,8 @@
 //PLEASE DO NOT EDIT THIS CODE/
 //This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!/
- package ca.mcgill.ecse321group1.gamestore.model;
-  import java.sql.Date;
-  import jakarta.persistence.*;
+package ca.mcgill.ecse321group1.gamestore.model;
+import java.sql.Date;
+import jakarta.persistence.*;
 
 // line 68 "../../../../../../model.ump"
 // line 137 "../../../../../../model.ump"
@@ -11,22 +11,15 @@ public class Reply
 {
 
   //------------------------
-  // STATIC VARIABLES
-  //------------------------
-
-  private static int nextId = 1;
-
-  //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Reply Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
   private String content;
   private Date date;
-
-  //Autounique Attributes
-  @Id
-  private int id;
 
   //Reply Associations
   @OneToOne
@@ -39,11 +32,12 @@ public class Reply
   public Reply(){
 
   }
-  public Reply(String aContent, Date aDate, Review aReview)
+
+  public Reply(int aId, String aContent, Date aDate, Review aReview)
   {
+    id = aId;
     content = aContent;
     date = aDate;
-    id = nextId++;
     boolean didAddReview = setReview(aReview);
     if (!didAddReview)
     {
@@ -54,6 +48,14 @@ public class Reply
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(int aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setContent(String aContent)
   {
@@ -71,6 +73,11 @@ public class Reply
     return wasSet;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
   public String getContent()
   {
     return content;
@@ -79,11 +86,6 @@ public class Reply
   public Date getDate()
   {
     return date;
-  }
-
-  public int getId()
-  {
-    return id;
   }
   /* Code from template association_GetOne */
   public Review getReview()
@@ -99,14 +101,14 @@ public class Reply
       //Unable to setReview to null, as reply must always be associated to a review
       return wasSet;
     }
-
+    
     Reply existingReply = aNewReview.getReply();
     if (existingReply != null && !equals(existingReply))
     {
       //Unable to setReview, the current review already has a reply, which would be orphaned if it were re-assigned
       return wasSet;
     }
-
+    
     Review anOldReview = review;
     review = aNewReview;
     review.setReply(this);

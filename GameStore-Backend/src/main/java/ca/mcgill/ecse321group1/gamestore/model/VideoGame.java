@@ -5,6 +5,7 @@ package ca.mcgill.ecse321group1.gamestore.model;
 import java.sql.Date;
 import java.util.*;
 import jakarta.persistence.*;
+import ca.mcgill.ecse321group1.gamestore.model.Review.Rating;
 
 // line 30 "../../../../../../model.ump"
 // line 108 "../../../../../../model.ump"
@@ -19,27 +20,19 @@ public class VideoGame
   public enum Status { Pending, Active, Inactive }
 
   //------------------------
-  // STATIC VARIABLES
-  //------------------------
-
-
-  private static int nextId = 1;
-
-  //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //VideoGame Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
   private String name;
   private String description;
   private float price;
   private int quantity;
   private Date date;
   private Status status;
-
-  //Autounique Attributes
-  @Id
-  private int id;
 
   //VideoGame Associations
   @OneToMany
@@ -54,15 +47,16 @@ public class VideoGame
   public VideoGame(){
     reviews = new ArrayList<Review>();
   }
-  public VideoGame(String aName, String aDescription, float aPrice, int aQuantity, Date aDate, Status aStatus, Category aCategory)
+
+  public VideoGame(int aId, String aName, String aDescription, float aPrice, int aQuantity, Date aDate, Status aStatus, Category aCategory)
   {
+    id = aId;
     name = aName;
     description = aDescription;
     price = aPrice;
     quantity = aQuantity;
     date = aDate;
     status = aStatus;
-    id = nextId++;
     reviews = new ArrayList<Review>();
     boolean didAddCategory = setCategory(aCategory);
     if (!didAddCategory)
@@ -74,6 +68,14 @@ public class VideoGame
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(int aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setName(String aName)
   {
@@ -123,6 +125,11 @@ public class VideoGame
     return wasSet;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
   public String getName()
   {
     return name;
@@ -151,11 +158,6 @@ public class VideoGame
   public Status getStatus()
   {
     return status;
-  }
-
-  public int getId()
-  {
-    return id;
   }
   /* Code from template association_GetMany */
   public Review getReview(int index)
@@ -198,9 +200,9 @@ public class VideoGame
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public Review addReview(String aContent, Date aDate, Review.Rating aRating, Customer aReviewer)
+  public Review addReview(int aId, String aContent, Date aDate, Rating aRating, Customer aReviewer)
   {
-    return new Review(aContent, aDate, aRating, this, aReviewer);
+    return new Review(aId, aContent, aDate, aRating, this, aReviewer);
   }
 
   public boolean addReview(Review aReview)
@@ -234,7 +236,7 @@ public class VideoGame
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addReviewAt(Review aReview, int index)
-  {
+  {  
     boolean wasAdded = false;
     if(addReview(aReview))
     {
@@ -257,8 +259,8 @@ public class VideoGame
       reviews.remove(aReview);
       reviews.add(index, aReview);
       wasAdded = true;
-    }
-    else
+    } 
+    else 
     {
       wasAdded = addReviewAt(aReview, index);
     }

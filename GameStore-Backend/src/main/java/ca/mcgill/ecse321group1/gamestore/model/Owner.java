@@ -21,9 +21,10 @@ public class Owner extends Staff
   public Owner(){
     super();
   }
-  public Owner(String aUsername, String aEmail, String aPasswordHash)
+
+  public Owner(int aId, String aUsername, String aEmail, String aPasswordHash)
   {
-    super(aUsername, aEmail, aPasswordHash);
+    super(aId, aUsername, aEmail, aPasswordHash);
   }
 
   //------------------------

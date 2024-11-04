@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-11-04T00:47:56" hostname="Zacharys-MBP" time="0.036">
+  <properties/>
+  <testcase name="testPersistAndLoadCustomerOrder()" classname="ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests" time="0.036">
+    <failure message="org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: ca.mcgill.ecse321group1.gamestore.model.CustomerOrder.purchased: could not initialize proxy - no Session" type="org.hibernate.LazyInitializationException">org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: ca.mcgill.ecse321group1.gamestore.model.CustomerOrder.purchased: could not initialize proxy - no Session
+	at app//org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:636)
+	at app//org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219)
+	at app//org.hibernate.collection.spi.AbstractPersistentCollection.readSize(AbstractPersistentCollection.java:150)
+	at app//org.hibernate.collection.spi.PersistentBag.size(PersistentBag.java:353)
+	at java.base@21.0.4/java.util.Collections$UnmodifiableCollection.size(Collections.java:1065)
+	at app//ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests.testPersistAndLoadCustomerOrder(CustomerOrderRepositoryTests.java:115)
+	at java.base@21.0.4/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.4/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.4/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <system-out><![CDATA[2024-11-03T19:47:56.733-05:00  INFO 51015 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests]: CustomerOrderRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-03T19:47:56.734-05:00  INFO 51015 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
