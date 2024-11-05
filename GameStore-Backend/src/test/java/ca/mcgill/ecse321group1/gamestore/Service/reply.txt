@@ -1,0 +1,12 @@
+ca.mcgill.ecse321group1.gamestore.model.Reply@209ab1d7[id:12,content:You are completely wrong!]
+  date=1970-01-02
+  review = 7937f96e
+ca.mcgill.ecse321group1.gamestore.model.Review@f598f1f5[id:182,content:Great game! 5/5]
+  date=2286-11-20
+  rating=fourStar
+  reviewed = 2b3ac26d
+  reviewer = 13515709
+  reply = 209ab1d7
+ca.mcgill.ecse321group1.gamestore.model.Reply@209ab1d7[id:12,content:You are completely wrong!]
+  date=1970-01-02
+  review = 7937f96e

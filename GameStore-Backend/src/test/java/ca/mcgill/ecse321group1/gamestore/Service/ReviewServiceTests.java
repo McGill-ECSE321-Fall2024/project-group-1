@@ -20,10 +20,8 @@ import java.util.Optional;
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
-import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
-import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
-import ca.mcgill.ecse321group1.gamestore.repository.ReviewRepository;
-import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
+import ca.mcgill.ecse321group1.gamestore.repository.*;
+import ca.mcgill.ecse321group1.gamestore.service.ReplyService;
 import ca.mcgill.ecse321group1.gamestore.service.ReviewService;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
 import ca.mcgill.ecse321group1.gamestore.model.Category;
@@ -39,6 +37,8 @@ public class ReviewServiceTests {
     @Mock
     private ReviewRepository repo;
     @Mock
+    private ReplyRepository replyrepo;
+    @Mock
     private CategoryRepository catrepo;
     @Mock
     private VideoGameRepository gamerepo;
@@ -48,6 +48,8 @@ public class ReviewServiceTests {
     private ReviewService service;
     @InjectMocks
     private VideoGameService gameservice;
+    @InjectMocks
+    private ReplyService replyservice;
 
     private Review scathing;
     private VideoGame game;
@@ -150,7 +152,7 @@ public class ReviewServiceTests {
         //when(repo.findCategoryById(id)).thenReturn();
 
         // Act
-        service.deleteReview(id);
+        service.deleteReview(id, replyservice);
 
         // Assert
         verify(repo, times(1)).deleteById(id);
@@ -164,7 +166,7 @@ public class ReviewServiceTests {
 
         // Act
         // Assert
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.deleteReview(id));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.deleteReview(id, replyservice));
         assertEquals(id + " cannot be deleted as it does not correspond to an extant Review!", e.getMessage());
     }
 

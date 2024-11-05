@@ -9,6 +9,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 
 @Service
@@ -28,7 +31,7 @@ public class ReplyService {
 
     /**ONLY CALLED BY ReviewService. Creates a new Reply object with given attributes, and stores it into the databases*/
     @Transactional
-    public Reply initReply(String content, Date date, Review review) {
+    Reply initReply(String content, Date date, Review review) {
         if (content == null) content = "";
 
         if (review == null)
@@ -38,7 +41,7 @@ public class ReplyService {
         reply.setContent(content);
         reply.setDate(date);
         reply.setReview(review);
-        return repo.save(reply);//no ID, gets set by this.
+        return repo.save(reply);//no ID, gets set by this.;
     }
 
     /**Retrieves a Reply by ID, and modifies its attributes according to editRply's arguments before re-storing. Review it is attached to cannot be modified.*/
@@ -53,7 +56,7 @@ public class ReplyService {
 
     /**ONLY CALLED BY ReviewService. Deletes a Reply, permanently.*/
     @Transactional
-    public void deleteReply(int id) {
+    void deleteReply(int id) {
         if (!repo.existsById(id))
             throw new IllegalArgumentException(id + " cannot be deleted as it does not correspond to an extant Reply!");
         repo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong

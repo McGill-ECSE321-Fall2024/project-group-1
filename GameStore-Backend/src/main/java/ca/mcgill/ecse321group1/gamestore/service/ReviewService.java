@@ -18,8 +18,6 @@ import java.sql.Date;
 public class ReviewService {
     @Autowired
     private ReviewRepository repo;
-    @Autowired
-    private ReplyService replyService;
 
     /**Retrieves a Review object based on lookup by id*/
     @Transactional
@@ -53,7 +51,7 @@ public class ReviewService {
 
     /**Links a Reply to a Review*/
     @Transactional
-    public Review createReply(int review_id, String content, Date date) {
+    public Review createReply(int review_id, String content, Date date, ReplyService replyService) {
         Review review = getReview(review_id);
         Reply reply = replyService.initReply(content, date, review);
         review.setReply(reply);
@@ -62,7 +60,7 @@ public class ReviewService {
 
     /**Removes a Reply from a Review, silently.*/
     @Transactional
-    public Review removeReply(int review_id) {
+    public Review removeReply(int review_id, ReplyService replyService) {
         Review review = getReview(review_id);
         Reply reply = review.getReply();
         if (reply != null) replyService.deleteReply(reply.getId());
@@ -85,7 +83,7 @@ public class ReviewService {
     }
     /**Deletes a Review, permanently.*/
     @Transactional
-    public void deleteReview(int id) {
+    public void deleteReview(int id, ReplyService replyService) {
         if (!repo.existsById(id))
             throw new IllegalArgumentException(id + " cannot be deleted as it does not correspond to an extant Review!");
         Review review = getReview(id);
