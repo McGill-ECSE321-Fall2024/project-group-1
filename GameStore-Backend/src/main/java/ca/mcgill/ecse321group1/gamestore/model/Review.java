@@ -44,7 +44,8 @@ public class Review
   //------------------------
 
   public Review(){
-
+    canSetReviewed = true;
+    canSetReviewer = true;
   }
 
   public Review(int aId, String aContent, Date aDate, Rating aRating, VideoGame aReviewed, Customer aReviewer)
@@ -149,6 +150,7 @@ public class Review
   {
     boolean wasSet = false;
     if (!canSetReviewed) { return false; }
+
     if (aReviewed == null)
     {
       return wasSet;
@@ -232,8 +234,8 @@ public class Review
             rev.content.equals(this.content) &&
             rev.date.toString().equals(this.date.toString()) &&
             rev.rating.equals(this.rating) &&
-            rev.reviewed.equals(this.reviewed) &&
-            this.reviewer.equals(rev.reviewer);
+                    ((rev.reviewed == null && this.reviewed == null) || rev.reviewed != null && rev.reviewed.equals(this.reviewed)) &&
+                    ((rev.reviewer == null && this.reviewer == null) || rev.reviewer != null && rev.reviewer.equals(this.reviewer));
     else return false;
     //pre-existing filth
     /*
