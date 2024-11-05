@@ -1,5 +1,10 @@
+
+
+
+
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
+
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import java.sql.Date;
@@ -8,7 +13,7 @@ import jakarta.persistence.*;
 
 // line 47 "../../../../../../model.ump"
 // line 130 "../../../../../../model.ump"
-@Entity
+  @Entity
 public class CustomerOrder
 {
 
@@ -20,17 +25,17 @@ public class CustomerOrder
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private int shared_id;
-  private Date date;
+  private int sharedId;
   private float price;
   private int quantity;
+  private Date date;
   @ManyToOne
   private Offer offerApplied;
   private String address;
 
   //CustomerOrder Associations
-  @OneToMany
-  private List<VideoGame> purchased;
+  @OneToOne
+  private VideoGame purchased;
   @ManyToOne
   private Customer customer;
 
@@ -38,16 +43,19 @@ public class CustomerOrder
   // CONSTRUCTOR
   //------------------------
 
-  public CustomerOrder(int aId, int aShared_id, Date aDate, float aPrice, int aQuantity, Offer aOfferApplied, String aAddress, Customer aCustomer)
+  public CustomerOrder(int aId, int aSharedId, Date aDate, float aPrice, int aQuantity, Offer aOfferApplied, String aAddress, VideoGame aPurchased, Customer aCustomer)
   {
     id = aId;
-    shared_id = aShared_id;
+    sharedId = aSharedId;
     date = aDate;
     price = aPrice;
     quantity = aQuantity;
     offerApplied = aOfferApplied;
     address = aAddress;
-    purchased = new ArrayList<VideoGame>();
+    if (!setPurchased(aPurchased))
+    {
+      throw new RuntimeException("Unable to create CustomerOrder due to aPurchased. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+    }
     boolean didAddCustomer = setCustomer(aCustomer);
     if (!didAddCustomer)
     {
@@ -55,8 +63,8 @@ public class CustomerOrder
     }
   }
 
-  public CustomerOrder(){
-    purchased = new ArrayList<VideoGame>();
+  public CustomerOrder() {
+
   }
 
   //------------------------
@@ -71,10 +79,10 @@ public class CustomerOrder
     return wasSet;
   }
 
-  public boolean setShared_id(int aShared_id)
+  public boolean setSharedId(int aSharedId)
   {
     boolean wasSet = false;
-    shared_id = aShared_id;
+    sharedId = aSharedId;
     wasSet = true;
     return wasSet;
   }
@@ -124,9 +132,9 @@ public class CustomerOrder
     return id;
   }
 
-  public int getShared_id()
+  public int getSharedId()
   {
-    return shared_id;
+    return sharedId;
   }
 
   public Date getDate()
@@ -153,97 +161,26 @@ public class CustomerOrder
   {
     return address;
   }
-  /* Code from template association_GetMany */
-  public VideoGame getPurchased(int index)
+  /* Code from template association_GetOne */
+  public VideoGame getPurchased()
   {
-    VideoGame aPurchased = purchased.get(index);
-    return aPurchased;
-  }
-
-  public List<VideoGame> getPurchased()
-  {
-    List<VideoGame> newPurchased = Collections.unmodifiableList(purchased);
-    return newPurchased;
-  }
-
-  public int numberOfPurchased()
-  {
-    int number = purchased.size();
-    return number;
-  }
-
-  public boolean hasPurchased()
-  {
-    boolean has = purchased.size() > 0;
-    return has;
-  }
-
-  public int indexOfPurchased(VideoGame aPurchased)
-  {
-    int index = purchased.indexOf(aPurchased);
-    return index;
+    return purchased;
   }
   /* Code from template association_GetOne */
   public Customer getCustomer()
   {
     return customer;
   }
-  /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfPurchased()
+  /* Code from template association_SetUnidirectionalOne */
+  public boolean setPurchased(VideoGame aNewPurchased)
   {
-    return 0;
-  }
-  /* Code from template association_AddUnidirectionalMany */
-  public boolean addPurchased(VideoGame aPurchased)
-  {
-    boolean wasAdded = false;
-    if (purchased.contains(aPurchased)) { return false; }
-    purchased.add(aPurchased);
-    wasAdded = true;
-    return wasAdded;
-  }
-
-  public boolean removePurchased(VideoGame aPurchased)
-  {
-    boolean wasRemoved = false;
-    if (purchased.contains(aPurchased))
+    boolean wasSet = false;
+    if (aNewPurchased != null)
     {
-      purchased.remove(aPurchased);
-      wasRemoved = true;
+      purchased = aNewPurchased;
+      wasSet = true;
     }
-    return wasRemoved;
-  }
-  /* Code from template association_AddIndexControlFunctions */
-  public boolean addPurchasedAt(VideoGame aPurchased, int index)
-  {
-    boolean wasAdded = false;
-    if(addPurchased(aPurchased))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfPurchased()) { index = numberOfPurchased() - 1; }
-      purchased.remove(aPurchased);
-      purchased.add(index, aPurchased);
-      wasAdded = true;
-    }
-    return wasAdded;
-  }
-
-  public boolean addOrMovePurchasedAt(VideoGame aPurchased, int index)
-  {
-    boolean wasAdded = false;
-    if(purchased.contains(aPurchased))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfPurchased()) { index = numberOfPurchased() - 1; }
-      purchased.remove(aPurchased);
-      purchased.add(index, aPurchased);
-      wasAdded = true;
-    }
-    else
-    {
-      wasAdded = addPurchasedAt(aPurchased, index);
-    }
-    return wasAdded;
+    return wasSet;
   }
   /* Code from template association_SetOneToMany */
   public boolean setCustomer(Customer aCustomer)
@@ -267,7 +204,7 @@ public class CustomerOrder
 
   public void delete()
   {
-    purchased.clear();
+    purchased = null;
     Customer placeholderCustomer = customer;
     this.customer = null;
     if(placeholderCustomer != null)
@@ -277,16 +214,18 @@ public class CustomerOrder
   }
 
 
-  public String toString() {
-    return super.toString() + "[" +
-            "id" + ":" + getId() + "," +
-            "shared_id" + ":" + getShared_id() + "," +
-            "price" + ":" + getPrice() + "," +
-            "quantity" + ":" + getQuantity() + "," +
-            "address" + ":" + getAddress() + "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this) ? getDate().toString().replaceAll("  ", "    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "offerApplied" + "=" + (getOfferApplied() != null ? !getOfferApplied().equals(this) ? getOfferApplied().toString().replaceAll("  ", "    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "customer = " + (getCustomer() != null ? Integer.toHexString(System.identityHashCode(getCustomer())) : "null");
+  public String toString()
+  {
+    return super.toString() + "["+
+            "id" + ":" + getId()+ "," +
+            "sharedId" + ":" + getSharedId()+ "," +
+            "price" + ":" + getPrice()+ "," +
+            "quantity" + ":" + getQuantity()+ "," +
+            "address" + ":" + getAddress()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "offerApplied" + "=" + (getOfferApplied() != null ? !getOfferApplied().equals(this)  ? getOfferApplied().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "purchased = "+(getPurchased()!=null?Integer.toHexString(System.identityHashCode(getPurchased())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "customer = "+(getCustomer()!=null?Integer.toHexString(System.identityHashCode(getCustomer())):"null");
   }
 
   public boolean equals(Object obj) {

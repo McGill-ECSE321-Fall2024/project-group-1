@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-05T00:18:41" hostname="Zacharys-MBP" time="0.037">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-05T06:12:43" hostname="Zacharys-MBP" time="0.032">
   <properties/>
-  <testcase name="testPersistAndLoadReply()" classname="ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests" time="0.037"/>
-  <system-out><![CDATA[2024-11-04T19:18:41.650-05:00  INFO 63309 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests]: ReplyRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-04T19:18:41.654-05:00  INFO 63309 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests
+  <testcase name="testPersistAndLoadReply()" classname="ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests" time="0.032"/>
+  <system-out><![CDATA[2024-11-05T01:12:43.668-05:00  INFO 65557 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests]: ReplyRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-05T01:12:43.669-05:00  INFO 65557 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

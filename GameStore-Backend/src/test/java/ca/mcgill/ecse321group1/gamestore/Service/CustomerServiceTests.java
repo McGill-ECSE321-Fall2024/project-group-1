@@ -153,7 +153,7 @@ public class CustomerServiceTests {
 
 
         // Mock behavior of repository
-        when(repo.findById(ID)).thenReturn(Optional.of(BOB));
+        when(repo.findCustomerById(ID)).thenReturn(BOB);
         when(repo.save(any(Customer.class))).thenReturn(BOB);
 
         // Act

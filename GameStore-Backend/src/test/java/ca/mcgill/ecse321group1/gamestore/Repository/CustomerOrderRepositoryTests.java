@@ -98,7 +98,7 @@ public class CustomerOrderRepositoryTests {
         customerOrder.setOfferApplied(null);
         customerOrder.setAddress(orderAddress);
         customerOrder.setCustomer(customer);
-        customerOrder.addPurchased(videoGame);
+        customerOrder.setPurchased(videoGame);
         customerOrder = customerOrderRepository.save(customerOrder);
 
         // Read Customer Order from database
@@ -110,10 +110,9 @@ public class CustomerOrderRepositoryTests {
         assertEquals(date.toLocalDate(), customerOrderFromDb.getDate().toLocalDate());
         assertEquals(price, customerOrderFromDb.getPrice(), 0.001);
         assertEquals(quantity, customerOrderFromDb.getQuantity());
-        assertEquals(null, customerOrderFromDb.getOfferApplied());
+        assertNull(customerOrderFromDb.getOfferApplied());
         assertEquals(orderAddress, customerOrderFromDb.getAddress());
         assertEquals(username, customerOrderFromDb.getCustomer().getUsername());
-        assertEquals(1, customerOrderFromDb.getPurchased().size());
-        assertEquals(videoGame.getId(), customerOrderFromDb.getPurchased().get(0).getId());
+        assertEquals(videoGame.getId(), customerOrderFromDb.getPurchased().getId());
     }
 }
