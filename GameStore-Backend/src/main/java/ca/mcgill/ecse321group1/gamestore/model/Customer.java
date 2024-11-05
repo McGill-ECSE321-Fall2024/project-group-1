@@ -323,11 +323,12 @@ public class Customer extends Person
   {
     return 0;
   }
-  /* Code from template association_AddManyToOne */
-  public CustomerOrder addCustomerOrder(int aId, Date aDate, float aPrice, int aQuantity, String aOffersApplied, String aAddress)
+
+  /* Code from template association_AddManyToOne
+  public CustomerOrder addCustomerOrder(int aId, float aPrice, int aQuantity, Offer aOfferApplied, String aAddress)
   {
-    return new CustomerOrder(aId, aDate, aPrice, aQuantity, aOffersApplied, aAddress, this);
-  }
+    return new CustomerOrder(aId, aPrice, aQuantity, aOfferApplied, aAddress, this);
+  }*/
 
   public boolean addCustomerOrder(CustomerOrder aCustomerOrder)
   {

@@ -89,14 +89,13 @@ public class CustomerOrderRepositoryTests {
         Date date = new java.sql.Date(calendar.getTimeInMillis());
         float price = 79.99f;
         int quantity = 10;
-        String offers = "20% Off!";
         String orderAddress = "7700 Bd Decarie";
 
         CustomerOrder customerOrder = new CustomerOrder();
         customerOrder.setDate(date);
         customerOrder.setPrice(price);
         customerOrder.setQuantity(quantity);
-        customerOrder.setOffersApplied(offers);
+        customerOrder.setOfferApplied(null);
         customerOrder.setAddress(orderAddress);
         customerOrder.setCustomer(customer);
         customerOrder.addPurchased(videoGame);
@@ -111,7 +110,7 @@ public class CustomerOrderRepositoryTests {
         assertEquals(date.toLocalDate(), customerOrderFromDb.getDate().toLocalDate());
         assertEquals(price, customerOrderFromDb.getPrice(), 0.001);
         assertEquals(quantity, customerOrderFromDb.getQuantity());
-        assertEquals(offers, customerOrderFromDb.getOffersApplied());
+        assertEquals(null, customerOrderFromDb.getOfferApplied());
         assertEquals(orderAddress, customerOrderFromDb.getAddress());
         assertEquals(username, customerOrderFromDb.getCustomer().getUsername());
         assertEquals(1, customerOrderFromDb.getPurchased().size());

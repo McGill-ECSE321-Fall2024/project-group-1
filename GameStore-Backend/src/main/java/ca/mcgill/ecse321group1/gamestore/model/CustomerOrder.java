@@ -7,7 +7,7 @@ import java.util.*;
 import jakarta.persistence.*;
 
 // line 47 "../../../../../../model.ump"
-// line 117 "../../../../../../model.ump"
+// line 130 "../../../../../../model.ump"
 @Entity
 public class CustomerOrder
 {
@@ -20,10 +20,12 @@ public class CustomerOrder
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+  private int shared_id;
   private Date date;
   private float price;
   private int quantity;
-  private String offersApplied;
+  @ManyToOne
+  private Offer offerApplied;
   private String address;
 
   //CustomerOrder Associations
@@ -36,17 +38,14 @@ public class CustomerOrder
   // CONSTRUCTOR
   //------------------------
 
-  public CustomerOrder(){
-    purchased = new ArrayList<VideoGame>();
-  }
-
-  public CustomerOrder(int aId, Date aDate, float aPrice, int aQuantity, String aOffersApplied, String aAddress, Customer aCustomer)
+  public CustomerOrder(int aId, int aShared_id, Date aDate, float aPrice, int aQuantity, Offer aOfferApplied, String aAddress, Customer aCustomer)
   {
     id = aId;
+    shared_id = aShared_id;
     date = aDate;
     price = aPrice;
     quantity = aQuantity;
-    offersApplied = aOffersApplied;
+    offerApplied = aOfferApplied;
     address = aAddress;
     purchased = new ArrayList<VideoGame>();
     boolean didAddCustomer = setCustomer(aCustomer);
@@ -54,6 +53,10 @@ public class CustomerOrder
     {
       throw new RuntimeException("Unable to create customerOrder due to customer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
+  }
+
+  public CustomerOrder(){
+    purchased = new ArrayList<VideoGame>();
   }
 
   //------------------------
@@ -64,6 +67,14 @@ public class CustomerOrder
   {
     boolean wasSet = false;
     id = aId;
+    wasSet = true;
+    return wasSet;
+  }
+
+  public boolean setShared_id(int aShared_id)
+  {
+    boolean wasSet = false;
+    shared_id = aShared_id;
     wasSet = true;
     return wasSet;
   }
@@ -92,10 +103,10 @@ public class CustomerOrder
     return wasSet;
   }
 
-  public boolean setOffersApplied(String aOffersApplied)
+  public boolean setOfferApplied(Offer aOfferApplied)
   {
     boolean wasSet = false;
-    offersApplied = aOffersApplied;
+    offerApplied = aOfferApplied;
     wasSet = true;
     return wasSet;
   }
@@ -113,6 +124,11 @@ public class CustomerOrder
     return id;
   }
 
+  public int getShared_id()
+  {
+    return shared_id;
+  }
+
   public Date getDate()
   {
     return date;
@@ -128,9 +144,9 @@ public class CustomerOrder
     return quantity;
   }
 
-  public String getOffersApplied()
+  public Offer getOfferApplied()
   {
-    return offersApplied;
+    return offerApplied;
   }
 
   public String getAddress()
@@ -199,7 +215,7 @@ public class CustomerOrder
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addPurchasedAt(VideoGame aPurchased, int index)
-  {  
+  {
     boolean wasAdded = false;
     if(addPurchased(aPurchased))
     {
@@ -222,8 +238,8 @@ public class CustomerOrder
       purchased.remove(aPurchased);
       purchased.add(index, aPurchased);
       wasAdded = true;
-    } 
-    else 
+    }
+    else
     {
       wasAdded = addPurchasedAt(aPurchased, index);
     }
@@ -261,27 +277,27 @@ public class CustomerOrder
   }
 
 
-  public String toString()
-  {
-    return super.toString() + "["+
-            "id" + ":" + getId()+ "," +
-            "price" + ":" + getPrice()+ "," +
-            "quantity" + ":" + getQuantity()+ "," +
-            "offersApplied" + ":" + getOffersApplied()+ "," +
-            "address" + ":" + getAddress()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "customer = "+(getCustomer()!=null?Integer.toHexString(System.identityHashCode(getCustomer())):"null");
+  public String toString() {
+    return super.toString() + "[" +
+            "id" + ":" + getId() + "," +
+            "shared_id" + ":" + getShared_id() + "," +
+            "price" + ":" + getPrice() + "," +
+            "quantity" + ":" + getQuantity() + "," +
+            "address" + ":" + getAddress() + "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this) ? getDate().toString().replaceAll("  ", "    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "offerApplied" + "=" + (getOfferApplied() != null ? !getOfferApplied().equals(this) ? getOfferApplied().toString().replaceAll("  ", "    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "customer = " + (getCustomer() != null ? Integer.toHexString(System.identityHashCode(getCustomer())) : "null");
   }
 
   public boolean equals(Object obj) {
     if (obj instanceof CustomerOrder order) return
             order.id == this.id &&
                     Math.pow(this.price - order.price, 2) < 1E-3 &&
-            order.quantity == this.quantity &&
-            order.offersApplied.equals(this.offersApplied) &&
-            order.address.equals(this.address) &&
-            order.date.equals(this.date) &&
-            order.customer.equals(this.customer);
+                    order.quantity == this.quantity &&
+                    order.offerApplied.equals(this.offerApplied) &&
+                    order.address.equals(this.address) &&
+                    order.date.equals(this.date) &&
+                    order.customer.equals(this.customer);
     else return false;
   }
 }

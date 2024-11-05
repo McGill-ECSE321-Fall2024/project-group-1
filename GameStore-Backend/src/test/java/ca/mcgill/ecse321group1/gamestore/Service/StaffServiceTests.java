@@ -139,7 +139,7 @@ public class StaffServiceTests {
     }
 
     @Test
-    public void testEditValidOwner() {
+    public void testEditValidStaff() {
         //Arrange
         String new_username = "Jane Doe";
         String new_email = "PullitzerPrize@WashingtonPst.com"; //not a scam

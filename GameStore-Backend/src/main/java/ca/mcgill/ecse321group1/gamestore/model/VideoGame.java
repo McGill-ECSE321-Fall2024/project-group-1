@@ -2,6 +2,9 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.*;
 import jakarta.persistence.*;
@@ -317,9 +320,10 @@ public class VideoGame
 
   public boolean equals (Object obj) {
     if (obj instanceof VideoGame game) return
-    game.id == this.id && Math.pow(this.price - game.price, 2) < 1E-3 &&
-            this.name.equals(game.name) && this.description.equals(game.description) &&
-            this.quantity == game.quantity && this.date.equals(game.date) && this.status.equals(game.status) && this.category.equals(game.category);
+              Math.pow(this.price - game.price, 2) < 1E-3 &&
+                      this.name.equals(game.name) && this.description.equals(game.description) &&
+                      this.quantity == game.quantity && this.date.toString().equals(game.date.toString()) &&
+                      this.status.equals(game.status) && this.category.equals(game.category);
     return false;
   }
 }

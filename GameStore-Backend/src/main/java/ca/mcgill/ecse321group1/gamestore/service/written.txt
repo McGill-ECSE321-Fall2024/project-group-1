@@ -1,0 +1,269 @@
+ca.mcgill.ecse321group1.gamestore.model.Customer@1e1f467f[id:17,username:BobWilson,email:Bobby@gmail.com,passwordHash:c0e8e5c682a4d2f7dfd337aa17e39ddb8a266c53a8510ad2c83e9df447992db4][address:123 Mason Road, USA,phoneNumber:+2 248 893 524]
+ca.mcgill.ecse321group1.gamestore.model.Customer@1e1f467f[id:17,username:BobWilson,email:Bobby@gmail.com,passwordHash:c0e8e5c682a4d2f7dfd337aa17e39ddb8a266c53a8510ad2c83e9df447992db4][address:123 Mason Road, USA,phoneNumber:+2 248 893 524]
+ca.mcgill.ecse321group1.gamestore.model.Customer@1e1f467f[id:17,username:BobWilson,email:Bobby@gmail.com,passwordHash:c0e8e5c682a4d2f7dfd337aa17e39ddb8a266c53a8510ad2c83e9df447992db4][address:123 Mason Road, USA,phoneNumber:+2 248 893 524]
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@94e690d6[id:182,content:Great game! 5/5]
+  date=2286-11-20
+  rating=fourStar
+  reviewed = 5e352e3a
+  reviewer = 1e1f467f
+  reply = null
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:0,content:Great game! 5/5]
+  date=2286-11-20
+  rating=fourStar
+  reviewed = 5e352e3a
+  reviewer = null
+  reply = null
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:183,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 17287458
+  reviewer = 36d8ddc5
+  reply = 76614fd1
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:183,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 17287458
+  reviewer = 36d8ddc5
+  reply = 76614fd1
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:0,content:Great game! 5/5]
+  date=2286-11-20
+  rating=fourStar
+  reviewed = f5b81f4
+  reviewer = null
+  reply = null
+ca.mcgill.ecse321group1.gamestore.model.Review@bb0516b1[id:182,content:Great game! 5/5]
+  date=2286-11-20
+  rating=fourStar
+  reviewed = f5b81f4
+  reviewer = 59cc46a4
+  reply = null
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:185,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 7e383712
+  reviewer = 41628b4f
+  reply = 9a932a4
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:185,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 7e383712
+  reviewer = 41628b4f
+  reply = 9a932a4
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:187,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 7937f96e
+  reviewer = 5a004dd4
+  reply = 3c5797c6
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:187,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 7937f96e
+  reviewer = 5a004dd4
+  reply = 3c5797c6
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:189,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 11c68269
+  reviewer = 1f15d346
+  reply = 1495f70
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:189,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 11c68269
+  reviewer = 1f15d346
+  reply = 1495f70
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:191,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 123fd460
+  reviewer = 3debeb5e
+  reply = 38293d23
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:191,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 123fd460
+  reviewer = 3debeb5e
+  reply = 38293d23
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:193,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 511ba9c9
+  reviewer = 7315264e
+  reply = 5cb42eb2
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:193,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 511ba9c9
+  reviewer = 7315264e
+  reply = 5cb42eb2
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:195,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 7f746160
+  reviewer = 2f29046b
+  reply = 6bd5aa8b
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:195,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 7f746160
+  reviewer = 2f29046b
+  reply = 6bd5aa8b
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:197,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 7ff26b29
+  reviewer = 466fd19b
+  reply = 349469db
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:197,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 7ff26b29
+  reviewer = 466fd19b
+  reply = 349469db
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:199,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 17524c36
+  reviewer = 2a1fce44
+  reply = 3af17313
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:199,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 17524c36
+  reviewer = 2a1fce44
+  reply = 3af17313
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:201,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 3647b274
+  reviewer = 2898cd46
+  reply = 4ff233f9
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:201,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 3647b274
+  reviewer = 2898cd46
+  reply = 4ff233f9
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:203,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 466fd19b
+  reviewer = 2f89b44e
+  reply = 1f7653ae
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:203,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 466fd19b
+  reviewer = 2f89b44e
+  reply = 1f7653ae
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:205,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 2f89b44e
+  reviewer = 48d6248d
+  reply = 1737acc0
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:205,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 2f89b44e
+  reviewer = 48d6248d
+  reply = 1737acc0
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:207,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 17524c36
+  reviewer = 2a1fce44
+  reply = 3af17313
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:207,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 17524c36
+  reviewer = 2a1fce44
+  reply = 3af17313
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:209,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 17524c36
+  reviewer = 2a1fce44
+  reply = 6bd5aa8b
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:209,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 17524c36
+  reviewer = 2a1fce44
+  reply = 6bd5aa8b
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:211,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 1495f70
+  reviewer = 7f746160
+  reply = 2c3a2935
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:211,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 1495f70
+  reviewer = 7f746160
+  reply = 2c3a2935
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:213,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 1227ea21
+  reviewer = 7fcc8d9f
+  reply = 1ee37c7a
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:213,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 1227ea21
+  reviewer = 7fcc8d9f
+  reply = 1ee37c7a
+
+Contesting:
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:215,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 63fe055
+  reviewer = 1d4ee936
+  reply = 7fcc8d9f
+ca.mcgill.ecse321group1.gamestore.model.Review@0[id:215,content:Amazing game, 10/10 would recommend]
+  date=2024-03-01
+  rating=fourStar
+  reviewed = 63fe055
+  reviewer = 1d4ee936
+  reply = 7fcc8d9f
+

@@ -2,6 +2,9 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import jakarta.persistence.*;
 
@@ -225,6 +228,15 @@ public class Review
 
   public boolean equals(Object obj)
   {
+    if (obj instanceof Review rev) return
+            rev.content.equals(this.content) &&
+            rev.date.toString().equals(this.date.toString()) &&
+            rev.rating.equals(this.rating) &&
+            rev.reviewed.equals(this.reviewed) &&
+            this.reviewer.equals(rev.reviewer);
+    else return false;
+    //pre-existing filth
+    /*
     if (obj == null) { return false; }
     if (!getClass().equals(obj.getClass())) { return false; }
 
@@ -248,7 +260,7 @@ public class Review
       return false;
     }
 
-    return true;
+    return true;*/
   }
 
   public int hashCode()
