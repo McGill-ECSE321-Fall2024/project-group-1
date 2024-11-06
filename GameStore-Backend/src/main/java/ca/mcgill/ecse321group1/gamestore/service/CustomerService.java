@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class CustomerService {
@@ -144,5 +145,12 @@ public class CustomerService {
             str.append("$").append(String.format("%7.2f", subtotal)).append("--------------------\n");
         }
         return str.toString();
+    }
+
+    @Transactional
+    public Customer removeAllFromCart (int customer_id) {
+        Customer customer = getCustomer(customer_id);//ensure it exists
+        for (VideoGame game : Set.of(customer.getCart().toArray(new VideoGame[0]))) customer = removeFromCart(customer_id, game.getId());
+        return customer;
     }
 }
