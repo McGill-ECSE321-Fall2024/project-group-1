@@ -36,7 +36,7 @@ public class CustomerOrderService {
 
     /**Given a Customer with a nonempty cart, creates a set of CustomerOrders and returns shared_id. Cart is unaffected.*/
     @Transactional
-    public int generateOrdersFromCustomerCart(Customer customer, Date curDate, String address) {
+    public int generateOrdersFromCustomerCart(Customer customer, Date curDate, String address, VideoGameService vidservice) {
         if (customer == null)
             throw new IllegalArgumentException("Customer must exist to generate orders form it.");
         if (customer.getCart().isEmpty())
@@ -58,6 +58,10 @@ public class CustomerOrderService {
         for (VideoGame game : customer.getCart()) counter.merge(game, 1, Integer::sum);
         for (VideoGame key : counter.keySet()) {
             int count = counter.get(key);
+
+            if (key.getQuantity() < count) throw new IllegalArgumentException(count + " VideoGames requested but only " + key.getQuantity() + " in stock!");
+            else vidservice.alterQuantity(key.getId(), -count);
+
             float price = key.getPrice();
             Offer used = null;
             for (Offer offer : offers)// game specific offers
@@ -107,5 +111,23 @@ public class CustomerOrderService {
             if (co.getSharedId() == shared_id) total_sum.updateAndGet(v -> v + co.getPrice());
         });
         return total_sum.get();
+    }
+
+    /**Get all unsatisfied orders of a game.*/
+    @Transactional
+    public List<CustomerOrder> getAllUnsatisfied (int game_id) {
+        ArrayList<CustomerOrder> unsat = new ArrayList<>();
+        repo.findAll().forEach(co -> {
+            if (co.getPurchased().getId() == game_id) unsat.add(co);
+        });
+        return unsat;
+    }
+
+    /**Mark given orders as satisfied or not.*/
+    @Transactional
+    public void setSatisfied (int game_id, boolean satisfied, List<CustomerOrder> orders) {
+        repo.findAll().forEach(co -> {
+            if (orders.contains(co)) co.setSatisfied(satisfied);
+        });
     }
 }

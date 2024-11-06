@@ -1,19 +1,10 @@
-
-
-
-
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
-
-
 package ca.mcgill.ecse321group1.gamestore.model;
 import java.sql.Date;
 import java.util.*;
 import jakarta.persistence.*;
 
-// line 47 "../../../../../../model.ump"
-// line 130 "../../../../../../model.ump"
-  @Entity
+
+@Entity
 public class CustomerOrder
 {
 
@@ -29,11 +20,12 @@ public class CustomerOrder
   private float price;
   private int quantity;
   private Date date;
-  @ManyToOne
-  private Offer offerApplied;
+  private boolean satisfied;
   private String address;
 
   //CustomerOrder Associations
+  @ManyToOne
+  private Offer offerApplied;
   @OneToOne
   private VideoGame purchased;
   @ManyToOne
@@ -51,6 +43,7 @@ public class CustomerOrder
     price = aPrice;
     quantity = aQuantity;
     offerApplied = aOfferApplied;
+    satisfied = false;
     address = aAddress;
     if (!setPurchased(aPurchased))
     {
@@ -64,7 +57,7 @@ public class CustomerOrder
   }
 
   public CustomerOrder() {
-
+    satisfied = false;
   }
 
   //------------------------
@@ -119,6 +112,14 @@ public class CustomerOrder
     return wasSet;
   }
 
+  public boolean setSatisfied(boolean aSatisfied)
+  {
+    boolean wasSet = false;
+    satisfied = aSatisfied;
+    wasSet = true;
+    return wasSet;
+  }
+
   public boolean setAddress(String aAddress)
   {
     boolean wasSet = false;
@@ -157,9 +158,19 @@ public class CustomerOrder
     return offerApplied;
   }
 
+  public boolean getSatisfied()
+  {
+    return satisfied;
+  }
+
   public String getAddress()
   {
     return address;
+  }
+  /* Code from template attribute_IsBoolean */
+  public boolean isSatisfied()
+  {
+    return satisfied;
   }
   /* Code from template association_GetOne */
   public VideoGame getPurchased()
@@ -221,6 +232,7 @@ public class CustomerOrder
             "sharedId" + ":" + getSharedId()+ "," +
             "price" + ":" + getPrice()+ "," +
             "quantity" + ":" + getQuantity()+ "," +
+            "satisfied" + ":" + getSatisfied()+ "," +
             "address" + ":" + getAddress()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "date" + "=" + (getDate() != null ? !getDate().equals(this)  ? getDate().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "offerApplied" + "=" + (getOfferApplied() != null ? !getOfferApplied().equals(this)  ? getOfferApplied().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
@@ -236,7 +248,9 @@ public class CustomerOrder
                     order.offerApplied.equals(this.offerApplied) &&
                     order.address.equals(this.address) &&
                     order.date.equals(this.date) &&
-                    order.customer.equals(this.customer);
+                    order.customer.equals(this.customer) &&
+                    order.satisfied == this.satisfied;
     else return false;
   }
 }
+
