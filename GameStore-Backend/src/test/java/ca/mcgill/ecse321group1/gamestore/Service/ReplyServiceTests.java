@@ -63,7 +63,8 @@ public class ReplyServiceTests {
         Category cat = new Category();
         cat.setName("Questing");
         cat.setDescription("Knights and stuff");
-        when(catrepo.save(any(Category.class))).thenReturn(cat);
+        cat.setId(12312);
+        when(catrepo.save(cat)).thenReturn(cat);
         cat = catrepo.save(cat);
 
 
@@ -75,11 +76,12 @@ public class ReplyServiceTests {
         game.setPrice(1.2F);
         game.setQuantity(10002);
         game.setStatus(VideoGame.Status.Active);
-        when(gamerepo.save(any(VideoGame.class))).thenReturn(game);
+        game.setId(123132);
+        when(gamerepo.save(game)).thenReturn(game);
         game = gamerepo.save(game);
 
         scathing = new Review(182, "Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB);
-        when(revrepo.save(any(Review.class))).thenReturn(scathing);
+        when(revrepo.save(scathing)).thenReturn(scathing);
         scathing = revrepo.save(scathing);
 
         backhand = new Reply(12, "You are completely wrong!", new Date(188232321), scathing);

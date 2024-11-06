@@ -1,9 +1,9 @@
-ca.mcgill.ecse321group1.gamestore.model.VideoGame@2ab0ca04[id:778,name:Rainbow Six Siege,description:5v5 Shooter Game,price:29.99,quantity:5]
+ca.mcgill.ecse321group1.gamestore.model.VideoGame@30fba306[id:1008,name:Rainbow Six Siege,description:5v5 Shooter Game,price:29.99,quantity:5]
   date=2024-02-01
   status=Active
-  category = 43b41cb9
-ca.mcgill.ecse321group1.gamestore.model.VideoGame@7f0b32c0[id:778,name:Rainbow Six Siege,description:5v5 Shooter Game,price:29.99,quantity:5]
+  category = 5d8de155
+ca.mcgill.ecse321group1.gamestore.model.VideoGame@7244b40e[id:1008,name:Rainbow Six Siege,description:5v5 Shooter Game,price:29.99,quantity:5]
   date=2024-02-01
   status=Active
-  category = fc9313d
+  category = 2ea8f277
 true

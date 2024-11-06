@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-05T22:30:00" hostname="Zacharys-MBP" time="0.028">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-06T00:59:25" hostname="Zacharys-MBP" time="0.038">
   <properties/>
-  <testcase name="testReadCustomerByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
-  <testcase name="testEditValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.004"/>
-  <testcase name="testCreateInvalidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.002"/>
-  <testcase name="testDeleteCustomerByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.002"/>
-  <testcase name="testCreateValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.002"/>
+  <testcase name="testReadCustomerByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.004"/>
+  <testcase name="testEditValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.005"/>
+  <testcase name="testCreateInvalidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
+  <testcase name="testDeleteCustomerByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
+  <testcase name="testCreateValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.004"/>
   <testcase name="testReadCustomerByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.002"/>
   <testcase name="testCreateInvalidDuplicateCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
-  <testcase name="testDeleteCustomerByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.001"/>
-  <system-out><![CDATA[2024-11-05T17:30:00.296-05:00  INFO 72201 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests]: CustomerServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-05T17:30:00.297-05:00  INFO 72201 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests
+  <testcase name="testDeleteCustomerByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.002"/>
+  <system-out><![CDATA[2024-11-05T19:59:25.308-05:00  INFO 75747 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests]: CustomerServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-05T19:59:25.309-05:00  INFO 75747 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

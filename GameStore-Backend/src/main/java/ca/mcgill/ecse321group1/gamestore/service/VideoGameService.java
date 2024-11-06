@@ -1,21 +1,29 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
+import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.model.Category;
+import ca.mcgill.ecse321group1.gamestore.repository.ReviewRepository;
 import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.event.TreeWillExpandListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class VideoGameService {
     @Autowired
     private VideoGameRepository repo;
+    @Autowired
+    private ReviewRepository revrepo;
 
     /**Retrieves a VideoGame object based on lookup by id*/
     @Transactional
@@ -52,9 +60,7 @@ public class VideoGameService {
     /**Moves VideoGame from Pending to Active status*/
     @Transactional
     public VideoGame approveGame (int id) {
-        VideoGame tba = repo.findById(id).orElse(null);
-        if(tba == null)
-            throw new IllegalArgumentException("No such video game " + id + " exists to approve!");
+        VideoGame tba = getVideoGame(id);
         if(!tba.getStatus().equals(VideoGame.Status.Pending))
             throw new IllegalArgumentException("VideoGame " + id + " is not currently Pending!");
         tba.setStatus(VideoGame.Status.Active);
@@ -64,9 +70,7 @@ public class VideoGameService {
     /**Moves VideoGame to InActive from anything*/
     @Transactional
     public VideoGame deactivateGame (int id) {
-        VideoGame tba = repo.findById(id).orElse(null);
-        if(tba == null)
-            throw new IllegalArgumentException("No such video game " + id + " exists to approve!");
+        VideoGame tba = getVideoGame(id);
         tba.setStatus(VideoGame.Status.Inactive);
         return repo.save(tba);
     }
@@ -74,9 +78,7 @@ public class VideoGameService {
     /**Updates VideoGame quantity by a positive or negative number.*/
     @Transactional
     public VideoGame alterQuantity (int id, int amount) {
-        VideoGame tba = repo.findById(id).orElse(null);
-        if(tba == null)
-            throw new IllegalArgumentException("No such video game " + id + " exists to approve!");
+        VideoGame tba = getVideoGame(id);
         if(tba.getQuantity() + amount < 0)
             throw new IllegalArgumentException("VideoGame " + id + " only has " + tba.getQuantity() + " stock left!");
         tba.setQuantity(tba.getQuantity() + amount);
@@ -85,22 +87,17 @@ public class VideoGameService {
 
     /**Retrieves a VideoGame by ID, and modifies its attributes according to editVideoGame's arguments before re-storing*/
     @Transactional
-    public VideoGame editVideoGame(int id, String name, String description, float price, int quantity, Date date, VideoGame.Status status, Category category) {
-        VideoGame game = repo.findById(id).orElse(null);
+    public VideoGame editVideoGame(int id, String name, String description, float price, Date date, VideoGame.Status status, Category category) {
+        VideoGame game = getVideoGame(id);
 
-        if (game == null)
-            throw new IllegalArgumentException(id + " does not correspond to an extant VideoGame!");
         if (name == null || description == null)
             throw new IllegalArgumentException("VideoGame requires a name and description!");
         if (price < 0)
             throw new IllegalArgumentException("Price must be non-negative!");
-        if (quantity < 0)
-            throw new IllegalArgumentException("Initial quantity must be nonzero!");
 
         game.setName(name);
         game.setDescription(description);
         game.setPrice(price);
-        game.setQuantity(quantity);
         game.setDate(date);
         game.setStatus(status);
         game.setCategory(category);
@@ -134,4 +131,29 @@ public class VideoGameService {
         });
         return tbr;
     }
+
+    /**Returns all VideoGames that have a given Category.*/
+    @Transactional
+    public List<VideoGame> searchByCategory (int categoryId) {
+        ArrayList<VideoGame> tbr = new ArrayList<>();
+        repo.findAll().iterator().forEachRemaining(VG -> {
+            if (VG.getCategory() != null && VG.getCategory().getId() == categoryId) tbr.add(VG);
+        });
+        return tbr;
+    }
+
+    /**Gets average Rating of VideoGame*/
+    public Review.Rating averageRatingOf(int gameId) {
+        AtomicInteger val = new AtomicInteger();
+        AtomicInteger count = new AtomicInteger();
+        revrepo.findAll().iterator().forEachRemaining(r -> {
+            if (r.getReviewed().getId() != gameId) return;
+            count.getAndIncrement();
+            val.addAndGet(r.getRating().ordinal());
+        });
+        if (count.get() == 0) return null;
+        Review.Rating[] ratings = new Review.Rating[]{Review.Rating.oneStar, Review.Rating.twoStar, Review.Rating.threeStar, Review.Rating.fourStar, Review.Rating.fiveStar};
+        return ratings[val.get() / count.get()];
+    }
+
 }

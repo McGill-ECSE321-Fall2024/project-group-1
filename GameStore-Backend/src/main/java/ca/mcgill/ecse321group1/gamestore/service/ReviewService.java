@@ -13,6 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ReviewService {
@@ -38,6 +40,9 @@ public class ReviewService {
             throw new IllegalArgumentException("Review must have been written by a customer!");
         if (rating == null)
             throw new IllegalArgumentException("Review must have Rating!");
+        repo.findAll().iterator().forEachRemaining(r -> {
+            if (r.getReviewer().equals(customer) && r.getReviewed().equals(game)) throw new IllegalArgumentException("Customer has already made a review for this game!");
+        });
 
         Review review = new Review();//content date rating videogame customer
         review.setContent(content);
@@ -89,5 +94,15 @@ public class ReviewService {
         Review review = getReview(id);
         if(review.getReply() != null) replyService.deleteReply(review.getReply().getId());
         repo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong
+    }
+
+    /**Returns all Reviews of a given VideoGame.*/
+    @Transactional
+    public List<Review> getAllReviews (int gameId) {
+        ArrayList<Review> tbr = new ArrayList<>();
+        repo.findAll().iterator().forEachRemaining(r -> {
+            if (r.getReviewed().getId() == gameId) tbr.add(r);
+        });
+        return tbr;
     }
 }

@@ -1,8 +1,6 @@
 package ca.mcgill.ecse321group1.gamestore.Service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -54,18 +52,20 @@ public class ReviewServiceTests {
     private Review scathing;
     private VideoGame game;
     private Customer BOB;
+    private Category cat;
 
     @BeforeEach
     public void preparationReview() {
         final String[] fields = new String[]{"BobWilson", "Bobby@gmail.com", "Password123", "123 Mason Road, USA", "+2 248 893 524"};
         BOB = new Customer(17, fields[0], fields[1], PersonServiceTestHelper.hash_password(fields[2]), fields[3], fields[4]);
-        when(custrepo.save(any(Customer.class))).thenReturn(BOB);
+        when(custrepo.save(BOB)).thenReturn(BOB);
         BOB = custrepo.save(BOB);
 
-        Category cat = new Category();
+        cat = new Category();
         cat.setName("Questing");
         cat.setDescription("Knights and stuff");
-        when(catrepo.save(any(Category.class))).thenReturn(cat);
+        cat.setId(12);
+        when(catrepo.save(cat)).thenReturn(cat);
         cat = catrepo.save(cat);
 
 
@@ -77,7 +77,8 @@ public class ReviewServiceTests {
         game.setPrice(1.2F);
         game.setQuantity(10002);
         game.setStatus(VideoGame.Status.Active);
-        when(gamerepo.save(any(VideoGame.class))).thenReturn(game);
+        game.setId(123);
+        when(gamerepo.save(game)).thenReturn(game);
         game = gamerepo.save(game);
 
         scathing = new Review(182, "Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB);
@@ -87,7 +88,7 @@ public class ReviewServiceTests {
     @Test
     public void testCreateValidReview() {
         // Arrange
-        when(repo.save(any(Review.class))).thenReturn(scathing);
+        when(repo.save(scathing)).thenReturn(scathing);
 
 
         // Act
@@ -175,6 +176,18 @@ public class ReviewServiceTests {
         // Arrange
 
         // Act
+        Review createdReview = service.createReview("Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB);
+        when(repo.findAll()).thenReturn(List.of(createdReview));
+        // Assert
+        //TODO: IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.createReview("Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB));
+        // assertEquals("Customer has already made a review for this game!", e.getMessage());
+    }
+
+    @Test
+    public void testCreateInvalidSecondReview() {
+        // Arrange
+
+        // Act
 
         // Assert
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.createReview("Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, null, BOB));
@@ -216,5 +229,40 @@ public class ReviewServiceTests {
         // Assert
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.editReview(id, "RANDOM", new Date(192312), null));
         assertEquals("Review must have Rating!", e.getMessage());
+    }
+
+    @Test
+    public void testGetAllReviewsVideoGame () {
+        final String[] fields = new String[]{"BobWilson", "Bobby@gmail.com", "Password123", "123 Mason Road, USA", "+2 248 893 524"};
+        Customer NotBob = new Customer(19, "NotBob", "Weird@mail.com.gmail.org", PersonServiceTestHelper.hash_password(fields[2]), fields[3], fields[4]);
+        when(custrepo.save(NotBob)).thenReturn(NotBob);
+        NotBob = custrepo.save(NotBob);
+
+        Review one = new Review(12, "asdf", new Date(0), Review.Rating.threeStar, game, BOB);
+        when(repo.save(one)).thenReturn(one);
+        one = repo.save(one);
+
+        VideoGame game2 = new VideoGame();
+        game2.setName("Far Cry XLI");
+        game2.setDescription("Far Cry XL II — XLI");
+        game2.setCategory(cat);
+        game2.setDate(new Date(100000000000L));
+        game2.setPrice(1.2F);
+        game2.setQuantity(10002);
+        game2.setStatus(VideoGame.Status.Active);
+        game2.setId(1232);
+        when(gamerepo.save(game2)).thenReturn(game2);
+        game2 = gamerepo.save(game2);
+
+        Review two = new Review(12, "actual review", new Date(0), Review.Rating.fiveStar, game2, NotBob);
+        when(repo.save(two)).thenReturn(two);
+        two = repo.save(two);
+        when(repo.findAll()).thenReturn(List.of(one, two));
+        //Act
+        List<Review> output = service.getAllReviews(game.getId());
+
+        //Assert
+        assertEquals(1, output.size());
+        assertTrue(output.contains(one));
     }
 }
