@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-06T04:09:22" hostname="Zacharys-MBP" time="0.322">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-08T00:51:16" hostname="Ivans-MacBook-Air.local" time="0.321">
   <properties/>
-  <testcase name="contextLoads()" classname="ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests" time="0.322"/>
-  <system-out><![CDATA[23:09:19.636 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests]: GamestoreApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-23:09:19.689 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests
+  <testcase name="contextLoads()" classname="ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests" time="0.321"/>
+  <system-out><![CDATA[19:51:14.413 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests]: GamestoreApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:51:14.455 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,24 +14,42 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2024-11-05T23:09:19.869-05:00  INFO 77566 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : Starting GamestoreApplicationTests using Java 21.0.4 with PID 77566 (started by zachary in /Users/zachary/Documents/ECSE/ECSE321/project-group-1/GameStore-Backend)
-2024-11-05T23:09:19.869-05:00  INFO 77566 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : No active profile set, falling back to 1 default profile: "default"
-2024-11-05T23:09:20.173-05:00  INFO 77566 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-05T23:09:20.213-05:00  INFO 77566 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 10 JPA repository interfaces.
-2024-11-05T23:09:20.436-05:00  INFO 77566 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-05T23:09:20.472-05:00  INFO 77566 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-11-05T23:09:20.491-05:00  INFO 77566 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-05T23:09:20.654-05:00  INFO 77566 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-05T23:09:20.669-05:00  INFO 77566 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-05T23:09:20.792-05:00  INFO 77566 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@48ae9e8b
-2024-11-05T23:09:20.792-05:00  INFO 77566 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-05T23:09:20.812-05:00  WARN 77566 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-05T23:09:21.414-05:00  INFO 77566 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-05T23:09:21.576-05:00  INFO 77566 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-05T23:09:21.902-05:00  WARN 77566 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-05T23:09:22.088-05:00  INFO 77566 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : Started GamestoreApplicationTests in 2.335 seconds (process running for 2.958)
+2024-11-07T19:51:14.602-05:00  INFO 13382 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : Starting GamestoreApplicationTests using Java 21.0.5 with PID 13382 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
+2024-11-07T19:51:14.602-05:00  INFO 13382 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : No active profile set, falling back to 1 default profile: "default"
+2024-11-07T19:51:14.862-05:00  INFO 13382 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-07T19:51:14.888-05:00  INFO 13382 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 10 JPA repository interfaces.
+2024-11-07T19:51:15.062-05:00  INFO 13382 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-07T19:51:15.088-05:00  INFO 13382 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-07T19:51:15.103-05:00  INFO 13382 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-07T19:51:15.240-05:00  INFO 13382 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-07T19:51:15.253-05:00  INFO 13382 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-07T19:51:15.357-05:00  INFO 13382 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7c421952
+2024-11-07T19:51:15.358-05:00  INFO 13382 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-07T19:51:15.375-05:00  WARN 13382 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-07T19:51:15.821-05:00  INFO 13382 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-07T19:51:15.889-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.889-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "ukmrnwa8ld8nt4ead9xkn0h0rja" of relation "category_video_games" does not exist, skipping
+2024-11-07T19:51:15.891-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.891-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk15nw6mjj9ufybw83k8ppgyidr" of relation "customer_order" does not exist, skipping
+2024-11-07T19:51:15.893-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.893-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "ukb7fdu5gblfd177jgbl53cl9aa" of relation "person_cart" does not exist, skipping
+2024-11-07T19:51:15.894-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.894-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk13k79wtc71arvk674u4s28pjl" of relation "person_customer_orders" does not exist, skipping
+2024-11-07T19:51:15.895-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.895-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk8qjq7fflm4pvjsedu0ek2tlds" of relation "person_reviews" does not exist, skipping
+2024-11-07T19:51:15.896-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.896-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uka4hnten237ysy63lhgymqeb67" of relation "person_wishlist" does not exist, skipping
+2024-11-07T19:51:15.897-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.898-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk4uh4vegunuxj6p9ilmeyy6gm2" of relation "reply" does not exist, skipping
+2024-11-07T19:51:15.899-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.899-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "ukeumwu8ibnc3l3724nvintt2nl" of relation "review" does not exist, skipping
+2024-11-07T19:51:15.900-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-11-07T19:51:15.900-05:00  WARN 13382 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk3uv38txgnd2gqiw3441p04irc" of relation "video_game_reviews" does not exist, skipping
+2024-11-07T19:51:15.926-05:00  INFO 13382 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-07T19:51:16.189-05:00  WARN 13382 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-07T19:51:16.328-05:00  INFO 13382 --- [gamestore] [    Test worker] c.m.e.g.GamestoreApplicationTests        : Started GamestoreApplicationTests in 1.815 seconds (process running for 2.309)
 ]]></system-out>
-  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/zachary/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/izhang2/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release

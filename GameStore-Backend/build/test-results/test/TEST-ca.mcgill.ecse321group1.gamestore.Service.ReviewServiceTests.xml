@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-11-06T04:09:23" hostname="Zacharys-MBP" time="0.038">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-11-08T00:51:17" hostname="Ivans-MacBook-Air.local" time="0.026">
   <properties/>
-  <testcase name="testGetAllReviewsVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.005"/>
-  <testcase name="testCreateInvalidSecondReview()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
+  <testcase name="testGetAllReviewsVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.003"/>
+  <testcase name="testCreateInvalidSecondReview()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.001"/>
   <testcase name="testDeleteReviewByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
   <testcase name="testEditValidReview()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
-  <testcase name="testEditReviewInvalidDescription()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
+  <testcase name="testEditReviewInvalidDescription()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.001"/>
   <testcase name="testReadReviewByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
-  <testcase name="testCreateInvalidGamelessReview()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
+  <testcase name="testCreateInvalidGamelessReview()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.001"/>
   <testcase name="testCreateValidReview()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
-  <testcase name="testDeleteReviewByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
+  <testcase name="testDeleteReviewByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.001"/>
   <testcase name="testReadReviewByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests" time="0.002"/>
-  <system-out><![CDATA[2024-11-05T23:09:23.299-05:00  INFO 77566 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests]: ReviewServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-05T23:09:23.300-05:00  INFO 77566 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests
+  <system-out><![CDATA[2024-11-07T19:51:17.333-05:00  INFO 13382 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests]: ReviewServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-07T19:51:17.334-05:00  INFO 13382 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
