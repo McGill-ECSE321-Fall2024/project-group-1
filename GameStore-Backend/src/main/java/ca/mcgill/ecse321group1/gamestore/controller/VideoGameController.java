@@ -38,7 +38,7 @@ public class VideoGameController {
      * @param category
      * @return The created video game
      */
-    @PostMapping("/videogame") {
+    //@PostMapping("/videogame") {
 
-    }
+    //}
 }
