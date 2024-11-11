@@ -5,16 +5,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameDto;
+import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
+import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
+import jakarta.validation.Valid;
 
 @RestController 
 public class VideoGameController {
     @Autowired
     private VideoGameService videoGameService;
+
+    /**
+     * Create video game
+     * @param videoGameToCreate The video game to create.
+     * @return The created video game, including the generated video game ID.
+     */
+    @PostMapping("/videogame")
+    public VideoGameResponseDto createVideoGame(@Valid @RequestBody VideoGameRequestDto videoGameToCreate) {
+        VideoGame createdVideoGame = videoGameService.createVideoGame(
+            videoGameToCreate.getName(),
+            videoGameToCreate.getDescription(),
+            videoGameToCreate.getPrice(),
+            videoGameToCreate.getQuantity(),
+            videoGameToCreate.getDate(),
+            videoGameToCreate.getCategory()
+        );
+        return new VideoGameResponseDto(createdVideoGame); 
+    }
     
     /**
      * Find video game by ID.
@@ -22,24 +44,9 @@ public class VideoGameController {
      * @param pid the primary key of the video game to find. 
      * @return The video game with the given ID.
      */
-    @GetMapping("/videogame/{pid}")
+    @GetMapping("/videogame/{pid}") // DOUBLE CHECK IF THIS WORKS
     public VideoGameResponseDto findVideoGameById(@PathVariable int pid) {
         VideoGame createdVideoGame = videoGameService.getVideoGame(pid);
         return new VideoGameResponseDto(createdVideoGame);
     }
-
-    /**
-     * Create Video Game 
-     * 
-     * @param name the name of the video game
-     * @param description the description of the video game
-     * @param price 
-     * @param quantity
-     * @param date
-     * @param category
-     * @return The created video game
-     */
-    //@PostMapping("/videogame") {
-
-    //}
 }

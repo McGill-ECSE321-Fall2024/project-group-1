@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">2</div>
+<div class="counter">3</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.577s</div>
+<div class="counter">0.569s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">50%</div>
+<div class="percent">66%</div>
 <p>successful</p>
 </div>
 </td>
@@ -86,7 +86,7 @@
 	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
 	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
 	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
-	at app//ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests.testGetValidVideoGameById(VideoGameIntegrationTests.java:66)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests.testGetValidVideoGameById(VideoGameIntegrationTests.java:77)
 	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
 	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
 	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
@@ -105,13 +105,18 @@
 </tr>
 </thead>
 <tr>
+<td class="success">testCreateValidVideoGame()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">testGetInvalidVideoGame()</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">testGetValidVideoGameById()</td>
-<td class="failures">0.575s</td>
+<td class="failures">0.567s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -119,8 +124,8 @@
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>00:01:12.043 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests]: VideoGameIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-00:01:12.123 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests
+<pre>10:26:37.247 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests]: VideoGameIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:26:37.316 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -131,33 +136,33 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2024-11-11T00:01:12.355-05:00  INFO 40720 --- [gamestore] [    Test worker] c.m.e.g.i.VideoGameIntegrationTests      : Starting VideoGameIntegrationTests using Java 21.0.5 with PID 40720 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
-2024-11-11T00:01:12.357-05:00  INFO 40720 --- [gamestore] [    Test worker] c.m.e.g.i.VideoGameIntegrationTests      : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-11-11T00:01:12.814-05:00  INFO 40720 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-11T00:01:12.860-05:00  INFO 40720 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 10 JPA repository interfaces.
-2024-11-11T00:01:13.157-05:00  INFO 40720 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
-2024-11-11T00:01:13.167-05:00  INFO 40720 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-11-11T00:01:13.167-05:00  INFO 40720 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2024-11-11T00:01:13.203-05:00  INFO 40720 --- [gamestore] [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-11-11T00:01:13.203-05:00  INFO 40720 --- [gamestore] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 835 ms
-2024-11-11T00:01:13.291-05:00  INFO 40720 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-11T00:01:13.337-05:00  INFO 40720 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-11-11T00:01:13.360-05:00  INFO 40720 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-11T00:01:13.565-05:00  INFO 40720 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-11T00:01:13.585-05:00  INFO 40720 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-11T00:01:13.738-05:00  INFO 40720 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7f256398
-2024-11-11T00:01:13.739-05:00  INFO 40720 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-11T00:01:13.782-05:00  WARN 40720 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-11T00:01:14.531-05:00  INFO 40720 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-11T00:01:14.705-05:00  INFO 40720 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-11T00:01:15.031-05:00  WARN 40720 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-11T00:01:15.271-05:00  INFO 40720 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 52596 (http) with context path '/'
-2024-11-11T00:01:15.277-05:00  INFO 40720 --- [gamestore] [    Test worker] c.m.e.g.i.VideoGameIntegrationTests      : Started VideoGameIntegrationTests in 3.074 seconds (process running for 3.923)
+2024-11-11T10:26:37.550-05:00  INFO 79964 --- [gamestore] [    Test worker] c.m.e.g.i.VideoGameIntegrationTests      : Starting VideoGameIntegrationTests using Java 21.0.5 with PID 79964 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
+2024-11-11T10:26:37.551-05:00  INFO 79964 --- [gamestore] [    Test worker] c.m.e.g.i.VideoGameIntegrationTests      : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-11-11T10:26:38.002-05:00  INFO 79964 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-11T10:26:38.045-05:00  INFO 79964 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 10 JPA repository interfaces.
+2024-11-11T10:26:38.341-05:00  INFO 79964 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2024-11-11T10:26:38.351-05:00  INFO 79964 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-11T10:26:38.351-05:00  INFO 79964 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-11T10:26:38.391-05:00  INFO 79964 --- [gamestore] [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-11T10:26:38.392-05:00  INFO 79964 --- [gamestore] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 827 ms
+2024-11-11T10:26:38.488-05:00  INFO 79964 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-11T10:26:38.528-05:00  INFO 79964 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-11T10:26:38.551-05:00  INFO 79964 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-11T10:26:38.747-05:00  INFO 79964 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-11T10:26:38.770-05:00  INFO 79964 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-11T10:26:38.937-05:00  INFO 79964 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@398072c6
+2024-11-11T10:26:38.938-05:00  INFO 79964 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-11T10:26:38.975-05:00  WARN 79964 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-11T10:26:39.716-05:00  INFO 79964 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-11T10:26:39.884-05:00  INFO 79964 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-11T10:26:40.225-05:00  WARN 79964 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-11T10:26:40.480-05:00  INFO 79964 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 56416 (http) with context path '/'
+2024-11-11T10:26:40.485-05:00  INFO 79964 --- [gamestore] [    Test worker] c.m.e.g.i.VideoGameIntegrationTests      : Started VideoGameIntegrationTests in 3.086 seconds (process running for 3.995)
 URL: /videogame/0
-2024-11-11T00:01:15.688-05:00  INFO 40720 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-11-11T00:01:15.688-05:00  INFO 40720 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-11-11T00:01:15.689-05:00  INFO 40720 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2024-11-11T00:01:15.806-05:00 ERROR 40720 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalArgumentException: There is no video game with ID 0.] with root cause
+2024-11-11T10:26:40.886-05:00  INFO 79964 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-11T10:26:40.886-05:00  INFO 79964 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-11T10:26:40.887-05:00  INFO 79964 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-11-11T10:26:41.010-05:00 ERROR 79964 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalArgumentException: There is no video game with ID 0.] with root cause
 
 java.lang.IllegalArgumentException: There is no video game with ID 0.
 	at ca.mcgill.ecse321group1.gamestore.service.VideoGameService.getVideoGame(VideoGameService.java:33) ~[main/:na]
@@ -244,7 +249,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 11, 2024, 12:01:17 a.m.</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 11, 2024, 10:26:42 a.m.</p>
 </div>
 </div>
 </body>

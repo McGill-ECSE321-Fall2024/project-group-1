@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-11T05:01:16" hostname="Ivans-MacBook-Air.local" time="0.006">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-11T15:26:41" hostname="Ivans-MacBook-Air.local" time="0.007">
   <properties/>
-  <testcase name="testPersistAndLoadStaff()" classname="ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests" time="0.006"/>
-  <system-out><![CDATA[2024-11-11T00:01:16.557-05:00  INFO 40720 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests]: StaffRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-11T00:01:16.557-05:00  INFO 40720 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests
+  <testcase name="testPersistAndLoadStaff()" classname="ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests" time="0.007"/>
+  <system-out><![CDATA[2024-11-11T10:26:41.791-05:00  INFO 79964 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests]: StaffRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-11T10:26:41.791-05:00  INFO 79964 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

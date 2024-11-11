@@ -8,7 +8,7 @@ import ca.mcgill.ecse321group1.gamestore.model.Category;
 
 // This is what we we need 
 public class VideoGameRequestDto {
-    /* This might need to be split into new Dto
+    /* This might need to be split into a new Dto
     private int id; 
 
     public VideoGameRequestDto(int id) {
@@ -22,10 +22,45 @@ public class VideoGameRequestDto {
     private String description;
     @NotBlank(message = "Video game price is required.")
     private float price;
+    @NotBlank(message = "Video game quantity is required.")
     private int quantity;
+    @NotBlank(message = "Video game date is required")
     private Date date;
+    @NotBlank(message = "Video game category is required")
     private Category category;
-    public VideoGameRequestDto(String name, String description, float price, int quantity, Date date, Category category) {
 
+    public VideoGameRequestDto(String name, String description, float price, int quantity, Date date, Category category) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.date = date;
+        this.category = category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }
+
+

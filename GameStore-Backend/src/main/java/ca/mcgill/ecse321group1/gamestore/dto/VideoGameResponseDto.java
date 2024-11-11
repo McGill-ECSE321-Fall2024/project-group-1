@@ -15,7 +15,6 @@ public class VideoGameResponseDto {
     private String status;
 
     protected VideoGameResponseDto() {
-        
     }
     
     public VideoGameResponseDto(VideoGame videoGame) {
