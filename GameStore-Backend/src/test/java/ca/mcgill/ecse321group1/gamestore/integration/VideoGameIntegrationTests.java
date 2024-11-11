@@ -49,6 +49,17 @@ public class VideoGameIntegrationTests {
     public void clearDatebase() {
         videoGameRepo.deleteAll();
     }
+
+    @Test
+    @Order(2)
+    public void testCreateValidVideoGame() {
+        // Arrange 
+
+        // Act 
+
+        // Assert
+    }
+
     // NEED TO CREATE VIDEO GAME FIRST THEN RUN THE GET BY ID TEST.
     @Test
     @Order(1)
