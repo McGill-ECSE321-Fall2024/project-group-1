@@ -8,7 +8,7 @@ import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 // Okay I realize now we might need to separate this DTO into request and response versions.
 public class VideoGameDto {
     private int id;
-    @NotBlank(message = "Video game name is required.")
+    @NotBlank(message = "Video game name is required.") // Probably need this for other video game attributes.
     private String name;
     private String description;
     private float price;
@@ -16,6 +16,7 @@ public class VideoGameDto {
     private Date date;
     private int status;
 
+    // Might have to get rid of this.
     public VideoGameDto(VideoGame videoGame) {
         this.id = videoGame.getId();
         this.name = videoGame.getName();
@@ -35,6 +36,7 @@ public class VideoGameDto {
         this.date = date;
         this.status = status;
     }
+
 
     public int getId() {
         return id;

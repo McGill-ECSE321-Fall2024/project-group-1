@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameDto;
+import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
 
@@ -22,9 +23,9 @@ public class VideoGameController {
      * @return The video game with the given ID.
      */
     @GetMapping("/videogame/{pid}")
-    public VideoGameDto findVideoGameById(@PathVariable int pid) {
+    public VideoGameResponseDto findVideoGameById(@PathVariable int pid) {
         VideoGame createdVideoGame = videoGameService.getVideoGame(pid);
-        return new VideoGameDto(createdVideoGame);
+        return new VideoGameResponseDto(createdVideoGame);
     }
 
     /**
