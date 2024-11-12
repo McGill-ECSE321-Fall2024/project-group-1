@@ -12,7 +12,8 @@ public class CategoryResponseDto {
         this.name = category.getName();
         this.description = category.getDescription();
     }
-
+    
+    // This is needed for tests to pass but I'm not sure why.
     protected CategoryResponseDto() {
     }
 

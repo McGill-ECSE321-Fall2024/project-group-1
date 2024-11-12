@@ -8,10 +8,11 @@ public class CategoryRequestDto {
     //to delete need id
     //to get category need id 
     
-    @NotBlank(message = "Category name is required.")
+    // @NotBlank(message = "Category name is required.")
     private String name;
-    @NotBlank(message = "Description is required.")
+    // @NotBlank(message = "Description is required.")
     private String description;
+    private int id;
 
     public CategoryRequestDto(String name, String description) {
         this.name = name;
@@ -24,5 +25,9 @@ public class CategoryRequestDto {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getId() {
+        return id;
     }
 }

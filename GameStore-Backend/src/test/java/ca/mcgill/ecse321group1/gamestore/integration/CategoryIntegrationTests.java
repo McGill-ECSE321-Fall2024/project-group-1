@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -38,6 +39,8 @@ public class CategoryIntegrationTests {
     private static final String VALID_NAME = "Adventure";
     private static final String VALID_DESC = "Story based RPG";
 
+    private int categoryId;
+
     @AfterAll
     public void clearDatabase() {
         categoryRepo.deleteAll();
@@ -58,16 +61,27 @@ public class CategoryIntegrationTests {
         String gotName = response.getBody().getName();
         assertEquals(VALID_NAME, response.getBody().getName());
         assertEquals(VALID_DESC, response.getBody().getDescription());
+        assertTrue(response.getBody().getId() > 0, "The ID should be positive.");
+        categoryId = response.getBody().getId();
+
     }
 
     @Test
     @Order(2)
     public void getCategory() {
         // Arrange
+        String url = String.format("/category/%d", this.categoryId);
 
         // Act
+        ResponseEntity<CategoryResponseDto> response = client.getForEntity(url, CategoryResponseDto.class);
 
         // Assert
+        assertNotNull(response);
+        assertEquals(this.categoryId, response.getBody().getId());
+        String gotName = response.getBody().getName();
+        String gotDesc = response.getBody().getName();
+        assertEquals(VALID_NAME, response.getBody().getName());
+        assertEquals(VALID_DESC, response.getBody().getDescription());
     }
 
 

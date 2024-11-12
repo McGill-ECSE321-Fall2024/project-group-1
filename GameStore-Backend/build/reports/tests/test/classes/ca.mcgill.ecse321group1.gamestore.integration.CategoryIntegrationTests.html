@@ -23,13 +23,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">2</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.470s</div>
+<div class="counter">0.574s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">0%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,40 +61,16 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
+<a href="#tab1">Standard output</a>
 </li>
 <li>
-<a href="#tab2">Standard output</a>
-</li>
-<li>
-<a href="#tab3">Standard error</a>
+<a href="#tab2">Standard error</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="testCreateCategory()"></a>
-<h3 class="failures">testCreateCategory()</h3>
-<span class="code">
-<pre>org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;
-	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
-	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
-	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
-	at app//ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests.testCreateCategory(CategoryIntegrationTests.java:53)
-	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -105,17 +81,22 @@
 </tr>
 </thead>
 <tr>
-<td class="failures">testCreateCategory()</td>
-<td class="failures">0.470s</td>
-<td class="failures">failed</td>
+<td class="success">getCategory()</td>
+<td class="success">0.017s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCreateCategory()</td>
+<td class="success">0.557s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>11:18:52.728 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests]: CategoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-11:18:52.811 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests
+<pre>11:59:20.897 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests]: CategoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:59:20.972 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -126,36 +107,35 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2024-11-12T11:18:53.047-05:00  INFO 71220 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : Starting CategoryIntegrationTests using Java 21.0.5 with PID 71220 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
-2024-11-12T11:18:53.048-05:00  INFO 71220 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-11-12T11:18:53.526-05:00  INFO 71220 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-12T11:18:53.574-05:00  INFO 71220 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 10 JPA repository interfaces.
-2024-11-12T11:18:53.882-05:00  INFO 71220 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
-2024-11-12T11:18:53.894-05:00  INFO 71220 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-11-12T11:18:53.894-05:00  INFO 71220 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2024-11-12T11:18:53.928-05:00  INFO 71220 --- [gamestore] [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-11-12T11:18:53.929-05:00  INFO 71220 --- [gamestore] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 861 ms
-2024-11-12T11:18:54.028-05:00  INFO 71220 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-12T11:18:54.068-05:00  INFO 71220 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-11-12T11:18:54.095-05:00  INFO 71220 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-12T11:18:54.303-05:00  INFO 71220 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-12T11:18:54.323-05:00  INFO 71220 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-12T11:18:54.462-05:00  INFO 71220 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5ca64b79
-2024-11-12T11:18:54.463-05:00  INFO 71220 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-12T11:18:54.489-05:00  WARN 71220 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-12T11:18:55.246-05:00  INFO 71220 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-12T11:18:55.430-05:00  INFO 71220 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-12T11:18:55.760-05:00  WARN 71220 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-12T11:18:56.002-05:00  INFO 71220 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 53080 (http) with context path '/'
-2024-11-12T11:18:56.008-05:00  INFO 71220 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : Started CategoryIntegrationTests in 3.11 seconds (process running for 3.918)
-2024-11-12T11:18:56.409-05:00  INFO 71220 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-11-12T11:18:56.409-05:00  INFO 71220 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-11-12T11:18:56.410-05:00  INFO 71220 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-11-12T11:18:56.456-05:00  WARN 71220 --- [gamestore] [o-auto-1-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto ca.mcgill.ecse321group1.gamestore.controller.CategoryController.createCategory(ca.mcgill.ecse321group1.gamestore.dto.CategoryRequestDto): [Field error in object 'categoryRequestDto' on field 'name': rejected value [null]; codes [NotBlank.categoryRequestDto.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [categoryRequestDto.name,name]; arguments []; default message [name]]; default message [Category name is required.]] ]
+2024-11-12T11:59:21.198-05:00  INFO 85974 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : Starting CategoryIntegrationTests using Java 21.0.5 with PID 85974 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
+2024-11-12T11:59:21.199-05:00  INFO 85974 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-11-12T11:59:21.659-05:00  INFO 85974 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-12T11:59:21.701-05:00  INFO 85974 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 10 JPA repository interfaces.
+2024-11-12T11:59:21.996-05:00  INFO 85974 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2024-11-12T11:59:22.006-05:00  INFO 85974 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-12T11:59:22.006-05:00  INFO 85974 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-12T11:59:22.042-05:00  INFO 85974 --- [gamestore] [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-12T11:59:22.043-05:00  INFO 85974 --- [gamestore] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 828 ms
+2024-11-12T11:59:22.141-05:00  INFO 85974 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-12T11:59:22.183-05:00  INFO 85974 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-12T11:59:22.206-05:00  INFO 85974 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-12T11:59:22.421-05:00  INFO 85974 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-12T11:59:22.442-05:00  INFO 85974 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-12T11:59:22.563-05:00  INFO 85974 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@30d0e28e
+2024-11-12T11:59:22.564-05:00  INFO 85974 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-12T11:59:22.588-05:00  WARN 85974 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-12T11:59:23.354-05:00  INFO 85974 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-12T11:59:23.527-05:00  INFO 85974 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-12T11:59:23.863-05:00  WARN 85974 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-12T11:59:24.117-05:00  INFO 85974 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 54810 (http) with context path '/'
+2024-11-12T11:59:24.123-05:00  INFO 85974 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : Started CategoryIntegrationTests in 3.067 seconds (process running for 3.973)
+2024-11-12T11:59:24.515-05:00  INFO 85974 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-12T11:59:24.515-05:00  INFO 85974 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-12T11:59:24.516-05:00  INFO 85974 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 </pre>
 </span>
 </div>
-<div id="tab3" class="tab">
+<div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
 <pre>WARNING: A Java agent has been loaded dynamically (/Users/izhang2/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
@@ -173,7 +153,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 12, 2024, 11:18:56 a.m.</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 12, 2024, 11:59:24 a.m.</p>
 </div>
 </div>
 </body>
