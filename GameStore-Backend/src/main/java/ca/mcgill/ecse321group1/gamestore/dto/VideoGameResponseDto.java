@@ -14,6 +14,7 @@ public class VideoGameResponseDto {
     private Date date;
     private String status;
 
+    // not sure if this is needed
     protected VideoGameResponseDto() {
     }
     

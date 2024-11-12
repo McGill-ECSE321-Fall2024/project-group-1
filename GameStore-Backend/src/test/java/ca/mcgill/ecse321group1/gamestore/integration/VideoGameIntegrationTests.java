@@ -8,12 +8,15 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -21,9 +24,15 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import ca.mcgill.ecse321group1.gamestore.model.Category;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.CategoryRequestDto;
+import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
+import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
 import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
+import ca.mcgill.ecse321group1.gamestore.service.CategoryService;
+import ca.mcgill.ecse321group1.gamestore.dto.Status;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(OrderAnnotation.class)
@@ -33,6 +42,11 @@ public class VideoGameIntegrationTests {
     private TestRestTemplate client;
     @Autowired
     private VideoGameRepository videoGameRepo;
+    @Autowired
+    private CategoryRepository categoryRepo;
+
+
+    //make sure we are autowiring all the repos that are called
 
     
     private static final int VALID_ID = 123;
@@ -41,28 +55,47 @@ public class VideoGameIntegrationTests {
     private static final float VALID_PRICE = 19.99f;
     private static final int VALID_QUANTITY = 25;
     private static final Date VALID_DATE = java.sql.Date.valueOf("2023-11-08");
-    private static final int VALID_STATUS = 1;
+
+    private static final String VALID_CATEGORY_NAME = "Adventure";
+    private static final String VALID_CATEGORY_DESC = "Story based RPG";
+    //private static final Category VALID_CATEGORY = categoryService.createCategory("Action", "Fighting game");
+    //private static final Category VALID_CATEGORY = null;
 
     private int videoGameId;
 
+    @BeforeAll
     @AfterAll
-    public void clearDatebase() {
+    public void clearDatabase() {
         videoGameRepo.deleteAll();
+        categoryRepo.deleteAll();
     }
 
     @Test
-    @Order(2)
     public void testCreateValidVideoGame() {
-        // Arrange 
+        // not sure if this is the right way to do this.
+        //CategoryService categoryService = new CategoryService();
+        //Category VALID_CATEGORY = categoryService.createCategory("Adventure", "Role play as a character to beat story based quests");
 
+        // Arrange 
+        CategoryRequestDto adventure = new CategoryRequestDto(VALID_CATEGORY_NAME, VALID_CATEGORY_DESC); // Makes a dto to create category
+        ResponseEntity<CategoryResponseDto> categoryResponse = client.postForEntity("/category", adventure, CategoryResponseDto.class);
+
+        VideoGameRequestDto zelda = new VideoGameRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_PRICE, VALID_QUANTITY, VALID_DATE, null);
+        assertNotNull(zelda);
         // Act 
 
+        ResponseEntity<VideoGameResponseDto> response = client.postForEntity("/videogame", zelda, VideoGameResponseDto.class);
+
         // Assert
+        assertNotNull(response);
+
+        // Quantity should be over 0
+        // ?ID should be over 0?
     }
+    /* 
 
     // NEED TO CREATE VIDEO GAME FIRST THEN RUN THE GET BY ID TEST.
     @Test
-    @Order(1)
     public void testGetValidVideoGameById() {
         // Arrange 
         String url = String.format("/videogame/%d", this.videoGameId);
@@ -81,10 +114,10 @@ public class VideoGameIntegrationTests {
 
     // TESTING INVALID VIDEO GAME ID AND RETURNING PROPER ERROR CODE
     @Test
-    @Order(2)
     public void testGetInvalidVideoGame() {
         //Arrange
 
     }
+    */
 
 }

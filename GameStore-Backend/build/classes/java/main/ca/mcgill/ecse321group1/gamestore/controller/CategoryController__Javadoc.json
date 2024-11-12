@@ -1,0 +1,1 @@
+{"doc":"","fields":[],"enumConstants":[],"methods":[{"name":"createCategory","paramTypes":["ca.mcgill.ecse321group1.gamestore.dto.CategoryRequestDto"],"doc":" Create category\n"}],"constructors":[]}

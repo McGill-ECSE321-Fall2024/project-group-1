@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import jakarta.validation.Valid;
 
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
@@ -13,7 +14,6 @@ import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
-import jakarta.validation.Valid;
 
 @RestController 
 public class VideoGameController {
@@ -41,12 +41,12 @@ public class VideoGameController {
     /**
      * Find video game by ID.
      * 
-     * @param pid the primary key of the video game to find. 
+     * @param vid the id of the video game to find. 
      * @return The video game with the given ID.
      */
-    @GetMapping("/videogame/{pid}") // DOUBLE CHECK IF THIS WORKS
-    public VideoGameResponseDto findVideoGameById(@PathVariable int pid) {
-        VideoGame createdVideoGame = videoGameService.getVideoGame(pid);
+    @GetMapping("/videogame/{vid}") // DOUBLE CHECK IF THIS WORKS
+    public VideoGameResponseDto findVideoGameById(@PathVariable int vid) {
+        VideoGame createdVideoGame = videoGameService.getVideoGame(vid);
         return new VideoGameResponseDto(createdVideoGame);
     }
 }
