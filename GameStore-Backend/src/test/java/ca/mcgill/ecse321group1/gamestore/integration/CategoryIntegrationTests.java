@@ -38,6 +38,8 @@ public class CategoryIntegrationTests {
 
     private static final String VALID_NAME = "Adventure";
     private static final String VALID_DESC = "Story based RPG";
+    private static final String NEW_NAME = "Action";
+    private static final String NEW_DESC = "Fight till the death";
 
     private int categoryId;
 
@@ -117,6 +119,42 @@ public class CategoryIntegrationTests {
 
     @Test
     @Order(5)
+    public void testEditInvalidCategory() {
+        // Arrange
+        String url = String.format("/category/%d", this.categoryId);
+        CategoryRequestDto request = new CategoryRequestDto(null, NEW_DESC);
+
+        // Act
+        client.put(url, request);
+        ResponseEntity<CategoryResponseDto> response = client.getForEntity(url, CategoryResponseDto.class);
+
+        // Assert 
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(VALID_NAME, response.getBody().getName());
+        assertEquals(VALID_DESC, response.getBody().getDescription());
+    }
+
+    @Test
+    @Order(6)
+    public void testEditValidCategory() {
+        // Arrange
+        String url = String.format("/category/%d", this.categoryId);
+        CategoryRequestDto request = new CategoryRequestDto(NEW_NAME, NEW_DESC);
+
+        // Act 
+        client.put(url, request);
+        ResponseEntity<CategoryResponseDto> response = client.getForEntity(url, CategoryResponseDto.class);
+
+        // Assert 
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(NEW_NAME, response.getBody().getName());
+        assertEquals(NEW_DESC, response.getBody().getDescription());
+    }
+
+    @Test
+    @Order(7)
     public void testDeleteInvalidCategory() {
         // Arrange
         String invalidUrl = String.format("/category/%d", this.categoryId + 1);
@@ -129,12 +167,12 @@ public class CategoryIntegrationTests {
         // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(VALID_NAME, response.getBody().getName());
-        assertEquals(VALID_DESC, response.getBody().getDescription());
+        assertEquals(NEW_NAME, response.getBody().getName());
+        assertEquals(NEW_DESC, response.getBody().getDescription());
     }
 
     @Test
-    @Order(6)
+    @Order(8)
     public void testDeleteValidCategory() {
         // Arrange
         String url = String.format("/category/%d", this.categoryId);

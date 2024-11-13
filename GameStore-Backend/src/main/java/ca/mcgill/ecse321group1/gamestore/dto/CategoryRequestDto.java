@@ -12,7 +12,6 @@ public class CategoryRequestDto {
     private String name;
     // @NotBlank(message = "Description is required.")
     private String description;
-    private int id;
 
     public CategoryRequestDto(String name, String description) {
         this.name = name;
@@ -25,9 +24,5 @@ public class CategoryRequestDto {
 
     public String getDescription() {
         return description;
-    }
-
-    public int getId() {
-        return id;
     }
 }

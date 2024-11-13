@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -45,6 +46,22 @@ public class CategoryController {
     public CategoryResponseDto findCategoryById(@PathVariable int cid) {
         Category createdCategory = categoryService.getCategory(cid);
         return new CategoryResponseDto(createdCategory);
+    }
+
+
+    // Check if you can 
+
+    /**
+     * Retrieves category by ID and allows attributes to be edited.
+     * 
+     * @param cid The primary key (category ID) of the category to edit.
+     * @param request The category request DTO with new name and new description
+     * @return The category with the changed attributes.
+     */
+    @PutMapping("/category/{cid}")
+    public CategoryResponseDto editCategoryById(@PathVariable int cid, @Valid @RequestBody CategoryRequestDto request) {
+        Category editedCategory = categoryService.editCategory(cid, request.getName(), request.getDescription());
+        return new CategoryResponseDto(editedCategory);
     }
 
     /**
