@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" tests="15" skipped="0" failures="0" errors="0" timestamp="2024-11-06T04:09:23" hostname="Zacharys-MBP" time="0.046">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" tests="15" skipped="0" failures="0" errors="0" timestamp="2024-11-13T20:06:29" hostname="Zacharys-MBP" time="0.037">
   <properties/>
-  <testcase name="testVideoGameDeactivate()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
+  <testcase name="testVideoGameDeactivate()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.001"/>
   <testcase name="testGetAllPending()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.003"/>
   <testcase name="testVideoGameAlterQuantity()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
-  <testcase name="testEditValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.001"/>
+  <testcase name="testEditValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
   <testcase name="testApproveVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.001"/>
-  <testcase name="testVideoGameGetAverageRating()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.003"/>
-  <testcase name="testDeleteVideoGameByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
-  <testcase name="testCreateInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
-  <testcase name="testReadVideoGameByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
-  <testcase name="testSearchVideoGameByCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
+  <testcase name="testVideoGameGetAverageRating()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
+  <testcase name="testDeleteVideoGameByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.003"/>
+  <testcase name="testCreateInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.001"/>
+  <testcase name="testReadVideoGameByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.001"/>
+  <testcase name="testSearchVideoGameByCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.001"/>
   <testcase name="testApproveVideoGameNotPending()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
-  <testcase name="testSearchVideoGameByKeyword()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.003"/>
-  <testcase name="testReadVideoGameByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
+  <testcase name="testSearchVideoGameByKeyword()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
+  <testcase name="testReadVideoGameByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.001"/>
   <testcase name="testCreateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.001"/>
   <testcase name="testDeleteVideoGameByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests" time="0.002"/>
-  <system-out><![CDATA[2024-11-05T23:09:23.373-05:00  INFO 77566 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests]: VideoGameServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-05T23:09:23.374-05:00  INFO 77566 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests
+  <system-out><![CDATA[2024-11-13T15:06:29.130-05:00  INFO 25181 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests]: VideoGameServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-13T15:06:29.130-05:00  INFO 25181 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,20 +1,17 @@
 package ca.mcgill.ecse321group1.gamestore.Service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.*;
 
-import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
-import ca.mcgill.ecse321group1.gamestore.repository.OwnerRepository;
-import ca.mcgill.ecse321group1.gamestore.repository.StaffRepository;
+import ca.mcgill.ecse321group1.gamestore.model.Category;
+import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
+import ca.mcgill.ecse321group1.gamestore.repository.*;
 import ca.mcgill.ecse321group1.gamestore.service.CustomerService;
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +28,10 @@ public class CustomerServiceTests {
     private StaffRepository staff_repo;
     @Mock
     private OwnerRepository owner_repo;
+    @Mock
+    private VideoGameRepository gamerepo;
+    @Mock
+    private CategoryRepository catrepo;
 
     @InjectMocks
     private CustomerService service;
@@ -168,4 +169,87 @@ public class CustomerServiceTests {
         assertEquals(fields[4], edited.getPhoneNumber());
         verify(repo, times(1)).save(BOB);
     }
+
+    @Test
+    public void testAddToCartOrWishlist() {
+        Category cat = new Category();
+        cat.setName("Questing");
+        cat.setDescription("Knights and stuff");
+        cat.setId(12312);
+        when(catrepo.save(cat)).thenReturn(cat);
+        cat = catrepo.save(cat);
+        VideoGame game = new VideoGame();
+        game.setName("Far Cry XLI");
+        game.setDescription("Far Cry XL II — XLI");
+        game.setCategory(cat);
+        game.setDate(new Date(100000000000L));
+        game.setPrice(1.2F);
+        game.setQuantity(10002);
+        game.setStatus(VideoGame.Status.Active);
+        game.setId(123132);
+        when(gamerepo.save(game)).thenReturn(game);
+        game = gamerepo.save(game);
+
+        // Mock behavior of repository
+        when(repo.findCustomerById(ID)).thenReturn(BOB);
+        when(repo.save(any(Customer.class))).thenReturn(BOB);
+
+        when(gamerepo.existsById(any(Integer.class))).thenReturn(true);
+        when(gamerepo.findVideoGameById(game.getId())).thenReturn(game);
+
+        // Act
+        service.addToCart(BOB.getId(), game.getId(), 3);
+        service.addToWishlist(BOB.getId(), game.getId());
+
+        // Assert
+        assertEquals(3, BOB.getCart().size());
+        assertEquals(1, BOB.getWishlist().size());
+        assertTrue(BOB.getCart().contains(game));
+        assertTrue(BOB.getWishlist().contains(game));
+        verify(repo, times(2)).save(BOB);
+    }
+
+    @Test
+    public void testRemoveFromCartWishlist() {
+        Category cat = new Category();
+        cat.setName("Questing");
+        cat.setDescription("Knights and stuff");
+        cat.setId(12312);
+        when(catrepo.save(cat)).thenReturn(cat);
+        cat = catrepo.save(cat);
+        VideoGame game = new VideoGame();
+        game.setName("Far Cry XLI");
+        game.setDescription("Far Cry XL II — XLI");
+        game.setCategory(cat);
+        game.setDate(new Date(100000000000L));
+        game.setPrice(1.2F);
+        game.setQuantity(10002);
+        game.setStatus(VideoGame.Status.Active);
+        game.setId(123132);
+        when(gamerepo.save(game)).thenReturn(game);
+        game = gamerepo.save(game);
+
+        // Mock behavior of repository
+        when(repo.findCustomerById(ID)).thenReturn(BOB);
+        when(repo.save(any(Customer.class))).thenReturn(BOB);
+
+        when(gamerepo.existsById(any(Integer.class))).thenReturn(true);
+        when(gamerepo.findVideoGameById(game.getId())).thenReturn(game);
+
+        service.addToCart(BOB.getId(), game.getId(), 3);
+        service.addToWishlist(BOB.getId(), game.getId());
+
+        // Act + Assert
+        service.removeFromCart(BOB.getId(), game.getId());
+        assertEquals(0, BOB.getCart().size());
+        service.addToCart(BOB.getId(), game.getId(), 8);
+        service.removeAllFromCart(BOB.getId());
+        service.removeFromWishlist(BOB.getId(), game.getId());
+        // Assert
+        assertEquals(0, BOB.getWishlist().size());
+        assertEquals(0, BOB.getCart().size());
+        verify(repo, times(7)).save(BOB);
+    }
+
+    //getPastOrdersString
 }

@@ -1,17 +1,12 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
-import ca.mcgill.ecse321group1.gamestore.model.Customer;
 import ca.mcgill.ecse321group1.gamestore.model.Reply;
 import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.repository.ReplyRepository;
-import ca.mcgill.ecse321group1.gamestore.repository.ReviewRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 
 @Service
@@ -44,7 +39,7 @@ public class ReplyService {
         return repo.save(reply);//no ID, gets set by this.;
     }
 
-    /**Retrieves a Reply by ID, and modifies its attributes according to editRply's arguments before re-storing. Review it is attached to cannot be modified.*/
+    /**Retrieves a Reply by ID, and modifies its attributes according to editReply's arguments before re-storing. Review it is attached to cannot be modified.*/
     @Transactional
     public Reply editReply(int id, String content, Date date) {
         if (content == null) content = "";

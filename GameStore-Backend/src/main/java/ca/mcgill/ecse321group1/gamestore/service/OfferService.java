@@ -1,8 +1,6 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -270,7 +270,7 @@ public class Customer extends Person
   public boolean addCart(VideoGame aCart)
   {
     boolean wasAdded = false;
-    if (cart.contains(aCart)) { return false; }
+    //if (cart.contains(aCart)) { return false; } //LACK OF DUPLICATION REMOVED BY ZACHARY
     cart.add(aCart);
     wasAdded = true;
     return wasAdded;

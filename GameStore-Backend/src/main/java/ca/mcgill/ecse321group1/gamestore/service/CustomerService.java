@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 import ca.mcgill.ecse321group1.gamestore.model.*;
 import ca.mcgill.ecse321group1.gamestore.repository.OwnerRepository;
@@ -12,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
-import java.util.List;
-import java.util.Set;
 
 @Service
 public class CustomerService {
@@ -109,17 +106,17 @@ public class CustomerService {
         while(customer.removeCart(game));
         return customerRepo.save(customer);
     }
-
+    /**Removes all copies of a specific game from wishlist.*/
     @Transactional
     public Customer removeFromWishlist(int customer_id, int game_id) {
         Customer customer = getCustomer(customer_id);
         if (!gamerepo.existsById(game_id))
             throw new IllegalArgumentException(game_id + " cannot be removed from wishlist as it does not correspond to an extant VideoGame!");
         VideoGame game = gamerepo.findVideoGameById(game_id);
-        while(customer.removeWishlist(game));
+        customer.removeWishlist(game);
         return customerRepo.save(customer);
     }
-
+    /**Returns the string value of every past order of the Customer.*/
     @Transactional
     public String getPastOrdersString(int customer_id) {
         if (!customerRepo.existsById(customer_id))
@@ -134,23 +131,31 @@ public class CustomerService {
                 new_arr.add(order);
                 map.put(order.getSharedId(), new_arr);
             }
-        }
+        }//group duplicate instances in a list together, ie so [gameA, gameA, gameB] becomes 2 gameA, 1 gameB
         StringBuilder str = new StringBuilder().append("------------------------------\n");
         for (ArrayList<CustomerOrder> arr : map.values()) {
             float subtotal = 0;
             for (CustomerOrder order : arr) {
                 subtotal += order.getPrice();
-                str.append(String.format("%dx \"%s\" %s for %f\n", order.getQuantity(), order.getPurchased().getName(), order.getOfferApplied() != null ? order.getOfferApplied() : "", order.getPrice()));
+                String offerStr = "";
+                if (order.getOfferApplied() != null) offerStr = String.format(" (%s %s)", order.getOfferApplied().getName(), "-" + order.getOfferApplied().getEffect());
+                str.append(String.format("%dx \"%s\"%s for $%.2f\n", order.getQuantity(), order.getPurchased().getName(), offerStr, order.getPrice()));
+                // '3 "Sowing Simulator Seven" (May Day Super Sale -30%) $31.29'
             }
-            str.append("$").append(String.format("%7.2f", subtotal)).append("--------------------\n");
+            str.append("$").append(String.format("%7.2f", subtotal));
+            CustomerOrder first = arr.get(0);
+            str.append(String.format("\n#%s —— %s\n%s\n", first.getSharedId(), first.getDate(), first.getAddress()));
+            str.append("--------------------\n");//append address, sharedId and date information at end
         }
         return str.toString();
     }
 
+    /**Clears cart of a customer.*/
     @Transactional
     public Customer removeAllFromCart (int customer_id) {
         Customer customer = getCustomer(customer_id);//ensure it exists
-        for (VideoGame game : Set.of(customer.getCart().toArray(new VideoGame[0]))) customer = removeFromCart(customer_id, game.getId());
-        return customer;
+        HashSet<VideoGame> set = new HashSet<>(customer.getCart());
+        for (VideoGame game : set) customer = removeFromCart(customer_id, game.getId());
+        return customerRepo.save(customer);
     }
 }
