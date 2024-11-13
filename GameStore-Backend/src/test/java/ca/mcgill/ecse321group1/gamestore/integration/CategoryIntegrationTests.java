@@ -48,7 +48,7 @@ public class CategoryIntegrationTests {
 
     @Test
     @Order(1)
-    public void testCreateCategory() {
+    public void testCreateValidCategory() {
         // Arrange
         CategoryRequestDto request = new CategoryRequestDto(VALID_NAME, VALID_DESC);
 
@@ -58,7 +58,6 @@ public class CategoryIntegrationTests {
         // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        String gotName = response.getBody().getName();
         assertEquals(VALID_NAME, response.getBody().getName());
         assertEquals(VALID_DESC, response.getBody().getDescription());
         assertTrue(response.getBody().getId() > 0, "The ID should be positive.");
@@ -68,7 +67,23 @@ public class CategoryIntegrationTests {
 
     @Test
     @Order(2)
-    public void getCategory() {
+    public void testCreateInvalidNameCategory() {
+        // Arrange
+        CategoryRequestDto request = new CategoryRequestDto(null, VALID_DESC);
+
+        // Act
+        ResponseEntity<CategoryResponseDto> response = client.postForEntity("/category", request, CategoryResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        String body = response.getBody().getName();
+
+    }
+
+    @Test
+    @Order(3)
+    public void testGetValidCategory() {
         // Arrange
         String url = String.format("/category/%d", this.categoryId);
 
@@ -77,13 +92,60 @@ public class CategoryIntegrationTests {
 
         // Assert
         assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(this.categoryId, response.getBody().getId());
-        String gotName = response.getBody().getName();
-        String gotDesc = response.getBody().getName();
         assertEquals(VALID_NAME, response.getBody().getName());
         assertEquals(VALID_DESC, response.getBody().getDescription());
     }
 
+    @Test 
+    @Order(4)
+    public void testGetInvalidCategory() {
+        // Arrange
+        String url = String.format("/category/%d", this.categoryId + 1);
 
-    
+        // Act
+        ResponseEntity<CategoryResponseDto> response = client.getForEntity(url, CategoryResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertEquals(null, response.getBody().getName());
+        assertEquals(null, response.getBody().getDescription());
+ 
+    }
+
+    @Test
+    @Order(5)
+    public void testDeleteInvalidCategory() {
+        // Arrange
+        String invalidUrl = String.format("/category/%d", this.categoryId + 1);
+        String validUrl = String.format("/category/%d", this.categoryId);
+
+        // Act
+        client.delete(invalidUrl);
+        ResponseEntity<CategoryResponseDto> response = client.getForEntity(validUrl, CategoryResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(VALID_NAME, response.getBody().getName());
+        assertEquals(VALID_DESC, response.getBody().getDescription());
+    }
+
+    @Test
+    @Order(6)
+    public void testDeleteValidCategory() {
+        // Arrange
+        String url = String.format("/category/%d", this.categoryId);
+
+        // Act
+        client.delete(url);
+        ResponseEntity<CategoryResponseDto> response = client.getForEntity(url, CategoryResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+
+    }
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,8 +42,18 @@ public class CategoryController {
      * @return The category with the given ID.
      */
     @GetMapping("/category/{cid}")
-    public CategoryResponseDto findCategoryById(@PathVariable int cid){
+    public CategoryResponseDto findCategoryById(@PathVariable int cid) {
         Category createdCategory = categoryService.getCategory(cid);
         return new CategoryResponseDto(createdCategory);
+    }
+
+    /**
+     * Delete category by ID
+     * 
+     * @param cid The primary key (category ID) of the category to delete.
+     */
+    @DeleteMapping("/category/{cid}")
+    public void deleteCategoryById(@PathVariable int cid) {
+        categoryService.deleteCategory(cid);
     }
 }
