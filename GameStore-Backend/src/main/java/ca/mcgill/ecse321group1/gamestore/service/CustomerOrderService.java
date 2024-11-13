@@ -28,21 +28,24 @@ public class CustomerOrderService {
         repo.findAll().forEach(co -> {
             if (co.getSharedId() == shared_id) c.add(co);
         });
-        if (c.size() == 0) {
-            throw new IllegalArgumentException("There are no customer orders with ID " + shared_id + ".");
-        }
+        if (c.isEmpty()) throw new IllegalArgumentException("There are no customer orders with ID " + shared_id + ".");
+
         return c;
     }
 
     /**Given a Customer with a nonempty cart, creates a set of CustomerOrders and returns shared_id. Cart is unaffected.*/
     @Transactional
     public int generateOrdersFromCustomerCart(Customer customer, Date curDate, String address, VideoGameService vidservice) {
+        //the only long method in the service layer. Required due to the complex and unnecessary way we made our UML,
+        // and have to abuse it to make a functional service layer.
         if (customer == null)
             throw new IllegalArgumentException("Customer must exist to generate orders form it.");
         if (customer.getCart().isEmpty())
             throw new IllegalArgumentException("Customer cart must be nonempty");
         List<Offer> offers = new ArrayList<>();
-        offerRepo.findAll().iterator().forEachRemaining(offers::add);
+        offerRepo.findAll().iterator().forEachRemaining(o -> {
+            if (o.getStartDate().before(curDate) && o.getEndDate().after(curDate)) offers.add(o);
+        });//get all offers from repo, move to list. Only if valid date.
         int SHARED_ID;
         while (true) {//randomly search integers until a valid shared_id is found
             AtomicBoolean works = new AtomicBoolean(true);
@@ -53,31 +56,33 @@ public class CustomerOrderService {
             });
             if (works.get()) break;
         }
-
+        //at this point we have an unused shared_id to label this set of orders with, and a set of date-valid offers.
         HashMap<VideoGame, Integer> counter = new HashMap<>();
         for (VideoGame game : customer.getCart()) counter.merge(game, 1, Integer::sum);
+        //IntelliJ allows you to simplify a bunch of logic into the above.
+        // Literally just makes a map that lets you look up a game, and get the number of times it is in the cart
         for (VideoGame key : counter.keySet()) {
             int count = counter.get(key);
 
             if (key.getQuantity() < count) throw new IllegalArgumentException(count + " VideoGames requested but only " + key.getQuantity() + " in stock!");
-            else vidservice.alterQuantity(key.getId(), -count);
+            else vidservice.alterQuantity(key.getId(), -count);//exception checking probably not necessary since it's checked in alterQuantity.
 
             float price = key.getPrice();
             Offer used = null;
             for (Offer offer : offers)// game specific offers
-                if (offer.getVideoGame() != null && used == null &&
-                        offer.getStartDate().before(curDate) && offer.getEndDate().after(curDate)) {
+                if (used != null) break;
+                else if (offer.getVideoGame() != null) {
                     used = offer;
                     String effect = used.getEffect();
                     if (effect.endsWith("%")) price *= 1 - Float.parseFloat(effect.substring(0, effect.length() - 1));
-                    else price -= Float.parseFloat(effect);
+                    else price -= Float.parseFloat(effect);//flat deduction
                 }
             for (Offer offer : offers)//general offers
-                if (offer.getVideoGame() == null && used == null &&
-                        offer.getStartDate().before(curDate) && offer.getEndDate().after(curDate)) {
+                if (used != null) break;//offer already found for this game.
+                else if (offer.getVideoGame() == null) {
                     used = offer;
                     String effect = used.getEffect();
-                    if (effect.endsWith("%")) price *= 1 - Float.parseFloat(effect.substring(0, effect.length() - 1));
+                    if (effect.endsWith("%")) price *= 1 - Float.parseFloat(effect.substring(0, effect.length() - 1));//percent deduction
                     else price -= Float.parseFloat(effect);
                 }
             price *= count;
@@ -123,9 +128,9 @@ public class CustomerOrderService {
         return unsat;
     }
 
-    /**Mark given orders as satisfied or not.*/
+    /**Mark given CustomerOrders as satisfied or not. Does not affect the remainder of the orders in the shared area.*/
     @Transactional
-    public void setSatisfied (int game_id, boolean satisfied, List<CustomerOrder> orders) {
+    public void setSatisfied (boolean satisfied, List<CustomerOrder> orders) {
         repo.findAll().forEach(co -> {
             if (orders.contains(co)) co.setSatisfied(satisfied);
         });

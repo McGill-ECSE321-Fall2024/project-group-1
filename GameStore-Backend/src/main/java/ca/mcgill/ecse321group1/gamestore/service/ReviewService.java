@@ -9,9 +9,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +60,7 @@ public class ReviewService {
         return repo.save(review);
     }
 
-    /**Removes a Reply from a Review, silently.*/
+    /**Removes the Reply from a Review, silently.*/
     @Transactional
     public Review removeReply(int review_id, ReplyService replyService) {
         Review review = getReview(review_id);

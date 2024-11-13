@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 
 
 public class PersonServiceHelper {
+    //contains static methods (ie account creation validation, password hashing) shared by all Person children (injecting services into each other did not work properly)
 
     static String attemptCreate (String username, String email, String password, CustomerRepository customerRepo, StaffRepository staffRepo, OwnerRepository ownerRepo) {
         if (username == null || username.length() < 6) {

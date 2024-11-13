@@ -9,10 +9,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -142,8 +138,8 @@ public class VideoGameService {
         return tbr;
     }
 
-    /**Gets average Rating of VideoGame*/
-    public Review.Rating averageRatingOf(int gameId) {
+    /**Gets average Rating of VideoGame. Rounded to nearest star value.*/
+    public Review.Rating averageRatingOf(int gameId) {//a simple sum all ratings, then average them (mapped to an array to convert to enum)
         AtomicInteger val = new AtomicInteger();
         AtomicInteger count = new AtomicInteger();
         revrepo.findAll().iterator().forEachRemaining(r -> {
@@ -153,7 +149,7 @@ public class VideoGameService {
         });
         if (count.get() == 0) return null;
         Review.Rating[] ratings = new Review.Rating[]{Review.Rating.oneStar, Review.Rating.twoStar, Review.Rating.threeStar, Review.Rating.fourStar, Review.Rating.fiveStar};
-        return ratings[val.get() / count.get()];
+        return ratings[(int)Math.round(val.get() * 1.0 / count.get())];
     }
 
 }
