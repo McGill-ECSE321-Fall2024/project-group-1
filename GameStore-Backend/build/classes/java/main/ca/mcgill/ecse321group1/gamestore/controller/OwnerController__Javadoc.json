@@ -1,0 +1,1 @@
+{"doc":"","fields":[],"enumConstants":[],"methods":[{"name":"createOwner","paramTypes":["ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto"],"doc":" Create owner\n \n @param Owner The owner to create\n @return The created owner\n"}],"constructors":[]}

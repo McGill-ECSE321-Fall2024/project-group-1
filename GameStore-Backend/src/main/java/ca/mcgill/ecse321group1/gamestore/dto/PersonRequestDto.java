@@ -4,26 +4,30 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public class PersonRequestDto {
-    @NotBlank(message = "Person username is required.")
+    // @NotBlank(message = "Person username is required.")
     private String username;
-    @Email(message = "Invalid email.")
+    // @Email(message = "Invalid email.")
     private String email;
-    @NotBlank(message= "Person password is required.")
-    private String passwordHash;
+    // @NotBlank(message= "Person password is required.")
+    private String password;
     private String address;
     private String phoneNumber;
 
-    public PersonRequestDto(String name, String username, String email, String passwordHash) {
+    // For staff and owners
+    public PersonRequestDto(String username, String email, String password) {
         this.username = username;
         this.email = email;
-        this.passwordHash = passwordHash;
+        this.password = password;
+    }
+
+    protected PersonRequestDto() {
     }
 
     // For customers
-    public PersonRequestDto(String name, String username, String email, String passwordHash, String address, String phoneNumber) {
+    public PersonRequestDto(String username, String email, String password, String address, String phoneNumber) {
         this.username = username;
         this.email = email;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
@@ -36,8 +40,8 @@ public class PersonRequestDto {
         return email;
     }
     
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
     
     public String getAddress() {

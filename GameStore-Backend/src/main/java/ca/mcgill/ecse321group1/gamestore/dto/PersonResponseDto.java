@@ -12,6 +12,9 @@ public class PersonResponseDto {
     private String address;
     private String phoneNumber;
 
+    protected PersonResponseDto() {
+    }
+
     public PersonResponseDto(Staff staff) {
         this.id = staff.getId();
         this.username = staff.getUsername();

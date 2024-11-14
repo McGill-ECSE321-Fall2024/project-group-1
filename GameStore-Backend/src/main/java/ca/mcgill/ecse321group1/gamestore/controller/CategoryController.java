@@ -48,15 +48,12 @@ public class CategoryController {
         return new CategoryResponseDto(createdCategory);
     }
 
-
-    // Check if you can 
-
     /**
      * Retrieves category by ID and allows attributes to be edited.
      * 
      * @param cid The primary key (category ID) of the category to edit.
      * @param request The category request DTO with new name and new description
-     * @return The category with the changed attributes.
+     * @return The category with changed attributes.
      */
     @PutMapping("/category/{cid}")
     public CategoryResponseDto editCategoryById(@PathVariable int cid, @Valid @RequestBody CategoryRequestDto request) {

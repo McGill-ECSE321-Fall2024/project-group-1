@@ -25,10 +25,47 @@ public class StaffController {
     /**
      * Create staff
      * 
+     * @param staffToCreate The staff to created.
+     * @return The created staff, including their ID.
      */
     @PostMapping("/staff")
-    public PersonResponseDto createStaff(@Valid @RequestBody PersonRequestDto personToCreate) {
-        Staff createdPerson = staffService.createStaff(personToCreate.getUsername(), personToCreate.getEmail(), personToCreate.getPasswordHash());
-        return new PersonResponseDto(createdPerson);
+    public PersonResponseDto createStaff(@Valid @RequestBody PersonRequestDto staffToCreate) {
+        Staff createdStaff = staffService.createStaff(staffToCreate.getUsername(), staffToCreate.getEmail(), staffToCreate.getPassword());
+        return new PersonResponseDto(createdStaff);
+    }
+
+    /**
+     * Get staff by ID
+     * 
+     * @param sid The primary key (staff ID) of the staff to find.
+     * @return The staff with the given ID.
+     */
+    @GetMapping("/staff/{sid}")
+    public PersonResponseDto getStaffById(@PathVariable int sid) {
+        Staff gotStaff = staffService.getStaff(sid);
+        return new PersonResponseDto(gotStaff);
+    }
+
+    /**
+     * Retrieves staff by ID and allows attributes to be edited.
+     * 
+     * @param sid The primary key (staff ID) of the staff to edit.
+     * @param request The person request DTO with new username, email, and password.
+     * @return The staff with changed attributes.
+     */
+    @PutMapping("/staff/{sid}")
+    public PersonResponseDto editStaffById(@PathVariable int sid, @Valid @RequestBody PersonRequestDto request) {
+        Staff editedStaff = staffService.editStaff(sid, request.getUsername(), request.getEmail(), request.getPassword());
+        return new PersonResponseDto(editedStaff);
+    }
+
+    /**
+     * Delete staff by ID
+     * 
+     * @param pid The primary key (staff ID) of the staff to delete.
+     */
+    @DeleteMapping("/staff/{pid}")
+    public void deleteStaffById(@PathVariable int pid) {
+        staffService.deleteStaff(pid);
     }
 }
