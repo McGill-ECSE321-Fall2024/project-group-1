@@ -209,6 +209,7 @@ public class OwnerIntegrationTests {
         // Act
         ResponseEntity<PersonResponseDto> newOwnerResponse = client.postForEntity("/owner", newOwner, PersonResponseDto.class);
         client.delete(oldOwnerUrl); // Delete old owner
+
         newOwnerId = newOwnerResponse.getBody().getId(); // Save ID of new owner
         String newOwnerUrl = String.format("/owner/%d", this.newOwnerId); // Update url to new owner ID
         ResponseEntity<PersonResponseDto> verifyNewOwnerResponse = client.getForEntity(newOwnerUrl, PersonResponseDto.class); // Get new owner to verify change successful
