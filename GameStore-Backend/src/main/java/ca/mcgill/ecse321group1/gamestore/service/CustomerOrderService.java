@@ -35,7 +35,7 @@ public class CustomerOrderService {
 
     /**Given a Customer with a nonempty cart, creates a set of CustomerOrders and returns shared_id. Cart is unaffected.*/
     @Transactional
-    public int generateOrdersFromCustomerCart(Customer customer, Date curDate, String address, VideoGameService vidservice) {
+    public List<CustomerOrder> generateOrdersFromCustomerCart(Customer customer, Date curDate, String address, VideoGameService vidservice) {
         //the only long method in the service layer. Required due to the complex and unnecessary way we made our UML,
         // and have to abuse it to make a functional service layer.
         if (customer == null)
@@ -61,9 +61,9 @@ public class CustomerOrderService {
         for (VideoGame game : customer.getCart()) counter.merge(game, 1, Integer::sum);
         //IntelliJ allows you to simplify a bunch of logic into the above.
         // Literally just makes a map that lets you look up a game, and get the number of times it is in the cart
+        ArrayList<CustomerOrder> tbr = new ArrayList<>();
         for (VideoGame key : counter.keySet()) {
             int count = counter.get(key);
-
             if (key.getQuantity() < count) throw new IllegalArgumentException(count + " VideoGames requested but only " + key.getQuantity() + " in stock!");
             else vidservice.alterQuantity(key.getId(), -count);//exception checking probably not necessary since it's checked in alterQuantity.
 
@@ -71,20 +71,17 @@ public class CustomerOrderService {
             Offer used = null;
             for (Offer offer : offers)// game specific offers
                 if (used != null) break;
-                else if (offer.getVideoGame() != null) {
-                    used = offer;
-                    String effect = used.getEffect();
-                    if (effect.endsWith("%")) price *= 1 - Float.parseFloat(effect.substring(0, effect.length() - 1));
-                    else price -= Float.parseFloat(effect);//flat deduction
-                }
+                else if (offer.getVideoGame() != null && key.equals(offer.getVideoGame())) used = offer;
+
             for (Offer offer : offers)//general offers
                 if (used != null) break;//offer already found for this game.
-                else if (offer.getVideoGame() == null) {
-                    used = offer;
-                    String effect = used.getEffect();
-                    if (effect.endsWith("%")) price *= 1 - Float.parseFloat(effect.substring(0, effect.length() - 1));//percent deduction
-                    else price -= Float.parseFloat(effect);
-                }
+                else if (offer.getVideoGame() == null) used = offer;
+
+            if (used != null) {
+                String effect = used.getEffect();
+                if (effect.endsWith("%")) price *= 1 - Float.parseFloat(effect.substring(0, effect.length() - 1)) / 100f;//percent deduction
+                else price -= Float.parseFloat(effect);
+            }
             price *= count;
             CustomerOrder temp = new CustomerOrder();
             temp.setPurchased(key);
@@ -95,9 +92,10 @@ public class CustomerOrderService {
             temp.setSharedId(SHARED_ID);
             temp.setPrice(price);
             temp.setDate(curDate);
+            tbr.add(temp);
             repo.save(temp);//save this.
         }
-        return SHARED_ID;
+        return tbr;
     }
 
     /**Deletes a set of CustomerOrders denoted by shared_id*/
@@ -123,7 +121,7 @@ public class CustomerOrderService {
     public List<CustomerOrder> getAllUnsatisfied (int game_id) {
         ArrayList<CustomerOrder> unsat = new ArrayList<>();
         repo.findAll().forEach(co -> {
-            if (co.getPurchased().getId() == game_id) unsat.add(co);
+            if (co.getPurchased().getId() == game_id && !co.getSatisfied()) unsat.add(co);
         });
         return unsat;
     }
@@ -132,7 +130,10 @@ public class CustomerOrderService {
     @Transactional
     public void setSatisfied (boolean satisfied, List<CustomerOrder> orders) {
         repo.findAll().forEach(co -> {
-            if (orders.contains(co)) co.setSatisfied(satisfied);
+            if (orders.contains(co)) {
+                co.setSatisfied(satisfied);
+                repo.save(co);
+            }
         });
     }
 }

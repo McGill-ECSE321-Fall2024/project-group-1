@@ -11,9 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -90,15 +87,6 @@ public class OfferRepositoryTests {
         assertEquals(effect, offerFromRepo.getEffect());
         assertEquals(start.toString(), offerFromRepo.getStartDate().toString());
         assertEquals(end.toString(), offerFromRepo.getEndDate().toString());
-        try {
-            PrintWriter writer = new PrintWriter(new FileWriter("src/main/java/ca/mcgill/ecse321group1/gamestore/service/debug.txt"));
-
-            writer.write(videoGame + "\n");
-            writer.write(offerFromRepo.getVideoGame() + "\n");
-            writer.write(videoGame.equals(offerFromRepo.getVideoGame()) + "\n");
-            writer.flush();
-            writer.close();
-        } catch (IOException ignored) {}
         assertEquals(videoGame, offerFromRepo.getVideoGame());
     }
 }

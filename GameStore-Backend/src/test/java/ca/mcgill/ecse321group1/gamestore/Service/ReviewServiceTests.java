@@ -6,14 +6,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 import ca.mcgill.ecse321group1.gamestore.model.Review;
@@ -93,13 +87,7 @@ public class ReviewServiceTests {
 
         // Act
         Review createdReview = service.createReview("Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB);
-        /*try {
-            PrintWriter writer = new PrintWriter(new FileWriter("src/test/java/ca/mcgill/ecse321group1/gamestore/Service/reviewdebug.txt"));
-            writer.write(scathing + "\n\n");
-            writer.write(createdReview + "\n");
-            writer.flush();
-            writer.close();
-        } catch (IOException ignored){}*/
+
         // Assert
         assertNotNull(createdReview);
         assertEquals("Great game! 5/5", createdReview.getContent());

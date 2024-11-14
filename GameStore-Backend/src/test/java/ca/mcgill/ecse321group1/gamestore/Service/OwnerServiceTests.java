@@ -8,8 +8,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.*;
 
 import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;

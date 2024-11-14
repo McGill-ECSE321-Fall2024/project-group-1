@@ -1,3 +1,0 @@
-Made it past canSetReviewed
-Made it past aReviewed == null
-Made it to end. wasSet = true

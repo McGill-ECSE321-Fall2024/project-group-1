@@ -245,7 +245,7 @@ public class CustomerOrder
             order.id == this.id &&
                     Math.pow(this.price - order.price, 2) < 1E-3 &&
                     order.quantity == this.quantity &&
-                    order.offerApplied.equals(this.offerApplied) &&
+                    Objects.equals(order.offerApplied, this.offerApplied) &&
                     order.address.equals(this.address) &&
                     order.date.equals(this.date) &&
                     order.customer.equals(this.customer) &&
