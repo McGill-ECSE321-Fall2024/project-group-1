@@ -13,25 +13,17 @@ public class Category
 {
 
   //------------------------
-  // STATIC VARIABLES
-  //------------------------
-
-  private static int nextId = 1;
-
-  //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Category Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
   private String name;
   private String description;
 
-  //Autounique Attributes
-  @Id
-  private int id;
-
   //Category Associations
-
   @OneToMany
   private List<VideoGame> videoGames;
 
@@ -43,17 +35,26 @@ public class Category
   public Category(){
     videoGames = new ArrayList<VideoGame>();
   }
-  public Category(String aName, String aDescription)
+
+  public Category(int aId, String aName, String aDescription)
   {
+    id = aId;
     name = aName;
     description = aDescription;
-    id = nextId++;
     videoGames = new ArrayList<VideoGame>();
   }
 
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(int aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setName(String aName)
   {
@@ -71,6 +72,11 @@ public class Category
     return wasSet;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
   public String getName()
   {
     return name;
@@ -79,11 +85,6 @@ public class Category
   public String getDescription()
   {
     return description;
-  }
-
-  public int getId()
-  {
-    return id;
   }
   /* Code from template association_GetMany */
   public VideoGame getVideoGame(int index)
@@ -121,9 +122,9 @@ public class Category
     return 0;
   }
   /* Code from template association_AddManyToOne */
-  public VideoGame addVideoGame(String aName, String aDescription, float aPrice, int aQuantity, Date aDate, VideoGame.Status aStatus)
+  public VideoGame addVideoGame(int aId, String aName, String aDescription, float aPrice, int aQuantity, Date aDate, VideoGame.Status aStatus)
   {
-    return new VideoGame(aName, aDescription, aPrice, aQuantity, aDate, aStatus, this);
+    return new VideoGame(aId, aName, aDescription, aPrice, aQuantity, aDate, aStatus, this);
   }
 
   public boolean addVideoGame(VideoGame aVideoGame)
@@ -157,7 +158,7 @@ public class Category
   }
   /* Code from template association_AddIndexControlFunctions */
   public boolean addVideoGameAt(VideoGame aVideoGame, int index)
-  {
+  {  
     boolean wasAdded = false;
     if(addVideoGame(aVideoGame))
     {
@@ -180,8 +181,8 @@ public class Category
       videoGames.remove(aVideoGame);
       videoGames.add(index, aVideoGame);
       wasAdded = true;
-    }
-    else
+    } 
+    else 
     {
       wasAdded = addVideoGameAt(aVideoGame, index);
     }
@@ -204,5 +205,10 @@ public class Category
             "id" + ":" + getId()+ "," +
             "name" + ":" + getName()+ "," +
             "description" + ":" + getDescription()+ "]";
+  }
+
+  public boolean equals(Object obj) {
+    if (!(obj instanceof Category tbc)) return false;
+    return this.name.equals(tbc.name) && this.description.equals(tbc.description);
   }
 }

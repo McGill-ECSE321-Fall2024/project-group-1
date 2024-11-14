@@ -2,6 +2,9 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import jakarta.persistence.*;
 
@@ -12,26 +15,18 @@ public class Review
 {
 
   //------------------------
-  // STATIC VARIABLES
-  //------------------------
-
-  private static int nextId = 1;
-
-  //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Review Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
   private String content;
   private Date date;
   private Rating rating;
 
-  //Autounique Attributes
-  @Id
-  private int id;
-
   //Review Associations
-
   @ManyToOne
   private VideoGame reviewed;
   @ManyToOne
@@ -41,27 +36,27 @@ public class Review
 
   //Helper Variables
   private int cachedHashCode;
-  private boolean canSetReviewed;
-  private boolean canSetReviewer;
+  private boolean canSetReviewed = true;
+  private boolean canSetReviewer = true;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  // Empty Constructor
-
   public Review(){
-
+    canSetReviewed = true;
+    canSetReviewer = true;
   }
-  public Review(String aContent, Date aDate, Rating aRating, VideoGame aReviewed, Customer aReviewer)
+
+  public Review(int aId, String aContent, Date aDate, Rating aRating, VideoGame aReviewed, Customer aReviewer)
   {
     cachedHashCode = -1;
     canSetReviewed = true;
     canSetReviewer = true;
+    id = aId;
     content = aContent;
     date = aDate;
     rating = aRating;
-    id = nextId++;
     boolean didAddReviewed = setReviewed(aReviewed);
     if (!didAddReviewed)
     {
@@ -77,6 +72,14 @@ public class Review
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(int aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setContent(String aContent)
   {
@@ -102,6 +105,11 @@ public class Review
     return wasSet;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
   public String getContent()
   {
     return content;
@@ -115,11 +123,6 @@ public class Review
   public Rating getRating()
   {
     return rating;
-  }
-
-  public int getId()
-  {
-    return id;
   }
   /* Code from template association_GetOne */
   public VideoGame getReviewed()
@@ -147,6 +150,7 @@ public class Review
   {
     boolean wasSet = false;
     if (!canSetReviewed) { return false; }
+
     if (aReviewed == null)
     {
       return wasSet;
@@ -226,11 +230,20 @@ public class Review
 
   public boolean equals(Object obj)
   {
+    if (obj instanceof Review rev) return
+            rev.content.equals(this.content) &&
+            rev.date.toString().equals(this.date.toString()) &&
+            rev.rating.equals(this.rating) &&
+                    ((rev.reviewed == null && this.reviewed == null) || rev.reviewed != null && rev.reviewed.equals(this.reviewed)) &&
+                    ((rev.reviewer == null && this.reviewer == null) || rev.reviewer != null && rev.reviewer.equals(this.reviewer));
+    else return false;
+    //pre-existing filth
+    /*
     if (obj == null) { return false; }
     if (!getClass().equals(obj.getClass())) { return false; }
 
     Review compareTo = (Review)obj;
-
+  
     if (getReviewed() == null && compareTo.getReviewed() != null)
     {
       return false;
@@ -249,7 +262,7 @@ public class Review
       return false;
     }
 
-    return true;
+    return true;*/
   }
 
   public int hashCode()
@@ -316,10 +329,11 @@ public class Review
             "  " + "reviewer = "+(getReviewer()!=null?Integer.toHexString(System.identityHashCode(getReviewer())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "reply = "+(getReply()!=null?Integer.toHexString(System.identityHashCode(getReply())):"null");
   }
+
   //------------------------
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
-
+  
   // line 65 ../../../../../model.ump
   public static enum Rating {oneStar, twoStar, threeStar, fourStar, fiveStar}
 

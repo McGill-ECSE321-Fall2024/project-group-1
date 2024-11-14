@@ -12,43 +12,44 @@ public abstract class Person
 {
 
   //------------------------
-  // STATIC VARIABLES
-  //------------------------
-
-
-  private static int nextId = 1;
-
-  //------------------------
   // MEMBER VARIABLES
   //------------------------
 
   //Person Attributes
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
   private String username;
   private String email;
   private String passwordHash;
-
-  //Autounique Attributes
-  @Id
-  private int id;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
   public Person(){
-    
+
   }
-  public Person(String aUsername, String aEmail, String aPasswordHash)
+
+  public Person(int aId, String aUsername, String aEmail, String aPasswordHash)
   {
+    id = aId;
     username = aUsername;
     email = aEmail;
     passwordHash = aPasswordHash;
-    id = nextId++;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
+
+  public boolean setId(int aId)
+  {
+    boolean wasSet = false;
+    id = aId;
+    wasSet = true;
+    return wasSet;
+  }
 
   public boolean setUsername(String aUsername)
   {
@@ -74,6 +75,11 @@ public abstract class Person
     return wasSet;
   }
 
+  public int getId()
+  {
+    return id;
+  }
+
   public String getUsername()
   {
     return username;
@@ -89,11 +95,6 @@ public abstract class Person
     return passwordHash;
   }
 
-  public int getId()
-  {
-    return id;
-  }
-
   public void delete()
   {}
 
@@ -105,5 +106,13 @@ public abstract class Person
             "username" + ":" + getUsername()+ "," +
             "email" + ":" + getEmail()+ "," +
             "passwordHash" + ":" + getPasswordHash()+ "]";
+  }
+
+  public boolean equals (Object obj) {
+    if (obj instanceof Person pers) return
+                    pers.getUsername().equals(this.getUsername()) &&
+                    pers.getEmail().equals(this.getEmail()) &&
+                    pers.getPasswordHash().equals(this.getPasswordHash());
+    else return false;
   }
 }

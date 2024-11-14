@@ -1,4 +1,4 @@
-package ca.mcgill.ecse321group1.gamestore.repository;
+package ca.mcgill.ecse321group1.gamestore.Repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import ca.mcgill.ecse321group1.gamestore.model.Owner;
-
-import java.sql.Date;
-import java.util.*;
+import ca.mcgill.ecse321group1.gamestore.repository.OwnerRepository;
 
 @SpringBootTest
 public class OwnerRepositoryTests {
@@ -29,7 +27,11 @@ public class OwnerRepositoryTests {
         String username = "MrOwner";
         String email = "mrowner@example.com";
         String passwordHash = "password456";
-        Owner owner = new Owner(username, email, passwordHash);
+
+        Owner owner = new Owner();
+        owner.setUsername(username);
+        owner.setEmail(email);
+        owner.setPasswordHash(passwordHash);
         owner = ownerRepository.save(owner);
 
         // Read owner from database
@@ -38,8 +40,8 @@ public class OwnerRepositoryTests {
 
         // Assert correct response
         assertNotNull(ownerFromDb);
-        assertEquals(ownerFromDb.getUsername(), username);
-        assertEquals(ownerFromDb.getEmail(), email);
-        assertEquals(ownerFromDb.getPasswordHash(), passwordHash);
+        assertEquals(username, ownerFromDb.getUsername());
+        assertEquals(email, ownerFromDb.getEmail());
+        assertEquals(passwordHash, ownerFromDb.getPasswordHash());
     }
 }

@@ -1,4 +1,4 @@
-package ca.mcgill.ecse321group1.gamestore.repository;
+package ca.mcgill.ecse321group1.gamestore.Repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,6 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
+import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
+import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
+import ca.mcgill.ecse321group1.gamestore.repository.ReviewRepository;
+import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
 import ca.mcgill.ecse321group1.gamestore.model.Category;
 
 import java.sql.Date;
@@ -43,7 +47,9 @@ public class ReviewRepositoryTests {
         // Create and Save Category
         String name = "Action";
         String description = "Focuses on physical challenges";
-        Category category = new Category(name, description);
+        Category category = new Category();
+        category.setName(name);
+        category.setDescription(description);
         category = categoryRepository.save(category);
 
         // Create and Save Video Game
@@ -55,7 +61,15 @@ public class ReviewRepositoryTests {
         calendar.set(2024, Calendar.FEBRUARY, 1);
         Date videoGameDate = new java.sql.Date(calendar.getTimeInMillis());
         VideoGame.Status status = VideoGame.Status.Active;
-        VideoGame videoGame = new VideoGame(videoGameName, videoGameDescription, price, quantity, videoGameDate, status, category);
+
+        VideoGame videoGame = new VideoGame();
+        videoGame.setName(videoGameName);
+        videoGame.setDescription(videoGameDescription);
+        videoGame.setPrice(price);
+        videoGame.setQuantity(quantity);
+        videoGame.setDate(videoGameDate);
+        videoGame.setStatus(status);
+        videoGame.setCategory(category);
         videoGame = videoGameRepository.save(videoGame);
 
         // Create and Save Customer
@@ -64,28 +78,39 @@ public class ReviewRepositoryTests {
         String passwordHash = "password123";
         String address = "1600 Pennsylvania Avenue NW";
         String phoneNumber = "4703237795";
-        Customer customer = new Customer(username, email, passwordHash, address, phoneNumber);
+        Customer customer = new Customer();
+        customer.setUsername(username);
+        customer.setEmail(email);
+        customer.setPasswordHash(passwordHash);
+        customer.setAddress(address);
+        customer.setPhoneNumber(phoneNumber);
         customer = customerRepository.save(customer);
 
         // Create and Save Review
-        String content = "Amazing game, 10/10 would reccomend";
+        String content = "Amazing game, 10/10 would recommend";
         Calendar reviewCalendar = Calendar.getInstance();
         reviewCalendar.set(2024, Calendar.MARCH, 1);
-        Date reviewDate = new java.sql.Date(calendar.getTimeInMillis());
+        Date reviewDate = new java.sql.Date(reviewCalendar.getTimeInMillis());
         Review.Rating rating = Review.Rating.threeStar;
-        Review review = new Review(content, reviewDate, rating, videoGame, customer);
+
+        Review review = new Review();
+        review.setContent(content);
+        review.setDate(reviewDate);
+        review.setRating(rating);
+        review.setReviewed(videoGame);
+        review.setReviewer(customer);
         review = reviewRepository.save(review);
 
-        // Read owner from database
+        // Read review from database
         int id = review.getId();
         Review reviewFromDb = reviewRepository.findReviewById(id);
 
         // Assert correct response
         assertNotNull(reviewFromDb);
-        assertEquals(reviewFromDb.getContent(), content);
-        assertEquals(reviewFromDb.getDate().toLocalDate(), reviewDate.toLocalDate());
-        assertEquals(reviewFromDb.getRating(), rating);
-        assertEquals(reviewFromDb.getReviewed().getId(), videoGame.getId());
-        assertEquals(reviewFromDb.getReviewer().getId(), customer.getId());
+        assertEquals(content, reviewFromDb.getContent());
+        assertEquals(reviewDate.toLocalDate(), reviewFromDb.getDate().toLocalDate());
+        assertEquals(rating, reviewFromDb.getRating());
+        assertEquals(videoGame.getId(), reviewFromDb.getReviewed().getId());
+        assertEquals(customer.getId(), reviewFromDb.getReviewer().getId());
     }
 }

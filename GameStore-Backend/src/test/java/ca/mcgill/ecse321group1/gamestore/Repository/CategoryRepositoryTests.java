@@ -1,4 +1,4 @@
-package ca.mcgill.ecse321group1.gamestore.repository;
+package ca.mcgill.ecse321group1.gamestore.Repository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import ca.mcgill.ecse321group1.gamestore.model.Category;
-
-import java.sql.Date;
-import java.util.*;
+import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
 
 @SpringBootTest
 public class CategoryRepositoryTests {
@@ -27,7 +25,9 @@ public class CategoryRepositoryTests {
         // Create and Save Category
         String name = "Action";
         String description = "Focuses on physical challenges";
-        Category category = new Category(name, description);
+        Category category = new Category();
+        category.setName(name);
+        category.setDescription(description);
         category = categoryRepository.save(category);
 
         // Read Category from database
@@ -36,7 +36,7 @@ public class CategoryRepositoryTests {
 
         // Assert Correct Responses
         assertNotNull(categoryFromDb);
-        assertEquals(categoryFromDb.getName(), name);
-        assertEquals(categoryFromDb.getDescription(), description);
+        assertEquals(name, categoryFromDb.getName());
+        assertEquals(description, categoryFromDb.getDescription());
     }
 }
