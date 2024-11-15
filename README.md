@@ -24,11 +24,12 @@ Welcome to our amazing video game store and github repository. Get to know our [
 For this project we will be creating an online storefront for an independant game shop. This storefront will allow the owners and employees to manage the store and game inventory, and allow customers to browse and purchase games, and leave reviews.  
 
 ## Deliverable 1 Report
-Find our deliverable 1 report on the wiki page [Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1).  
+Find our deliverable 1 report on the wiki page [Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-2).  
 For more details on deliverable 1 meetings, read our meeting minutes : [Meeting 1](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1#meeting-1-thursday-september-19th-2024-1pm-3pm), [Meeting 2](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1#meeting-2-tuesday-september-24th-2024-10am-12pm), [Meeting 3](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1#meeting-3-thursday-october-3rd-2024-1pm-3pm), and [Meeting 4](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1#meeting-4-friday-october-11th-2024-9am-12pm-infosys).  
 
 ## Deliverable 2 Report
-Stay tuned for future reports and deliverables :)
+Find our deliverable 2 report on the wiki page [Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1).  
+For more details on deliverable 2 meetings, read our meeting minutes : [Meeting 1](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-2#meeting-1-thursday-october-31st-2024-10am-12pm-infosys) and [Meeting 2](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-2#meeting-2-tuesday-november-5th-2024-10am-12pm-zoom).
 
 ## Deliverable 3 Report
 Stay tuned for future reports and deliverables :)
@@ -39,8 +40,8 @@ Stay tuned for future reports and deliverables :)
 | Role | Project Manager and Back-End Engineer   | Full-Stack Engineer   | Front-End Engineer | Back-End Lead Engineer | Front-End Lead Engineer |
 | D1 Hours worked | 23.5   | 23.5   | 17 | 17.5 | 17 |
 | D1 Contributions |  Wiki, Build System, Persistence Layer, Testing of Persistence Layer  |  Wiki, Domain Model, Testing of Persistence Layer   | Requirements, ReadME, Use Case Diagrams  | Domain Model, JPA Annotations | Requirements, ReadME, Use Case Diagrams |
-| D2 Hours worked | 0   | 0   | 0 | 0 | 0 |
-| D2 Contributions |    |    |  |  |  |
+| D2 Hours worked | 17   | 17   | 22 | 24 | 22 |
+| D2 Contributions |  Documentation, QA Plan  |  Documentation, QA Report  | Controller Methods and Tests | Business Methods and Tests | Controller Methods and tests |
 | D3 Hours worked | 0   | 0   | 0 | 0 | 0 |
 | D3 Contributions |    |    |  |  |  |
 
