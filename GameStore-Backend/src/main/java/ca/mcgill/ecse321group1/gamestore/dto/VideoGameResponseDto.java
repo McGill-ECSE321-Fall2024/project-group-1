@@ -2,7 +2,10 @@ package ca.mcgill.ecse321group1.gamestore.dto;
 
 import java.sql.Date;
 
+
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
+import ca.mcgill.ecse321group1.gamestore.model.Category;
+
 
 // This is what we want to return when application wants to get a Video Game based off ID
 public class VideoGameResponseDto {
@@ -13,20 +16,24 @@ public class VideoGameResponseDto {
     private int quantity;
     private Date date;
     private String status;
+    private Category category;
 
-    // not sure if this is needed
     protected VideoGameResponseDto() {
     }
     
     public VideoGameResponseDto(VideoGame videoGame) {
-        // Do we need to return ID here even though they use the ID to request it? YES!
         this.id = videoGame.getId();
         this.name = videoGame.getName();
         this.description = videoGame.getDescription();
         this.price = videoGame.getPrice();
         this.quantity = videoGame.getQuantity();
         this.date = videoGame.getDate();
-        this.status = videoGame.getStatus().toString(); // Not sure if this is proper; temporary workaround since the status enum is not the same if we use it here and we would have to convert the object. I think we handled this incorrectly in the project.
+        this.status = videoGame.getStatus().toString();
+        this.category = videoGame.getCategory();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -53,7 +60,7 @@ public class VideoGameResponseDto {
         return status;
     }
 
-    public int getId() {
-        return id;
+    public Category getCategory() {
+        return category;
     }
 }

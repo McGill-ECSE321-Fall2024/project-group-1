@@ -4,11 +4,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public class PersonRequestDto {
-    // @NotBlank(message = "Person username is required.")
+    @NotBlank(message = "Person username is required.")
     private String username;
-    // @Email(message = "Invalid email.")
+    @Email(message = "Invalid email.")
     private String email;
-    // @NotBlank(message= "Person password is required.")
+    @NotBlank(message= "Person password is required.")
     private String password;
     private String address;
     private String phoneNumber;

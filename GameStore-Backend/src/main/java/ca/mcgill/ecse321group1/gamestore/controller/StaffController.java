@@ -25,7 +25,7 @@ public class StaffController {
     /**
      * Create staff
      * 
-     * @param staffToCreate The staff to created.
+     * @param staffToCreate The staff to create.
      * @return The created staff, including their ID.
      */
     @PostMapping("/staff")

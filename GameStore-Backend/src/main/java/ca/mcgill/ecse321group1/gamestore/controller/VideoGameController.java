@@ -22,31 +22,13 @@ public class VideoGameController {
 
     /**
      * Create video game
+     * 
      * @param videoGameToCreate The video game to create.
-     * @return The created video game, including the generated video game ID.
+     * @return The created video game, including the ID.
      */
     @PostMapping("/videogame")
     public VideoGameResponseDto createVideoGame(@Valid @RequestBody VideoGameRequestDto videoGameToCreate) {
-        VideoGame createdVideoGame = videoGameService.createVideoGame(
-            videoGameToCreate.getName(),
-            videoGameToCreate.getDescription(),
-            videoGameToCreate.getPrice(),
-            videoGameToCreate.getQuantity(),
-            videoGameToCreate.getDate(),
-            videoGameToCreate.getCategory()
-        );
-        return new VideoGameResponseDto(createdVideoGame); 
-    }
-    
-    /**
-     * Find video game by ID.
-     * 
-     * @param vid the id of the video game to find. 
-     * @return The video game with the given ID.
-     */
-    @GetMapping("/videogame/{vid}") // DOUBLE CHECK IF THIS WORKS
-    public VideoGameResponseDto findVideoGameById(@PathVariable int vid) {
-        VideoGame createdVideoGame = videoGameService.getVideoGame(vid);
+        VideoGame createdVideoGame = videoGameService.createVideoGame(videoGameToCreate.getName(), videoGameToCreate.getDescription(), videoGameToCreate.getPrice(), videoGameToCreate.getQuantity(), videoGameToCreate.getDate(), videoGameToCreate.getCategory());
         return new VideoGameResponseDto(createdVideoGame);
     }
 }

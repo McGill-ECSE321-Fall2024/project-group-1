@@ -28,8 +28,6 @@ import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
 @TestMethodOrder(OrderAnnotation.class)
 @TestInstance(Lifecycle.PER_CLASS)
 
-
-
 public class CategoryIntegrationTests {
     @Autowired
     private TestRestTemplate client;
