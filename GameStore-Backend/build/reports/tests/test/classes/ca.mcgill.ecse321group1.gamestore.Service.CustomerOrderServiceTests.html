@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - CustomerOrderRepositoryTests</title>
+<title>Test results - CustomerOrderServiceTests</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>CustomerOrderRepositoryTests</h1>
+<h1>CustomerOrderServiceTests</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/ca.mcgill.ecse321group1.gamestore.Repository.html">ca.mcgill.ecse321group1.gamestore.Repository</a> &gt; CustomerOrderRepositoryTests</div>
+<a href="../packages/ca.mcgill.ecse321group1.gamestore.Service.html">ca.mcgill.ecse321group1.gamestore.Service</a> &gt; CustomerOrderServiceTests</div>
 <div id="summary">
 <table>
 <tr>
@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.021s</div>
+<div class="counter">0.029s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,8 +78,23 @@
 </tr>
 </thead>
 <tr>
-<td class="success">testPersistAndLoadCustomerOrder()</td>
-<td class="success">0.021s</td>
+<td class="success">testDeleteOrder()</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testGenerateOrdersGetOrders()</td>
+<td class="success">0.012s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testGetOrders()</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSatisfaction()</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,8 +102,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2024-11-13T20:07:32.097-05:00  INFO 30816 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests]: CustomerOrderRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-13T20:07:32.098-05:00  INFO 30816 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests
+<pre>2024-11-13T20:07:32.435-05:00  INFO 30816 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests]: CustomerOrderServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-13T20:07:32.437-05:00  INFO 30816 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests
 </pre>
 </span>
 </div>

@@ -6,22 +6,15 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.*;
 
 import ca.mcgill.ecse321group1.gamestore.model.Category;
 import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.repository.*;
-import ca.mcgill.ecse321group1.gamestore.service.CustomerService;
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -44,7 +37,6 @@ public class VideoGameServiceTests {
 
     private final int ID = 31;
     private final VideoGame[] games = new VideoGame[3];
-    private final String[][] fields = new String[3][4];
     Category action, dating;
 
     @BeforeEach
@@ -332,12 +324,6 @@ public class VideoGameServiceTests {
         when(revrepo.findAll()).thenReturn(List.of(one, two));
 
         //Act
-        try {
-            PrintWriter writer = new PrintWriter(new FileWriter("src/test/java/ca/mcgill/ecse321group1/gamestore/Service/abc.txt"));
-            writer.write("");
-            writer.flush();
-            writer.close();
-        } catch (IOException ignored) {}
         Review.Rating rating = service.averageRatingOf(games[0].getId());
 
         //Assert

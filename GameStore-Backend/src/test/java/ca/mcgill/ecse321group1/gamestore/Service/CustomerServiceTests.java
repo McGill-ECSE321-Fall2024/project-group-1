@@ -250,6 +250,4 @@ public class CustomerServiceTests {
         assertEquals(0, BOB.getCart().size());
         verify(repo, times(7)).save(BOB);
     }
-
-    //getPastOrdersString
 }
