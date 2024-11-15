@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-13T22:20:39" hostname="Ivans-MacBook-Air.local" time="0.024">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-15T17:51:56" hostname="Ivans-MacBook-Air.local" time="0.028">
   <properties/>
   <testcase name="testReadOfferByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.002"/>
   <testcase name="testReadOfferByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.002"/>
   <testcase name="testEditOfferInvalidEffect()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.003"/>
-  <testcase name="testDeleteOfferByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.002"/>
+  <testcase name="testDeleteOfferByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.004"/>
   <testcase name="testDeleteCategoryByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.002"/>
   <testcase name="testEditValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.002"/>
   <testcase name="testCreateValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.002"/>
   <testcase name="testCreateInvalidInvertedDateCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests" time="0.002"/>
-  <system-out><![CDATA[2024-11-13T17:20:39.712-05:00  INFO 2648 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests]: OfferServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-13T17:20:39.714-05:00  INFO 2648 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests
+  <system-out><![CDATA[2024-11-15T12:51:56.729-05:00  INFO 59574 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests]: OfferServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-15T12:51:56.730-05:00  INFO 59574 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
