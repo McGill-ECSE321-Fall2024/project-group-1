@@ -1,10 +1,12 @@
 package ca.mcgill.ecse321group1.gamestore.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.model.Category;
+import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
+
 
 
 // This is what we want to return when application wants to get a Video Game based off ID
@@ -14,9 +16,9 @@ public class VideoGameResponseDto {
     private String description;
     private float price;
     private int quantity;
-    private Date date;
+    private LocalDate date;
     private String status;
-    private Category category;
+    private CategoryResponseDto category;
 
     protected VideoGameResponseDto() {
     }
@@ -27,9 +29,9 @@ public class VideoGameResponseDto {
         this.description = videoGame.getDescription();
         this.price = videoGame.getPrice();
         this.quantity = videoGame.getQuantity();
-        this.date = videoGame.getDate();
+        this.date = videoGame.getDate().toLocalDate();
         this.status = videoGame.getStatus().toString();
-        this.category = videoGame.getCategory();
+        this.category = new CategoryResponseDto(videoGame.getCategory());
     }
 
     public int getId() {
@@ -52,7 +54,7 @@ public class VideoGameResponseDto {
         return quantity;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -60,7 +62,7 @@ public class VideoGameResponseDto {
         return status;
     }
 
-    public Category getCategory() {
+    public CategoryResponseDto getCategory() {
         return category;
     }
 }

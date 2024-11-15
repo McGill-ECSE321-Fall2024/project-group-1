@@ -1,32 +1,28 @@
 package ca.mcgill.ecse321group1.gamestore.dto;
 
-import java.sql.Date;
-import jakarta.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import ca.mcgill.ecse321group1.gamestore.model.Category;
 
 
 public class VideoGameRequestDto {
-    @NotBlank(message = "Video game name is required.")
     private String name;
-    @NotBlank(message = "Video game description is required.")
     private String description;
-    @NotBlank(message = "Video game price is required.")
     private float price;
-    @NotBlank(message = "Video game quantity is required.")
     private int quantity;
-    @NotBlank(message = "Video game date is required")
-    private Date date;
-    @NotBlank(message = "Video game category is required")
-    private Category category;
+    private LocalDate date;
+    private int categoryId;
 
-    public VideoGameRequestDto(String name, String description, float price, int quantity, Date date, Category category) {
+    public VideoGameRequestDto(String name, String description, float price, int quantity, LocalDate date, int categoryId) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.date = date;
-        this.category = category;
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -45,12 +41,12 @@ public class VideoGameRequestDto {
         return quantity;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getCategoryId() {
+        return categoryId;
     }
 }
 

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
@@ -45,14 +45,13 @@ public class VideoGameIntegrationTests {
     private static final String VALID_DESCRIPTION = "A Zelda walks into a bar";
     private static final float VALID_PRICE = 19.99f;
     private static final int VALID_QUANTITY = 25;
-    private static final Date VALID_DATE = java.sql.Date.valueOf("2023-11-08");
+    private static final LocalDate VALID_DATE = java.sql.Date.valueOf("2023-11-08").toLocalDate();
 
     private static final String VALID_CATEGORY_NAME = "Adventure";
     private static final String VALID_CATEGORY_DESC = "Story based RPG";
 
     private int videoGameId;
     private int categoryId;
-    private Category category;
 
     @AfterAll
     public void clearDatabase() {
@@ -67,15 +66,15 @@ public class VideoGameIntegrationTests {
         CategoryRequestDto categoryRequest = new CategoryRequestDto(VALID_CATEGORY_NAME, VALID_CATEGORY_DESC);
 
         ResponseEntity<CategoryResponseDto> categoryResponse = client.postForEntity("/category", categoryRequest, CategoryResponseDto.class);
-        categoryId = categoryResponse.getBody().getId();
-        category = new Category(categoryId, VALID_CATEGORY_NAME, VALID_CATEGORY_DESC);
+        assertNotNull(categoryResponse);
+        assertEquals(VALID_CATEGORY_NAME, categoryResponse.getBody().getName());
+        assertEquals(VALID_CATEGORY_DESC, categoryResponse.getBody().getDescription());
         
         // Arrange
-        VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_PRICE, VALID_QUANTITY, VALID_DATE, category);
+        VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_PRICE, VALID_QUANTITY, VALID_DATE, categoryResponse.getBody().getId());
 
         // Act
-        ResponseEntity<VideoGameResponseDto> response = client.postForEntity("/videogame/", videoGameRequest, VideoGameResponseDto.class);
-        // ResponseEntity<VideoGameResponseDto> response = client.postForEntity("/videogame", videoGameRequest, VideoGameResponseDto.class);
+        ResponseEntity<VideoGameResponseDto> response = client.postForEntity("/videogame", videoGameRequest, VideoGameResponseDto.class);
         
         //Assert
         assertNotNull(response);
@@ -86,6 +85,5 @@ public class VideoGameIntegrationTests {
         assertEquals(VALID_QUANTITY, response.getBody().getQuantity());
         assertEquals(VALID_DATE, response.getBody().getDate());
         assertEquals("Pending", response.getBody().getStatus().toString());   
-
     }
 }

@@ -277,14 +277,8 @@ public class VideoGame
     {
       return wasSet;
     }
-
-    Category existingCategory = category;
     category = aCategory;
-    if (existingCategory != null && !existingCategory.equals(aCategory))
-    {
-      existingCategory.removeVideoGame(this);
-    }
-    category.addVideoGame(this);
+    
     wasSet = true;
     return wasSet;
   }
@@ -295,12 +289,6 @@ public class VideoGame
     {
       Review aReview = reviews.get(i - 1);
       aReview.delete();
-    }
-    Category placeholderCategory = category;
-    this.category = null;
-    if(placeholderCategory != null)
-    {
-      placeholderCategory.removeVideoGame(this);
     }
   }
 
