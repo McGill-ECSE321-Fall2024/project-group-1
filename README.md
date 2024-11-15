@@ -28,7 +28,7 @@ Find our deliverable 1 report on the wiki page [Project Deliverable 1 report](ht
 For more details on deliverable 1 meetings, read our meeting minutes : [Meeting 1](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1#meeting-1-thursday-september-19th-2024-1pm-3pm), [Meeting 2](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1#meeting-2-tuesday-september-24th-2024-10am-12pm), [Meeting 3](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1#meeting-3-thursday-october-3rd-2024-1pm-3pm), and [Meeting 4](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1#meeting-4-friday-october-11th-2024-9am-12pm-infosys).  
 
 ## Deliverable 2 Report
-Find our deliverable 2 report on the wiki page [Project Deliverable 1 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1).  
+Find our deliverable 2 report on the wiki page [Project Deliverable 2 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-1).  
 For more details on deliverable 2 meetings, read our meeting minutes : [Meeting 1](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-2#meeting-1-thursday-october-31st-2024-10am-12pm-infosys) and [Meeting 2](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-2#meeting-2-tuesday-november-5th-2024-10am-12pm-zoom).
 
 ## Deliverable 3 Report
