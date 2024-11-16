@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-11-15T18:00:33" hostname="Ivans-MacBook-Air.local" time="0.023">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-11-16T08:00:16" hostname="Ivans-MacBook-Air.local" time="0.021">
   <properties/>
-  <testcase name="testDeleteReplyByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" time="0.004"/>
+  <testcase name="testDeleteReplyByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" time="0.003"/>
   <testcase name="testDeleteReviewByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" time="0.002"/>
   <testcase name="testEditValidReview()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" time="0.002"/>
   <testcase name="testReadReviewByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" time="0.002"/>
   <testcase name="testCreateValidReview()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" time="0.002"/>
   <testcase name="testReadReviewByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests" time="0.002"/>
-  <system-out><![CDATA[2024-11-15T13:00:33.197-05:00  INFO 64739 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests]: ReplyServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-15T13:00:33.198-05:00  INFO 64739 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests
+  <system-out><![CDATA[2024-11-16T03:00:16.263-05:00  INFO 62908 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests]: ReplyServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T03:00:16.264-05:00  INFO 62908 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
