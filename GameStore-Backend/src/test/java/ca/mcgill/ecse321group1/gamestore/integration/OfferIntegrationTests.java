@@ -111,5 +111,18 @@ public class OfferIntegrationTests {
         assertEquals(VALID_END, offerResponse.getBody().getEndDate());
         assertEquals(videoGameId, offerResponse.getBody().getVideoGameId());        
     }
+
+    @Test
+    @Order(2)
+    public void testCreateInvalidOffer() {
+        // Arrange
+        OfferRequestDto offerRequest = new OfferRequestDto(null, VALID_DESCRIPTION, VALID_EFFECT, VALID_START, VALID_END, videoGameId);
+
+        // Act 
+          // Act
+          ResponseEntity<OfferResponseDto> offerResponse = client.postForEntity("/offer", offerRequest, OfferResponseDto.class);
+          assertNotNull(offerResponse);
+          assertEquals(HttpStatus.BAD_REQUEST, offerResponse.getStatusCode());
+    }
     
 }
