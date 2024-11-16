@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-15T17:51:58" hostname="Ivans-MacBook-Air.local" time="0.02">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-15T18:00:34" hostname="Ivans-MacBook-Air.local" time="0.022">
   <properties/>
-  <testcase name="testCreateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.02"/>
-  <system-out><![CDATA[2024-11-15T12:51:58.701-05:00  INFO 59574 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests]: VideoGameIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-15T12:51:58.702-05:00  INFO 59574 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests
+  <testcase name="testCreateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.022"/>
+  <system-out><![CDATA[2024-11-15T13:00:34.961-05:00  INFO 64739 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests]: VideoGameIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-15T13:00:34.962-05:00  INFO 64739 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

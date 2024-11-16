@@ -47,6 +47,11 @@ public class VideoGameIntegrationTests {
     private static final int VALID_QUANTITY = 25;
     private static final LocalDate VALID_DATE = java.sql.Date.valueOf("2023-11-08").toLocalDate();
 
+    private static final String NEW_NAME = "Apex Legends Fortnite Collab";
+    private static final String NEW_DESCRIPTION = "Battle royale battle bus";
+    private static final float NEW_PRICE = 79.99f;
+    private static final LocalDate NEW_DATE = java.sql.Date.valueOf("2023-12-12").toLocalDate();
+
     private static final String VALID_CATEGORY_NAME = "Adventure";
     private static final String VALID_CATEGORY_DESC = "Story based RPG";
 
@@ -69,6 +74,7 @@ public class VideoGameIntegrationTests {
         assertNotNull(categoryResponse);
         assertEquals(VALID_CATEGORY_NAME, categoryResponse.getBody().getName());
         assertEquals(VALID_CATEGORY_DESC, categoryResponse.getBody().getDescription());
+        categoryId = categoryResponse.getBody().getId();
         
         // Arrange
         VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_PRICE, VALID_QUANTITY, VALID_DATE, categoryResponse.getBody().getId());
@@ -76,7 +82,7 @@ public class VideoGameIntegrationTests {
         // Act
         ResponseEntity<VideoGameResponseDto> response = client.postForEntity("/videogame", videoGameRequest, VideoGameResponseDto.class);
         
-        //Assert
+        // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(VALID_NAME, response.getBody().getName());
@@ -85,5 +91,100 @@ public class VideoGameIntegrationTests {
         assertEquals(VALID_QUANTITY, response.getBody().getQuantity());
         assertEquals(VALID_DATE, response.getBody().getDate());
         assertEquals("Pending", response.getBody().getStatus().toString());   
+        videoGameId = response.getBody().getId();
+    }
+
+    @Test
+    @Order(2)
+    public void testCreateInvalidVideoGame() {
+        // Arrange
+        VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(null, VALID_DESCRIPTION, VALID_PRICE, VALID_QUANTITY, VALID_DATE, categoryId);
+
+        // Act
+        ResponseEntity<VideoGameResponseDto> response = client.postForEntity("/videogame", videoGameRequest, VideoGameResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    @Order(3)
+    public void testGetValidVideoGame() {
+        // Arrange
+        String url = String.format("/videogame/%d", this.videoGameId);
+
+        // Act 
+        ResponseEntity<VideoGameResponseDto> response = client.getForEntity(url, VideoGameResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(VALID_NAME, response.getBody().getName());
+        assertEquals(VALID_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(VALID_PRICE, response.getBody().getPrice());
+        assertEquals(VALID_QUANTITY, response.getBody().getQuantity());
+        assertEquals(VALID_DATE, response.getBody().getDate());
+        assertEquals("Pending", response.getBody().getStatus().toString());  
+    }
+
+    @Test
+    @Order(4)
+    public void testGetInvalidVideoGame() {
+        // Arrange
+        String url = String.format("/videogame/%d", this.videoGameId + 1);
+
+        // Act
+        ResponseEntity<VideoGameResponseDto> response = client.getForEntity(url, VideoGameResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    @Order(5)
+    public void testEditInvalidVideoGame() {
+        // Arrange
+        String url = String.format("/videogame/%d", this.videoGameId);
+        VideoGameRequestDto request = new VideoGameRequestDto(null, NEW_DESCRIPTION, NEW_PRICE, VALID_QUANTITY, NEW_DATE, categoryId);
+
+        // Act 
+        client.put(url, request);
+        ResponseEntity<VideoGameResponseDto> response = client.getForEntity(url, VideoGameResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(VALID_NAME, response.getBody().getName());
+        assertEquals(VALID_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(VALID_PRICE, response.getBody().getPrice());
+        assertEquals(VALID_QUANTITY, response.getBody().getQuantity());
+        assertEquals(VALID_DATE, response.getBody().getDate());
+        assertEquals("Pending", response.getBody().getStatus().toString());  
+    }
+
+    @Test
+    @Order(6)
+    public void testEditValidVideoGame() {
+        // Arrange
+        String url = String.format("/videogame/%d", this.videoGameId);
+        VideoGameRequestDto request = new VideoGameRequestDto(NEW_NAME, NEW_DESCRIPTION, NEW_PRICE, VALID_QUANTITY, NEW_DATE, categoryId);
+        
+        // Act 
+        client.put(url, request);
+        ResponseEntity<VideoGameResponseDto> response = client.getForEntity(url, VideoGameResponseDto.class);
+
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(NEW_NAME, response.getBody().getName());
+        assertEquals(NEW_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(NEW_PRICE, response.getBody().getPrice());
+        assertEquals(VALID_QUANTITY, response.getBody().getQuantity());
+        assertEquals(NEW_DATE, response.getBody().getDate());
+        assertEquals("Pending", response.getBody().getStatus().toString());  
+
     }
 }
