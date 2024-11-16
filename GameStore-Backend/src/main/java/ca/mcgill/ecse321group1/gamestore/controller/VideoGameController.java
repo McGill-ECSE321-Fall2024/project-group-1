@@ -1,6 +1,8 @@
 package ca.mcgill.ecse321group1.gamestore.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import jakarta.validation.Valid;
-
+import ca.mcgill.ecse321group1.gamestore.dto.VideoGameListDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
 import ca.mcgill.ecse321group1.gamestore.model.Category;
@@ -90,5 +92,49 @@ public class VideoGameController {
     public VideoGameResponseDto videoGameToInactive(@PathVariable int vid) {
         VideoGame deactivatedVideoGame = videoGameService.deactivateGame(vid);
         return new VideoGameResponseDto(deactivatedVideoGame);
+    }
+
+    /**
+     * Update video game quantity by a positive or negative number
+     * @param vid The primary key (video game ID) of the video game to update quantity on.
+     * @param amoount The quantity you want to update the video game by. Can be positive or negative.
+     */
+    @PostMapping("/videogame/quantity/{vid}/{amount}")
+    public VideoGameResponseDto videoGameAlterQuantity(@PathVariable int vid, @PathVariable int amount) {
+        VideoGame quantityAlteredVideoGame = videoGameService.alterQuantity(vid, amount);
+        return new VideoGameResponseDto(quantityAlteredVideoGame);
+    }
+
+    /**
+     * Get all pending video games
+     * @return List of video games with pending status.
+     */
+    @GetMapping("/videogame/pending")
+    public VideoGameListDto allPendingVideoGames() {
+        List<VideoGame> pendingVideoGameList = videoGameService.getAllPending();
+        List<VideoGameResponseDto> dtoList = new ArrayList<>();
+
+        for (VideoGame videoGame : pendingVideoGameList) {
+            dtoList.add(new VideoGameResponseDto(videoGame)); // Convert and add to the new list
+        }
+        
+        return new VideoGameListDto(dtoList);
+    }
+
+    /**
+     * Get all video games that match keyword
+     * @param keyword The keyword that you want to match
+     * @return List of video games that match the keyword.
+     */
+    @GetMapping("/videogame/keyword/{keyword}")
+    public VideoGameListDto allKeywordMatchingVideoGames(@PathVariable String keyword) {
+        List<VideoGame> matchingVideoGameList = videoGameService.searchByKeyword(keyword);
+        List<VideoGameResponseDto> dtoList = new ArrayList<>();
+
+        for (VideoGame videoGame : matchingVideoGameList) {
+            dtoList.add(new VideoGameResponseDto(videoGame)); // Convert and add to the new list
+        }
+
+        return new VideoGameListDto(dtoList);
     }
 }
