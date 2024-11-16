@@ -47,6 +47,12 @@ public class VideoGameIntegrationTests {
     private static final int VALID_QUANTITY = 25;
     private static final LocalDate VALID_DATE = java.sql.Date.valueOf("2023-11-08").toLocalDate();
 
+    private static final String DEACTIVATE_NAME = "Fornite Save the World";
+    private static final String DEACTIVATE_DESCRIPTION = "Game still in beta";
+    private static final float DEACTIVATE_PRICE = 20.99f;
+    private static final int DEACTIVATE_QUANTITY = 25;
+    private static final LocalDate DEACTIVATE_DATE = java.sql.Date.valueOf("2002-11-08").toLocalDate();
+
     private static final String NEW_NAME = "Apex Legends Fortnite Collab";
     private static final String NEW_DESCRIPTION = "Battle royale battle bus";
     private static final float NEW_PRICE = 79.99f;
@@ -57,6 +63,7 @@ public class VideoGameIntegrationTests {
 
     private int videoGameId;
     private int categoryId;
+    private int deactivateVideoGameId;
 
     @AfterAll
     public void clearDatabase() {
@@ -77,7 +84,7 @@ public class VideoGameIntegrationTests {
         categoryId = categoryResponse.getBody().getId();
         
         // Arrange
-        VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_PRICE, VALID_QUANTITY, VALID_DATE, categoryResponse.getBody().getId());
+        VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_PRICE, VALID_QUANTITY, VALID_DATE, categoryId);
 
         // Act
         ResponseEntity<VideoGameResponseDto> response = client.postForEntity("/videogame", videoGameRequest, VideoGameResponseDto.class);
@@ -185,6 +192,130 @@ public class VideoGameIntegrationTests {
         assertEquals(VALID_QUANTITY, response.getBody().getQuantity());
         assertEquals(NEW_DATE, response.getBody().getDate());
         assertEquals("Pending", response.getBody().getStatus().toString());  
+    }
+
+    @Test 
+    @Order(7)
+    public void activateInvalidVideoGame() {
+        // Arrange
+        String approveUrl = String.format("/videogame/approve/%d", this.videoGameId + 1);
+        String getVideoGameUrl = String.format("/videogame/%d", this.videoGameId);
+
+        // Act
+        client.put(approveUrl, null);
+        ResponseEntity<VideoGameResponseDto> response = client.getForEntity(getVideoGameUrl, VideoGameResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(NEW_NAME, response.getBody().getName());
+        assertEquals(NEW_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(NEW_PRICE, response.getBody().getPrice());
+        assertEquals(VALID_QUANTITY, response.getBody().getQuantity());
+        assertEquals(NEW_DATE, response.getBody().getDate());
+        assertEquals("Pending", response.getBody().getStatus().toString());
 
     }
+
+    @Test
+    @Order(8)
+    public void activateValidVideoGame() {
+        // Arrange
+        String approveUrl = String.format("/videogame/approve/%d", this.videoGameId);
+        String getVideoGameUrl = String.format("/videogame/%d", this.videoGameId);
+
+        // Act
+        client.put(approveUrl, null);
+        ResponseEntity<VideoGameResponseDto> response = client.getForEntity(getVideoGameUrl, VideoGameResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(NEW_NAME, response.getBody().getName());
+        assertEquals(NEW_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(NEW_PRICE, response.getBody().getPrice());
+        assertEquals(VALID_QUANTITY, response.getBody().getQuantity());
+        assertEquals(NEW_DATE, response.getBody().getDate());
+        assertEquals("Active", response.getBody().getStatus().toString()); 
+    }
+
+    @Test
+    @Order(9)
+    public void deactivateInvalidVideoGame() {
+        // First create the video game that we are going to deactive
+        VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(DEACTIVATE_NAME, DEACTIVATE_DESCRIPTION, DEACTIVATE_PRICE, DEACTIVATE_QUANTITY, DEACTIVATE_DATE, categoryId);
+        ResponseEntity<VideoGameResponseDto> videoGameResponse = client.postForEntity("/videogame", videoGameRequest, VideoGameResponseDto.class);
+
+
+        // Check that category was properly created. 
+
+        assertNotNull(videoGameResponse);
+        assertEquals(HttpStatus.OK, videoGameResponse.getStatusCode());
+        assertEquals(DEACTIVATE_NAME, videoGameResponse.getBody().getName());
+        assertEquals(DEACTIVATE_DESCRIPTION, videoGameResponse.getBody().getDescription());
+        assertEquals(DEACTIVATE_PRICE, videoGameResponse.getBody().getPrice());
+        assertEquals(DEACTIVATE_QUANTITY, videoGameResponse.getBody().getQuantity());
+        assertEquals(DEACTIVATE_DATE, videoGameResponse.getBody().getDate());
+        assertEquals(categoryId, videoGameResponse.getBody().getCategory().getId());
+        assertEquals("Pending", videoGameResponse.getBody().getStatus().toString()); 
+        deactivateVideoGameId = videoGameResponse.getBody().getId();
+
+        // Arrange
+        String invalidDeactivateUrl = String.format("/videogame/deactivate/%d", this.deactivateVideoGameId + 1);
+        String validGetUrl  = String.format("/videogame/%d", this.deactivateVideoGameId);
+        
+        // Act
+        client.put(invalidDeactivateUrl, null);
+        ResponseEntity<VideoGameResponseDto> response = client.getForEntity(validGetUrl, VideoGameResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(DEACTIVATE_NAME, response.getBody().getName());
+        assertEquals(DEACTIVATE_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(DEACTIVATE_PRICE, response.getBody().getPrice());
+        assertEquals(DEACTIVATE_QUANTITY, response.getBody().getQuantity());
+        assertEquals(DEACTIVATE_DATE, response.getBody().getDate());
+        assertEquals(categoryId, response.getBody().getCategory().getId());
+        assertEquals("Pending", response.getBody().getStatus().toString()); 
+    }
+
+    @Test
+    @Order(10)
+    public void deactiveValidVideoGame() {
+        // Arrange
+        String deactivateUrl = String.format("/videogame/deactivate/%d", this.deactivateVideoGameId);
+        String deactivatedGetUrl = String.format("/videogame/%d", this.deactivateVideoGameId);
+        
+        // Act
+        client.put(deactivateUrl, null);
+        ResponseEntity<VideoGameResponseDto> response = client.getForEntity(deactivatedGetUrl, VideoGameResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(DEACTIVATE_NAME, response.getBody().getName());
+        assertEquals(DEACTIVATE_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(DEACTIVATE_PRICE, response.getBody().getPrice());
+        assertEquals(DEACTIVATE_QUANTITY, response.getBody().getQuantity());
+        assertEquals(DEACTIVATE_DATE, response.getBody().getDate());
+        assertEquals(categoryId, response.getBody().getCategory().getId());
+        assertEquals("Inactive", response.getBody().getStatus().toString());
+
+    }
+
+
+    // update video game by positive or negative number POST
+
+    // delete video game DELETE
+
+    // return all pending video games
+
+    // return all video games that match keyword GET
+
+    // return all videogames that have a given category GET
+
+    // gets average rating of every video game GET
+
+
 }

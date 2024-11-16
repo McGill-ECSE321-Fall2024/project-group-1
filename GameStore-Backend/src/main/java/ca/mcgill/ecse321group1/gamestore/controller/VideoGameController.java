@@ -69,4 +69,26 @@ public class VideoGameController {
         VideoGame editedVideoGame = videoGameService.editVideoGame(vid, request.getName(), request.getDescription(), request.getPrice(), Date.valueOf(request.getDate()), gotVideoGame.getStatus(), gotCategory);
         return new VideoGameResponseDto(editedVideoGame);
     }
+
+    /**
+     * Move game that is Pending to Active status (approve).
+     * @param vid The primary key (video game ID) of the video game to approve.
+     * @return The video game that was changed to Active status (approved).
+     */
+    @PutMapping("/videogame/approve/{vid}")
+    public VideoGameResponseDto videoGamePendingToActive(@PathVariable int vid) {
+        VideoGame approvedVideoGame = videoGameService.approveGame(vid);
+        return new VideoGameResponseDto(approvedVideoGame);
+    }
+
+    /**
+     * Move game to InActive from any status (deactivate).
+     * @param vid The primary key (video game ID) of the video game to change to InActive status. 
+     * @return The video game that was changed to InActive status (deactivated).
+     */
+    @PutMapping("/videogame/deactivate/{vid}")
+    public VideoGameResponseDto videoGameToInactive(@PathVariable int vid) {
+        VideoGame deactivatedVideoGame = videoGameService.deactivateGame(vid);
+        return new VideoGameResponseDto(deactivatedVideoGame);
+    }
 }

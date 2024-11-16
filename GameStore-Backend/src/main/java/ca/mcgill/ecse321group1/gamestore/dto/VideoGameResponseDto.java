@@ -4,10 +4,6 @@ import java.time.LocalDate;
 
 
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
-import ca.mcgill.ecse321group1.gamestore.model.Category;
-import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
-
-
 
 // This is what we want to return when application wants to get a Video Game based off ID
 public class VideoGameResponseDto {
