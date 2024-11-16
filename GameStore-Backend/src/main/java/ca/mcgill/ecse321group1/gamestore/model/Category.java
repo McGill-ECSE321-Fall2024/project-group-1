@@ -2,8 +2,6 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
-import java.util.*;
-import java.sql.Date;
 import jakarta.persistence.*;
 
 // line 41 "../../../../../../model.ump"

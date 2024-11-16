@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-16T17:46:53" hostname="Ivans-MacBook-Air.local" time="0.016">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-16T17:51:29" hostname="Ivans-MacBook-Air.local" time="0.016">
   <properties/>
   <testcase name="testPersistAndLoadCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests" time="0.016"/>
-  <system-out><![CDATA[2024-11-16T12:46:53.950-05:00  INFO 94972 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests]: CustomerRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-16T12:46:53.950-05:00  INFO 94972 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests
+  <system-out><![CDATA[2024-11-16T12:51:29.830-05:00  INFO 96011 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests]: CustomerRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T12:51:29.830-05:00  INFO 96011 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -77,8 +77,6 @@ public class CategoryIntegrationTests {
         // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        String body = response.getBody().getName();
-
     }
 
     @Test
