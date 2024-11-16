@@ -52,6 +52,8 @@ public class OfferIntegrationTests {
     private static final LocalDate VALID_START = java.sql.Date.valueOf("2022-11-08").toLocalDate();
     private static final LocalDate VALID_END= java.sql.Date.valueOf("2023-11-10").toLocalDate();
 
+    private static final String NEW_NAME = "BAY DAYS AT THE BAY";
+
     private static final String CATEGORY_NAME = "Adventure";
     private static final String CATEGORY_DESC = "Story based RPG";
 
@@ -158,6 +160,51 @@ public class OfferIntegrationTests {
         // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    @Order(5)
+    public void testEditOfferMissingParameters() {
+        // Arrange
+        String url = String.format("/offer/%d", this.offerId);
+        OfferRequestDto offerRequest = new OfferRequestDto("A", VALID_DESCRIPTION, VALID_EFFECT, VALID_START, VALID_END, videoGameId);
+
+        // Act
+        client.put(url, offerRequest);
+        ResponseEntity<OfferResponseDto> response = client.getForEntity(url, OfferResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(VALID_NAME, response.getBody().getName());
+        assertEquals(VALID_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(VALID_EFFECT, response.getBody().getEffect());
+        assertEquals(VALID_START, response.getBody().getStartDate());
+        assertEquals(VALID_END, response.getBody().getEndDate());
+        assertEquals(videoGameId, response.getBody().getVideoGameId());
+    }
+
+    @Test
+    @Order(6)
+    public void testEditOffer() {
+        // Arrange
+        String url = String.format("/offer/%d", this.offerId);
+        OfferRequestDto offerRequest = new OfferRequestDto(NEW_NAME, VALID_DESCRIPTION, VALID_EFFECT, VALID_START, VALID_END, videoGameId);
+        
+        // Act
+        client.put(url, offerRequest);
+        ResponseEntity<OfferResponseDto> response = client.getForEntity(url, OfferResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(NEW_NAME, response.getBody().getName());
+        assertEquals(VALID_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(VALID_EFFECT, response.getBody().getEffect());
+        assertEquals(VALID_START, response.getBody().getStartDate());
+        assertEquals(VALID_END, response.getBody().getEndDate());
+        assertEquals(videoGameId, response.getBody().getVideoGameId());
+
     }
     
 }

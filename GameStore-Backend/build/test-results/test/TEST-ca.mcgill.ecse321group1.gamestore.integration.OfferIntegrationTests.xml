@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-16T08:00:17" hostname="Ivans-MacBook-Air.local" time="0.008">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-11-16T17:34:22" hostname="Ivans-MacBook-Air.local" time="0.09">
   <properties/>
-  <testcase name="testCreateValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.008"/>
-  <system-out><![CDATA[2024-11-16T03:00:17.923-05:00  INFO 62908 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests]: OfferIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-16T03:00:17.924-05:00  INFO 62908 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests
+  <testcase name="testCreateValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.046"/>
+  <testcase name="testCreateInvalidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.011"/>
+  <testcase name="testGetValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.007"/>
+  <testcase name="testGetInvalidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.005"/>
+  <testcase name="testEditOfferMissingParameters()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.011"/>
+  <testcase name="testEditOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.01"/>
+  <system-out><![CDATA[2024-11-16T12:34:22.103-05:00  INFO 92172 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests]: OfferIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T12:34:22.103-05:00  INFO 92172 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-16T08:00:15" hostname="Ivans-MacBook-Air.local" time="0.078">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-16T17:34:20" hostname="Ivans-MacBook-Air.local" time="0.07">
   <properties/>
-  <testcase name="testEditValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.04"/>
-  <testcase name="testDeleteCategoryByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.004"/>
-  <testcase name="testCreateValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
+  <testcase name="testEditValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.037"/>
+  <testcase name="testDeleteCategoryByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
+  <testcase name="testCreateValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.005"/>
   <testcase name="testEditCategoryInvalidDescription()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.004"/>
   <testcase name="testDeleteCategoryByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
   <testcase name="testReadCategoryByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
   <testcase name="testReadCategoryByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
-  <testcase name="testCreateInvalidDuplicateCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.004"/>
-  <system-out><![CDATA[2024-11-16T03:00:15.654-05:00  INFO 62908 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests]: CategoryServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-16T03:00:15.659-05:00  INFO 62908 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests
+  <testcase name="testCreateInvalidDuplicateCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.002"/>
+  <system-out><![CDATA[2024-11-16T12:34:19.899-05:00  INFO 92172 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests]: CategoryServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T12:34:19.904-05:00  INFO 92172 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

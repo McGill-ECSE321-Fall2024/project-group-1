@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import ca.mcgill.ecse321group1.gamestore.dto.OfferRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.OfferResponseDto;
@@ -49,5 +50,19 @@ public class OfferController {
     public OfferResponseDto findOfferById(@PathVariable int oid) {
         Offer matchingOffer = offerService.getOffer(oid);
         return new OfferResponseDto(matchingOffer);
+    }
+
+    /**
+     * Retrieves offer by ID and allows attributes to be modified.
+     * 
+     * @param oid The primary key (offer ID) of the offer you want to edit.
+     * @param request The offer request DTO with new attributes
+     * @return The offer with changed attributes.
+     */
+    @PutMapping("/offer/{oid}")
+    public OfferResponseDto editOfferById(@PathVariable int oid, @Valid @RequestBody OfferRequestDto request) {
+        VideoGame gotVideoGame = videoGameService.getVideoGame(request.getVideoGameId());
+        Offer editedOffer = offerService.editOffer(oid, request.getName(), request.getDescription(), request.getEffect(), Date.valueOf(request.getStartDate()), Date.valueOf(request.getEndDate()), gotVideoGame);
+        return new OfferResponseDto(editedOffer);
     }
 }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-11-16T08:00:16" hostname="Ivans-MacBook-Air.local" time="0.033">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-11-16T17:34:20" hostname="Ivans-MacBook-Air.local" time="0.031">
   <properties/>
   <testcase name="testGenerateOrdersGetOrders()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests" time="0.01"/>
   <testcase name="testDeleteOrder()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests" time="0.005"/>
-  <testcase name="testSatisfaction()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests" time="0.005"/>
-  <testcase name="testGetOrders()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests" time="0.005"/>
-  <system-out><![CDATA[2024-11-16T03:00:15.894-05:00  INFO 62908 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests]: CustomerOrderServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-16T03:00:15.896-05:00  INFO 62908 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests
+  <testcase name="testSatisfaction()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests" time="0.006"/>
+  <testcase name="testGetOrders()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests" time="0.003"/>
+  <system-out><![CDATA[2024-11-16T12:34:20.120-05:00  INFO 92172 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests]: CustomerOrderServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T12:34:20.122-05:00  INFO 92172 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
