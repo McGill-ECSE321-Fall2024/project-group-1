@@ -419,11 +419,41 @@ public class VideoGameIntegrationTests {
         assertEquals("Active", matchingVideoGame.getStatus().toString());
     }
 
+    @Test
+    @Order(16)
+    public void testInvalidCategory() {
+        // Arrange
+        String url = String.format("/videogame/getcategory/%d", this.categoryId + 1);
+
+        // Act
+        ResponseEntity<VideoGameListDto> response = client.getForEntity(url, VideoGameListDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(0, response.getBody().getVideoGames().size());
+    }
+
+    @Test
+    @Order(17)
+    public void testValidCategory() {
+        // Arrange
+        String url = String.format("/videogame/getcategory/%d", this.categoryId);
+
+        // Act
+        ResponseEntity<VideoGameListDto> response = client.getForEntity(url, VideoGameListDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(3, response.getBody().getVideoGames().size());
+    }
+
+
+
 
 
     // delete video game DELETE
-
-    // return all video games that match keyword GET
 
     // return all videogames that have a given category GET
 

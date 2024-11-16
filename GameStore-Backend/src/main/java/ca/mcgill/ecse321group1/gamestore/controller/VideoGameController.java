@@ -137,4 +137,21 @@ public class VideoGameController {
 
         return new VideoGameListDto(dtoList);
     }
+
+    /**
+     * Get all video games in a given category
+     * @param cid The ID of the category that you want to return all games of. 
+     * @return List of video games in the given category.
+     */
+    @GetMapping("/videogame/getcategory/{cid}")
+    public VideoGameListDto videoGamesInCategory(@PathVariable int cid) {
+        List<VideoGame> gamesInCategory = videoGameService.searchByCategory(cid);
+        List<VideoGameResponseDto> dtoList = new ArrayList<>();
+
+        for (VideoGame videoGame : gamesInCategory) {
+            dtoList.add(new VideoGameResponseDto(videoGame));
+        }
+
+        return new VideoGameListDto(dtoList);
+    }
 }
