@@ -37,4 +37,10 @@ public class OfferController {
                 
         return new OfferResponseDto(createdOffer);
     }
+
+    /**
+     * Get offer based on ID
+     * @param oid The primary key (offer ID) of the offer you want to get.
+     * @return The offer with matching ID
+     */
 }

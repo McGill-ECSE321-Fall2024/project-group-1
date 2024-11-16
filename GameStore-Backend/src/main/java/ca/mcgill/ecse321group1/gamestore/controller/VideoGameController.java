@@ -50,6 +50,7 @@ public class VideoGameController {
      * Get video game by ID
      * 
      * @param vid The primary key (video game ID) of the video
+     * @return The video game with matching ID
      */
     @GetMapping("/videogame/{vid}") 
     public VideoGameResponseDto findVideoGameById(@PathVariable int vid) {
