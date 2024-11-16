@@ -17,7 +17,7 @@ import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
 
 @RestController
-public class OfferControllers {
+public class OfferController {
     @Autowired
     private OfferService offerService;
     @Autowired
@@ -34,7 +34,7 @@ public class OfferControllers {
     public OfferResponseDto createOffer(@Valid @RequestBody OfferRequestDto offerToCreate) {
         VideoGame gotVideoGame = videoGameService.getVideoGame(offerToCreate.getVideoGameId());
         Offer createdOffer = offerService.createOffer(offerToCreate.getName(), offerToCreate.getDescription(), offerToCreate.getEffect(), Date.valueOf(offerToCreate.getStartDate()), Date.valueOf(offerToCreate.getEndDate()), gotVideoGame);
-        
+                
         return new OfferResponseDto(createdOffer);
     }
 }

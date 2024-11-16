@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
@@ -25,7 +26,8 @@ import ca.mcgill.ecse321group1.gamestore.dto.CategoryRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.OfferRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.OfferResponseDto;
-
+import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
+import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
 
 
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -44,14 +46,20 @@ public class OfferIntegrationTests {
     @Autowired
     private CategoryRepository categoryRepo;
 
-    private static final String VALID_NAME = "Half off deal";
-    private static final String VALID_DESCRIPTION = "Pay only half the sticker price";
+    private static final String VALID_NAME = "MAY DAY MAYHEM";
+    private static final String VALID_DESCRIPTION = "May Day Invasion X HUGE DISCOUNTS";
     private static final String VALID_EFFECT = "50%";
-    private static final LocalDate VALID_START = java.sql.Date.valueOf("2023-11-08").toLocalDate();
+    private static final LocalDate VALID_START = java.sql.Date.valueOf("2022-11-08").toLocalDate();
     private static final LocalDate VALID_END= java.sql.Date.valueOf("2023-11-10").toLocalDate();
 
-    private static final String VALID_CATEGORY_NAME = "Adventure";
-    private static final String VALID_CATEGORY_DESC = "Story based RPG";
+    private static final String CATEGORY_NAME = "Adventure";
+    private static final String CATEGORY_DESC = "Story based RPG";
+
+    private static final String GAME_NAME = "Zelda Raid Shadow Legends";
+    private static final String GAME_DESCRIPTION = "A Zelda walks into a bar";
+    private static final float GAME_PRICE = 19.99f;
+    private static final int GAME_QUANTITY = 25;
+    private static final LocalDate GAME_DATE = java.sql.Date.valueOf("2020-11-08").toLocalDate();
 
     private int offerId;
     private int videoGameId;
@@ -68,19 +76,40 @@ public class OfferIntegrationTests {
     @Order(1)
     public void testCreateValidOffer() {
         // First create a category, then save the category ID
-        CategoryRequestDto categoryRequest = new CategoryRequestDto(VALID_CATEGORY_NAME, VALID_CATEGORY_DESC);
+        CategoryRequestDto categoryRequest = new CategoryRequestDto(CATEGORY_NAME, CATEGORY_DESC);
 
         ResponseEntity<CategoryResponseDto> categoryResponse = client.postForEntity("/category", categoryRequest, CategoryResponseDto.class);
         assertNotNull(categoryResponse);
-        assertEquals(VALID_CATEGORY_NAME, categoryResponse.getBody().getName());
-        assertEquals(VALID_CATEGORY_DESC, categoryResponse.getBody().getDescription());
+        assertEquals(CATEGORY_NAME, categoryResponse.getBody().getName());
+        assertEquals(CATEGORY_DESC, categoryResponse.getBody().getDescription());
         categoryId = categoryResponse.getBody().getId();
 
         // Then create a video game, and save the video game ID
+        VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(GAME_NAME, GAME_DESCRIPTION, GAME_PRICE, GAME_QUANTITY, GAME_DATE, categoryId);
 
+        ResponseEntity<VideoGameResponseDto> videoGameResponse = client.postForEntity("/videogame", videoGameRequest, VideoGameResponseDto.class);
+        assertNotNull(videoGameResponse);
+        assertEquals(GAME_NAME, videoGameResponse.getBody().getName());
+        assertEquals(GAME_DESCRIPTION, videoGameResponse.getBody().getDescription());
+        assertEquals(GAME_PRICE, videoGameResponse.getBody().getPrice());
+        assertEquals(GAME_QUANTITY, videoGameResponse.getBody().getQuantity());
+        assertEquals(GAME_DATE, videoGameResponse.getBody().getDate());
+        assertEquals(categoryId, videoGameResponse.getBody().getCategory().getId()); 
+        videoGameId = videoGameResponse.getBody().getId();
 
-        OfferRequestDto request = new OfferRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_EFFECT, VALID_START, VALID_END, videoGameId);
-        
+        // Arrange
+        OfferRequestDto offerRequest = new OfferRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_EFFECT, VALID_START, VALID_END, videoGameId);
+
+        // Act
+        ResponseEntity<OfferResponseDto> offerResponse = client.postForEntity("/offer", offerRequest, OfferResponseDto.class);
+        assertNotNull(offerResponse);
+        assertEquals(HttpStatus.OK, offerResponse.getStatusCode());
+        assertEquals(VALID_NAME, offerResponse.getBody().getName());
+        assertEquals(VALID_DESCRIPTION, offerResponse.getBody().getDescription());
+        assertEquals(VALID_EFFECT, offerResponse.getBody().getEffect());
+        assertEquals(VALID_START, offerResponse.getBody().getStartDate());
+        assertEquals(VALID_END, offerResponse.getBody().getEndDate());
+        assertEquals(videoGameId, offerResponse.getBody().getVideoGameId());        
     }
     
 }

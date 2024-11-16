@@ -6,16 +6,16 @@ public class OfferRequestDto {
     private String name;
     private String description;
     private String effect;
-    private LocalDate start;
-    private LocalDate end;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private int videoGameId;
 
-    public OfferRequestDto(String name, String description, String effect, LocalDate start, LocalDate end, int videoGameId) {
+    public OfferRequestDto(String name, String description, String effect, LocalDate startDate, LocalDate endDate, int videoGameId) {
         this.name = name;
         this.description = description;
         this.effect = effect;
-        this.start = start;
-        this.end = end;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.videoGameId = videoGameId;
     }
 
@@ -32,11 +32,11 @@ public class OfferRequestDto {
     }
 
     public LocalDate getStartDate() {
-        return start;
+        return startDate;
     }
 
     public LocalDate getEndDate() {
-        return end;
+        return endDate;
     }
 
     public int getVideoGameId() {
