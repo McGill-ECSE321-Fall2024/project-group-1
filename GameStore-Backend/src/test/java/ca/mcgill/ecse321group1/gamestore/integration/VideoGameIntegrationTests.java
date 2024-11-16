@@ -454,8 +454,6 @@ public class VideoGameIntegrationTests {
 
     // delete video game DELETE
 
-    // return all videogames that have a given category GET
-
     // gets average rating of every video game GET
 
 

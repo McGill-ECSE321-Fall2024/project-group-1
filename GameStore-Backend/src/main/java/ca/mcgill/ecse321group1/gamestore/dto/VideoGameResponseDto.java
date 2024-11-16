@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321group1.gamestore.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 
