@@ -21,7 +21,6 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import ca.mcgill.ecse321group1.gamestore.model.Category;
 import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
 import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
@@ -287,7 +286,7 @@ public class VideoGameIntegrationTests {
 
     @Test
     @Order(10)
-    public void deactiveValidVideoGame() {
+    public void deactivateValidVideoGame() {
         // Arrange
         String deactivateUrl = String.format("/videogame/deactivate/%d", this.deactivateVideoGameId);
         String deactivatedGetUrl = String.format("/videogame/%d", this.deactivateVideoGameId);
@@ -345,7 +344,7 @@ public class VideoGameIntegrationTests {
 
     @Test
     @Order(13)
-    public void getAllPending() {
+    public void testGetAllPending() {
         // Creating a pending video game
         // Arrange
         VideoGameRequestDto videoGameRequest = new VideoGameRequestDto(VALID_NAME, VALID_DESCRIPTION, VALID_PRICE, VALID_QUANTITY, VALID_DATE, categoryId);
@@ -383,6 +382,43 @@ public class VideoGameIntegrationTests {
         assertEquals(VALID_DATE, pendingVideoGame.getDate());
         assertEquals("Pending", pendingVideoGame.getStatus().toString());
     }
+
+    @Test
+    @Order(14)
+    public void testGetUnmatchingKeyword() {
+        // Arrange
+        String url = "/videogame/search/valorant";
+
+        // Act
+        ResponseEntity<VideoGameListDto> response = client.getForEntity(url, VideoGameListDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode()); 
+        assertEquals(0, response.getBody().getVideoGames().size());
+    }
+
+    @Test
+    @Order(15)
+    public void testMatchingKeyword() {
+        // Arrange
+        String url = "/videogame/search/apex";
+
+        // Act
+        ResponseEntity<VideoGameListDto> response = client.getForEntity(url, VideoGameListDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode()); 
+        VideoGameResponseDto matchingVideoGame = response.getBody().getVideoGames().get(0);
+        assertEquals(NEW_NAME, matchingVideoGame.getName());
+        assertEquals(NEW_DESCRIPTION, matchingVideoGame.getDescription());
+        assertEquals(NEW_PRICE, matchingVideoGame.getPrice());
+        assertEquals(UPDATED_QUANTITY, matchingVideoGame.getQuantity());
+        assertEquals(NEW_DATE, matchingVideoGame.getDate());
+        assertEquals("Active", matchingVideoGame.getStatus().toString());
+    }
+
 
 
     // delete video game DELETE

@@ -126,7 +126,7 @@ public class VideoGameController {
      * @param keyword The keyword that you want to match
      * @return List of video games that match the keyword.
      */
-    @GetMapping("/videogame/keyword/{keyword}")
+    @GetMapping("/videogame/search/{keyword}")
     public VideoGameListDto allKeywordMatchingVideoGames(@PathVariable String keyword) {
         List<VideoGame> matchingVideoGameList = videoGameService.searchByKeyword(keyword);
         List<VideoGameResponseDto> dtoList = new ArrayList<>();
