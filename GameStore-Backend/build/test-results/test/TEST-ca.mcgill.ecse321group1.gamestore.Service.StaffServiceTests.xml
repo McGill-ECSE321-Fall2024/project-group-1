@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-16T17:51:30" hostname="Ivans-MacBook-Air.local" time="0.02">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-16T19:18:41" hostname="Viveks-MacBook-Air.local" time="0.024">
   <properties/>
   <testcase name="testDeleteStaffByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.002"/>
-  <testcase name="testEditValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.002"/>
+  <testcase name="testEditValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.005"/>
   <testcase name="testCreateValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.002"/>
-  <testcase name="testReadStaffByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.001"/>
+  <testcase name="testReadStaffByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.002"/>
   <testcase name="testCreateInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.002"/>
   <testcase name="testReadStaffByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.002"/>
-  <testcase name="testDeleteStaffByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.002"/>
+  <testcase name="testDeleteStaffByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.001"/>
   <testcase name="testCreateInvalidDuplicateStaff()" classname="ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests" time="0.002"/>
-  <system-out><![CDATA[2024-11-16T12:51:30.681-05:00  INFO 96011 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests]: StaffServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-16T12:51:30.682-05:00  INFO 96011 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests
+  <system-out><![CDATA[2024-11-16T14:18:41.212-05:00  INFO 2261 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests]: StaffServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T14:18:41.213-05:00  INFO 2261 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

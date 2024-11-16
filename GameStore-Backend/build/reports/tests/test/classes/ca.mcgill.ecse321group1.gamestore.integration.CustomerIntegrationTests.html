@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.095s</div>
+<div class="counter">0.099s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,22 +79,22 @@
 </thead>
 <tr>
 <td class="success">testAddGameToCustomerCart()</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateInvalidCustomer()</td>
-<td class="success">0.018s</td>
+<td class="success">0.020s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateValidCustomer()</td>
-<td class="success">0.042s</td>
+<td class="success">0.045s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testEditInvalidStaff()</td>
-<td class="success">0.009s</td>
+<td class="success">0.008s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -104,7 +104,7 @@
 </tr>
 <tr>
 <td class="success">testGetInvalidCustomer()</td>
-<td class="success">0.004s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -117,10 +117,10 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2024-11-16T12:51:32.094-05:00  INFO 96011 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests]: CustomerIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-16T12:51:32.094-05:00  INFO 96011 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests
-2024-11-16T12:51:32.144-05:00  WARN 96011 --- [gamestore] [o-auto-1-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.createCustomer(ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
-2024-11-16T12:51:32.169-05:00  WARN 96011 --- [gamestore] [o-auto-1-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.editCustomerById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+<pre>2024-11-16T14:18:42.690-05:00  INFO 2261 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests]: CustomerIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T14:18:42.691-05:00  INFO 2261 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests
+2024-11-16T14:18:42.744-05:00  WARN 2261 --- [gamestore] [o-auto-1-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.createCustomer(ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+2024-11-16T14:18:42.770-05:00  WARN 2261 --- [gamestore] [o-auto-1-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.editCustomerById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
 </pre>
 </span>
 </div>
@@ -132,7 +132,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 16, 2024, 12:51:32 p.m.</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 16, 2024, 2:18:43 p.m.</p>
 </div>
 </div>
 </body>

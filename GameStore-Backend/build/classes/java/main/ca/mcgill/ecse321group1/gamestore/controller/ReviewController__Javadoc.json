@@ -1,0 +1,1 @@
+{"doc":"","fields":[],"enumConstants":[],"methods":[{"name":"createReview","paramTypes":["ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto"],"doc":" Create new review.\n \n @param reviewToCreate The review to create.\n @return The created review, including the ID.\n"}],"constructors":[]}
