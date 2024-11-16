@@ -109,7 +109,8 @@ public class OfferIntegrationTests {
         assertEquals(VALID_EFFECT, offerResponse.getBody().getEffect());
         assertEquals(VALID_START, offerResponse.getBody().getStartDate());
         assertEquals(VALID_END, offerResponse.getBody().getEndDate());
-        assertEquals(videoGameId, offerResponse.getBody().getVideoGameId());        
+        assertEquals(videoGameId, offerResponse.getBody().getVideoGameId()); 
+        offerId = offerResponse.getBody().getId();       
     }
 
     @Test
@@ -123,6 +124,40 @@ public class OfferIntegrationTests {
           ResponseEntity<OfferResponseDto> offerResponse = client.postForEntity("/offer", offerRequest, OfferResponseDto.class);
           assertNotNull(offerResponse);
           assertEquals(HttpStatus.BAD_REQUEST, offerResponse.getStatusCode());
+    }
+
+    @Test
+    @Order(3)
+    public void testGetValidOffer() {
+        // Arrange
+        String url = String.format("/offer/%d", this.offerId);
+
+        // Act
+        ResponseEntity<OfferResponseDto> response = client.getForEntity(url, OfferResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(VALID_NAME, response.getBody().getName());
+        assertEquals(VALID_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(VALID_EFFECT, response.getBody().getEffect());
+        assertEquals(VALID_START, response.getBody().getStartDate());
+        assertEquals(VALID_END, response.getBody().getEndDate());
+        assertEquals(videoGameId, response.getBody().getVideoGameId()); 
+    }
+    
+    @Test
+    @Order(4)
+    public void testGetInvalidOffer() {
+        // Arrange
+        String url = String.format("/offer/%d", this.offerId + 1);
+
+        // Act
+        ResponseEntity<OfferResponseDto> response = client.getForEntity(url, OfferResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
     
 }

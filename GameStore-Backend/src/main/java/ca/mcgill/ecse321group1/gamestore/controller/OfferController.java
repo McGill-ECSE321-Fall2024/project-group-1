@@ -3,6 +3,8 @@ package ca.mcgill.ecse321group1.gamestore.controller;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,4 +45,9 @@ public class OfferController {
      * @param oid The primary key (offer ID) of the offer you want to get.
      * @return The offer with matching ID
      */
+    @GetMapping("/offer/{oid}")
+    public OfferResponseDto findOfferById(@PathVariable int oid) {
+        Offer matchingOffer = offerService.getOffer(oid);
+        return new OfferResponseDto(matchingOffer);
+    }
 }
