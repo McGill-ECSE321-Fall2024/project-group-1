@@ -206,5 +206,43 @@ public class OfferIntegrationTests {
         assertEquals(videoGameId, response.getBody().getVideoGameId());
 
     }
+
+    @Test
+    @Order(7)
+    public void testDeleteNonexistingOffer() {
+        // Arrange
+        String invalidOfferUrl = String.format("/offer/%d", this.offerId + 1);
+        String validOfferUrl = String.format("/offer/%d", this.offerId);
+
+
+        // Act
+        client.delete(invalidOfferUrl);
+        ResponseEntity<OfferResponseDto> response = client.getForEntity(validOfferUrl, OfferResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(NEW_NAME, response.getBody().getName());
+        assertEquals(VALID_DESCRIPTION, response.getBody().getDescription());
+        assertEquals(VALID_EFFECT, response.getBody().getEffect());
+        assertEquals(VALID_START, response.getBody().getStartDate());
+        assertEquals(VALID_END, response.getBody().getEndDate());
+        assertEquals(videoGameId, response.getBody().getVideoGameId());
+    }
+
+    @Test
+    @Order(8)
+    public void testDeleteOffer() {
+        // Arrange
+        String url = String.format("/offer/%d", this.offerId);
+
+        // Act
+        client.delete(url);
+        ResponseEntity<OfferResponseDto> response = client.getForEntity(url, OfferResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
     
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-16T17:34:19" hostname="Ivans-MacBook-Air.local" time="0.01">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-11-16T17:43:27" hostname="Ivans-MacBook-Air.local" time="0.011">
   <properties/>
-  <testcase name="testPersistAndLoadVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests" time="0.01"/>
-  <system-out><![CDATA[2024-11-16T12:34:19.885-05:00  INFO 92172 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests]: VideoGameRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-16T12:34:19.886-05:00  INFO 92172 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests
+  <testcase name="testPersistAndLoadVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests" time="0.011"/>
+  <system-out><![CDATA[2024-11-16T12:43:27.696-05:00  INFO 94143 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests]: VideoGameRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T12:43:27.696-05:00  INFO 94143 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

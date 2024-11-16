@@ -3,6 +3,7 @@ package ca.mcgill.ecse321group1.gamestore.controller;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,5 +65,15 @@ public class OfferController {
         VideoGame gotVideoGame = videoGameService.getVideoGame(request.getVideoGameId());
         Offer editedOffer = offerService.editOffer(oid, request.getName(), request.getDescription(), request.getEffect(), Date.valueOf(request.getStartDate()), Date.valueOf(request.getEndDate()), gotVideoGame);
         return new OfferResponseDto(editedOffer);
+    }
+
+    /**
+     * Deletes offer by ID
+     * 
+     * @param oid The primary key (offer ID) of the offer you want to delete.
+     */
+    @DeleteMapping("/offer/{oid}")
+    public void deleteOfferById(@PathVariable int oid) {
+        offerService.deleteOffer(oid);
     }
 }

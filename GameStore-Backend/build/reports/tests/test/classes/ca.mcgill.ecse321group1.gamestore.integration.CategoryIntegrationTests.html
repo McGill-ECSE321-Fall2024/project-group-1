@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.434s</div>
+<div class="counter">0.450s</div>
 <p>duration</p>
 </div>
 </td>
@@ -89,17 +89,17 @@
 </tr>
 <tr>
 <td class="success">testDeleteInvalidCategory()</td>
-<td class="success">0.210s</td>
+<td class="success">0.227s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testDeleteValidCategory()</td>
-<td class="success">0.009s</td>
+<td class="success">0.010s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testEditInvalidCategory()</td>
-<td class="success">0.010s</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -114,7 +114,7 @@
 </tr>
 <tr>
 <td class="success">testGetValidCategory()</td>
-<td class="success">0.007s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -122,8 +122,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2024-11-16T12:34:20.637-05:00  INFO 92172 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests]: CategoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-16T12:34:20.646-05:00  INFO 92172 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests
+<pre>2024-11-16T12:43:28.468-05:00  INFO 94143 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests]: CategoryIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T12:43:28.478-05:00  INFO 94143 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -134,30 +134,30 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2024-11-16T12:34:20.668-05:00  INFO 92172 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : Starting CategoryIntegrationTests using Java 21.0.5 with PID 92172 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
-2024-11-16T12:34:20.669-05:00  INFO 92172 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-11-16T12:34:20.796-05:00  INFO 92172 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-16T12:34:20.807-05:00  INFO 92172 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 10 JPA repository interfaces.
-2024-11-16T12:34:20.948-05:00  INFO 92172 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
-2024-11-16T12:34:20.961-05:00  INFO 92172 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-11-16T12:34:20.961-05:00  INFO 92172 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2024-11-16T12:34:20.998-05:00  INFO 92172 --- [gamestore] [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-11-16T12:34:20.999-05:00  INFO 92172 --- [gamestore] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 329 ms
-2024-11-16T12:34:21.061-05:00  INFO 92172 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-16T12:34:21.062-05:00  INFO 92172 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-16T12:34:21.067-05:00  INFO 92172 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-16T12:34:21.068-05:00  INFO 92172 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2024-11-16T12:34:21.100-05:00  INFO 92172 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@7301c83e
-2024-11-16T12:34:21.100-05:00  INFO 92172 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2024-11-16T12:34:21.103-05:00  WARN 92172 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-16T12:34:21.261-05:00  INFO 92172 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-16T12:34:21.366-05:00  INFO 92172 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-16T12:34:21.436-05:00  WARN 92172 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-16T12:34:21.551-05:00  INFO 92172 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 60149 (http) with context path '/'
-2024-11-16T12:34:21.554-05:00  INFO 92172 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : Started CategoryIntegrationTests in 0.906 seconds (process running for 6.246)
-2024-11-16T12:34:21.656-05:00  INFO 92172 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-11-16T12:34:21.657-05:00  INFO 92172 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-11-16T12:34:21.657-05:00  INFO 92172 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-11-16T12:43:28.502-05:00  INFO 94143 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : Starting CategoryIntegrationTests using Java 21.0.5 with PID 94143 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
+2024-11-16T12:43:28.502-05:00  INFO 94143 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-11-16T12:43:28.620-05:00  INFO 94143 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-16T12:43:28.634-05:00  INFO 94143 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 10 JPA repository interfaces.
+2024-11-16T12:43:28.783-05:00  INFO 94143 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2024-11-16T12:43:28.797-05:00  INFO 94143 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-16T12:43:28.797-05:00  INFO 94143 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-16T12:43:28.860-05:00  INFO 94143 --- [gamestore] [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-16T12:43:28.860-05:00  INFO 94143 --- [gamestore] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 357 ms
+2024-11-16T12:43:28.925-05:00  INFO 94143 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-16T12:43:28.926-05:00  INFO 94143 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-16T12:43:28.931-05:00  INFO 94143 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-16T12:43:28.932-05:00  INFO 94143 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-11-16T12:43:28.947-05:00  INFO 94143 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@61547ef3
+2024-11-16T12:43:28.948-05:00  INFO 94143 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-11-16T12:43:28.950-05:00  WARN 94143 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-16T12:43:29.097-05:00  INFO 94143 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-16T12:43:29.207-05:00  INFO 94143 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-16T12:43:29.279-05:00  WARN 94143 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-16T12:43:29.396-05:00  INFO 94143 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 60588 (http) with context path '/'
+2024-11-16T12:43:29.399-05:00  INFO 94143 --- [gamestore] [    Test worker] c.m.e.g.i.CategoryIntegrationTests       : Started CategoryIntegrationTests in 0.919 seconds (process running for 6.181)
+2024-11-16T12:43:29.517-05:00  INFO 94143 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-16T12:43:29.517-05:00  INFO 94143 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-16T12:43:29.518-05:00  INFO 94143 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 </pre>
 </span>
 </div>
@@ -169,7 +169,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 16, 2024, 12:34:22 p.m.</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Nov 16, 2024, 12:43:30 p.m.</p>
 </div>
 </div>
 </body>
