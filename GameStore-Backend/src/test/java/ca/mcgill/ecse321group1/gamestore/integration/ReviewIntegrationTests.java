@@ -2,6 +2,7 @@ package ca.mcgill.ecse321group1.gamestore.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.reset;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,9 +23,12 @@ import org.springframework.http.ResponseEntity;
 
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
+import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto;
+import ca.mcgill.ecse321group1.gamestore.dto.ReviewResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
 import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
 import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
@@ -61,6 +65,10 @@ public class ReviewIntegrationTests {
     private static final String CUST_PASSWORD = "ILoveFortnite2003";
     private static final String CUST_ADDRESS = "123 Sesame Street, New York, New York, USA, 123456";
     private static final String CUST_PHONE_NUMBER = "604604604";
+
+    private static final String VALID_CONTENT = "";
+    private static final LocalDate VALID_DATE = java.sql.Date.valueOf("2023-11-10").toLocalDate();
+    private static final Review.Rating VALID_RATING = Review.Rating.fourStar;
 
     //private static final String
 
@@ -115,9 +123,16 @@ public class ReviewIntegrationTests {
         assertEquals(CUST_PHONE_NUMBER, custHelper.getPhoneNumber());
         customerId = custHelper.getId();
 
+        // Arrange
+        ReviewRequestDto request = new ReviewRequestDto(VALID_CONTENT, VALID_DATE, VALID_RATING, videoGameId, customerId);
+        
         // Act
-        //OfferRequestDto request = new OfferRequestDto()
-    }
+        ResponseEntity<ReviewResponseDto> response = client.postForEntity("/videogame/review/", request, ReviewResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        }
 
 
     

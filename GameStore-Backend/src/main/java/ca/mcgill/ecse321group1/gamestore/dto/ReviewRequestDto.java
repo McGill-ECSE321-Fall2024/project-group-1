@@ -8,15 +8,15 @@ public class ReviewRequestDto {
     private String content;
     private LocalDate date;
     private String rating;
-    private VideoGameResponseDto videoGame;
-    private PersonResponseDto customer;
+    private int videoGameId;
+    private int customerId;
 
-    public ReviewRequestDto(String content, LocalDate date, Review.Rating rating, VideoGameResponseDto videoGame, PersonResponseDto customer){
+    public ReviewRequestDto(String content, LocalDate date, Review.Rating rating, int videoGameId, int customerId){
         this.content = content;
         this.date = date;
         this.rating = rating.toString(); // Hoping this works. 
-        this.videoGame = videoGame;
-        this.customer = customer;
+        this.videoGameId = videoGameId;
+        this.customerId = customerId;
     }
 
     public String getContent() {
@@ -31,11 +31,11 @@ public class ReviewRequestDto {
         return rating;
     }
 
-    public VideoGameResponseDto getVideoGame(){
-        return videoGame;
+    public int getVideoGameId(){
+        return videoGameId;
     }
 
-    public PersonResponseDto getCustomer() {
-        return customer;
+    public int getCustomerId() {
+        return customerId;
     }
 }

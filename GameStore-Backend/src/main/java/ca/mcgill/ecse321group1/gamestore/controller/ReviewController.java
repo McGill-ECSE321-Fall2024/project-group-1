@@ -34,8 +34,8 @@ public class ReviewController {
      */
     @PostMapping("/videogame/review/")
     public ReviewResponseDto createReview(@Valid @RequestBody ReviewRequestDto request) {
-        VideoGame gotVideoGame = videoGameService.getVideoGame(request.getVideoGame().getId());
-        Customer gotCustomer = customerService.getCustomer(request.getCustomer().getId());
+        VideoGame gotVideoGame = videoGameService.getVideoGame(request.getVideoGameId());
+        Customer gotCustomer = customerService.getCustomer(request.getCustomerId());
         Review createdReview = reviewService.createReview(request.getContent(), Date.valueOf(request.getDate()), Review.Rating.valueOf(request.getRating()), gotVideoGame, gotCustomer);
         return new ReviewResponseDto(createdReview);
     }
