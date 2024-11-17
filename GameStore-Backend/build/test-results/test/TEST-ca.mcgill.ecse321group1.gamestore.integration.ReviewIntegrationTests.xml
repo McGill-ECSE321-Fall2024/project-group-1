@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-11-16T23:27:07" hostname="Ivans-MacBook-Air.local" time="0.705">
+  <properties/>
+  <testcase name="testCreateReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.705">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.testCreateReview(ReviewIntegrationTests.java:140)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <system-out><![CDATA[18:27:04.435 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests]: ReviewIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:27:04.509 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2024-11-16T18:27:04.747-05:00  INFO 42160 --- [gamestore] [    Test worker] c.m.e.g.i.ReviewIntegrationTests         : Starting ReviewIntegrationTests using Java 21.0.5 with PID 42160 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
+2024-11-16T18:27:04.748-05:00  INFO 42160 --- [gamestore] [    Test worker] c.m.e.g.i.ReviewIntegrationTests         : No active profile set, falling back to 1 default profile: "default"
+2024-11-16T18:27:05.194-05:00  INFO 42160 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-16T18:27:05.237-05:00  INFO 42160 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 10 JPA repository interfaces.
+2024-11-16T18:27:05.542-05:00  INFO 42160 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2024-11-16T18:27:05.553-05:00  INFO 42160 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-16T18:27:05.553-05:00  INFO 42160 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-16T18:27:05.597-05:00  INFO 42160 --- [gamestore] [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-16T18:27:05.597-05:00  INFO 42160 --- [gamestore] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 836 ms
+2024-11-16T18:27:05.701-05:00  INFO 42160 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-16T18:27:05.742-05:00  INFO 42160 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-16T18:27:05.766-05:00  INFO 42160 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-16T18:27:05.964-05:00  INFO 42160 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-16T18:27:05.984-05:00  INFO 42160 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-16T18:27:06.138-05:00  INFO 42160 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7b35798b
+2024-11-16T18:27:06.141-05:00  INFO 42160 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-16T18:27:06.170-05:00  WARN 42160 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-16T18:27:06.917-05:00  INFO 42160 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-16T18:27:07.083-05:00  INFO 42160 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-16T18:27:07.410-05:00  WARN 42160 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-16T18:27:07.668-05:00  INFO 42160 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 64706 (http) with context path '/'
+2024-11-16T18:27:07.675-05:00  INFO 42160 --- [gamestore] [    Test worker] c.m.e.g.i.ReviewIntegrationTests         : Started ReviewIntegrationTests in 3.08 seconds (process running for 3.97)
+2024-11-16T18:27:08.094-05:00  INFO 42160 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-16T18:27:08.094-05:00  INFO 42160 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-16T18:27:08.095-05:00  INFO 42160 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-11-16T18:27:08.373-05:00  WARN 42160 --- [gamestore] [o-auto-1-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public ca.mcgill.ecse321group1.gamestore.dto.ReviewResponseDto ca.mcgill.ecse321group1.gamestore.controller.ReviewController.createReview(ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto): [Field error in object 'reviewRequestDto' on field 'videoGameId': rejected value [null]; codes [typeMismatch.reviewRequestDto.videoGameId,typeMismatch.videoGameId,typeMismatch.int,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [reviewRequestDto.videoGameId,videoGameId]; arguments []; default message [videoGameId]]; default message [Failed to convert value of type 'null' to required type 'int'; Failed to convert from type [null] to type [int] for value [null]]] ]
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/izhang2/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

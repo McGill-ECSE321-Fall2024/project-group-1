@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-11-14T01:07:32" hostname="Zacharys-MBP" time="0.024">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-11-16T23:27:09" hostname="Ivans-MacBook-Air.local" time="0.026">
   <properties/>
-  <testcase name="testDeleteLastOwner()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.002"/>
+  <testcase name="testDeleteLastOwner()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.003"/>
   <testcase name="testReadOwnerByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.001"/>
   <testcase name="testReadOwnerByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.002"/>
   <testcase name="testDeleteOwnerByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.002"/>
   <testcase name="testDeleteOwnerByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.002"/>
   <testcase name="testEditValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.002"/>
-  <testcase name="testCreateValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.001"/>
+  <testcase name="testCreateValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.002"/>
   <testcase name="testCreateInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.002"/>
-  <testcase name="testCreateInvalidDuplicateOwner()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.001"/>
-  <system-out><![CDATA[2024-11-13T20:07:32.755-05:00  INFO 30816 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests]: OwnerServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-13T20:07:32.756-05:00  INFO 30816 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests
+  <testcase name="testCreateInvalidDuplicateOwner()" classname="ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests" time="0.002"/>
+  <system-out><![CDATA[2024-11-16T18:27:09.638-05:00  INFO 42160 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests]: OwnerServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-16T18:27:09.639-05:00  INFO 42160 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

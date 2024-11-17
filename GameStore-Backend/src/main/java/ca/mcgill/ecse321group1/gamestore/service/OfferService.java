@@ -47,7 +47,7 @@ public class OfferService {
         offer.setStartDate(start);
         offer.setEndDate(end);
         offer.setVideoGame(game);//allowed to be null
-        return offerRepo.save(offer);
+        return offerRepo.save(offer); 
     }
 
     /**Retrives an Offer by ID, and modifies its attributes according to editOffer's arguments before re-storing*/

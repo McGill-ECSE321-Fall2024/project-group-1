@@ -6,6 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import jakarta.persistence.*;
 
 // line 58 "../../../../../model.ump"
@@ -31,7 +35,7 @@ public class Review
   private VideoGame reviewed;
   @ManyToOne
   private Customer reviewer;
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   private Reply reply;
 
   //Helper Variables

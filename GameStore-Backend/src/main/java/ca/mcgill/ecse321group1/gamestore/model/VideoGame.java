@@ -2,9 +2,6 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.*;
 import jakarta.persistence.*;
@@ -277,14 +274,8 @@ public class VideoGame
     {
       return wasSet;
     }
-
-    Category existingCategory = category;
     category = aCategory;
-    if (existingCategory != null && !existingCategory.equals(aCategory))
-    {
-      existingCategory.removeVideoGame(this);
-    }
-    category.addVideoGame(this);
+    
     wasSet = true;
     return wasSet;
   }
@@ -295,12 +286,6 @@ public class VideoGame
     {
       Review aReview = reviews.get(i - 1);
       aReview.delete();
-    }
-    Category placeholderCategory = category;
-    this.category = null;
-    if(placeholderCategory != null)
-    {
-      placeholderCategory.removeVideoGame(this);
     }
   }
 
