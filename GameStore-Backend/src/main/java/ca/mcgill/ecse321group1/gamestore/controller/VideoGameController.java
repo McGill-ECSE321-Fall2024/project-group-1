@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -19,6 +20,7 @@ import ca.mcgill.ecse321group1.gamestore.dto.VideoGameListDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
 import ca.mcgill.ecse321group1.gamestore.model.Category;
+import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
 import ca.mcgill.ecse321group1.gamestore.service.CategoryService;
@@ -154,5 +156,24 @@ public class VideoGameController {
         }
 
         return new VideoGameListDto(dtoList);
+    }
+
+    /**
+     * Delete video game with matching ID
+     * @param vid The ID of the video game you want to delete
+     */
+    @DeleteMapping("/videogame/{vid}")
+    public void deleteVideoGameById(@PathVariable int vid) {
+        videoGameService.deleteVideoGame(vid);
+    }
+
+    /**
+     * Get average rating of video game
+     * @param vid The ID of the video game you want to get the average rating from
+     * @return The average rating as a Review.Rating enum.
+     */
+    @GetMapping("/videogame/{vid}/rating") 
+    public Review.Rating getVideoGameRating(@PathVariable int vid) {
+        return videoGameService.averageRatingOf(vid);
     }
 }
