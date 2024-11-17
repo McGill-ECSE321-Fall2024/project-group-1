@@ -10,8 +10,8 @@ public class ReviewResponseDto {
     private String content;
     private LocalDate date;
     private String rating;
-    private VideoGameResponseDto videoGame;
-    private PersonResponseDto customer;
+    private int videoGameId;
+    private int customerId;
     private Reply reply; // Might need to change this to DTO
 
     protected ReviewResponseDto() {
@@ -22,8 +22,8 @@ public class ReviewResponseDto {
         this.content = review.getContent();
         this.date = review.getDate().toLocalDate();
         this.rating = review.getRating().toString();
-        this.videoGame = new VideoGameResponseDto(review.getReviewed());
-        this.customer = new PersonResponseDto(review.getReviewer());
+        this.videoGameId = review.getReviewed().getId();
+        this.customerId = review.getReviewer().getId();
         this.reply = review.getReply();
     }
 
@@ -43,12 +43,12 @@ public class ReviewResponseDto {
         return rating;
     }
 
-    public VideoGameResponseDto getVideoGame() {
-        return videoGame;
+    public int getVideoGame() {
+        return videoGameId;
     }
 
-    public PersonResponseDto getCustomer() {
-        return customer;
+    public int getCustomer() {
+        return customerId;
     }
 
     public Reply getReply() {
