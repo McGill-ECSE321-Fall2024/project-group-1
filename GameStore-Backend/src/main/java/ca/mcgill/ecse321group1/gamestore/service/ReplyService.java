@@ -24,9 +24,9 @@ public class ReplyService {
         return c;
     }
 
-    /**ONLY CALLED BY ReviewService. Creates a new Reply object with given attributes, and stores it into the databases*/
+    /**Creates a new Reply object with given attributes, and stores it into the databases*/
     @Transactional
-    Reply initReply(String content, Date date, Review review) {
+    public Reply createReply(String content, Date date, Review review) {
         if (content == null) content = "";
 
         if (review == null)
@@ -49,9 +49,9 @@ public class ReplyService {
         return repo.save(reply);//no ID, gets set by this.
     }
 
-    /**ONLY CALLED BY ReviewService. Deletes a Reply, permanently.*/
+    /**Deletes a Reply, permanently.*/
     @Transactional
-    void deleteReply(int id) {
+    public void deleteReply(int id) {
         if (!repo.existsById(id))
             throw new IllegalArgumentException(id + " cannot be deleted as it does not correspond to an extant Reply!");
         repo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong

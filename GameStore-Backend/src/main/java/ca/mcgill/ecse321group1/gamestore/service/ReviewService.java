@@ -51,25 +51,6 @@ public class ReviewService {
         return repo.save(review);
     }
 
-    /**Links a Reply to a Review*/
-    @Transactional
-    public Review createReply(int review_id, String content, Date date, ReplyService replyService) {
-        Review review = getReview(review_id);
-        Reply reply = replyService.initReply(content, date, review);
-        review.setReply(reply);
-        return repo.save(review);
-    }
-
-    /**Removes the Reply from a Review, silently.*/
-    @Transactional
-    public Review removeReply(int review_id, ReplyService replyService) {
-        Review review = getReview(review_id);
-        Reply reply = review.getReply();
-        if (reply != null) replyService.deleteReply(reply.getId());
-        review.setReply(null);
-        return repo.save(review);
-    }
-
     /**Retrieves a Review by ID, and modifies its attributes according to editReview's arguments before re-storing. Cannot change reviewer or reviewed game.*/
     @Transactional
     public Review editReview(int id, String content, Date date, Review.Rating rating) {
@@ -89,7 +70,6 @@ public class ReviewService {
         if (!repo.existsById(id))
             throw new IllegalArgumentException(id + " cannot be deleted as it does not correspond to an extant Review!");
         Review review = getReview(id);
-        if(review.getReply() != null) replyService.deleteReply(review.getReply().getId());
         repo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong
     }
 

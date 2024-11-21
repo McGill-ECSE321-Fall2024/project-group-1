@@ -3,8 +3,9 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import jakarta.persistence.*;
+
 // line 21 "../../../../../../model.ump"
-// line 97 "../../../../../../model.ump"
+// line 107 "../../../../../../model.ump"
 @Entity
 @DiscriminatorValue("Staff")
 public class Staff extends Person
@@ -18,14 +19,12 @@ public class Staff extends Person
   // CONSTRUCTOR
   //------------------------
 
-  public Staff(){
-    super();
-  }
-
   public Staff(int aId, String aUsername, String aEmail, String aPasswordHash)
   {
     super(aId, aUsername, aEmail, aPasswordHash);
   }
+
+  public Staff(){}
 
   //------------------------
   // INTERFACE

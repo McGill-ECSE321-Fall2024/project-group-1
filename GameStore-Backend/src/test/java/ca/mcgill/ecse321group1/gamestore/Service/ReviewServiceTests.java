@@ -164,6 +164,7 @@ public class ReviewServiceTests {
         // Arrange
 
         // Act
+        when(repo.save(scathing)).thenReturn(scathing);
         Review createdReview = service.createReview("Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB);
         when(repo.findAll()).thenReturn(List.of(createdReview));
         // Assert

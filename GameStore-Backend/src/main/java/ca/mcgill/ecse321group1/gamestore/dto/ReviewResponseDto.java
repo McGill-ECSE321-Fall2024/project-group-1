@@ -24,7 +24,6 @@ public class ReviewResponseDto {
         this.rating = review.getRating().toString();
         this.videoGameId = review.getReviewed().getId();
         this.customerId = review.getReviewer().getId();
-        this.reply = review.getReply();
     }
 
     public int getId() {
