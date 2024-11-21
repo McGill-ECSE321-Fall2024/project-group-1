@@ -43,6 +43,6 @@ For more details on deliverable 3 meetings, read our meeting minutes : [Meeting 
 | D1 Contributions |  Wiki, Build System, Persistence Layer, Testing of Persistence Layer  |  Wiki, Domain Model, Testing of Persistence Layer   | Requirements, ReadME, Use Case Diagrams  | Domain Model, JPA Annotations | Requirements, ReadME, Use Case Diagrams |
 | D2 Hours worked | 17   | 17   | 22 | 24 | 22 |
 | D2 Contributions |  Documentation, QA Plan  |  Documentation, QA Report  | Controller Methods and Tests | Business Methods and Tests | Controller Methods and tests |
-| D3 Hours worked | 14   | 15   | 11 | 11 | 11 |
+| D3 Hours worked | 24   | 25   | 15 | 17 | 16 |
 | D3 Contributions |  Web fronted GUI implementation & Frontend testing  |  Presentation & Web fronted GUI & Frontend Testing & Documentation  | Backend fixes & Frontend Final fixes | Backend fixes & Frontend Final fixes | Backend Fixes & Frontend testing |
 
