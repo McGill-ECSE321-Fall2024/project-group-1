@@ -47,8 +47,8 @@ public class ReviewService {
         review.setRating(rating);
         review.setReviewer(customer);
         review.setReviewed(game); //TODO: here is an issue. It returns false. But internally it returns true. It's like between the return and here it is changed to false. ???
-        review.setReply(null);
-        return review;
+        // review.setReply(null);
+        return repo.save(review);
     }
 
     /**Links a Reply to a Review*/

@@ -2,7 +2,6 @@ package ca.mcgill.ecse321group1.gamestore.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.reset;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -134,8 +133,8 @@ public class ReviewIntegrationTests {
         ResponseEntity<ReviewResponseDto> response = client.postForEntity("/review", request, ReviewResponseDto.class);
 
         // Assert
-        // assertNotNull(response);
-        // assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         }
 
 
