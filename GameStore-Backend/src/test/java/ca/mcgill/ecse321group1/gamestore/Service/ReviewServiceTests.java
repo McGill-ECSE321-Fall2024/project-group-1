@@ -33,6 +33,8 @@ public class ReviewServiceTests {
     @Mock
     private VideoGameRepository gamerepo;
     @Mock
+    private ReplyRepository reprepo;//always empty, used in delete. Needs to be mocked.
+    @Mock
     private CustomerRepository custrepo;
     @InjectMocks
     private ReviewService service;

@@ -1,46 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-26T19:53:30" hostname="Zacharys-MacBook-Pro.local" time="0.135">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-11-26T20:12:17" hostname="Zacharys-MacBook-Pro.local" time="0.031">
   <properties/>
-  <testcase name="testEditValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.087"/>
-  <testcase name="testDeleteCategoryByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.005"/>
-  <testcase name="testCreateValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.006"/>
-  <testcase name="testEditCategoryInvalidDescription()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.005"/>
+  <testcase name="testEditValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
+  <testcase name="testDeleteCategoryByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.002"/>
+  <testcase name="testCreateValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
+  <testcase name="testEditCategoryInvalidDescription()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
   <testcase name="testDeleteCategoryByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
-  <testcase name="testReadCategoryByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.004"/>
-  <testcase name="testReadCategoryByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
-  <testcase name="testCreateInvalidDuplicateCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
-  <system-out><![CDATA[14:53:25.419 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests]: CategoryServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-14:53:25.521 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::                (v3.3.4)
-
-2024-11-26T14:53:25.817-05:00  INFO 18904 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : Starting CategoryServiceTests using Java 21.0.4 with PID 18904 (started by zachary in /Users/zachary/Documents/ECSE/ECSE321/project-group-1/GameStore-Backend)
-2024-11-26T14:53:25.818-05:00  INFO 18904 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : No active profile set, falling back to 1 default profile: "default"
-2024-11-26T14:53:26.458-05:00  INFO 18904 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-26T14:53:26.519-05:00  INFO 18904 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 10 JPA repository interfaces.
-2024-11-26T14:53:26.857-05:00  INFO 18904 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-26T14:53:26.906-05:00  INFO 18904 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-11-26T14:53:26.932-05:00  INFO 18904 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-26T14:53:27.193-05:00  INFO 18904 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-26T14:53:27.224-05:00  INFO 18904 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-26T14:53:27.413-05:00  INFO 18904 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1e60d113
-2024-11-26T14:53:27.414-05:00  INFO 18904 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-26T14:53:27.444-05:00  WARN 18904 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-11-26T14:53:28.539-05:00  INFO 18904 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-26T14:53:28.708-05:00  INFO 18904 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-26T14:53:29.266-05:00  WARN 18904 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-26T14:53:29.596-05:00  INFO 18904 --- [gamestore] [    Test worker] c.m.e.g.Service.CategoryServiceTests     : Started CategoryServiceTests in 3.964 seconds (process running for 5.064)
+  <testcase name="testReadCategoryByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.003"/>
+  <testcase name="testReadCategoryByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.002"/>
+  <testcase name="testCreateInvalidDuplicateCategory()" classname="ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests" time="0.002"/>
+  <system-out><![CDATA[2024-11-26T15:12:17.405-05:00  INFO 19448 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests]: CategoryServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-26T15:12:17.407-05:00  INFO 19448 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests
 ]]></system-out>
-  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/zachary/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
