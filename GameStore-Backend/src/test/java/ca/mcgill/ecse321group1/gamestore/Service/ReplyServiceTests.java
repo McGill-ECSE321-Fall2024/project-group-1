@@ -33,13 +33,8 @@ public class ReplyServiceTests {
     private VideoGameRepository gamerepo;
     @Mock
     private CustomerRepository custrepo;
-
-    @InjectMocks
-    private ReviewService revservice;
     @InjectMocks
     private ReplyService service;
-    @InjectMocks
-    private VideoGameService gameservice;
 
     private Reply backhand;
     private Review scathing;

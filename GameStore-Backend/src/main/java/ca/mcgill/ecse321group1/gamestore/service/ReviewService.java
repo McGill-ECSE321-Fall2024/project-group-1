@@ -1,7 +1,6 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
-import ca.mcgill.ecse321group1.gamestore.model.Reply;
 import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.repository.ReviewRepository;
