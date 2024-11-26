@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ReplyService {
@@ -55,5 +57,14 @@ public class ReplyService {
         if (!repo.existsById(id))
             throw new IllegalArgumentException(id + " cannot be deleted as it does not correspond to an extant Reply!");
         repo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong
+    }
+
+    @Transactional
+    public List<Reply> getRepliesByReview (int review_id) {
+        ArrayList<Reply> tbr = new ArrayList<>();
+        repo.findAll().forEach(r -> {
+            if (r.getReview().getId() == review_id) tbr.add(r);
+        });
+        return tbr;
     }
 }
