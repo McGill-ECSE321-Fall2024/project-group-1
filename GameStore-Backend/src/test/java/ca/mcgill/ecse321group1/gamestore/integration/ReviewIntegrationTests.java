@@ -280,6 +280,4 @@ public class ReviewIntegrationTests {
         assertNotNull(response);
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
-
-    
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-11-26T20:02:52" hostname="Ivans-MacBook-Air.local" time="0.115">
+  <properties/>
+  <testcase name="testCreateReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.042"/>
+  <testcase name="testCreateInvalidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.007"/>
+  <testcase name="testGetValidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.005"/>
+  <testcase name="testGetInvalidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.007"/>
+  <testcase name="testEditValidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.015"/>
+  <testcase name="testEditInvalidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.008"/>
+  <testcase name="testGetReviewsForValidVideoGameId()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.009"/>
+  <testcase name="testGetReviewsForInvalidVideoGameId()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.008"/>
+  <testcase name="testDeleteReviewById()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.011"/>
+  <system-out><![CDATA[2024-11-26T15:02:52.712-05:00  INFO 4993 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests]: ReviewIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-26T15:02:52.713-05:00  INFO 4993 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests
+2024-11-26T15:02:52.794-05:00  WARN 4993 --- [gamestore] [-auto-1-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.ReviewResponseDto ca.mcgill.ecse321group1.gamestore.controller.ReviewController.editReviewById(int,ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto): [Field error in object 'reviewRequestDto' on field 'content': rejected value [null]; codes [NotBlank.reviewRequestDto.content,NotBlank.content,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [reviewRequestDto.content,content]; arguments []; default message [content]]; default message [Review must not be blank!]] ]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
