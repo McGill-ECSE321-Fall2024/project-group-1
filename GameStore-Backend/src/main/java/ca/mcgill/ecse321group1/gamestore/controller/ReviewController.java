@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto;
@@ -48,9 +49,22 @@ public class ReviewController {
      * @param rid The ID of the review you want to return
      * @return The review with matching ID
      */
-    @GetMapping("/review")
+    @GetMapping("/review/{rid}")
     public ReviewResponseDto getReview(@PathVariable int rid) {
         Review gotReview = reviewService.getReview(rid);
         return new ReviewResponseDto(gotReview);
+    }
+
+    /**
+     * Edit review by ID
+     * 
+     * @param rid The ID of the review you want to edit
+     * @param request The primary key (review ID) of the review to edit.
+     * @return The review with edited attributes
+     */
+    @PutMapping("/review/{rid}")
+    public ReviewResponseDto editReviewById(@PathVariable int rid, @Valid @RequestBody ReviewRequestDto request) {
+        Review editedReview = reviewService.editReview(rid, request.getContent(), Date.valueOf(request.getDate()), Review.Rating.valueOf(request.getRating()));
+        return new ReviewResponseDto(editedReview);
     }
 }

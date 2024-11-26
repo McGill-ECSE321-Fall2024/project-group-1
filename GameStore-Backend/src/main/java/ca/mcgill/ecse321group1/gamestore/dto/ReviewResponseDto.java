@@ -42,11 +42,11 @@ public class ReviewResponseDto {
         return rating;
     }
 
-    public int getVideoGame() {
+    public int getVideoGameId() {
         return videoGameId;
     }
 
-    public int getCustomer() {
+    public int getCustomerId() {
         return customerId;
     }
 
