@@ -266,5 +266,20 @@ public class ReviewIntegrationTests {
         assertEquals(0, response.getBody().getReviews().size());
     }
 
+    @Test
+    @Order(9)
+    public void testDeleteReviewById() {
+        // Arrange
+        String url = String.format("/review/%d", this.reviewId);
+
+        // Act
+        client.delete(url);
+        ResponseEntity<ReviewResponseDto> response = client.getForEntity(url, ReviewResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
     
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -74,7 +75,7 @@ public class ReviewController {
     /**
      * Return all reviews of a video game
      * 
-     * @param gid The ID of the video game you want to fetch all reviews from
+     * @param vid The ID of the video game you want to fetch all reviews from
      * @return List of all reviews of a given VideoGame
      */
     @GetMapping("/review/game/{vid}")
@@ -88,4 +89,16 @@ public class ReviewController {
 
         return new ReviewListDto(dtoList);
     }
+
+    /**
+     * Return review and its replies
+     * 
+     * @param rid The review ID of the review you want to delete
+     */
+    @DeleteMapping("/review/{rid}")
+    public void deleteReviewById(@PathVariable int rid) {
+        reviewService.deleteReview(rid, null);
+    }
+
+
 }
