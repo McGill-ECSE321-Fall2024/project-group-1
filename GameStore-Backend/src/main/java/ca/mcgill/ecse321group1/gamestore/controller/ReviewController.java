@@ -1,6 +1,8 @@
 package ca.mcgill.ecse321group1.gamestore.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ca.mcgill.ecse321group1.gamestore.dto.ReviewListDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewResponseDto;
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
@@ -66,5 +69,23 @@ public class ReviewController {
     public ReviewResponseDto editReviewById(@PathVariable int rid, @Valid @RequestBody ReviewRequestDto request) {
         Review editedReview = reviewService.editReview(rid, request.getContent(), Date.valueOf(request.getDate()), Review.Rating.valueOf(request.getRating()));
         return new ReviewResponseDto(editedReview);
+    }
+
+    /**
+     * Return all reviews of a video game
+     * 
+     * @param gid The ID of the video game you want to fetch all reviews from
+     * @return List of all reviews of a given VideoGame
+     */
+    @GetMapping("/review/game/{vid}")
+    public ReviewListDto getAllReviewsByVideoGameId(@PathVariable int vid) {
+        List<Review> reviewsForVideoGame = reviewService.getAllReviews(vid);
+        List<ReviewResponseDto> dtoList = new ArrayList<>();
+
+        for (Review review : reviewsForVideoGame) {
+            dtoList.add(new ReviewResponseDto(review));
+        }
+
+        return new ReviewListDto(dtoList);
     }
 }

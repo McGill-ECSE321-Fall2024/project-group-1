@@ -409,6 +409,7 @@ public class VideoGameIntegrationTests {
         // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode()); 
+        assertEquals(1, response.getBody().getVideoGames().size());
         VideoGameResponseDto matchingVideoGame = response.getBody().getVideoGames().get(0);
         assertEquals(NEW_NAME, matchingVideoGame.getName());
         assertEquals(NEW_DESCRIPTION, matchingVideoGame.getDescription());

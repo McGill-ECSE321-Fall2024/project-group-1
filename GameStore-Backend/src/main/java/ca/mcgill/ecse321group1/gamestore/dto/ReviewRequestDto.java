@@ -16,7 +16,6 @@ public class ReviewRequestDto {
     private int videoGameId;
     private int customerId;
 
-    // for creating review
     public ReviewRequestDto(String content, LocalDate date, Review.Rating rating, int videoGameId, int customerId){
         this.content = content;
         this.date = date;

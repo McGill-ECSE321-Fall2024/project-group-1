@@ -2,7 +2,6 @@ package ca.mcgill.ecse321group1.gamestore.integration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.lenient;
 
 import java.time.LocalDate;
 
@@ -26,6 +25,7 @@ import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.ReviewListDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
@@ -229,6 +229,41 @@ public class ReviewIntegrationTests {
         assertEquals(NEW_RATING.toString(), response.getBody().getRating().toString());
         assertEquals(videoGameId, response.getBody().getVideoGameId());
         assertEquals(customerId, response.getBody().getCustomerId());
+    }
+
+    @Test
+    @Order(7)
+    public void testGetReviewsForValidVideoGameId() {
+        // Arrange
+        String url = String.format("/review/game/%d", this.videoGameId);
+        
+        // Act
+        ResponseEntity<ReviewListDto> response = client.getForEntity(url, ReviewListDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(1, response.getBody().getReviews().size());
+        ReviewResponseDto matchingReview = response.getBody().getReviews().get(0);
+
+        assertEquals(NEW_CONTENT, matchingReview.getContent());
+        assertEquals(NEW_DATE, matchingReview.getDate());
+        assertEquals(NEW_RATING.toString(), matchingReview.getRating().toString());    
+    }
+
+    @Test
+    @Order(8)
+    public void testGetReviewsForInvalidVideoGameId() {
+        // Arrange
+        String url = String.format("/review/game/%d", this.videoGameId + 1);
+        
+        // Act
+        ResponseEntity<ReviewListDto> response = client.getForEntity(url, ReviewListDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(0, response.getBody().getReviews().size());
     }
 
     
