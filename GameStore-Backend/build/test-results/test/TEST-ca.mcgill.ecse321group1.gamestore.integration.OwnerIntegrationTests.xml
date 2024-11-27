@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-11-26T20:02:52" hostname="Ivans-MacBook-Air.local" time="0.068">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-11-27T01:08:19" hostname="Ivans-MacBook-Air.local" time="0.072">
   <properties/>
   <testcase name="testCreateValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.007"/>
   <testcase name="testCreateInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.005"/>
-  <testcase name="testGetValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.004"/>
+  <testcase name="testGetValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.005"/>
   <testcase name="testGetInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.004"/>
-  <testcase name="testEditInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.008"/>
+  <testcase name="testEditInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.007"/>
   <testcase name="testEditValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.01"/>
-  <testcase name="testDeleteInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.006"/>
-  <testcase name="testDeleteLastOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.007"/>
-  <testcase name="testCreateNewOwnerAndDeleteOldOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.015"/>
-  <system-out><![CDATA[2024-11-26T15:02:52.638-05:00  INFO 4993 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests]: OwnerIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-26T15:02:52.639-05:00  INFO 4993 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests
-2024-11-26T15:02:52.664-05:00  WARN 4993 --- [gamestore] [o-auto-1-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.OwnerController.editOwnerById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+  <testcase name="testDeleteInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.008"/>
+  <testcase name="testDeleteLastOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.008"/>
+  <testcase name="testCreateNewOwnerAndDeleteOldOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.016"/>
+  <system-out><![CDATA[2024-11-26T20:08:19.860-05:00  INFO 40828 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests]: OwnerIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-11-26T20:08:19.861-05:00  INFO 40828 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests
+2024-11-26T20:08:19.887-05:00  WARN 40828 --- [gamestore] [o-auto-1-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.OwnerController.editOwnerById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -19,6 +19,7 @@ import ca.mcgill.ecse321group1.gamestore.model.Customer;
 import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.service.CustomerService;
+import ca.mcgill.ecse321group1.gamestore.service.ReplyService;
 import ca.mcgill.ecse321group1.gamestore.service.ReviewService;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +33,8 @@ public class ReviewController {
     private VideoGameService videoGameService;
     @Autowired
     private CustomerService customerService;
+    @Autowired 
+    private ReplyService replyService;
 
     /**
      * Create new review.
@@ -97,7 +100,7 @@ public class ReviewController {
      */
     @DeleteMapping("/review/{rid}")
     public void deleteReviewById(@PathVariable int rid) {
-        reviewService.deleteReview(rid, null);
+        reviewService.deleteReview(rid, replyService);
     }
 
 
