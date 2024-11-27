@@ -69,8 +69,9 @@ public class ReviewService {
     public void deleteReview(int id, ReplyService replyService) {
         if (!repo.existsById(id))
             throw new IllegalArgumentException(id + " cannot be deleted as it does not correspond to an extant Review!");
-        Review review = getReview(id);
-        repo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong
+        List<Reply> replies = replyService.getRepliesByReview(id);
+        for (Reply rep : replies) replyService.deleteReply(rep.getId());
+        repo.deleteById(id);
     }
 
     /**Returns all Reviews of a given VideoGame.*/
