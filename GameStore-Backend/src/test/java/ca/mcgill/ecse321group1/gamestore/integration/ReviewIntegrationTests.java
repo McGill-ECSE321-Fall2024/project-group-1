@@ -65,7 +65,7 @@ public class ReviewIntegrationTests {
     private static final String CUST_ADDRESS = "123 Sesame Street, New York, New York, USA, 123456";
     private static final String CUST_PHONE_NUMBER = "604604604";
 
-    private static final String VALID_CONTENT = "Great game! 5/5";
+    private static final String VALID_CONTENT = "Great game! 4/5";
     private static final LocalDate VALID_DATE = java.sql.Date.valueOf("2023-11-10").toLocalDate();
     private static final Review.Rating VALID_RATING = Review.Rating.fourStar;
 
@@ -78,7 +78,7 @@ public class ReviewIntegrationTests {
     private int customerId;
     private int reviewId;
 
-    @AfterAll // Might throw error with bidirectional associations unfortunately. Might have to change order of delete also
+    @AfterAll 
     public void ClearDatabase() {
         reviewRepo.deleteAll();
         videoGameRepo.deleteAll();

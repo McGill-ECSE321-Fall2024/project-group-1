@@ -22,9 +22,16 @@ import org.springframework.http.ResponseEntity;
 
 import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
 import ca.mcgill.ecse321group1.gamestore.repository.CategoryRepository;
+import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
+import ca.mcgill.ecse321group1.gamestore.repository.ReviewRepository;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameResponseDto;
+import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
+import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto;
+import ca.mcgill.ecse321group1.gamestore.dto.ReviewResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.VideoGameListDto;
 
@@ -41,6 +48,11 @@ public class VideoGameIntegrationTests {
     private VideoGameRepository videoGameRepo;
     @Autowired
     private CategoryRepository categoryRepo;
+    @Autowired
+    private CustomerRepository customerRepo;
+    @Autowired
+    private ReviewRepository reviewRepo;
+
 
     private static final String VALID_NAME = "Zelda Raid Shadow Legends";
     private static final String VALID_DESCRIPTION = "A Zelda walks into a bar";
@@ -63,15 +75,28 @@ public class VideoGameIntegrationTests {
     private static final String VALID_CATEGORY_NAME = "Adventure";
     private static final String VALID_CATEGORY_DESC = "Story based RPG";
 
+    private static final String CUST_USERNAME = "Jonathan";
+    private static final String CUST_EMAIL = "Jonathan@outlook.com";
+    private static final String CUST_PASSWORD = "ILoveFortnite2003";
+    private static final String CUST_ADDRESS = "123 Sesame Street, New York, New York, USA, 123456";
+    private static final String CUST_PHONE_NUMBER = "604604604";
+
+    private static final String REVIEW_CONTENT = "Great game! 4/5";
+    private static final LocalDate REVIEW_DATE = java.sql.Date.valueOf("2023-11-10").toLocalDate();
+    private static final Review.Rating REVIEW_RATING = Review.Rating.fourStar;
+    
     private int videoGameId;
     private int categoryId;
     private int deactivateVideoGameId;
     private int pendingVideoGameId;
+    private int reviewId;
 
     @AfterAll
     public void clearDatabase() {
+        reviewRepo.deleteAll();
         videoGameRepo.deleteAll();
         categoryRepo.deleteAll();
+        customerRepo.deleteAll();
     }
 
     @Test
@@ -449,13 +474,83 @@ public class VideoGameIntegrationTests {
         assertEquals(3, response.getBody().getVideoGames().size());
     }
 
+    @Test
+    @Order(18)
+    public void testGetAverageRating() {
+        // Create a customer (review must be attached to a customer)
+        PersonRequestDto custRequest = new PersonRequestDto(CUST_USERNAME, CUST_EMAIL, CUST_PASSWORD, CUST_ADDRESS, CUST_PHONE_NUMBER);
 
+        ResponseEntity<PersonResponseDto> custResponse = client.postForEntity("/customer", custRequest, PersonResponseDto.class);
 
+        assertNotNull(custResponse);
+        assertEquals(HttpStatus.OK, custResponse.getStatusCode());
+        PersonResponseDto custHelper = custResponse.getBody();
+        assertEquals(CUST_USERNAME, custHelper.getUsername());
+        assertEquals(CUST_EMAIL, custHelper.getEmail());
+        assertEquals(CUST_ADDRESS, custHelper.getAddress());
+        assertEquals(CUST_PHONE_NUMBER, custHelper.getPhoneNumber());
 
+        // then create a review for the game with 5 star rating.
+        ReviewRequestDto reviewRequest = new ReviewRequestDto(REVIEW_CONTENT, REVIEW_DATE, REVIEW_RATING, videoGameId, custHelper.getId());
+        
+        ResponseEntity<ReviewResponseDto> reviewResponse = client.postForEntity("/review", reviewRequest, ReviewResponseDto.class);
 
-    // delete video game DELETE
+        assertNotNull(reviewResponse);
+        assertEquals(HttpStatus.OK, reviewResponse.getStatusCode());
+        assertEquals(REVIEW_CONTENT, reviewResponse.getBody().getContent());
+        assertEquals(REVIEW_DATE, reviewResponse.getBody().getDate());
+        assertEquals(REVIEW_RATING.toString(), reviewResponse.getBody().getRating().toString());
+        assertEquals(videoGameId, reviewResponse.getBody().getVideoGameId());
+        assertEquals(custHelper.getId(), reviewResponse.getBody().getCustomerId());
+        reviewId = reviewResponse.getBody().getId();
 
-    // gets average rating of every video game GET
+        // Arrange
+        String url = String.format("/videogame/%d/rating", videoGameId);
 
+        // Act
+        ResponseEntity<Review.Rating> averageRating = client.getForEntity(url, Review.Rating.class);
+
+        // Assert
+        assertNotNull(averageRating);
+        assertEquals(HttpStatus.OK, averageRating.getStatusCode());
+        assertEquals("fourStar", averageRating.getBody().toString());
+    }
+
+    @Test
+    @Order(19)
+    public void testDeleteVideoGames() {
+        // First delete review for video game
+        String reviewUrl = String.format("/review/%d", reviewId);
+
+        client.delete(reviewUrl);
+        ResponseEntity<ReviewResponseDto> reviewResponse = client.getForEntity(reviewUrl, ReviewResponseDto.class);
+
+        assertNotNull(reviewResponse);
+        assertEquals(HttpStatus.BAD_REQUEST, reviewResponse.getStatusCode());
+
+        // Then delete video games
+        // Arrange
+        String game1 = String.format("/videogame/%d", videoGameId);
+        String game2 = String.format("/videogame/%d", deactivateVideoGameId);
+        String game3 = String.format("/videogame/%d", pendingVideoGameId);
+
+        // Act
+        client.delete(game1);
+        client.delete(game2);
+        client.delete(game3);
+        
+        // Check that video games are deleted
+        ResponseEntity<VideoGameResponseDto> game1Resp = client.getForEntity(game1, VideoGameResponseDto.class);
+        ResponseEntity<VideoGameResponseDto> game2Resp = client.getForEntity(game2, VideoGameResponseDto.class);
+        ResponseEntity<VideoGameResponseDto> game3Resp = client.getForEntity(game3, VideoGameResponseDto.class);
+
+        assertNotNull(game1Resp);
+        assertNotNull(game2Resp);
+        assertNotNull(game3Resp);
+
+        assertEquals(HttpStatus.BAD_REQUEST, game1Resp.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, game2Resp.getStatusCode());
+        assertEquals(HttpStatus.BAD_REQUEST, game3Resp.getStatusCode());
+    }
 
 }

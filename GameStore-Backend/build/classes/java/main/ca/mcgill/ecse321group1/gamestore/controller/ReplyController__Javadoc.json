@@ -1,1 +1,1 @@
-{"doc":"","fields":[],"enumConstants":[],"methods":[{"name":"getReplyById","paramTypes":["int"],"doc":" Get reply object by ID\n @param rid\n"}],"constructors":[]}
+{"doc":"","fields":[],"enumConstants":[],"methods":[{"name":"getReplyById","paramTypes":["int"],"doc":" Get reply object by ID\n @param rid \n"},{"name":"createReply","paramTypes":["int","ca.mcgill.ecse321group1.gamestore.dto.ReplyRequestDto"],"doc":" Create reply\n @param rid The ID of the review the reply is to be attached to.\n @return The created reply \n"}],"constructors":[]}
