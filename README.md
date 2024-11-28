@@ -32,7 +32,8 @@ Find our deliverable 2 report on the wiki page [Project Deliverable 2 report](ht
 For more details on deliverable 2 meetings, read our meeting minutes : [Meeting 1](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-2#meeting-1-thursday-october-31st-2024-10am-12pm-infosys) and [Meeting 2](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-2#meeting-2-tuesday-november-5th-2024-10am-12pm-zoom).
 
 ## Deliverable 3 Report
-Stay tuned for future reports and deliverables :)
+Find our deliverable 3 report on the wiki page [Project Deliverable 3 report](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-3#project-report).  
+For more details on deliverable 3 meetings, read our meeting minutes : [Meeting 1](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-3#meeting-1-thursday-november-21st-2024-230pmam-330pm-infosys) and [Meeting 2](https://github.com/McGill-ECSE321-Fall2024/project-group-1/wiki/Deliverable-3#meeting-2).
 
 ## Individual Efforts
 | Team members | Alan Brotherton    | Samy Harras    | Vivek Motta | Zachary Trouve | Ivan Zhang |
@@ -42,6 +43,6 @@ Stay tuned for future reports and deliverables :)
 | D1 Contributions |  Wiki, Build System, Persistence Layer, Testing of Persistence Layer  |  Wiki, Domain Model, Testing of Persistence Layer   | Requirements, ReadME, Use Case Diagrams  | Domain Model, JPA Annotations | Requirements, ReadME, Use Case Diagrams |
 | D2 Hours worked | 17   | 17   | 22 | 24 | 22 |
 | D2 Contributions |  Documentation, QA Plan  |  Documentation, QA Report  | Controller Methods and Tests | Business Methods and Tests | Controller Methods and tests |
-| D3 Hours worked | 0   | 0   | 0 | 0 | 0 |
-| D3 Contributions |    |    |  |  |  |
+| D3 Hours worked | 24   | 25   | 15 | 17 | 16 |
+| D3 Contributions |  Web fronted GUI implementation & Frontend testing  |  Presentation & Web fronted GUI & Frontend Testing & Documentation  | Backend fixes & Frontend Final fixes | Backend fixes & Frontend Final fixes | Backend Fixes & Frontend testing |
 
