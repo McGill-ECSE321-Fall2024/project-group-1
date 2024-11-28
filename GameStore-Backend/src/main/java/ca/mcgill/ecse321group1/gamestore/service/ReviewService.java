@@ -47,26 +47,7 @@ public class ReviewService {
         review.setRating(rating);
         review.setReviewer(customer);
         review.setReviewed(game); //TODO: here is an issue. It returns false. But internally it returns true. It's like between the return and here it is changed to false. ???
-        review.setReply(null);
-        return review;
-    }
-
-    /**Links a Reply to a Review*/
-    @Transactional
-    public Review createReply(int review_id, String content, Date date, ReplyService replyService) {
-        Review review = getReview(review_id);
-        Reply reply = replyService.initReply(content, date, review);
-        review.setReply(reply);
-        return repo.save(review);
-    }
-
-    /**Removes the Reply from a Review, silently.*/
-    @Transactional
-    public Review removeReply(int review_id, ReplyService replyService) {
-        Review review = getReview(review_id);
-        Reply reply = review.getReply();
-        if (reply != null) replyService.deleteReply(reply.getId());
-        review.setReply(null);
+        // review.setReply(null);
         return repo.save(review);
     }
 
@@ -88,9 +69,9 @@ public class ReviewService {
     public void deleteReview(int id, ReplyService replyService) {
         if (!repo.existsById(id))
             throw new IllegalArgumentException(id + " cannot be deleted as it does not correspond to an extant Review!");
-        Review review = getReview(id);
-        if(review.getReply() != null) replyService.deleteReply(review.getReply().getId());
-        repo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong
+        List<Reply> replies = replyService.getRepliesByReview(id);
+        for (Reply rep : replies) replyService.deleteReply(rep.getId());
+        repo.deleteById(id);
     }
 
     /**Returns all Reviews of a given VideoGame.*/

@@ -2,10 +2,11 @@
 /*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
 
 package ca.mcgill.ecse321group1.gamestore.model;
+import java.util.*;
 import jakarta.persistence.*;
 
-// line 41 "../../../../../../model.ump"
-// line 112 "../../../../../../model.ump"
+// line 42 "../../../../../../model.ump"
+// line 122 "../../../../../../model.ump"
 @Entity
 public class Category
 {
@@ -25,16 +26,17 @@ public class Category
   // CONSTRUCTOR
   //------------------------
 
-  // Empty constructor
-  public Category(){
-  }
-
   public Category(int aId, String aName, String aDescription)
   {
     id = aId;
     name = aName;
     description = aDescription;
   }
+
+  public Category(){
+
+  }
+
 
   //------------------------
   // INTERFACE
@@ -78,6 +80,10 @@ public class Category
   {
     return description;
   }
+
+  public void delete()
+  {}
+
 
   public String toString()
   {

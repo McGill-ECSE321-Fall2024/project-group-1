@@ -3,8 +3,9 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import jakarta.persistence.*;
+
 // line 4 "../../../../../../model.ump"
-// line 83 "../../../../../../model.ump"
+// line 93 "../../../../../../model.ump"
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "PersonType")
@@ -27,16 +28,15 @@ public abstract class Person
   // CONSTRUCTOR
   //------------------------
 
-  public Person(){
-
-  }
-
   public Person(int aId, String aUsername, String aEmail, String aPasswordHash)
   {
     id = aId;
     username = aUsername;
     email = aEmail;
     passwordHash = aPasswordHash;
+  }
+  public Person(){
+
   }
 
   //------------------------
@@ -110,7 +110,7 @@ public abstract class Person
 
   public boolean equals (Object obj) {
     if (obj instanceof Person pers) return
-                    pers.getUsername().equals(this.getUsername()) &&
+            pers.getUsername().equals(this.getUsername()) &&
                     pers.getEmail().equals(this.getEmail()) &&
                     pers.getPasswordHash().equals(this.getPasswordHash());
     else return false;

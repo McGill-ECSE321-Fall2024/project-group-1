@@ -3,8 +3,12 @@ import java.sql.Date;
 import java.util.*;
 import jakarta.persistence.*;
 
-
+/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
+// line 48 "../../../../../../model.ump"
+// line 127 "../../../../../../model.ump"
 @Entity
+
 public class CustomerOrder
 {
 
@@ -17,9 +21,9 @@ public class CustomerOrder
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
   private int sharedId;
+  private Date date;
   private float price;
   private int quantity;
-  private Date date;
   private boolean satisfied;
   private String address;
 
@@ -49,16 +53,16 @@ public class CustomerOrder
     {
       throw new RuntimeException("Unable to create CustomerOrder due to aPurchased. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    boolean didAddCustomer = setCustomer(aCustomer);
-    if (!didAddCustomer)
+    if (!setCustomer(aCustomer))
     {
-      throw new RuntimeException("Unable to create customerOrder due to customer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create CustomerOrder due to aCustomer. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
   }
 
   public CustomerOrder() {
     satisfied = false;
   }
+
 
   //------------------------
   // INTERFACE
@@ -193,35 +197,22 @@ public class CustomerOrder
     }
     return wasSet;
   }
-  /* Code from template association_SetOneToMany */
-  public boolean setCustomer(Customer aCustomer)
+  /* Code from template association_SetUnidirectionalOne */
+  public boolean setCustomer(Customer aNewCustomer)
   {
     boolean wasSet = false;
-    if (aCustomer == null)
+    if (aNewCustomer != null)
     {
-      return wasSet;
+      customer = aNewCustomer;
+      wasSet = true;
     }
-
-    Customer existingCustomer = customer;
-    customer = aCustomer;
-    if (existingCustomer != null && !existingCustomer.equals(aCustomer))
-    {
-      existingCustomer.removeCustomerOrder(this);
-    }
-    customer.addCustomerOrder(this);
-    wasSet = true;
     return wasSet;
   }
 
   public void delete()
   {
     purchased = null;
-    Customer placeholderCustomer = customer;
-    this.customer = null;
-    if(placeholderCustomer != null)
-    {
-      placeholderCustomer.removeCustomerOrder(this);
-    }
+    customer = null;
   }
 
 
@@ -245,12 +236,11 @@ public class CustomerOrder
             order.id == this.id &&
                     Math.pow(this.price - order.price, 2) < 1E-3 &&
                     order.quantity == this.quantity &&
-                    Objects.equals(order.offerApplied, this.offerApplied) &&
                     order.address.equals(this.address) &&
                     order.date.equals(this.date) &&
                     order.customer.equals(this.customer) &&
-                    order.satisfied == this.satisfied;
+                    order.satisfied == this.satisfied &&
+                    Objects.equals(order.offerApplied, this.offerApplied);
     else return false;
   }
 }
-

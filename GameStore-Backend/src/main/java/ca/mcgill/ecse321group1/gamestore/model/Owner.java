@@ -3,8 +3,9 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import jakarta.persistence.*;
+
 // line 26 "../../../../../../model.ump"
-// line 102 "../../../../../../model.ump"
+// line 112 "../../../../../../model.ump"
 @Entity
 @DiscriminatorValue("Owner")
 public class Owner extends Staff
@@ -18,14 +19,14 @@ public class Owner extends Staff
   // CONSTRUCTOR
   //------------------------
 
-  public Owner(){
-    super();
-  }
-
   public Owner(int aId, String aUsername, String aEmail, String aPasswordHash)
   {
     super(aId, aUsername, aEmail, aPasswordHash);
   }
+  public Owner(){
+    super();
+  }
+
 
   //------------------------
   // INTERFACE
@@ -39,5 +40,4 @@ public class Owner extends Staff
   public boolean equals (Object obj) {
     return obj instanceof Owner && super.equals(obj);
   }
-
 }

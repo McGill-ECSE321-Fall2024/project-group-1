@@ -29,17 +29,15 @@ public class ReviewServiceTests {
     @Mock
     private ReviewRepository repo;
     @Mock
-    private ReplyRepository replyrepo;
-    @Mock
     private CategoryRepository catrepo;
     @Mock
     private VideoGameRepository gamerepo;
     @Mock
+    private ReplyRepository reprepo;//always empty, used in delete. Needs to be mocked.
+    @Mock
     private CustomerRepository custrepo;
     @InjectMocks
     private ReviewService service;
-    @InjectMocks
-    private VideoGameService gameservice;
     @InjectMocks
     private ReplyService replyservice;
 
@@ -93,9 +91,9 @@ public class ReviewServiceTests {
         assertEquals("Great game! 5/5", createdReview.getContent());
         assertEquals(new Date(10000000000000L), createdReview.getDate());
         assertEquals(Review.Rating.fourStar, createdReview.getRating());
-        //TODO: assertEquals(game, createdReview.getReviewed()); //FAILING: issue inside createReview / Review.setReviewed() <- umple generated method is CURSED....
+        assertEquals(game, createdReview.getReviewed()); //FAILING: issue inside createReview / Review.setReviewed() <- umple generated method is CURSED....
         assertEquals(BOB, createdReview.getReviewer());
-        //TODO: verify(repo, times(1)).save(scathing);//saved once, on creation
+        verify(repo, times(1)).save(scathing);//saved once, on creation
     }
 
     @Test
@@ -164,11 +162,12 @@ public class ReviewServiceTests {
         // Arrange
 
         // Act
+        when(repo.save(scathing)).thenReturn(scathing);
         Review createdReview = service.createReview("Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB);
         when(repo.findAll()).thenReturn(List.of(createdReview));
         // Assert
-        //TODO: IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.createReview("Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB));
-        // assertEquals("Customer has already made a review for this game!", e.getMessage());
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.createReview("Great game! 5/5", new Date(10000000000000L), Review.Rating.fourStar, game, BOB));
+        assertEquals("Customer has already made a review for this game!", e.getMessage());
     }
 
     @Test

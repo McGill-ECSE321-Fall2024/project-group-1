@@ -3,13 +3,10 @@ package ca.mcgill.ecse321group1.gamestore.service;
 import java.util.*;
 
 import ca.mcgill.ecse321group1.gamestore.model.*;
-import ca.mcgill.ecse321group1.gamestore.repository.OwnerRepository;
-import ca.mcgill.ecse321group1.gamestore.repository.StaffRepository;
-import ca.mcgill.ecse321group1.gamestore.repository.VideoGameRepository;
+import ca.mcgill.ecse321group1.gamestore.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -22,6 +19,8 @@ public class CustomerService {
     private StaffRepository staffRepo;
     @Autowired
     private VideoGameRepository gamerepo;
+    @Autowired
+    CustomerOrderRepository orderrepo;
 
     /**Retrieves a Customer object based on lookup by id*/
     @Transactional
@@ -122,8 +121,11 @@ public class CustomerService {
     public String getPastOrdersString(int customer_id) {
         if (!customerRepo.existsById(customer_id))
             throw new IllegalArgumentException(customer_id + "'s cart cannot be updated as it does not correspond to an extant Customer!");
-        Customer customer = customerRepo.findCustomerById(customer_id);
-        List<CustomerOrder> orders = customer.getCustomerOrders();
+        //Customer customer = customerRepo.findCustomerById(customer_id);
+        List<CustomerOrder> orders = new ArrayList<>();
+        orderrepo.findAll().forEach(o -> {
+            if(o.getCustomer().getId() == customer_id) orders.add(o);
+         });
         HashMap<Integer, ArrayList<CustomerOrder>> map = new HashMap<>();
         for (CustomerOrder order : orders) {
             if (map.containsKey(order.getSharedId())) map.get(order.getSharedId()).add(order);

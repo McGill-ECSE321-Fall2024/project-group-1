@@ -3,12 +3,10 @@
 
 package ca.mcgill.ecse321group1.gamestore.model;
 import java.sql.Date;
-import java.util.*;
 import jakarta.persistence.*;
-import ca.mcgill.ecse321group1.gamestore.model.Review.Rating;
 
 // line 30 "../../../../../../model.ump"
-// line 108 "../../../../../../model.ump"
+// line 117 "../../../../../../model.ump"
 @Entity
 public class VideoGame
 {
@@ -35,18 +33,11 @@ public class VideoGame
   private Status status;
 
   //VideoGame Associations
-  @OneToMany
-  private List<Review> reviews;
   @ManyToOne
   private Category category;
-
   //------------------------
   // CONSTRUCTOR
   //------------------------
-
-  public VideoGame(){
-    reviews = new ArrayList<Review>();
-  }
 
   public VideoGame(int aId, String aName, String aDescription, float aPrice, int aQuantity, Date aDate, Status aStatus, Category aCategory)
   {
@@ -57,13 +48,14 @@ public class VideoGame
     quantity = aQuantity;
     date = aDate;
     status = aStatus;
-    reviews = new ArrayList<Review>();
-    boolean didAddCategory = setCategory(aCategory);
-    if (!didAddCategory)
+    if (!setCategory(aCategory))
     {
-      throw new RuntimeException("Unable to create videoGame due to category. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+      throw new RuntimeException("Unable to create VideoGame due to aCategory. See https://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
   }
+
+  public VideoGame(){}
+
 
   //------------------------
   // INTERFACE
@@ -159,134 +151,26 @@ public class VideoGame
   {
     return status;
   }
-  /* Code from template association_GetMany */
-  public Review getReview(int index)
-  {
-    Review aReview = reviews.get(index);
-    return aReview;
-  }
-
-  public List<Review> getReviews()
-  {
-    List<Review> newReviews = Collections.unmodifiableList(reviews);
-    return newReviews;
-  }
-
-  public int numberOfReviews()
-  {
-    int number = reviews.size();
-    return number;
-  }
-
-  public boolean hasReviews()
-  {
-    boolean has = reviews.size() > 0;
-    return has;
-  }
-
-  public int indexOfReview(Review aReview)
-  {
-    int index = reviews.indexOf(aReview);
-    return index;
-  }
   /* Code from template association_GetOne */
   public Category getCategory()
   {
     return category;
   }
-  /* Code from template association_MinimumNumberOfMethod */
-  public static int minimumNumberOfReviews()
-  {
-    return 0;
-  }
-  /* Code from template association_AddManyToOne */
-  public Review addReview(int aId, String aContent, Date aDate, Rating aRating, Customer aReviewer)
-  {
-    return new Review(aId, aContent, aDate, aRating, this, aReviewer);
-  }
-
-  public boolean addReview(Review aReview)
-  {
-    boolean wasAdded = false;
-    if (reviews.contains(aReview)) { return false; }
-    VideoGame existingReviewed = aReview.getReviewed();
-    boolean isNewReviewed = existingReviewed != null && !this.equals(existingReviewed);
-    if (isNewReviewed)
-    {
-      aReview.setReviewed(this);
-    }
-    else
-    {
-      reviews.add(aReview);
-    }
-    wasAdded = true;
-    return wasAdded;
-  }
-
-  public boolean removeReview(Review aReview)
-  {
-    boolean wasRemoved = false;
-    //Unable to remove aReview, as it must always have a reviewed
-    if (!this.equals(aReview.getReviewed()))
-    {
-      reviews.remove(aReview);
-      wasRemoved = true;
-    }
-    return wasRemoved;
-  }
-  /* Code from template association_AddIndexControlFunctions */
-  public boolean addReviewAt(Review aReview, int index)
-  {  
-    boolean wasAdded = false;
-    if(addReview(aReview))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfReviews()) { index = numberOfReviews() - 1; }
-      reviews.remove(aReview);
-      reviews.add(index, aReview);
-      wasAdded = true;
-    }
-    return wasAdded;
-  }
-
-  public boolean addOrMoveReviewAt(Review aReview, int index)
-  {
-    boolean wasAdded = false;
-    if(reviews.contains(aReview))
-    {
-      if(index < 0 ) { index = 0; }
-      if(index > numberOfReviews()) { index = numberOfReviews() - 1; }
-      reviews.remove(aReview);
-      reviews.add(index, aReview);
-      wasAdded = true;
-    } 
-    else 
-    {
-      wasAdded = addReviewAt(aReview, index);
-    }
-    return wasAdded;
-  }
-  /* Code from template association_SetOneToMany */
-  public boolean setCategory(Category aCategory)
+  /* Code from template association_SetUnidirectionalOne */
+  public boolean setCategory(Category aNewCategory)
   {
     boolean wasSet = false;
-    if (aCategory == null)
+    if (aNewCategory != null)
     {
-      return wasSet;
+      category = aNewCategory;
+      wasSet = true;
     }
-    category = aCategory;
-    
-    wasSet = true;
     return wasSet;
   }
 
   public void delete()
   {
-    for(int i=reviews.size(); i > 0; i--)
-    {
-      Review aReview = reviews.get(i - 1);
-      aReview.delete();
-    }
+    category = null;
   }
 
 
@@ -305,10 +189,10 @@ public class VideoGame
 
   public boolean equals (Object obj) {
     if (obj instanceof VideoGame game) return
-              Math.pow(this.price - game.price, 2) < 1E-3 &&
-                      this.name.equals(game.name) && this.description.equals(game.description) &&
-                      this.quantity == game.quantity && this.date.toString().equals(game.date.toString()) &&
-                      this.status.equals(game.status) && this.category.equals(game.category);
+            Math.pow(this.price - game.price, 2) < 1E-3 &&
+                    this.name.equals(game.name) && this.description.equals(game.description) &&
+                    this.quantity == game.quantity && this.date.toString().equals(game.date.toString()) &&
+                    this.status.equals(game.status) && this.category.equals(game.category);
     return false;
   }
 }

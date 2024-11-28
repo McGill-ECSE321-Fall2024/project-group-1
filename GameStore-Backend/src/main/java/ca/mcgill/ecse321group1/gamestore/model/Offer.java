@@ -6,8 +6,14 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 
-// line 74 "../../../../../../model.ump"
-// line 156 "../../../../../../model.ump"
+
+/*PLEASE DO NOT EDIT THIS CODE*/
+/*This code was generated using the UMPLE 1.35.0.7523.c616a4dce modeling language!*/
+
+import java.sql.Date;
+
+// line 78 "../../../../../../model.ump"
+// line 154 "../../../../../../model.ump"
 @Entity
 public class Offer
 {
@@ -29,7 +35,6 @@ public class Offer
   //Offer Associations
   @ManyToOne
   private VideoGame videoGame;
-
   //------------------------
   // CONSTRUCTOR
   //------------------------
@@ -43,8 +48,8 @@ public class Offer
     startDate = aStartDate;
     endDate = aEndDate;
   }
-
   public Offer(){}
+
 
   //------------------------
   // INTERFACE
@@ -152,7 +157,7 @@ public class Offer
     videoGame = null;
   }
 
-@Override
+
   public String toString()
   {
     return super.toString() + "["+
@@ -167,7 +172,12 @@ public class Offer
 
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof Offer offer) return offer.name.equals(this.name) && offer.description.equals(this.description) && offer.effect.equals(this.effect) && offer.startDate.toString().equals(this.startDate.toString()) && offer.endDate.toString().equals(this.endDate.toString()) &&
+    if (obj instanceof Offer offer) return
+            offer.name.equals(this.name) &&
+                    offer.description.equals(this.description) &&
+                    offer.effect.equals(this.effect) &&
+                    offer.startDate.toString().equals(this.startDate.toString()) &&
+                    offer.endDate.toString().equals(this.endDate.toString()) &&
             (this.videoGame == offer.videoGame) || (this.videoGame != null && this.videoGame.equals(offer.videoGame));
     return false;
   }

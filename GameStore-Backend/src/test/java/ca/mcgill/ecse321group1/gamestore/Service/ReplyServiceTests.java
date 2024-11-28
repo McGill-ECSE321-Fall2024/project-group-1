@@ -33,13 +33,8 @@ public class ReplyServiceTests {
     private VideoGameRepository gamerepo;
     @Mock
     private CustomerRepository custrepo;
-
-    @InjectMocks
-    private ReviewService revservice;
     @InjectMocks
     private ReplyService service;
-    @InjectMocks
-    private VideoGameService gameservice;
 
     private Reply backhand;
     private Review scathing;
@@ -87,15 +82,14 @@ public class ReplyServiceTests {
         when(repo.save(any(Reply.class))).thenReturn(backhand);
         when(revrepo.findReviewById(182)).thenReturn(scathing);
 
-
         // Act
-        Reply createdReply = revservice.createReply(scathing.getId(), "You are completely wrong!", new Date(188232321), service).getReply();
+        Reply createdReply = service.createReply("You are completely wrong!", new Date(188232321), scathing);
         // Assert
         assertNotNull(createdReply);
         assertEquals("You are completely wrong!", createdReply.getContent());
         assertEquals(new Date(188232321), createdReply.getDate());
         assertEquals(scathing, createdReply.getReview());
-        //TODO: verify(repo, times(1)).save(createdReply);//saved once, on creation
+        verify(repo, times(1)).save(createdReply);//saved once, on creation
     }
 
     @Test
@@ -136,8 +130,7 @@ public class ReplyServiceTests {
         scathing.setId(revId);
         when(repo.save(any(Reply.class))).thenReturn(backhand);
         when(revrepo.findReviewById(revId)).thenReturn(scathing);
-        Review parent = revservice.createReply(scathing.getId(), "You are completely wrong!", new Date(188232321), service);
-        Reply createdReply = parent.getReply();
+        Reply createdReply = service.createReply("You are completely wrong!", new Date(188232321), scathing);
 
         when(repo.findReplyById(id)).thenReturn(backhand);
         when(repo.existsById(id)).thenReturn(true);
@@ -146,11 +139,10 @@ public class ReplyServiceTests {
         //when(repo.findCategoryById(id)).thenReturn();
 
         // Act
-        revservice.removeReply(revId, service);
-        scathing.setReply(null);
+        service.deleteReply(id);
 
         // Assert
-        assertEquals(scathing, parent);//review template - reply VS removed reply review
+        assertEquals(scathing, createdReply.getReview());//review template - reply VS removed reply review
         //IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.getReply(id));
         //assertEquals("There is no reply with ID " + id + ".", e.getMessage()); //THIS CANNOT BE TESTED HERE due to the twisted and evil nature of mockito, ie we are the ones TELLING it that getReply(id) returns backhand, by definition
         verify(repo, times(1)).deleteById(id);
@@ -169,7 +161,7 @@ public class ReplyServiceTests {
 
         // Act
         // Assert
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> revservice.removeReply(revId, service));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> service.deleteReply(id));
         assertEquals(id + " cannot be deleted as it does not correspond to an extant Reply!", e.getMessage());
     }
 
@@ -187,7 +179,7 @@ public class ReplyServiceTests {
         when(revrepo.save(any(Review.class))).thenReturn(scathing);
 
         // Act
-        Reply createdReply = revservice.createReply(scathing.getId(), "You are completely wrong!", new Date(188232321), service).getReply();
+        Reply createdReply = service.createReply("You are completely wrong!", new Date(188232321), scathing);
         service.editReply(id, content2, date2);
 
         // Assert
