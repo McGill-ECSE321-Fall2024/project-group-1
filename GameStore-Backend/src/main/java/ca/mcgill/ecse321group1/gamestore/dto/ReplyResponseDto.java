@@ -5,13 +5,13 @@ import java.time.LocalDate;
 import ca.mcgill.ecse321group1.gamestore.model.Reply;
 
 public class ReplyResponseDto {
-    private int replyId;
+    private int id;
     private String content;
     private LocalDate date;
     private int reviewId;
     
     public ReplyResponseDto(Reply reply) {
-        replyId = reply.getId();
+        id = reply.getId();
         content = reply.getContent();
         date = reply.getDate().toLocalDate();
         reviewId = reply.getReview().getId();
@@ -19,7 +19,7 @@ public class ReplyResponseDto {
     }
 
     public int getId() {
-        return replyId;
+        return id;
     }
 
     public String getContent() {

@@ -23,7 +23,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     /**
-     * Create customer
+     * Create customer WORKING
      * 
      * @param customerToCreate The customer to create.
      * @return The created customer, including their ID.
@@ -35,7 +35,7 @@ public class CustomerController {
     }
 
     /**
-     * Get customer by ID
+     * Get customer by ID WORKING
      * 
      * @param cid The primary key (customer ID) of the customer to get.
      * @return The customer with the given ID.
@@ -47,7 +47,7 @@ public class CustomerController {
     }
 
     /**
-     * Retrieves customer by ID and allows attributes to be edited.
+     * Retrieves customer by ID and allows attributes to be edited. WORKING
      * 
      * @param cid The primary key (customer ID) of the customer to edit.
      * @param request The person resquest DTO with new username, email, password, address, and phone number.
@@ -70,14 +70,34 @@ public class CustomerController {
     }
 
     /**
-     * Add game to customer cart
+     * Add quantity number of game to customer cart
      * 
      * @param cid Customer ID of the customer you want to add the game to.
      * @param gid Game ID of the game you want to add to the customer's cart.
      * @param q Quantity of the game you want to add to the customer's cart.
      */
-    @PostMapping("/customer/{cid}/{gid}/{q}")
+    @PostMapping("/customer/{cid}/game/{gid}/quantity/{q}")
     public PersonResponseDto addGameToCustomerCartById(@PathVariable int cid, @PathVariable int gid, @PathVariable int q) {
         return new PersonResponseDto(customerService.addToCart(cid, gid, q));
     }
+
+    /**
+     * Add game to customer wishlist (game must not be already added)
+     */
+
+    /**
+     * Remove all copies of specific game from cart
+     */
+
+    /**
+     * Remove game from wishlist
+     */
+
+    /**
+     * Return past orders of customer
+     */
+
+    /**
+     * Clear customer's cart
+     */
 }

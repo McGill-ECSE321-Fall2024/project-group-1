@@ -23,6 +23,7 @@ import ca.mcgill.ecse321group1.gamestore.dto.CategoryRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.ReplyListDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReplyRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReplyResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto;
@@ -75,7 +76,13 @@ public class ReplyIntegrationTests {
     private static final Review.Rating REVIEW_RATING = Review.Rating.fourStar;
 
     private static final String REPLY_CONTENT = "Agreed! I loved this game.";
-    private static final LocalDate REPLY_DATE = java.sql.Date.valueOf("2023-11-12").toLocalDate();
+    private static final LocalDate REPLY_DATE = java.sql.Date.valueOf("2023-11-13").toLocalDate();
+
+    private static final String NEW_REPLY_CONTENT = "Agreed! I hated this game.";
+    private static final LocalDate NEW_REPLY_DATE = java.sql.Date.valueOf("2023-11-14").toLocalDate();
+
+    private static final String REPLY_CONTENT_2 = "I also agree! This game was so good";
+    private static final LocalDate REPLY_DATE_2 = java.sql.Date.valueOf("2023-11-15").toLocalDate();
 
     private int categoryId;
     private int videoGameId;
@@ -149,19 +156,105 @@ public class ReplyIntegrationTests {
         String url = String.format("/review/%d/reply", this.reviewId);
         ReplyRequestDto replyRequest = new ReplyRequestDto(REPLY_DATE, REPLY_CONTENT);
 
+
         // Act
         ResponseEntity<ReplyResponseDto> replyResponse = client.postForEntity(url, replyRequest, ReplyResponseDto.class);
 
         // Assert
-        // assertNotNull(replyResponse);
-        // assertEquals(HttpStatus.OK, replyResponse.getStatusCode());
-        // assertEquals(REPLY_CONTENT, replyResponse.getBody().getContent());
-        // assertEquals(REPLY_DATE, replyResponse.getBody().getDate());
-        // assertEquals(reviewId, replyResponse.getBody().getReviewId());
-        // replyId = replyResponse.getBody().getId();
-
-        // NOT WORKING, but making reply using CURL works. ReplyRequestDto is created fine, but date switches to null?
+        assertNotNull(replyResponse);
+        assertEquals(HttpStatus.OK, replyResponse.getStatusCode());
+        assertEquals(REPLY_CONTENT, replyResponse.getBody().getContent());
+        assertEquals(REPLY_DATE.toString(), replyResponse.getBody().getDate().toString()); 
+        assertEquals(reviewId, replyResponse.getBody().getReviewId());
+        replyId = replyResponse.getBody().getId();
     }
 
+    @Test
+    @Order(2)
+    public void testGetReply() {
+        // Arrange
+        String url = String.format("/reply/%d", this.replyId);
+
+        // Act
+        ResponseEntity<ReplyResponseDto> replyResponse = client.getForEntity(url, ReplyResponseDto.class);
+
+        // Assert
+        assertNotNull(replyResponse);
+        assertEquals(HttpStatus.OK, replyResponse.getStatusCode());
+        assertEquals(REPLY_CONTENT, replyResponse.getBody().getContent());
+        assertEquals(REPLY_DATE.toString(), replyResponse.getBody().getDate().toString()); 
+        assertEquals(reviewId, replyResponse.getBody().getReviewId());
+    }
+
+    @Test
+    @Order(3)
+    public void testEditReply() {
+        // Arrange
+        String url = String.format("/reply/%d", this.replyId);
+        ReplyRequestDto editRequest = new ReplyRequestDto(NEW_REPLY_DATE, NEW_REPLY_CONTENT);
+
+        // Act
+        client.put(url, editRequest);
+        ResponseEntity<ReplyResponseDto> replyResponse = client.getForEntity(url, ReplyResponseDto.class);
+
+        // Assert
+        assertNotNull(replyResponse);
+        assertEquals(HttpStatus.OK, replyResponse.getStatusCode());
+        assertEquals(NEW_REPLY_CONTENT, replyResponse.getBody().getContent());
+        assertEquals(NEW_REPLY_DATE.toString(), replyResponse.getBody().getDate().toString()); 
+        assertEquals(reviewId, replyResponse.getBody().getReviewId());
+    }
+
+    @Test
+    @Order(4)
+    public void testGetAllReplies() {
+        // Create new second reply
+        String newReplyUrl = String.format("/review/%d/reply", this.reviewId);
+        ReplyRequestDto newReplyRequest = new ReplyRequestDto(REPLY_DATE_2, REPLY_CONTENT_2);
+
+        ResponseEntity<ReplyResponseDto> newReplyResponse = client.postForEntity(newReplyUrl, newReplyRequest, ReplyResponseDto.class);
+
+        assertNotNull(newReplyResponse);
+        assertEquals(HttpStatus.OK, newReplyResponse.getStatusCode());
+        assertEquals(REPLY_CONTENT_2, newReplyResponse.getBody().getContent());
+        assertEquals(REPLY_DATE_2.toString(), newReplyResponse.getBody().getDate().toString()); 
+        assertEquals(reviewId, newReplyResponse.getBody().getReviewId());
+
+        // Arrange
+        String allRepliesUrl = String.format("/review/%d/reply", this.reviewId);
+
+        // Act
+        ResponseEntity<ReplyListDto> allRepliesResponse = client.getForEntity(allRepliesUrl, ReplyListDto.class);
+
+        // Assert
+        assertNotNull(allRepliesResponse);
+        assertEquals(HttpStatus.OK, allRepliesResponse.getStatusCode());
+        assertEquals(2, allRepliesResponse.getBody().getReplies().size());
+        
+        ReplyResponseDto reply1 = allRepliesResponse.getBody().getReplies().get(0);
+        ReplyResponseDto reply2 = allRepliesResponse.getBody().getReplies().get(1);
+
+        assertEquals(NEW_REPLY_CONTENT, reply1.getContent());
+        assertEquals(REPLY_CONTENT_2, reply2.getContent());
+        assertEquals(NEW_REPLY_DATE.toString(), reply1.getDate().toString());
+        assertEquals(REPLY_DATE_2.toString(), reply2.getDate().toString());
+        assertEquals(reviewId, reply1.getReviewId());
+        assertEquals(reviewId, reply2.getReviewId());
+    }
+
+    @Test
+    @Order(5)
+    public void testDeleteReply() {
+        // Arrange
+        String url = String.format("/reply/%d", this.replyId);
+
+        // Act
+        client.delete(url);
+        ResponseEntity<ReplyResponseDto> response = client.getForEntity(url, ReplyResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
     
 }

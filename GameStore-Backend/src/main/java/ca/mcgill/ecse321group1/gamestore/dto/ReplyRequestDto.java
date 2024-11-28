@@ -6,9 +6,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class ReplyRequestDto {
-    //@NotBlank(message = "Reply must not be blank!")
+    @NotBlank(message = "Reply must not be blank!")
     private String content;
-   // @NotNull(message = "Reply date must exist!")
+    @NotNull(message = "Reply date must exist!")
     private LocalDate date;
 
     public ReplyRequestDto(LocalDate date, String content) {
@@ -20,7 +20,7 @@ public class ReplyRequestDto {
         return content;
     }
 
-    public LocalDate getLocalDate() {
+    public LocalDate getDate() {
         return date;
     }
 }

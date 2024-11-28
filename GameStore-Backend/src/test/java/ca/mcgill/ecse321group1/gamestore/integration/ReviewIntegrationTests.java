@@ -25,6 +25,8 @@ import ca.mcgill.ecse321group1.gamestore.model.Review;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.ReplyRequestDto;
+import ca.mcgill.ecse321group1.gamestore.dto.ReplyResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewListDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.ReviewResponseDto;
@@ -72,6 +74,9 @@ public class ReviewIntegrationTests {
     private static final String NEW_CONTENT = "Terrible game! 1/5";
     private static final LocalDate NEW_DATE = java.sql.Date.valueOf("2023-11-13").toLocalDate();
     private static final Review.Rating NEW_RATING = Review.Rating.oneStar; 
+
+    private static final String REPLY_CONTENT = "Agreed! I loved this game.";
+    private static final LocalDate REPLY_DATE = java.sql.Date.valueOf("2023-11-13").toLocalDate();
 
     private int categoryId;
     private int videoGameId;
@@ -279,5 +284,55 @@ public class ReviewIntegrationTests {
         // Assert
         assertNotNull(response);
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    @Order(10)
+    public void testDeleteReviewWithReplies() {
+        // Create review
+        ReviewRequestDto request = new ReviewRequestDto(VALID_CONTENT, VALID_DATE, VALID_RATING, videoGameId, customerId);
+
+        ResponseEntity<ReviewResponseDto> response = client.postForEntity("/review", request, ReviewResponseDto.class);
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(VALID_CONTENT, response.getBody().getContent());
+        assertEquals(VALID_DATE, response.getBody().getDate());
+        assertEquals(VALID_RATING.toString(), response.getBody().getRating().toString());
+        assertEquals(videoGameId, response.getBody().getVideoGameId());
+        assertEquals(customerId, response.getBody().getCustomerId());
+        reviewId = response.getBody().getId();
+
+        // Create reply to review
+        String url = String.format("/review/%d/reply", this.reviewId);
+        ReplyRequestDto replyRequest = new ReplyRequestDto(REPLY_DATE, REPLY_CONTENT);
+
+        ResponseEntity<ReplyResponseDto> replyPostResponse = client.postForEntity(url, replyRequest, ReplyResponseDto.class);
+
+        assertNotNull(replyPostResponse);
+        assertEquals(HttpStatus.OK, replyPostResponse.getStatusCode());
+        assertEquals(REPLY_CONTENT, replyPostResponse.getBody().getContent());
+        assertEquals(REPLY_DATE.toString(), replyPostResponse.getBody().getDate().toString()); 
+        assertEquals(reviewId, replyPostResponse.getBody().getReviewId());
+        int replyId = replyPostResponse.getBody().getId();
+
+        // Delete review
+        // Arrange
+        String deleteReviewUrl = String.format("/review/%d", this.reviewId);
+        String replyUrl = String.format("/reply/%d", replyId);
+        String getReviewUrl = String.format("/review/%d", this.reviewId);
+
+        // Act
+        client.delete(deleteReviewUrl);
+        ResponseEntity<ReplyResponseDto> replyGetResponse = client.getForEntity(replyUrl, ReplyResponseDto.class);
+        ResponseEntity<ReviewResponseDto> reviewGetResponse = client.getForEntity(getReviewUrl, ReviewResponseDto.class);
+
+        // Assert
+        assertNotNull(replyGetResponse);
+        assertEquals(HttpStatus.BAD_REQUEST, replyGetResponse.getStatusCode());
+
+        assertNotNull(reviewGetResponse);
+        assertEquals(HttpStatus.BAD_REQUEST, reviewGetResponse.getStatusCode());
+
     }
 }

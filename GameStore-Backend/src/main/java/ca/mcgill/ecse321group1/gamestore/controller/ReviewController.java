@@ -66,7 +66,7 @@ public class ReviewController {
      * Edit review by ID
      * 
      * @param rid The ID of the review you want to edit
-     * @param request The primary key (review ID) of the review to edit.
+     * @param request The review request DTO with new attributes.
      * @return The review with edited attributes
      */
     @PutMapping("/review/{rid}")
@@ -94,7 +94,7 @@ public class ReviewController {
     }
 
     /**
-     * Return review and its replies
+     * Delete review 
      * 
      * @param rid The review ID of the review you want to delete
      */

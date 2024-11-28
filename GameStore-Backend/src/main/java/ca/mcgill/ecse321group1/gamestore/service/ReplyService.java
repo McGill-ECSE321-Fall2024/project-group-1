@@ -59,6 +59,7 @@ public class ReplyService {
         repo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong
     }
 
+    /**Get all replies of a review */
     @Transactional
     public List<Reply> getRepliesByReview (int review_id) {
         ArrayList<Reply> tbr = new ArrayList<>();
