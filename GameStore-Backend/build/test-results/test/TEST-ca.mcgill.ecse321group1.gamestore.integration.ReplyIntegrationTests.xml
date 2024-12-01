@@ -1,13 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-12-01T02:36:39" hostname="Ivans-MacBook-Air.local" time="0.111">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-12-01T23:53:35" hostname="Viveks-MacBook-Air.local" time="0.769">
   <properties/>
-  <testcase name="testCreateReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.068"/>
-  <testcase name="testGetReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.007"/>
-  <testcase name="testEditReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.011"/>
-  <testcase name="testGetAllReplies()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.013"/>
-  <testcase name="testDeleteReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.011"/>
-  <system-out><![CDATA[2024-11-30T21:36:39.727-05:00  INFO 15599 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests]: ReplyIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-11-30T21:36:39.728-05:00  INFO 15599 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests
+  <testcase name="testCreateReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.393"/>
+  <testcase name="testGetReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.01"/>
+  <testcase name="testEditReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.025"/>
+  <testcase name="testGetAllReplies()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.025"/>
+  <testcase name="testDeleteReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.314"/>
+  <system-out><![CDATA[2024-12-01T18:53:33.902-05:00  INFO 45586 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests]: ReplyIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-01T18:53:33.909-05:00  INFO 45586 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2024-12-01T18:53:33.926-05:00  INFO 45586 --- [gamestore] [    Test worker] c.m.e.g.i.ReplyIntegrationTests          : Starting ReplyIntegrationTests using Java 21.0.2 with PID 45586 (started by vivek in /Users/vivek/Desktop/ECSE321 Group 1/project-group-1/GameStore-Backend)
+2024-12-01T18:53:33.926-05:00  INFO 45586 --- [gamestore] [    Test worker] c.m.e.g.i.ReplyIntegrationTests          : No active profile set, falling back to 1 default profile: "default"
+2024-12-01T18:53:34.063-05:00  INFO 45586 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-01T18:53:34.076-05:00  INFO 45586 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 10 JPA repository interfaces.
+2024-12-01T18:53:34.298-05:00  INFO 45586 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2024-12-01T18:53:34.321-05:00  INFO 45586 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-01T18:53:34.322-05:00  INFO 45586 --- [gamestore] [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-12-01T18:53:34.410-05:00  INFO 45586 --- [gamestore] [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-01T18:53:34.411-05:00  INFO 45586 --- [gamestore] [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 483 ms
+2024-12-01T18:53:34.484-05:00  INFO 45586 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-01T18:53:34.486-05:00  INFO 45586 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-01T18:53:34.492-05:00  INFO 45586 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-01T18:53:34.493-05:00  INFO 45586 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-12-01T18:53:34.506-05:00  INFO 45586 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@15902953
+2024-12-01T18:53:34.506-05:00  INFO 45586 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-12-01T18:53:34.509-05:00  WARN 45586 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-01T18:53:34.658-05:00  INFO 45586 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-01T18:53:34.770-05:00  INFO 45586 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-01T18:53:34.854-05:00  WARN 45586 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-01T18:53:34.995-05:00  INFO 45586 --- [gamestore] [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 62587 (http) with context path '/'
+2024-12-01T18:53:35.000-05:00  INFO 45586 --- [gamestore] [    Test worker] c.m.e.g.i.ReplyIntegrationTests          : Started ReplyIntegrationTests in 1.089 seconds (process running for 7.973)
+2024-12-01T18:53:35.166-05:00  INFO 45586 --- [gamestore] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-01T18:53:35.167-05:00  INFO 45586 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-01T18:53:35.168-05:00  INFO 45586 --- [gamestore] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

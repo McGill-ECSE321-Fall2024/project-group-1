@@ -116,15 +116,15 @@ public class CustomerService {
         customer.removeWishlist(game);
         return customerRepo.save(customer);
     }
-    /**Returns the string value of every past order of the Customer.*/
+    /**Returns the String value of a set of orders from a shared id*/
     @Transactional
-    public String getPastOrdersString(int customer_id) {
-        if (!customerRepo.existsById(customer_id))
-            throw new IllegalArgumentException(customer_id + "'s cart cannot be updated as it does not correspond to an extant Customer!");
+    public String getPastOrdersString(int shared_id) {
+        //if (!customerRepo.existsById(customer_id))
+        //    throw new IllegalArgumentException(customer_id + "'s cart cannot be updated as it does not correspond to an extant Customer!");
         //Customer customer = customerRepo.findCustomerById(customer_id);
         List<CustomerOrder> orders = new ArrayList<>();
         orderrepo.findAll().forEach(o -> {
-            if(o.getCustomer().getId() == customer_id) orders.add(o);
+            if(o.getSharedId() == shared_id)orders.add(o);
          });
         HashMap<Integer, ArrayList<CustomerOrder>> map = new HashMap<>();
         for (CustomerOrder order : orders) {

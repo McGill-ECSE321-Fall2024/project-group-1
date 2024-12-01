@@ -116,10 +116,15 @@ public class CustomerController {
         customerService.removeFromWishlist(cid, gid);
     }
 
-    // TODO
     /**
      * Return past orders of customer 
+     * 
+     * @param cid Customer ID of the customer whom we want to get past orders of.
      */
+    @GetMapping("/customer/{cid}/pastorders")
+    public String getPastOrders(@PathVariable int cid) {
+        return customerService.getPastOrdersString(cid);
+    }
 
     /**
      * Clear customer's cart
