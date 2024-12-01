@@ -1,85 +1,103 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <div id="app">
+    <!-- Basic Header -->
+    <header>
+      <div class="branding">
+        <div class="logo-container">
+          <img alt="Video Game Management Logo" class="logo" src="@/assets/logo.svg" />
+        </div>
+        <h1>Samy's Video Game Kingdom</h1>
+      </div>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <!-- Main Content -->
+    <main>
+      <div class="content-container">
+        <router-view />
+      </div>
+    </main>
+  </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+};
+</script>
+
 <style scoped>
+/* General Styling */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  background: #f8f8f8;
+  color: #333;
+}
+
+/* Header */
 header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
+  background: linear-gradient(135deg, #2d88ff, #6a5eff);
+  padding: 1.5rem;
   text-align: center;
-  margin-top: 2rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+header .branding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+header .logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+header .logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover; /* Ensure the logo is displayed properly */
 }
 
-nav a:first-of-type {
-  border: 0;
+header h1 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+/* Main Content */
+main {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.content-container {
+  width: 100%;
+  max-width: 1200px; /* Set a maximum width for the content */
+  min-width: 800px; /* Ensure it’s not too thin */
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+/* Media Queries for Responsiveness */
+@media (max-width: 800px) {
+  .content-container {
+    min-width: 100%; /* Allow the content to shrink on smaller screens */
+    padding: 1rem;
   }
 }
 </style>

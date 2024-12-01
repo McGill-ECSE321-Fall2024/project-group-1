@@ -1,3 +1,13 @@
+import GamesView from '@/views/GamesView.vue'
+import StaffView from '@/views/StaffView.vue'
+import AuthView from '@/views/AuthView.vue'
+import CustomerGamesView from '@/views/CustomerGamesView.vue'
+import CartView from '@/views/CartView.vue'
+import WishlistView from '@/views/WishlistView.vue'
+import OrderHistoryView from '@/views/OrderHistoryView.vue'
+import StaffGamesView from '@/views/StaffGamesView.vue'
+import CustomersView from '@/views/CustomersView.vue'
+import CategoriesView from '@/views/CategoriesView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
@@ -6,17 +16,55 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView,
+      name: 'auth',
+      component: AuthView,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      path: '/games',
+      name: 'game',
+      component: GamesView
     },
+    {
+      path: '/staff',
+      name: 'staff',
+      component: StaffView
+    },
+    {
+      path: '/customers',
+      name: 'customers',
+      component: CustomersView
+    },
+    {
+      path: '/categories',
+      name: 'categories',
+      component: CategoriesView
+    },
+    {
+      path: '/customergames',
+      name: 'customergames',
+      component: CustomerGamesView
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: CartView
+    },
+    {
+      path: '/wishlist',
+      name: 'wishlist',
+      component: WishlistView
+    },
+    {
+      path: '/orderhistory',
+      name: 'orderhistory',
+      component: OrderHistoryView
+    },
+    {
+      path: '/staffgames',
+      name: 'staffgames',
+      component: StaffGamesView
+    },
+    // etc.
   ],
 })
 
