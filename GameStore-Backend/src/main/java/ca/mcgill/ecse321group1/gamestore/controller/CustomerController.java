@@ -49,7 +49,7 @@ public class CustomerController {
     /**
      * Retrieves customer by ID and allows attributes to be edited. WORKING
      * 
-     * @param cid The primary key (customer ID) of the customer to edit.
+     * @param cid The primary key (customer ID) of the cGameStore-Backend/src/test/java/ca/mcgill/ecse321group1/gamestore/integration/CustomerIntegrationTests.javaustomer to edit.
      * @param request The person resquest DTO with new username, email, password, address, and phone number.
      * @return The customer with changed attributes.
      */
@@ -70,34 +70,64 @@ public class CustomerController {
     }
 
     /**
-     * Add quantity number of game to customer cart
+     * Add quantity number of game to customer cart WORKING
      * 
      * @param cid Customer ID of the customer you want to add the game to.
      * @param gid Game ID of the game you want to add to the customer's cart.
      * @param q Quantity of the game you want to add to the customer's cart.
+     * @return The customer with the updated cart
      */
-    @PostMapping("/customer/{cid}/game/{gid}/quantity/{q}")
+    @PostMapping("/customer/{cid}/cart/{gid}/quantity/{q}")
     public PersonResponseDto addGameToCustomerCartById(@PathVariable int cid, @PathVariable int gid, @PathVariable int q) {
         return new PersonResponseDto(customerService.addToCart(cid, gid, q));
     }
 
     /**
-     * Add game to customer wishlist (game must not be already added)
+     * Add game to customer wishlist (game must not be already added) WORKING
+     * 
+     * @param cid Customer ID of the customer you want to add the game to.
+     * @param gid The Video Game ID of the game you want to add to the customer's wishlist
+     * @return The customer with the updated wishlist
      */
+    @PutMapping("/customer/{cid}/wishlist/{gid}")
+    public PersonResponseDto addGameToCustomerWishlist(@PathVariable int cid, @PathVariable int gid) {
+        return new PersonResponseDto(customerService.addToWishlist(cid, gid));
+    }
 
     /**
-     * Remove all copies of specific game from cart
+     * Remove all copies of specific game from cart WORKING
+     * 
+     * @param cid Customer CID of the customer whose cart we want to remove the game from.
+     * @param gid The Video Game ID of the game you want to remove from the customer's cart.
      */
+    @DeleteMapping("/customer/{cid}/cart/{gid}")
+    public void deleteGameFromCart(@PathVariable int cid, @PathVariable int gid) {
+        customerService.removeFromCart(cid, gid);
+    }
 
     /**
      * Remove game from wishlist
+     * 
+     * @param cid Customer CID of the customer whose wishlist we want to remove the game from.
+     * @param gid The video game ID of the game you want to remove from the customer's wishlist.
      */
+    @DeleteMapping("/customer/{cid}/wishlist/{gid}")
+    public void deleteGameFromWishlist(@PathVariable int cid, @PathVariable int gid) {
+        customerService.removeFromWishlist(cid, gid);
+    }
 
+    // TODO
     /**
-     * Return past orders of customer
+     * Return past orders of customer 
      */
 
     /**
      * Clear customer's cart
+     * 
+     * @param cid Customer ID of the customer whose cart we want to clear
      */
+    @DeleteMapping("/customer/{cid}/cart")
+    public void clearCart(@PathVariable int cid) {
+        customerService.removeAllFromCart(cid);
+    }
 }
