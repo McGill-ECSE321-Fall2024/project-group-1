@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -124,7 +125,7 @@ public class CustomerOrderServiceTests {
         assertEquals(3, orders.size());
 
         when(repo.findAll()).thenReturn(orders);
-        String string = custservice.getPastOrdersString(BOB.getId());
+        String string = custservice.getPastOrdersString(orders.get(0).getSharedId());
         ArrayList<String> orders_str_lines = new ArrayList<>(List.of(string.split("\n")));
         String answer = "";
         //str.append(String.format("%dx \"%s\"%s for $%.2f\n", order.getQuantity(), order.getPurchased().getName(), offerStr, order.getPrice()));

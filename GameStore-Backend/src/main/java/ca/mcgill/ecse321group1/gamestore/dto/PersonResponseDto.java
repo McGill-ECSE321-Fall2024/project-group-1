@@ -2,6 +2,11 @@ package ca.mcgill.ecse321group1.gamestore.dto;
 
 import ca.mcgill.ecse321group1.gamestore.model.Staff;
 import ca.mcgill.ecse321group1.gamestore.model.Owner;
+import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 
 public class PersonResponseDto {
@@ -11,6 +16,8 @@ public class PersonResponseDto {
     private String passwordHash;
     private String address;
     private String phoneNumber;
+    private List<VideoGameResponseDto> wishlist;
+    private List<VideoGameResponseDto> cart;
 
     protected PersonResponseDto() {
     }
@@ -36,6 +43,20 @@ public class PersonResponseDto {
         this.passwordHash = customer.getPasswordHash();
         this.address = customer.getAddress();
         this.phoneNumber = customer.getPhoneNumber();
+
+        List<VideoGame> wishlistRaw = customer.getWishlist();
+        List<VideoGameResponseDto> wishlistDto = new ArrayList<>();
+        for (VideoGame wlVideoGame : wishlistRaw) {
+            wishlistDto.add(new VideoGameResponseDto(wlVideoGame));
+        }
+        this.wishlist = wishlistDto; 
+
+        List<VideoGame> cartRaw = customer.getCart();
+        List<VideoGameResponseDto> cartDto = new ArrayList<>();
+        for (VideoGame cartVideoGame : cartRaw) {
+            cartDto.add(new VideoGameResponseDto(cartVideoGame));
+        }
+        this.cart = cartDto;
     }
 
     public int getId() {
@@ -61,4 +82,12 @@ public class PersonResponseDto {
     public String getPhoneNumber() {
         return phoneNumber;
     } 
+
+    public List<VideoGameResponseDto> getCart() {
+        return cart;
+    }
+
+    public List<VideoGameResponseDto> getWishlist() {
+        return wishlist;
+    }
 }

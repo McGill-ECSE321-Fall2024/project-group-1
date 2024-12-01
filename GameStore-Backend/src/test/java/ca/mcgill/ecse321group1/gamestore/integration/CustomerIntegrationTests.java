@@ -69,9 +69,17 @@ public class CustomerIntegrationTests {
     private static final int GAME_QUANTITY = 25;
     private static final LocalDate GAME_DATE = java.sql.Date.valueOf("2023-11-08").toLocalDate();
 
+    private static final String GAME_2_NAME = "Fornite Save the World";
+    private static final String GAME_2_DESCRIPTION = "Game still in beta";
+    private static final float GAME_2_PRICE = 20.99f;
+    private static final int GAME_2_QUANTITY = 25;
+    private static final LocalDate GAME_2_DATE = java.sql.Date.valueOf("2002-11-08").toLocalDate();
+
     private int customerId;
     private int categoryId;
     private int videoGameId;
+    private int videoGame1Id;
+    private int videoGame2Id;
 
     @AfterAll
     public void clearDatabase() {
@@ -214,8 +222,8 @@ public class CustomerIntegrationTests {
         assertEquals("Pending", videoGameResponse.getBody().getStatus().toString());
         videoGameId = videoGameResponse.getBody().getId();
 
-        // Arrange (5 copies of game)
-        String url = String.format("/customer/%d/game/%d/quantity/%d", this.customerId, this.videoGameId, 1);
+        // Arrange
+        String url = String.format("/customer/%d/cart/%d/quantity/%d", this.customerId, this.videoGameId, 1);
 
         // Act
         ResponseEntity<PersonResponseDto> response = client.postForEntity(url, null, PersonResponseDto.class);
@@ -228,6 +236,140 @@ public class CustomerIntegrationTests {
         assertEquals(NEW_EMAIL, response.getBody().getEmail());
         assertEquals(NEW_ADDRESS, response.getBody().getAddress());
         assertEquals(NEW_PHONE_NUMBER, response.getBody().getPhoneNumber());
+        assertEquals(1, response.getBody().getCart().size());
+        assertEquals(videoGameId, response.getBody().getCart().get(0).getId());
+    }
+
+    @Test
+    @Order(8)
+    public void testAddGameToWishlist() {
+        // Arrange
+        String wishlistUrl = String.format("/customer/%d/wishlist/%d", this.customerId, this.videoGameId);
+        String customerUrl = String.format("/customer/%d", this.customerId);
+
+        // Act
+        client.put(wishlistUrl, null);
+        ResponseEntity<PersonResponseDto> response = client.getForEntity(customerUrl, PersonResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(this.customerId,response.getBody().getId());
+        assertEquals(NEW_USERNAME, response.getBody().getUsername());
+        assertEquals(NEW_EMAIL, response.getBody().getEmail());
+        assertEquals(NEW_ADDRESS, response.getBody().getAddress());
+        assertEquals(NEW_PHONE_NUMBER, response.getBody().getPhoneNumber());
+        assertEquals(1, response.getBody().getWishlist().size());
+        assertEquals(videoGameId, response.getBody().getWishlist().get(0).getId());
+    }
+
+    @Test
+    @Order(9)
+    public void testRemoveGameFromWishlist() {
+        // Arrange
+        String deleteUrl = String.format("/customer/%d/cart/%d", this.customerId, this.videoGameId);
+        String custUrl = String.format("/customer/%d", this.customerId);
+
+        // Act
+        client.delete(deleteUrl);
+        ResponseEntity<PersonResponseDto> response = client.getForEntity(custUrl, PersonResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(this.customerId,response.getBody().getId());
+        assertEquals(NEW_USERNAME, response.getBody().getUsername());
+        assertEquals(NEW_EMAIL, response.getBody().getEmail());
+        assertEquals(NEW_ADDRESS, response.getBody().getAddress());
+        assertEquals(NEW_PHONE_NUMBER, response.getBody().getPhoneNumber());
+         assertEquals(0, response.getBody().getCart().size());
+    }
+
+    @Test
+    @Order(10)
+    public void testRemoveGameFromCart() {
+        // Arrange
+        String deleteUrl = String.format("/customer/%d/wishlist/%d", this.customerId, this.videoGameId);
+        String custUrl = String.format("/customer/%d", this.customerId);
+
+        // Act
+        client.delete(deleteUrl);
+        ResponseEntity<PersonResponseDto> response = client.getForEntity(custUrl, PersonResponseDto.class);
+
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(this.customerId,response.getBody().getId());
+        assertEquals(NEW_USERNAME, response.getBody().getUsername());
+        assertEquals(NEW_EMAIL, response.getBody().getEmail());
+        assertEquals(NEW_ADDRESS, response.getBody().getAddress());
+        assertEquals(NEW_PHONE_NUMBER, response.getBody().getPhoneNumber());
+         assertEquals(0, response.getBody().getWishlist().size());
+    }
+
+    @Test
+    @Order(11)
+    public void testClearCart() {
+        // First add two video games to cart
+        VideoGameRequestDto videoGame1Request = new VideoGameRequestDto(GAME_NAME, GAME_DESCRIPTION, GAME_PRICE, GAME_QUANTITY,GAME_DATE, this.categoryId);
+        VideoGameRequestDto videoGame2Request = new VideoGameRequestDto(GAME_2_NAME, GAME_2_DESCRIPTION, GAME_2_PRICE, GAME_2_QUANTITY,GAME_2_DATE, this.categoryId);
+
+        ResponseEntity<VideoGameResponseDto> videoGame1Response = client.postForEntity("/videogame", videoGame1Request, VideoGameResponseDto.class);
+        assertNotNull(videoGame1Response);
+        assertEquals(GAME_NAME, videoGame1Response.getBody().getName());
+        assertEquals(GAME_DESCRIPTION, videoGame1Response.getBody().getDescription());
+        assertEquals(GAME_PRICE, videoGame1Response.getBody().getPrice());
+        assertEquals(GAME_QUANTITY, videoGame1Response.getBody().getQuantity());
+        assertEquals(GAME_DATE, videoGame1Response.getBody().getDate());
+        assertEquals("Pending", videoGame1Response.getBody().getStatus().toString());
+        videoGame1Id = videoGame1Response.getBody().getId();
+
+
+        ResponseEntity<VideoGameResponseDto> videoGame2Response = client.postForEntity("/videogame", videoGame2Request, VideoGameResponseDto.class);
+        assertNotNull(videoGame2Response);
+        assertEquals(GAME_2_NAME, videoGame2Response.getBody().getName());
+        assertEquals(GAME_2_DESCRIPTION, videoGame2Response.getBody().getDescription());
+        assertEquals(GAME_2_PRICE, videoGame2Response.getBody().getPrice());
+        assertEquals(GAME_2_QUANTITY, videoGame2Response.getBody().getQuantity());
+        assertEquals(GAME_2_DATE, videoGame2Response.getBody().getDate());
+        assertEquals("Pending", videoGame2Response.getBody().getStatus().toString());
+        videoGame2Id = videoGame2Response.getBody().getId();
+
+        // Add created video games to cart
+        String addGame1Url = String.format("/customer/%d/cart/%d/quantity/%d", this.customerId, this.videoGame1Id, 1);
+        String addGame2Url = String.format("/customer/%d/cart/%d/quantity/%d", this.customerId, this.videoGame2Id, 1);
+
+        ResponseEntity<PersonResponseDto> game1CartResponse = client.postForEntity(addGame1Url, null, PersonResponseDto.class);
+        ResponseEntity<PersonResponseDto> game2CartResponse = client.postForEntity(addGame2Url, null, PersonResponseDto.class);
+
+        assertNotNull(game2CartResponse);
+        assertEquals(HttpStatus.OK, game2CartResponse.getStatusCode());
+        assertEquals(this.customerId,game2CartResponse.getBody().getId());
+        assertEquals(NEW_USERNAME, game2CartResponse.getBody().getUsername());
+        assertEquals(NEW_EMAIL, game2CartResponse.getBody().getEmail());
+        assertEquals(NEW_ADDRESS, game2CartResponse.getBody().getAddress());
+        assertEquals(NEW_PHONE_NUMBER, game2CartResponse.getBody().getPhoneNumber());
+        assertEquals(2, game2CartResponse.getBody().getCart().size());
+        assertEquals(videoGame1Id, game2CartResponse.getBody().getCart().get(0).getId());
+        assertEquals(videoGame2Id, game2CartResponse.getBody().getCart().get(1).getId());
+
+        // Arrange
+        String deleteUrl = String.format("/customer/%d/cart", this.customerId);
+        String custUrl = String.format("/customer/%d", this.customerId);
+
+        // Act
+        client.delete(deleteUrl);
+        ResponseEntity<PersonResponseDto> cartDeleteResponse = client.getForEntity(custUrl, PersonResponseDto.class);
+
+        // Arrange
+        assertNotNull(cartDeleteResponse);
+        assertEquals(HttpStatus.OK, cartDeleteResponse.getStatusCode());
+        assertEquals(this.customerId,cartDeleteResponse.getBody().getId());
+        assertEquals(NEW_USERNAME, cartDeleteResponse.getBody().getUsername());
+        assertEquals(NEW_EMAIL, cartDeleteResponse.getBody().getEmail());
+        assertEquals(NEW_ADDRESS, cartDeleteResponse.getBody().getAddress());
+        assertEquals(NEW_PHONE_NUMBER, cartDeleteResponse.getBody().getPhoneNumber());
+        assertEquals(0, cartDeleteResponse.getBody().getCart().size());
     }
 
 }

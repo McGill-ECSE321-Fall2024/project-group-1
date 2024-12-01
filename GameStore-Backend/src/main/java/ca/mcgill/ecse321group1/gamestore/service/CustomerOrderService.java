@@ -21,6 +21,14 @@ public class CustomerOrderService {
     @Autowired
     private OfferRepository offerRepo;
 
+    /**Uses specific ID. Meant for use in conjunction for conversion from DTO to Model.*/
+    @Transactional
+    public CustomerOrder getCustomerOrder(int specific_id) {
+        CustomerOrder temp = repo.findCustomerOrderById(specific_id);
+        if (temp == null) throw new IllegalArgumentException("There is no customer orders with specific ID " + specific_id + ".");
+        return temp;
+    }
+
     /**Retrieves a set of CustomerOrder objects based on lookup by shared_id*/
     @Transactional
     public List<CustomerOrder> getCustomerOrders(int shared_id) {
@@ -136,4 +144,5 @@ public class CustomerOrderService {
             }
         });
     }
+
 }
