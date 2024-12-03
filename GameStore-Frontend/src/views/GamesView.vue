@@ -73,13 +73,17 @@
 </template>
 
 <script>
+import axios from "axios";
+
+const axiosClient = axios.create({
+	baseURL: "http://localhost:8080"
+});
+
 export default {
   name: "GamesView",
   data() {
     return {
       games: [
-        { id: 1, name: "The Legend of Zelda", description: "Adventure game", price: 59.99, quantity: 10, date: "2023-11-01", status: "Active", category: "Action" },
-        { id: 2, name: "Minecraft", description: "Sandbox game", price: 19.99, quantity: 50, date: "2023-10-10", status: "Active", category: "Sandbox" },
       ],
       newGame: {
         name: "",
@@ -93,6 +97,26 @@ export default {
       editingGame: null,
       isEditing: false,
     };
+  },
+  async created() {
+    try {
+      const response = await axiosClient.get("/videogame");
+      console.log(response);
+      const transformedGames = response.data.videoGames.map(game => ({
+        name: game.name,
+        description: game.description,
+        price: game.price,
+        quantity: game.quantity,
+        date: game.date,
+        status: game.status,
+        category: game.category.name,
+      }));
+      console.log(transformedGames);
+      this.games = transformedGames;
+    }
+    catch (e) {
+      console.error("Failed to fetch video games.");
+    }
   },
   computed: {
     currentGame() {
