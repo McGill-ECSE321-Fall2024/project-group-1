@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-12-01T23:53:38" hostname="Viveks-MacBook-Air.local" time="0.065">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-12-03T20:34:50" hostname="Ivans-MacBook-Air.local" time="0.044">
   <properties/>
-  <testcase name="testCreateValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.008"/>
-  <testcase name="testCreateInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.005"/>
-  <testcase name="testGetValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.006"/>
-  <testcase name="testGetInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.005"/>
-  <testcase name="testEditInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.009"/>
-  <testcase name="testEditValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.012"/>
-  <testcase name="testDeleteInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.01"/>
-  <testcase name="testDeleteValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.01"/>
-  <system-out><![CDATA[2024-12-01T18:53:38.656-05:00  INFO 45586 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests]: StaffIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-12-01T18:53:38.657-05:00  INFO 45586 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests
-2024-12-01T18:53:38.686-05:00  WARN 45586 --- [gamestore] [o-auto-1-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.StaffController.editStaffById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+  <testcase name="testCreateValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.006"/>
+  <testcase name="testCreateInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.004"/>
+  <testcase name="testGetValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.004"/>
+  <testcase name="testGetInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.004"/>
+  <testcase name="testEditInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.005"/>
+  <testcase name="testEditValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.008"/>
+  <testcase name="testDeleteInvalidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.006"/>
+  <testcase name="testDeleteValidStaff()" classname="ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests" time="0.006"/>
+  <system-out><![CDATA[2024-12-03T15:34:50.045-05:00  INFO 96993 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests]: StaffIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-03T15:34:50.046-05:00  INFO 96993 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests
+2024-12-03T15:34:50.066-05:00  WARN 96993 --- [gamestore] [o-auto-1-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.StaffController.editStaffById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

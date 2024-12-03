@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" tests="19" skipped="0" failures="0" errors="0" timestamp="2024-12-01T23:53:36" hostname="Viveks-MacBook-Air.local" time="0.245">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" tests="19" skipped="0" failures="0" errors="0" timestamp="2024-12-03T20:34:50" hostname="Ivans-MacBook-Air.local" time="0.164">
   <properties/>
-  <testcase name="testCreateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.015"/>
-  <testcase name="testCreateInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.007"/>
-  <testcase name="testGetValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.011"/>
-  <testcase name="testGetInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.006"/>
-  <testcase name="testEditInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.015"/>
-  <testcase name="testEditValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.013"/>
-  <testcase name="activateInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.009"/>
-  <testcase name="activateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.01"/>
-  <testcase name="deactivateInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.015"/>
-  <testcase name="deactivateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.01"/>
-  <testcase name="alterQuantityInvalidAmount()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.008"/>
-  <testcase name="alterQuantityValidAmount()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.008"/>
-  <testcase name="testGetAllPending()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.018"/>
-  <testcase name="testGetUnmatchingKeyword()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.01"/>
-  <testcase name="testMatchingKeyword()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.006"/>
-  <testcase name="testInvalidCategory()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.006"/>
-  <testcase name="testValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.006"/>
-  <testcase name="testGetAverageRating()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.028"/>
-  <testcase name="testDeleteVideoGames()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.036"/>
-  <system-out><![CDATA[2024-12-01T18:53:36.000-05:00  INFO 45586 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests]: VideoGameIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-12-01T18:53:36.001-05:00  INFO 45586 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests
+  <testcase name="testCreateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.009"/>
+  <testcase name="testCreateInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.004"/>
+  <testcase name="testGetValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.004"/>
+  <testcase name="testGetInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.002"/>
+  <testcase name="testEditInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.008"/>
+  <testcase name="testEditValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.008"/>
+  <testcase name="activateInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.006"/>
+  <testcase name="activateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.006"/>
+  <testcase name="deactivateInvalidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.01"/>
+  <testcase name="deactivateValidVideoGame()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.006"/>
+  <testcase name="alterQuantityInvalidAmount()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.004"/>
+  <testcase name="alterQuantityValidAmount()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.005"/>
+  <testcase name="testGetAllPending()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.009"/>
+  <testcase name="testGetUnmatchingKeyword()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.014"/>
+  <testcase name="testMatchingKeyword()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.005"/>
+  <testcase name="testInvalidCategory()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.005"/>
+  <testcase name="testValidCategory()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.009"/>
+  <testcase name="testGetAverageRating()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.021"/>
+  <testcase name="testDeleteVideoGames()" classname="ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests" time="0.025"/>
+  <system-out><![CDATA[2024-12-03T15:34:50.093-05:00  INFO 96993 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests]: VideoGameIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-03T15:34:50.094-05:00  INFO 96993 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

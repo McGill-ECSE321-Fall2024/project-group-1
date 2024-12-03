@@ -33,7 +33,7 @@ public class PersonServiceHelper {
         return hash_password(password);
     }
 
-    private static String hash_password(String password) {
+    static String hash_password(String password) {
         StringBuilder hashed = new StringBuilder();
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

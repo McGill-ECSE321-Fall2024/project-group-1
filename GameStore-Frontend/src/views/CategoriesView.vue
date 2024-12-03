@@ -15,7 +15,7 @@
         <input type="text" v-model="newCategory.name" placeholder="Category Name" />
       </div>
       <div class="buttons">
-        <button class="btn-primary" @click="addCategory">Add Category</button>
+        <button class="btn-primary" @click="createCategory">Add Category</button>
         <button class="btn-secondary" @click="resetForm">Clear</button>
       </div>
     </div>
@@ -49,21 +49,49 @@
 </template>
 
 <script>
+import axios from "axios";
+
+const axiosClient = axios.create({
+	baseURL: "http://localhost:8080"
+});
+
 export default {
   name: "CategoriesView",
   data() {
     return {
       categories: [
-        { id: 1, name: "Action" },
-        { id: 2, name: "Adventure" },
-        { id: 3, name: "RPG" },
       ],
       newCategory: {
         name: "",
       },
     };
   },
+  async created() {
+    try {
+      const response = await axiosClient.get("/category");
+      this.categories = response.data.categories;
+    }
+    catch (e) {
+      // this.errorMessage = "Failed to create category.";
+      console.error("Failed to fetch categories.");
+    }
+  },
   methods: {
+    async createCategory() {
+      const categoryToCreate = {
+        name: this.newCategory.name,
+        description: this.newCategory.name
+      };
+      try { 
+        const response = await axiosClient.post("/category", categoryToCreate);
+        this.categories.push(response.data);
+      }
+      catch (e) {
+        // this.errorMessage = "Failed to create category.";
+        console.error("Failed to create category.");
+      }
+      this.resetForm();
+    },
     goToGamesView() {
       this.$router.push("/games");
     },
@@ -76,16 +104,17 @@ export default {
     logout() {
       window.location.href = "http://localhost:8087";
     },
-    addCategory() {
-      if (!this.newCategory.name.trim()) {
-        alert("Category name cannot be empty.");
-        return;
-      }
-      const newId = this.categories.length ? this.categories[this.categories.length - 1].id + 1 : 1;
-      const category = { id: newId, name: this.newCategory.name.trim() };
-      this.categories.push(category);
-      this.resetForm();
-    },
+    // addCategory() {
+
+    //   if (!this.newCategory.name.trim()) {
+    //     alert("Category name cannot be empty.");
+    //     return;
+    //   }
+    //   const newId = this.categories.length ? this.categories[this.categories.length - 1].id + 1 : 1;
+    //   const category = { id: newId, name: this.newCategory.name.trim() };
+    //   this.categories.push(category);
+    //   this.resetForm();
+    // },
     removeCategory(id) {
       this.categories = this.categories.filter((category) => category.id !== id);
       alert("Category removed successfully.");

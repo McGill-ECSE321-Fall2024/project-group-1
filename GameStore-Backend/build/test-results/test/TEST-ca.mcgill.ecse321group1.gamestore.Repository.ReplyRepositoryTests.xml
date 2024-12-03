@@ -1,45 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-01T23:53:33" hostname="Viveks-MacBook-Air.local" time="0.654">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-12-03T20:34:46" hostname="Ivans-MacBook-Air.local" time="0.028">
   <properties/>
-  <testcase name="testPersistAndLoadReply()" classname="ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests" time="0.654"/>
-  <system-out><![CDATA[18:53:28.310 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests]: ReplyRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:53:28.432 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::                (v3.3.4)
-
-2024-12-01T18:53:28.773-05:00  INFO 45586 --- [gamestore] [    Test worker] c.m.e.g.Repository.ReplyRepositoryTests  : Starting ReplyRepositoryTests using Java 21.0.2 with PID 45586 (started by vivek in /Users/vivek/Desktop/ECSE321 Group 1/project-group-1/GameStore-Backend)
-2024-12-01T18:53:28.774-05:00  INFO 45586 --- [gamestore] [    Test worker] c.m.e.g.Repository.ReplyRepositoryTests  : No active profile set, falling back to 1 default profile: "default"
-2024-12-01T18:53:29.761-05:00  INFO 45586 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-01T18:53:29.833-05:00  INFO 45586 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 10 JPA repository interfaces.
-2024-12-01T18:53:30.202-05:00  INFO 45586 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-01T18:53:30.260-05:00  INFO 45586 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-12-01T18:53:30.293-05:00  INFO 45586 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-01T18:53:30.600-05:00  INFO 45586 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-01T18:53:30.634-05:00  INFO 45586 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-01T18:53:30.907-05:00  INFO 45586 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@74cad6d
-2024-12-01T18:53:30.908-05:00  INFO 45586 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-01T18:53:30.948-05:00  WARN 45586 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-12-01T18:53:32.092-05:00  INFO 45586 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-01T18:53:32.182-05:00  WARN 45586 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-12-01T18:53:32.182-05:00  WARN 45586 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk15nw6mjj9ufybw83k8ppgyidr" of relation "customer_order" does not exist, skipping
-2024-12-01T18:53:32.184-05:00  WARN 45586 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-12-01T18:53:32.184-05:00  WARN 45586 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "ukb7fdu5gblfd177jgbl53cl9aa" of relation "person_cart" does not exist, skipping
-2024-12-01T18:53:32.185-05:00  WARN 45586 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
-2024-12-01T18:53:32.185-05:00  WARN 45586 --- [gamestore] [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uka4hnten237ysy63lhgymqeb67" of relation "person_wishlist" does not exist, skipping
-2024-12-01T18:53:32.208-05:00  INFO 45586 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-01T18:53:32.803-05:00  WARN 45586 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-01T18:53:33.196-05:00  INFO 45586 --- [gamestore] [    Test worker] c.m.e.g.Repository.ReplyRepositoryTests  : Started ReplyRepositoryTests in 4.627 seconds (process running for 6.169)
+  <testcase name="testPersistAndLoadReply()" classname="ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests" time="0.028"/>
+  <system-out><![CDATA[2024-12-03T15:34:46.936-05:00  INFO 96993 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests]: ReplyRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-03T15:34:46.937-05:00  INFO 96993 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests
 ]]></system-out>
-  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/vivek/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
