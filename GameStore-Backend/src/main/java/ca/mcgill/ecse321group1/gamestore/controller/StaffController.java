@@ -14,6 +14,7 @@ import jakarta.validation.Valid;
 
 import ca.mcgill.ecse321group1.gamestore.service.StaffService;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.LoginDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.model.Staff;
 
@@ -70,4 +71,21 @@ public class StaffController {
     public void deleteStaffById(@PathVariable int pid) {
         staffService.deleteStaff(pid);
     }
-}
+
+    /**
+     * Verify staff login
+     * 
+     * @param LoginDto
+     * @return null if invalid credentials, Staff object if valid.
+     */
+    @PostMapping("/login/staff")
+    public PersonResponseDto verifyStaff(@Valid @RequestBody LoginDto request) {
+        Staff staff = staffService.getByPasswordUsername(request.getUsername(), request.getPassword());
+
+        if (staff == null) {
+            return null;
+        } else {
+            return new PersonResponseDto(staff);
+        }
+    }
+}   

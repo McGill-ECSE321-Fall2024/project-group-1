@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 
 import ca.mcgill.ecse321group1.gamestore.service.CustomerService;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.LoginDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
 
@@ -136,5 +137,22 @@ public class CustomerController {
     @DeleteMapping("/customer/{cid}/cart")
     public void clearCart(@PathVariable int cid) {
         customerService.removeAllFromCart(cid);
+    }
+
+    /**
+     * Verify customer login
+     * 
+     * @param LoginDto 
+     * @return null if invalid credentials, Customer object if valid
+     */
+    @PostMapping("/login/customer")
+    public PersonResponseDto verifyCustomer(@Valid @RequestBody LoginDto request) {
+        Customer cust = customerService.getByPasswordUsername(request.getUsername(), request.getPassword());
+
+        if (cust == null) {
+            return null;
+        } else {
+            return new PersonResponseDto(cust);
+        }
     }
 }

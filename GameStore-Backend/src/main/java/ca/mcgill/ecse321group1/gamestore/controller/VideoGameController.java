@@ -178,4 +178,21 @@ public class VideoGameController {
     public Review.Rating getVideoGameRating(@PathVariable int vid) {
         return videoGameService.averageRatingOf(vid);
     }
+
+    /**
+     * Get all video games
+     * 
+     * @return The list of all video games as a VideoGameListDto
+     */
+    @GetMapping("/videogame")
+    public VideoGameListDto getAllVideoGames() {
+        List<VideoGame> videoGames = videoGameService.getAll();
+        List<VideoGameResponseDto> dtoList = new ArrayList<>();
+
+        for (VideoGame videoGame : videoGames) {
+            dtoList.add(new VideoGameResponseDto(videoGame));
+        }
+
+        return new VideoGameListDto(dtoList);
+    }
 }

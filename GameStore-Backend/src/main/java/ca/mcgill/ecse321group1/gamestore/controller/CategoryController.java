@@ -43,7 +43,7 @@ public class CategoryController {
     /**
      * Get all categories
      * 
-     * @return The list of all categories.
+     * @return The list of all categories as a CategoryListDto
      */
     @GetMapping("/category")
     public CategoryListDto getAllCategories() {

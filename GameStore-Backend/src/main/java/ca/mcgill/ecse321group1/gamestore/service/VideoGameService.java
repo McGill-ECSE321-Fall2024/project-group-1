@@ -21,6 +21,14 @@ public class VideoGameService {
     @Autowired
     private ReviewRepository revrepo;
 
+    /**Returns all video game */
+    @Transactional
+    public List<VideoGame> getAll() {
+        ArrayList<VideoGame> c = new ArrayList<>();
+        repo.findAll().forEach(c::add);
+        return c;
+    }
+
     /**Retrieves a VideoGame object based on lookup by id*/
     @Transactional
     public VideoGame getVideoGame(int cid) {

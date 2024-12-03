@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
 import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
+import ca.mcgill.ecse321group1.gamestore.dto.LoginDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.service.OwnerService;
 import ca.mcgill.ecse321group1.gamestore.model.Owner;
@@ -70,5 +71,22 @@ public class OwnerController {
     @DeleteMapping("/owner/{oid}")
     public void deleteOwnerById(@PathVariable int oid) {
         ownerService.deleteOwner(oid);
+    }
+
+    /**
+     * Verify owner login
+     * 
+     * @param LoginDto
+     * @return null if invalid credentials, Owner object if valid.
+     */
+    @PostMapping("/login/owner")
+    public PersonResponseDto verifyOwner(@Valid @RequestBody LoginDto request) {
+        Owner owner = ownerService.getByPasswordUsername(request.getUsername(), request.getPassword());
+
+        if (owner == null) {
+            return null;
+        } else {
+            return new PersonResponseDto(owner);
+        }
     }
 }

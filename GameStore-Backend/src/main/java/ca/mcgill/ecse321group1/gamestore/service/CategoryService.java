@@ -16,6 +16,7 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepo;
 
+    /**Returns all categories */
     @Transactional
     public List<Category> getAll() {
         ArrayList<Category> c = new ArrayList<>();
