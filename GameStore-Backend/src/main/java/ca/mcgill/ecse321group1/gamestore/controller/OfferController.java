@@ -3,6 +3,7 @@ package ca.mcgill.ecse321group1.gamestore.controller;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import ca.mcgill.ecse321group1.gamestore.model.VideoGame;
 import ca.mcgill.ecse321group1.gamestore.service.VideoGameService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class OfferController {
     @Autowired
     private OfferService offerService;

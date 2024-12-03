@@ -5,6 +5,9 @@ import ca.mcgill.ecse321group1.gamestore.repository.CustomerRepository;
 import ca.mcgill.ecse321group1.gamestore.repository.OwnerRepository;
 import ca.mcgill.ecse321group1.gamestore.repository.StaffRepository;
 import jakarta.transaction.Transactional;
+
+import java.util.concurrent.atomic.AtomicReference;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,5 +66,15 @@ public class OwnerService {
         if (ownerRepo.count() < 2)
             throw new IllegalArgumentException("You cannot remove the last Owner.");
         ownerRepo.deleteById(id);//no error checking technically necessary but it's best to let people know when they are wrong
+    }
+
+    /*Returns null if no Owner with identical username and password.*/
+    public Owner getByPasswordUsername (String username, String password) {
+        String hash = PersonServiceHelper.hash_password(password);
+        AtomicReference<Owner> C = new AtomicReference<>();
+        ownerRepo.findAll().forEach(c -> {
+            if (c.getUsername().equals(username) && c.getPasswordHash().equals(hash)) C.set(c);
+        });
+        return C.get();
     }
 }

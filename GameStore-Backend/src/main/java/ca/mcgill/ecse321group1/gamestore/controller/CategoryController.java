@@ -1,17 +1,20 @@
 package ca.mcgill.ecse321group1.gamestore.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
-
-
+import ca.mcgill.ecse321group1.gamestore.dto.CategoryListDto;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryRequestDto;
 import ca.mcgill.ecse321group1.gamestore.dto.CategoryResponseDto;
 import ca.mcgill.ecse321group1.gamestore.service.CategoryService;
@@ -20,6 +23,7 @@ import ca.mcgill.ecse321group1.gamestore.model.Category;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8087")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
@@ -34,6 +38,24 @@ public class CategoryController {
     public CategoryResponseDto createCategory(@Valid @RequestBody CategoryRequestDto categoryToCreate) {
         Category createdCategory = categoryService.createCategory(categoryToCreate.getName(), categoryToCreate.getDescription());
         return new CategoryResponseDto(createdCategory);
+    }
+
+    /**
+     * Get all categories
+     * 
+     * @return The list of all categories.
+     */
+    @GetMapping("/category")
+    public CategoryListDto getAllCategories() {
+        List<Category> categories = categoryService.getAll();
+        List<CategoryResponseDto> dtoList = new ArrayList<>();
+
+        for (Category category : categories) {
+            dtoList.add(new CategoryResponseDto(category));
+        }
+
+        return new CategoryListDto(dtoList);
+        
     }
 
     /**

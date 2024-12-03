@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-12-01T23:53:38" hostname="Viveks-MacBook-Air.local" time="0.206">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-12-03T20:34:49" hostname="Ivans-MacBook-Air.local" time="0.131">
   <properties/>
-  <testcase name="testCreateCustomerOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.089"/>
-  <testcase name="testGetCustomerOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.009"/>
-  <testcase name="testGetOrderTotalPrice()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.017"/>
-  <testcase name="testGetUnsatisfiedOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.017"/>
-  <testcase name="testSatisfyOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.038"/>
-  <testcase name="testGetOrderString()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.016"/>
-  <testcase name="testDeleteOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.018"/>
-  <system-out><![CDATA[2024-12-01T18:53:38.190-05:00  INFO 45586 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests]: CustomerOrderIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-12-01T18:53:38.192-05:00  INFO 45586 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests
+  <testcase name="testCreateCustomerOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.067"/>
+  <testcase name="testGetCustomerOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.007"/>
+  <testcase name="testGetOrderTotalPrice()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.013"/>
+  <testcase name="testGetUnsatisfiedOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.007"/>
+  <testcase name="testSatisfyOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.017"/>
+  <testcase name="testGetOrderString()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.007"/>
+  <testcase name="testDeleteOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.013"/>
+  <system-out><![CDATA[2024-12-03T15:34:49.543-05:00  INFO 96993 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests]: CustomerOrderIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-03T15:34:49.544-05:00  INFO 96993 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,6 +1,7 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 import ca.mcgill.ecse321group1.gamestore.model.*;
 import ca.mcgill.ecse321group1.gamestore.repository.*;
@@ -160,5 +161,15 @@ public class CustomerService {
         HashSet<VideoGame> set = new HashSet<>(customer.getCart());
         for (VideoGame game : set) customer = removeFromCart(customer_id, game.getId());
         return customerRepo.save(customer);
+    }
+    
+    /**Returns null if no Customer with identical username and password.*/
+    public Customer getByPasswordUsername (String username, String password) {
+        String hash = PersonServiceHelper.hash_password(password);
+        AtomicReference<Customer> C = new AtomicReference<>();
+        customerRepo.findAll().forEach(c -> {
+            if (c.getUsername().equals(username) && c.getPasswordHash().equals(hash)) C.set(c);
+        });
+        return C.get();
     }
 }

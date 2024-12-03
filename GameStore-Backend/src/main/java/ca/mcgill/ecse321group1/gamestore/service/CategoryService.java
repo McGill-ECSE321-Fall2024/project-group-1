@@ -1,6 +1,8 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,13 @@ import jakarta.transaction.Transactional;
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepo;
+
+    @Transactional
+    public List<Category> getAll() {
+        ArrayList<Category> c = new ArrayList<>();
+        categoryRepo.findAll().forEach(c::add);
+        return c;
+    }
 
     /**Retrieves a Category object based on lookup by id*/
     @Transactional
