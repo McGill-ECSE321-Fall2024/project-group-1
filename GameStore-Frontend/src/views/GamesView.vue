@@ -101,7 +101,6 @@ export default {
   async created() {
     try {
       const response = await axiosClient.get("/videogame");
-      console.log(response);
       const transformedGames = response.data.videoGames.map(game => ({
         id: game.id,
         name: game.name,
@@ -138,8 +137,15 @@ export default {
       window.location.href = "http://localhost:8087";
     },
     async createVideoGame() {
-      const allCategories = await axiosClient.get("/category");
-      console.log(allCategories);
+      const categories = (await axiosClient.get("/category")).data.categories;
+      var categoryFoundId;
+      try {
+        const index = categories.findIndex(category => category.name === this.newGame.category);
+        categoryFoundId = categories[index].id;
+      } catch (e) {
+        console.error("The category " + this.newGame.category + " does not exist.");
+        return;
+      }
 
       const videoGameToCreate = {
         name: this.newGame.name,
@@ -148,7 +154,7 @@ export default {
         quantity: this.newGame.quantity,
         date: this.newGame.date,
         status: this.newGame.status,
-        categoryId: this.newGame.category
+        categoryId: categoryFoundId
       };
       try {
         const response = await axiosClient.post("/videogame", videoGameToCreate);
@@ -164,6 +170,7 @@ export default {
           category: response.data.category.name
         };
         this.games.push(parsedResponse);
+        this.resetNewGameForm();
       } catch (e) {
         console.error("Failed to create video game.");
       }
