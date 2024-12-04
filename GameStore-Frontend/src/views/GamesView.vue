@@ -25,7 +25,7 @@
         <input type="text" v-model="currentGame.category" placeholder="Category" />
       </div>
       <div class="buttons">
-        <button class="btn-primary" @click="isEditing ? saveEdit() : addGame()">
+        <button class="btn-primary" @click="isEditing ? saveEdit() : createVideoGame()">
           {{ isEditing ? "Save Changes" : "Add Game" }}
         </button>
         <button class="btn-secondary" @click="isEditing ? cancelEdit() : resetNewGameForm()">
@@ -103,6 +103,7 @@ export default {
       const response = await axiosClient.get("/videogame");
       console.log(response);
       const transformedGames = response.data.videoGames.map(game => ({
+        id: game.id,
         name: game.name,
         description: game.description,
         price: game.price,
@@ -136,11 +137,36 @@ export default {
     logout() {
       window.location.href = "http://localhost:8087";
     },
-    addGame() {
-      const newId = this.games.length ? Math.max(...this.games.map((g) => g.id)) + 1 : 1;
-      const newGame = { id: newId, ...this.newGame };
-      this.games.push(newGame);
-      this.resetNewGameForm();
+    async createVideoGame() {
+      const allCategories = await axiosClient.get("/category");
+      console.log(allCategories);
+
+      const videoGameToCreate = {
+        name: this.newGame.name,
+        description: this.newGame.description,
+        price: this.newGame.price,
+        quantity: this.newGame.quantity,
+        date: this.newGame.date,
+        status: this.newGame.status,
+        categoryId: this.newGame.category
+      };
+      try {
+        const response = await axiosClient.post("/videogame", videoGameToCreate);
+        // console.log(response);
+        const parsedResponse = {
+          id: response.data.id,
+          name: response.data.name,
+          description: response.data.description,
+          price: response.data.price,
+          quantity: response.data.quantity,
+          date: response.data.date,
+          status: response.data.status,
+          category: response.data.category.name
+        };
+        this.games.push(parsedResponse);
+      } catch (e) {
+        console.error("Failed to create video game.");
+      }
     },
     resetNewGameForm() {
       this.newGame = {
@@ -153,8 +179,16 @@ export default {
         category: "",
       };
     },
-    removeGame(id) {
-      this.games = this.games.filter((game) => game.id !== id);
+    async removeGame(id) {
+      try {
+        const url = `/videogame/${id}`
+        await axiosClient.delete(url);
+        const index = this.games.findIndex(game => game.id === id);
+        this.games.splice(index, 1);
+        console.log("Successfully removed game");
+      } catch (e) {
+        console.error("Failed to delete video game.")
+      }
     },
     editGame(game) {
       this.isEditing = true;
