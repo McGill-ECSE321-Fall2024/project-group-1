@@ -142,7 +142,7 @@ public class CustomerController {
     /**
      * Verify customer login
      * 
-     * @param LoginDto 
+     * @param LoginDto
      * @return null if invalid credentials, Customer object if valid
      */
     @PostMapping("/login/customer")
