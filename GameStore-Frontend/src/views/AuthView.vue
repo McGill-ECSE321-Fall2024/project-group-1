@@ -1,6 +1,13 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router"; // Import Vue Router
+import axios from "axios";
+
+//export customer = null;
+
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8080",
+});
 
 const isLogin = ref(true); // Toggle between login and signup
 const form = ref({
@@ -9,7 +16,12 @@ const form = ref({
   password: "",
   address: "",
   phoneNumber: "",
-  type: isLogin.value ? "" : "customer", // Type is set automatically to 'customer' for signup
+  type: "customer", // Default to "customer" for signup
+});
+
+const categories = ref([]);
+const newCategory = ref({
+  name: "",
 });
 
 const router = useRouter(); // Access the router instance
@@ -23,23 +35,50 @@ const resetForm = () => {
     phoneNumber: "",
     type: isLogin.value ? "" : "customer",
   };
+  newCategory.value.name = "";
 };
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   if (isLogin.value) {
     // Perform login logic
     console.log("Logging in with:", form.value.email, form.value.password, "as", form.value.type);
 
-    // Redirect based on user type
+    const personParams = {
+      username: form.value.username,
+      password: form.value.password,
+    };
+
+    let response = null;
+
+    try {
+      // Redirect based on user type
+      if (form.value.type === "customer") {
+        response = await axiosClient.get("/login/customer", personParams);
+      } else if (form.value.type === "staff") {
+        response = await axiosClient.get("/login/staff", personParams);
+      } else if (form.value.type === "owner") {
+        response = await axiosClient.get("/login/owner", personParams);
+      } else {
+        alert("Please select a valid user type.");
+        return;
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      alert("Login failed. Please try again.");
+    }
+    if (response === null) {
+      alert("Username and password do not match!");
+      return;
+    } 
+    sessionStorage.setItem('user', JSON.stringify(response));
     if (form.value.type === "customer") {
       router.push("/customergames");
     } else if (form.value.type === "staff") {
       router.push("/staffgames");
     } else if (form.value.type === "owner") {
       router.push("/games");
-    } else {
-      alert("Please select a valid user type.");
     }
+    
   } else {
     // Perform signup logic
     console.log(
@@ -52,11 +91,20 @@ const handleSubmit = () => {
       "as a customer"
     );
 
-    // Redirect to the customer games page after signup
-    router.push("/customergames");
+    try {
+      // Make the signup request here if necessary
+      customer = await axiosClient.post("/customer", form.value);
+
+      // Redirect to the customer games page after signup
+      router.push("/customergames");
+    } catch (error) {
+      console.error("Signup failed:", error);
+      alert("Signup failed. Please try again.");
+    }
   }
 };
 </script>
+
 
 <template>
   <main class="auth-container">
