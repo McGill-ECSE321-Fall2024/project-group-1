@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.445s</div>
+<div class="counter">0.156s</div>
 <p>duration</p>
 </div>
 </td>
@@ -66,9 +66,6 @@
 <li>
 <a href="#tab1">Standard output</a>
 </li>
-<li>
-<a href="#tab2">Standard error</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -82,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">testPersistAndLoadCategory()</td>
-<td class="success">0.445s</td>
+<td class="success">0.156s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -90,44 +87,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>17:33:35.003 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests]: CategoryRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:33:35.091 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::                (v3.3.4)
-
-2024-12-03T17:33:35.328-05:00  INFO 27836 --- [gamestore] [    Test worker] c.m.e.g.R.CategoryRepositoryTests        : Starting CategoryRepositoryTests using Java 21.0.5 with PID 27836 (started by izhang2 in /Users/izhang2/Files/McGill/ECSE321/project-group-1/GameStore-Backend)
-2024-12-03T17:33:35.329-05:00  INFO 27836 --- [gamestore] [    Test worker] c.m.e.g.R.CategoryRepositoryTests        : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-12-03T17:33:35.815-05:00  INFO 27836 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-03T17:33:35.864-05:00  INFO 27836 --- [gamestore] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 10 JPA repository interfaces.
-2024-12-03T17:33:36.115-05:00  INFO 27836 --- [gamestore] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-03T17:33:36.151-05:00  INFO 27836 --- [gamestore] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-12-03T17:33:36.171-05:00  INFO 27836 --- [gamestore] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-03T17:33:36.373-05:00  INFO 27836 --- [gamestore] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-03T17:33:36.396-05:00  INFO 27836 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-03T17:33:36.543-05:00  INFO 27836 --- [gamestore] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@150cc1ea
-2024-12-03T17:33:36.544-05:00  INFO 27836 --- [gamestore] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-03T17:33:36.572-05:00  WARN 27836 --- [gamestore] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-12-03T17:33:37.330-05:00  INFO 27836 --- [gamestore] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-03T17:33:37.474-05:00  INFO 27836 --- [gamestore] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-03T17:33:37.877-05:00  WARN 27836 --- [gamestore] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-03T17:33:38.130-05:00  INFO 27836 --- [gamestore] [    Test worker] c.m.e.g.R.CategoryRepositoryTests        : Started CategoryRepositoryTests in 2.947 seconds (process running for 3.809)
-</pre>
-</span>
-</div>
-<div id="tab2" class="tab">
-<h2>Standard error</h2>
-<span class="code">
-<pre>WARNING: A Java agent has been loaded dynamically (/Users/izhang2/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.19/154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1/byte-buddy-agent-1.14.19.jar)
-WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
-WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
-WARNING: Dynamic loading of agents will be disallowed by default in a future release
+<pre>2024-12-04T13:41:56.373-05:00  INFO 36330 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests]: CategoryRepositoryTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T13:41:56.379-05:00  INFO 36330 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests
 </pre>
 </span>
 </div>
@@ -139,7 +100,7 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Dec 3, 2024, 5:33:42 p.m.</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Dec 4, 2024, 1:42:00 PM</p>
 </div>
 </div>
 </body>

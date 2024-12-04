@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.249s</div>
+<div class="counter">0.250s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,27 +79,27 @@
 </thead>
 <tr>
 <td class="success">testAddGameToCustomerCart()</td>
-<td class="success">0.043s</td>
+<td class="success">0.046s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testAddGameToWishlist()</td>
-<td class="success">0.021s</td>
+<td class="success">0.018s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testClearCart()</td>
-<td class="success">0.043s</td>
+<td class="success">0.040s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateInvalidCustomer()</td>
-<td class="success">0.020s</td>
+<td class="success">0.021s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateValidCustomer()</td>
-<td class="success">0.050s</td>
+<td class="success">0.054s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -109,27 +109,27 @@
 </tr>
 <tr>
 <td class="success">testEditValidCustomer()</td>
-<td class="success">0.021s</td>
+<td class="success">0.017s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetInvalidCustomer()</td>
-<td class="success">0.005s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetValidCustomer()</td>
-<td class="success">0.010s</td>
+<td class="success">0.011s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testRemoveGameFromCart()</td>
-<td class="success">0.012s</td>
+<td class="success">0.011s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testRemoveGameFromWishlist()</td>
-<td class="success">0.014s</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -137,10 +137,10 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2024-12-03T17:33:40.849-05:00  INFO 27836 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests]: CustomerIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-12-03T17:33:40.850-05:00  INFO 27836 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests
-2024-12-03T17:33:40.909-05:00  WARN 27836 --- [gamestore] [o-auto-1-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.createCustomer(ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
-2024-12-03T17:33:40.939-05:00  WARN 27836 --- [gamestore] [o-auto-1-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.editCustomerById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+<pre>2024-12-04T13:41:58.981-05:00  INFO 36330 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests]: CustomerIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T13:41:58.982-05:00  INFO 36330 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests
+2024-12-04T13:41:59.046-05:00  WARN 36330 --- [gamestore] [o-auto-1-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.createCustomer(ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+2024-12-04T13:41:59.079-05:00  WARN 36330 --- [gamestore] [o-auto-1-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.editCustomerById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
 </pre>
 </span>
 </div>
@@ -152,7 +152,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Dec 3, 2024, 5:33:42 p.m.</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Dec 4, 2024, 1:42:00 PM</p>
 </div>
 </div>
 </body>
