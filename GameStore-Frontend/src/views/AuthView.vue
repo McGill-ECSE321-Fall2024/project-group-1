@@ -19,7 +19,6 @@ const form = ref({
   type: "customer", // Default to "customer" for signup
 });
 
-const categories = ref([]);
 const newCategory = ref({
   name: "",
 });
@@ -41,36 +40,39 @@ const resetForm = () => {
 const handleSubmit = async () => {
   if (isLogin.value) {
     // Perform login logic
-    console.log("Logging in with:", form.value.email, form.value.password, "as", form.value.type);
 
     const personParams = {
       username: form.value.username,
-      password: form.value.password,
+      password: form.value.password
     };
+    console.log("Logging in with:", personParams.username, personParams.password, "as", form.value.type);
 
     let response = null;
 
     try {
       // Redirect based on user type
       if (form.value.type === "customer") {
-        response = await axiosClient.get("/login/customer", personParams);
+        response = await axiosClient.post("/login/customer", personParams);
       } else if (form.value.type === "staff") {
-        response = await axiosClient.get("/login/staff", personParams);
+        response = await axiosClient.post("/login/staff", personParams);
       } else if (form.value.type === "owner") {
-        response = await axiosClient.get("/login/owner", personParams);
+        response = await axiosClient.post("/login/owner", personParams);
       } else {
         alert("Please select a valid user type.");
         return;
       }
     } catch (error) {
-      console.error("Login failed:", error);
+      alert("Login failed:", error.response.data.error);
       alert("Login failed. Please try again.");
+      return;
     }
-    if (response === null) {
+    if (response.data === "") {
       alert("Username and password do not match!");
       return;
     } 
+    console.log(response);
     sessionStorage.setItem('user', JSON.stringify(response));
+
     if (form.value.type === "customer") {
       router.push("/customergames");
     } else if (form.value.type === "staff") {
@@ -80,26 +82,39 @@ const handleSubmit = async () => {
     }
     
   } else {
+    const custParams = {
+      username: form.value.username,
+      password: form.value.password,
+      email: form.value.email,
+      address: form.value.address,
+      phoneNumber: form.value.phoneNumber
+    };
+
+
     // Perform signup logic
     console.log(
       "Signing up with:",
-      form.value.username,
-      form.value.email,
-      form.value.password,
-      form.value.address,
-      form.value.phoneNumber,
+      custParams.username,
+      custParams.email,
+      custParams.password,
+      custParams.address,
+      custParams.phoneNumber,
       "as a customer"
     );
 
+    console.log(custParams);
+
     try {
       // Make the signup request here if necessary
-      customer = await axiosClient.post("/customer", form.value);
-
+      let customer = await axiosClient.post("/customer", custParams);
+      //console.log("RESPONSERESPONSERESPONSE");
+      //console.log(customer);
       // Redirect to the customer games page after signup
+      sessionStorage.setItem('user', JSON.stringify(customer));
       router.push("/customergames");
-    } catch (error) {
-      console.error("Signup failed:", error);
-      alert("Signup failed. Please try again.");
+    } catch (qwerty) {
+      alert("Signup failed: " + qwerty.response.data.error);
+      //alert("Signup failed. Please try again.");
     }
   }
 };
@@ -111,16 +126,16 @@ const handleSubmit = async () => {
     <div class="auth-card">
       <h1>{{ isLogin ? "Login" : "Signup" }}</h1>
       <form @submit.prevent="handleSubmit">
-        <!-- Username for Signup -->
+        <!-- Email for Signup -->
         <div v-if="!isLogin" class="form-group">
-          <label for="username">Username</label>
-          <input id="username" type="text" v-model="form.username" placeholder="Enter your username" required />
+          <label for="email">Email</label>
+          <input id="email" type="text" v-model="form.email" placeholder="Enter your email" required />
         </div>
 
-        <!-- Email -->
+        <!-- Username -->
         <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" type="email" v-model="form.email" placeholder="Enter your email" required />
+          <label for="username">Username</label>
+          <input id="username" type="username" v-model="form.username" placeholder="Enter your username" required />
         </div>
 
         <!-- Password -->

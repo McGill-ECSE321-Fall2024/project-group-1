@@ -44,8 +44,19 @@
 </template>
 
 <script>
+let customer = null;
 export default {
   name: "WishlistView",
+  async created() {
+    try {
+      customer = JSON.parse(sessionStorage.getItem("user"));
+      this.wishlist = customer.data.wishlist;
+    }
+    catch (e) {
+      // this.errorMessage = "Failed to create category.";
+      console.error(e);
+    }
+  },
   data() {
     return {
       wishlist: [
