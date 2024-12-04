@@ -158,7 +158,6 @@ export default {
       };
       try {
         const response = await axiosClient.post("/videogame", videoGameToCreate);
-        // console.log(response);
         const parsedResponse = {
           id: response.data.id,
           name: response.data.name,
@@ -188,7 +187,7 @@ export default {
     },
     async removeGame(id) {
       try {
-        const url = `/videogame/${id}`
+        const url = `/videogame/${id}`;
         await axiosClient.delete(url);
         const index = this.games.findIndex(game => game.id === id);
         this.games.splice(index, 1);
@@ -201,13 +200,31 @@ export default {
       this.isEditing = true;
       this.editingGame = { ...game }; // Clone the game object
     },
-    saveEdit() {
+    async saveEdit() {
       const index = this.games.findIndex((g) => g.id === this.editingGame.id);
       if (index !== -1) {
+        try {
+          const url = `/videogame/${this.editingGame.id}`;
+          const videoGameToCreate = {
+           name: this.newGame.name,
+            description: this.newGame.description,
+            price: this.newGame.price,
+            quantity: this.newGame.quantity,
+            date: this.newGame.date,
+            status: this.newGame.status,
+            categoryId: categoryFoundId
+      }; // TODO
+          await axiosClient.put(url,)
+        } catch (e) {
+          alert(e.response.data.error);
+        }
         this.games[index] = { ...this.editingGame };
         this.cancelEdit();
       }
     },
+    // async getCategoryNameFromId{
+
+    // },
     cancelEdit() {
       this.isEditing = false;
       this.editingGame = null;
