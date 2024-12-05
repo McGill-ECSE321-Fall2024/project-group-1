@@ -111,7 +111,6 @@ export default {
         status: game.status,
         category: game.category.name,
       }));
-      console.log(transformedGames);
       this.games = transformedGames;
     }
     catch (e) {
@@ -138,6 +137,7 @@ export default {
     },
     async createVideoGame() {
       const categories = (await axiosClient.get("/category")).data.categories;
+      console.log(categories);
       var categoryFoundId;
       try {
         const index = categories.findIndex(category => category.name === this.newGame.category);
@@ -156,6 +156,8 @@ export default {
         status: this.newGame.status,
         categoryId: categoryFoundId
       };
+      //this.getCategoryIdFromName(this.newGame.category)
+      console.log(videoGameToCreate);
       try {
         const response = await axiosClient.post("/videogame", videoGameToCreate);
         const parsedResponse = {
@@ -204,17 +206,30 @@ export default {
       const index = this.games.findIndex((g) => g.id === this.editingGame.id);
       if (index !== -1) {
         try {
+          var categories = (await axiosClient.get("/category")).data.categories;
+          console.log(categories);
+        } catch (e) {
+          alert(e.response.data.error);
+        }
+        var categoryFoundId;
+        const categoryIndex = categories.findIndex(category => category.name === this.editingGame.category);
+        if (categoryIndex < 0) {
+          alert("Category " + this.editingGame.category + " does not exist.");
+          return;
+        }
+        categoryFoundId = categories[categoryIndex].id;        
           const url = `/videogame/${this.editingGame.id}`;
-          const videoGameToCreate = {
-           name: this.newGame.name,
-            description: this.newGame.description,
-            price: this.newGame.price,
-            quantity: this.newGame.quantity,
-            date: this.newGame.date,
-            status: this.newGame.status,
+          const videoGameToEdit = {
+           name: this.editingGame.name,
+            description: this.editingGame.description,
+            price: this.editingGame.price,
+            quantity: this.editingGame.quantity,
+            date: this.editingGame.date,
+            status: this.editingGame.status,
             categoryId: categoryFoundId
-      }; // TODO
-          await axiosClient.put(url,)
+      }; 
+      try {
+          await axiosClient.put(url, videoGameToEdit);
         } catch (e) {
           alert(e.response.data.error);
         }
@@ -222,9 +237,21 @@ export default {
         this.cancelEdit();
       }
     },
-    // async getCategoryNameFromId{
-
-    // },
+    async getCategoryIdFromName(categoryName) {
+      try {
+        const categories = (await axiosClient.get("/category")).data.categories;
+        var categoryFoundId;
+        const index = categories.findIndex(category => category.name === categoryName);
+        if (index < 0) {
+          alert("The category " + categoryname + " does not exist. Please create the category first.");
+          return null;
+        } else {
+          return categories[index].id;
+        }
+      } catch (e) {
+        alert(e.response.data.error);
+      }
+    },
     cancelEdit() {
       this.isEditing = false;
       this.editingGame = null;
