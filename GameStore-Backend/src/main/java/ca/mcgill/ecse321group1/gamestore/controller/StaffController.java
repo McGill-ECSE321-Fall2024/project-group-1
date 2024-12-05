@@ -1,5 +1,8 @@
 package ca.mcgill.ecse321group1.gamestore.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +18,7 @@ import jakarta.validation.Valid;
 import ca.mcgill.ecse321group1.gamestore.service.StaffService;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.LoginDto;
+import ca.mcgill.ecse321group1.gamestore.dto.PersonListDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.model.Staff;
 
@@ -87,5 +91,22 @@ public class StaffController {
         } else {
             return new PersonResponseDto(staff);
         }
+    }
+
+    /**
+     * Get all staff
+     * 
+     * @return A list of all staff as a personListDto
+     */
+    @GetMapping("/staff/all")
+    public PersonListDto getAllStaff() {
+        List<Staff> staffRaw = staffService.getAllStaff();
+        List<PersonResponseDto> dtoList = new ArrayList<>();
+
+        for (Staff staff : staffRaw) {
+            dtoList.add(new PersonResponseDto(staff));
+        }
+
+        return new PersonListDto(dtoList);
     }
 }   

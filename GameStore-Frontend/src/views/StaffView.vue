@@ -12,7 +12,7 @@
     <div class="card create-form" v-if="!state.editMode">
       <h2>Staff</h2>
       <h3>Add New Staff Member</h3>
-      <input type="text" v-model="state.newStaff.name" placeholder="Full Name" />
+      <input type="text" v-model="state.newStaff.name" placeholder="Username" />
       <input type="email" v-model="state.newStaff.email" placeholder="Email" />
       <input type="password" v-model="state.newStaff.password" placeholder="Password" />
       <div class="buttons">
@@ -24,7 +24,7 @@
     <!-- Edit Staff Section -->
     <div class="card create-form" v-if="state.editMode">
       <h2>Edit Staff Member</h2>
-      <input type="text" v-model="state.editStaff.name" placeholder="Full Name" />
+      <input type="text" v-model="state.editStaff.name" placeholder="Username" />
       <input type="email" v-model="state.editStaff.email" placeholder="Email" />
       <input type="password" v-model="state.editStaff.password" placeholder="Password" />
       <div class="buttons">
@@ -40,7 +40,7 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Full Name</th>
+            <th>Username</th>
             <th>Email</th>
             <th>Actions</th>
           </tr>
@@ -48,7 +48,7 @@
         <tbody>
           <tr v-for="staff in state.staffList" :key="staff.id">
             <td>{{ staff.id }}</td>
-            <td>{{ staff.name }}</td>
+            <td>{{ staff.username }}</td>
             <td>{{ staff.email }}</td>
             <td>
               <button class="btn-primary" @click="editStaff(staff)">Edit</button>
@@ -64,10 +64,24 @@
 <script setup>
 import { reactive } from 'vue';
 import axios from "axios";
+import { onMounted } from 'vue'
+
 
 const axiosClient = axios.create({
   baseURL: "http://localhost:8080",
 });
+
+const fetchStaffList = async () => {
+  let response = null;
+  try {
+    response = await axiosClient.get("/staff/all");
+    console.log(response.data.customers);
+    state.staffList = response.data.customers;
+  } catch (e) {
+    alert(e)
+  }
+  console.log(response);
+}
 
 
 const state = reactive({
@@ -100,17 +114,18 @@ const logout = () => {
 };
 
 const addStaff = async () => {
-  let response = null;
 
-  try {
-    response = await axiosClient.get("")
-  } catch (e) {
-    alert(e.response.data)
+  const staffToCreate = { 
+    username: state.newStaff.name,
+    password: state.newStaff.password,
+    email: state.newStaff.email,
   }
-
-  const newId = state.staffList.length ? state.staffList[state.staffList.length - 1].id + 1 : 1;
-  const newStaff = { id: newId, ...state.newStaff };
-  state.staffList.push(newStaff);
+  try {
+    await axiosClient.post('/staff', staffToCreate);
+  } catch (e) {
+    alert(e);
+  }
+  fetchStaffList();
   resetNewStaffForm();
 };
 
@@ -122,20 +137,37 @@ const resetNewStaffForm = () => {
   };
 };
 
-const removeStaff = (id) => {
-  state.staffList = state.staffList.filter((staff) => staff.id !== id);
-};
+const removeStaff = async (id) => {
+  try {
+    const url = `/staff/${id}`;
+    await axiosClient.delete(url);
+    fetchStaffList();
+  } catch (e) {
+    alert(e);
+  }
 
+  //state.staffList = state.staffList.filter((staff) => staff.id !== id);
+};
+let cur_edited = -1;
 const editStaff = (staff) => {
   state.editMode = true;
   state.editStaff = { ...staff };
+  cur_edited = staff.id;
 };
 
-const saveEdit = () => {
-  const index = state.staffList.findIndex((staff) => staff.id === state.editStaff.id);
-  if (index !== -1) {
-    state.staffList[index] = { ...state.editStaff };
+const saveEdit = async () => {
+  const staffToCreate = { 
+    username: state.editStaff.name,
+    password: state.editStaff.password,
+    email: state.editStaff.email,
   }
+  try {
+    await axiosClient.put('/staff/' + cur_edited, staffToCreate);
+  } catch (e) {
+    alert(e);
+  }
+  fetchStaffList();
+  resetNewStaffForm();
   state.editMode = false;
   state.editStaff = {};
 };
@@ -144,6 +176,10 @@ const cancelEdit = () => {
   state.editMode = false;
   state.editStaff = {};
 };
+
+onMounted(() => {
+  fetchStaffList();
+});
 </script>
 
 <style scoped>
