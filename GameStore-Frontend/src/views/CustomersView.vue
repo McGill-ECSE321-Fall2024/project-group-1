@@ -79,56 +79,17 @@
 </template>
 
 <script>
+import axios from "axios";
+
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8080",
+});
+
 export default {
   name: "CustomersView",
   data() {
     return {
-      customers: [
-        {
-          id: 1,
-          name: "Alice Johnson",
-          email: "alice@example.com",
-          phoneNumber: "123-456-7890",
-          address: "123 Elm St, Springfield",
-          orders: [
-            {
-              id: 1,
-              games: [
-                { name: "The Legend of Zelda", quantity: 1 },
-                { name: "Minecraft", quantity: 2 },
-              ],
-              totalPrice: 99.97,
-              discount: 10,
-            },
-            {
-              id: 2,
-              games: [
-                { name: "Super Mario Odyssey", quantity: 1 },
-                { name: "Elden Ring", quantity: 1 },
-              ],
-              totalPrice: 109.99,
-              discount: null,
-            },
-          ],
-        },
-        {
-          id: 2,
-          name: "Bob Smith",
-          email: "bob@example.com",
-          phoneNumber: "987-654-3210",
-          address: "456 Maple St, Springfield",
-          orders: [
-            {
-              id: 3,
-              games: [
-                { name: "Animal Crossing", quantity: 1 },
-              ],
-              totalPrice: 59.99,
-              discount: 5,
-            },
-          ],
-        },
-      ],
+      customers: [],
       showOrderHistory: false,
       currentCustomer: null,
     };

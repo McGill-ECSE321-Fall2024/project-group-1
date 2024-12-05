@@ -1,5 +1,8 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -65,13 +68,26 @@ public class CustomerOrderService {
             });
             if (works.get()) break;
         }
+
         //at this point we have an unused shared_id to label this set of orders with, and a set of date-valid offers.
         HashMap<VideoGame, Integer> counter = new HashMap<>();
         for (VideoGame game : customer.getCart()) counter.merge(game, 1, Integer::sum);
         //IntelliJ allows you to simplify a bunch of logic into the above.
         // Literally just makes a map that lets you look up a game, and get the number of times it is in the cart
         ArrayList<CustomerOrder> tbr = new ArrayList<>();
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter("OTHER.txt"));
+            writer.write("AZDF\n");
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {}
         for (VideoGame key : counter.keySet()) {
+            try {
+                PrintWriter writer = new PrintWriter(new FileWriter("OTHER.txt"));
+                writer.write("ORIGAMI\n");
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {}
             int count = counter.get(key);
             if (key.getQuantity() < count) throw new IllegalArgumentException(count + " VideoGames requested but only " + key.getQuantity() + " in stock!");
             else vidservice.alterQuantity(key.getId(), -count);//exception checking probably not necessary since it's checked in alterQuantity.
@@ -102,8 +118,28 @@ public class CustomerOrderService {
             temp.setPrice(price);
             temp.setDate(curDate);
             tbr.add(temp);
+            try {
+                PrintWriter writer = new PrintWriter(new FileWriter("OTHER.txt"));
+                writer.write(temp + "\n");
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {}
             repo.save(temp);//save this.
+            try {
+                PrintWriter writer = new PrintWriter(new FileWriter("OTHER.txt"));
+                writer.write("SOAKED ELEPHANT\n");
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {}
         }
+
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter("OTHER.txt"));
+            writer.write("qwerty\n");
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {}
+
         return tbr;
     }
 

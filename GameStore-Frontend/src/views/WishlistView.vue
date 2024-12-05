@@ -61,7 +61,8 @@ export default {
   },
   async created() {
     try {
-      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).id)).data;
+      sessionStorage.setItem("user", JSON.stringify(customer));
       this.wishlist = customer.wishlist;
     } catch (e) {
       alert(e.response?.data?.error);
@@ -99,7 +100,8 @@ export default {
       }
       //update wishlist
       try {
-        customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+        customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).id)).data;
+        sessionStorage.setItem("user", JSON.stringify(customer));
         this.wishlist = customer.wishlist;
       } catch (e) {
         alert(e.response?.data?.error);

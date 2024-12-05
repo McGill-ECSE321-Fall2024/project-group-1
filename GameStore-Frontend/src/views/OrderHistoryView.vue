@@ -25,17 +25,9 @@
         <tbody>
           <tr v-for="order in orderHistory" :key="order.id">
             <td>{{ order.id }}</td>
-            <td>
-              <ul>
-                <li v-for="game in order.games" :key="game.name">{{ game.name }}</li>
-              </ul>
-            </td>
-            <td>
-              <ul>
-                <li v-for="game in order.games" :key="game.name">{{ game.quantity }}</li>
-              </ul>
-            </td>
-            <td>${{ order.totalPrice.toFixed(2) }}</td>
+            <td>{{ order.purchased.name }}</td>
+            <td>{{ 1 }}</td>
+            <td>${{ order.price.toFixed(2) }}</td>
             <td>{{ order.discount ? order.discount + '%' : 'No Discount' }}</td>
             <td>
               <button class="btn-primary" @click="openReviewModal(order.games)">New Review</button>
@@ -107,9 +99,10 @@ export default {
   },
   async created() {
     try {
-      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
-      console.log(customer);
-      orderHistory = (await axiosClient.get("/order/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data
+      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).id)).data;
+      sessionStorage.setItem("user", JSON.stringify(customer));
+      this.orderHistory = (await axiosClient.get("/order/customer/" + customer.id)).data.orders;
+      console.log(this.orderHistory[0]);
     } catch (e) {
       alert(e.response?.data?.error);
     }
