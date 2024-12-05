@@ -29,8 +29,8 @@
             <td>{{ game.name }}</td>
             <td>{{ game.description }}</td>
             <td>${{ game.price.toFixed(2) }}</td>
-            <td>{{ game.quantity }}</td>
-            <td>{{ game.category }}</td>
+            <td>{{ 1 }}</td>
+            <td>{{ game.category.name }}</td>
             <td>
               <button class="btn-danger" @click="removeFromCart(game)">Remove</button>
             </td>
@@ -51,12 +51,13 @@
     <div v-if="isModalOpen" class="modal-overlay">
       <div class="modal">
         <h2>Purchase Summary</h2>
-        <p>Please fill in your payment details to complete the purchase.</p>
+        <p>Please fill in your payment details to complete the purchase.
+          Unfortunately, no offers are available at this time.</p>
         <div class="cart-summary">
           <h3>Items:</h3>
           <ul>
             <li v-for="game in cart" :key="game.id">
-              {{ game.name }} - ${{ game.price.toFixed(2) }} x {{ game.quantity }}
+              {{ game.name }} - ${{ game.price.toFixed(2) }} x {{ 1 }}
             </li>
           </ul>
           <h3>Total Price: ${{ totalPrice.toFixed(2) }}</h3>
@@ -89,28 +90,18 @@
 </template>
 
 <script>
+import axios from "axios";
+
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8080",
+});
+
+let customer = null;
 export default {
   name: "CartView",
   data() {
     return {
-      cart: [
-        {
-          id: 1,
-          name: "The Legend of Zelda",
-          description: "Adventure game",
-          price: 59.99,
-          quantity: 1,
-          category: "Action",
-        },
-        {
-          id: 2,
-          name: "Minecraft",
-          description: "Sandbox game",
-          price: 19.99,
-          quantity: 1,
-          category: "Sandbox",
-        },
-      ],
+      cart: [],
       isModalOpen: false,
       paymentDetails: {
         cardName: "",
@@ -119,6 +110,14 @@ export default {
         cvv: "",
       },
     };
+  },
+  async created() {
+    try {
+      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+      this.cart = customer.cart;
+    } catch (e) {
+      alert(e.response?.data?.error);
+    }
   },
   computed: {
     totalPrice() {
@@ -137,10 +136,22 @@ export default {
     },
     logout() {
       window.location.href = "http://localhost:8087";
+      sessionStorage.setItem("user", null)
     },
-    removeFromCart(game) {
-      this.cart = this.cart.filter((item) => item.id !== game.id);
-      alert(`${game.name} removed from the cart.`);
+    async removeFromCart(game) {
+      try {
+        //(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
+        await axiosClient.delete(`/customer/${customer.id}/cart/${game.id}`);
+      } catch (e) {
+        alert(e?.response?.data?.error);
+      }
+      //update wishlist
+      try {
+        customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+        this.cart = customer.cart;
+      } catch (e) {
+        alert(e.response?.data?.error);
+      }
     },
     openModal() {
       this.isModalOpen = true;

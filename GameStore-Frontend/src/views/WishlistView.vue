@@ -28,7 +28,7 @@
             <td>{{ game.name }}</td>
             <td>{{ game.description }}</td>
             <td>${{ game.price.toFixed(2) }}</td>
-            <td>{{ game.category }}</td>
+            <td>{{ game.category.name }}</td>
             <td>
               <button class="btn-secondary" @click="addToCart(game)">Add to Cart</button>
               <button class="btn-danger" @click="removeFromWishlist(game)">Remove</button>
@@ -44,15 +44,28 @@
 </template>
 
 <script>
+import axios from "axios";
+
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8080",
+});
+
 let customer = null;
 export default {
   name: "WishlistView",
   data() {
-    customer = JSON.parse(sessionStorage.getItem("user")).data
     return {
       wishlist: [],
       cart: []
     };
+  },
+  async created() {
+    try {
+      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+      this.wishlist = customer.wishlist;
+    } catch (e) {
+      alert(e.response?.data?.error);
+    }
   },
   methods: {
     goToCustomerGamesView() {
@@ -66,19 +79,31 @@ export default {
     },
     logout() {
       window.location.href = "http://localhost:8087";
+      sessionStorage.setItem("user", null)
     },
     async addToCart(game) {
       try {
-        console.log(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
+        //(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
         await axiosClient.put(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
       } catch (e) {
-        console.log(e);
+        //console.log(e);
         alert(e?.response?.data?.error);
       }
     },
-    removeFromWishlist(game) {
-      this.wishlist = this.wishlist.filter((item) => item.id !== game.id);
-      alert(`${game.name} removed from the wishlist.`);
+    async removeFromWishlist(game) {
+      try {
+        //(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
+        await axiosClient.delete(`/customer/${customer.id}/wishlist/${game.id}`);
+      } catch (e) {
+        alert(e?.response?.data?.error);
+      }
+      //update wishlist
+      try {
+        customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+        this.wishlist = customer.wishlist;
+      } catch (e) {
+        alert(e.response?.data?.error);
+      }
     },
   },
 };

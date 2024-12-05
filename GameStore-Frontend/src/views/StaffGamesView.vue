@@ -122,6 +122,7 @@ export default {
   methods: {
     logout() {
       window.location.href = "http://localhost:8087";
+      sessionStorage.setItem("user", null)
     },
     addGame() {
       if (!this.currentGame.category) {

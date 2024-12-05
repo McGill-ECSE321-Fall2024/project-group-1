@@ -84,30 +84,18 @@
 </template>
 
 <script>
+import axios from "axios";
+
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8080",
+});
+
+let customer = null;
 export default {
   name: "OrderHistoryView",
   data() {
     return {
-      orderHistory: [
-        {
-          id: 1,
-          games: [
-            { name: "The Legend of Zelda", quantity: 1 },
-            { name: "Minecraft", quantity: 2 },
-          ],
-          totalPrice: 99.97,
-          discount: 10,
-        },
-        {
-          id: 2,
-          games: [
-            { name: "Super Mario Odyssey", quantity: 1 },
-            { name: "Elden Ring", quantity: 1 },
-          ],
-          totalPrice: 109.99,
-          discount: null,
-        },
-      ],
+      orderHistory: [],
       showReviewModal: false,
       reviewableGames: [],
       selectedGame: "",
@@ -116,6 +104,15 @@ export default {
         comment: "",
       },
     };
+  },
+  async created() {
+    try {
+      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+      console.log(customer);
+      this.orderHistory = customer.order;
+    } catch (e) {
+      alert(e.response?.data?.error);
+    }
   },
   methods: {
     goToCustomerGamesView() {
@@ -129,6 +126,7 @@ export default {
     },
     logout() {
       window.location.href = "http://localhost:8087";
+      sessionStorage.setItem("user", null)
     },
     openReviewModal(games) {
       this.reviewableGames = games;

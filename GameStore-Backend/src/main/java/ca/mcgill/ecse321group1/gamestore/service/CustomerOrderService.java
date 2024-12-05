@@ -1,5 +1,6 @@
 package ca.mcgill.ecse321group1.gamestore.service;
 
+import java.sql.Array;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -145,4 +146,13 @@ public class CustomerOrderService {
         });
     }
 
+    /**Gets all customer orders of a Customer*/
+    @Transactional
+    public ArrayList<CustomerOrder> getAllOrders(int cid) {
+        ArrayList<CustomerOrder> arr = new ArrayList<>();
+        repo.findAll().forEach(co -> {
+            if (co.getCustomer().getId() == cid) arr.add(co);
+        });
+        return arr;
+    }
 }
