@@ -153,8 +153,13 @@ public class CustomerOrderIntegrationTests {
         String game1CartUrl = String.format("/customer/%d/cart/%d/quantity/%d", this.customerId, this.videoGame1Id, 1);
         String game2CartUrl = String.format("/customer/%d/cart/%d/quantity/%d", this.customerId, this.videoGame2Id, 1);
 
-        ResponseEntity<PersonResponseDto> game1CartResponse = client.postForEntity(game1CartUrl, null, PersonResponseDto.class);
-        ResponseEntity<PersonResponseDto> game2CartResponse = client.postForEntity(game2CartUrl, null, PersonResponseDto.class);
+        // ResponseEntity<PersonResponseDto> game1CartResponse = client.postForEntity(game1CartUrl, null, PersonResponseDto.class);
+        // ResponseEntity<PersonResponseDto> game2CartResponse = client.postForEntity(game2CartUrl, null, PersonResponseDto.class);
+
+        client.put(game1CartUrl, null);
+        client.put(game2CartUrl, null);
+
+        String game1ResponseUrl = String.format
 
         assertNotNull(game1CartResponse);
         assertEquals(HttpStatus.OK, game1CartResponse.getStatusCode());

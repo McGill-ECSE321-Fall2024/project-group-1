@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-12-03T22:33:41" hostname="Ivans-MacBook-Air.local" time="0.077">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-12-05T01:15:45" hostname="Ivans-MacBook-Air.local" time="0.096">
   <properties/>
-  <testcase name="testCreateValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.024"/>
-  <testcase name="testCreateInvalidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.006"/>
-  <testcase name="testGetValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.005"/>
-  <testcase name="testGetInvalidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.004"/>
-  <testcase name="testEditOfferMissingParameters()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.01"/>
-  <testcase name="testEditOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.009"/>
-  <testcase name="testDeleteNonexistingOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.009"/>
+  <testcase name="testCreateValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.028"/>
+  <testcase name="testCreateInvalidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.007"/>
+  <testcase name="testGetValidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.007"/>
+  <testcase name="testGetInvalidOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.005"/>
+  <testcase name="testEditOfferMissingParameters()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.016"/>
+  <testcase name="testEditOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.012"/>
+  <testcase name="testDeleteNonexistingOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.011"/>
   <testcase name="testDeleteOffer()" classname="ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests" time="0.008"/>
-  <system-out><![CDATA[2024-12-03T17:33:41.248-05:00  INFO 27836 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests]: OfferIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-12-03T17:33:41.249-05:00  INFO 27836 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests
+  <system-out><![CDATA[2024-12-04T20:15:45.524-05:00  INFO 25379 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests]: OfferIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T20:15:45.525-05:00  INFO 25379 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,15 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-12-03T22:33:41" hostname="Ivans-MacBook-Air.local" time="0.121">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" tests="7" skipped="0" failures="5" errors="0" timestamp="2024-12-05T01:15:43" hostname="Ivans-MacBook-Air.local" time="0.075">
   <properties/>
-  <testcase name="testCreateCustomerOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.061"/>
-  <testcase name="testGetCustomerOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.008"/>
-  <testcase name="testGetOrderTotalPrice()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.012"/>
-  <testcase name="testGetUnsatisfiedOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.007"/>
-  <testcase name="testSatisfyOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.016"/>
-  <testcase name="testGetOrderString()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.008"/>
-  <testcase name="testDeleteOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.009"/>
-  <system-out><![CDATA[2024-12-03T17:33:41.114-05:00  INFO 27836 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests]: CustomerOrderIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-12-03T17:33:41.115-05:00  INFO 27836 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests
+  <testcase name="testCreateCustomerOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.03">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;405 METHOD_NOT_ALLOWED&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;405 METHOD_NOT_ALLOWED&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests.testCreateCustomerOrder(CustomerOrderIntegrationTests.java:160)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testGetCustomerOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.008">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests.testGetCustomerOrdersBySharedId(CustomerOrderIntegrationTests.java:210)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testGetOrderTotalPrice()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.01">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;41.0&gt; but was: &lt;0.0&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;41.0&gt; but was: &lt;0.0&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:744)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests.testGetOrderTotalPrice(CustomerOrderIntegrationTests.java:228)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testGetUnsatisfiedOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.006">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;1&gt; but was: &lt;0&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;1&gt; but was: &lt;0&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests.testGetUnsatisfiedOrder(CustomerOrderIntegrationTests.java:243)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testSatisfyOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.005">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;1&gt; but was: &lt;0&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;1&gt; but was: &lt;0&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests.testSatisfyOrder(CustomerOrderIntegrationTests.java:256)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testGetOrderString()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.007"/>
+  <testcase name="testDeleteOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.008"/>
+  <system-out><![CDATA[2024-12-04T20:15:43.920-05:00  INFO 25379 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests]: CustomerOrderIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T20:15:43.920-05:00  INFO 25379 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests
+2024-12-04T20:15:43.947-05:00  WARN 25379 --- [gamestore] [o-auto-1-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
+2024-12-04T20:15:43.949-05:00  WARN 25379 --- [gamestore] [o-auto-1-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' is not supported]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
