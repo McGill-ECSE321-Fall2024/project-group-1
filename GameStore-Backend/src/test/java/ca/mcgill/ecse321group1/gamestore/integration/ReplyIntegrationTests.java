@@ -72,7 +72,7 @@ public class ReplyIntegrationTests {
     private static final String CUST_PHONE_NUMBER = "604604604";
 
     private static final String REVIEW_CONTENT = "Great game! 5/5";
-    private static final LocalDate REVIEW_DATE = java.sql.Date.valueOf("2023-11-10").toLocalDate();
+    private static final String REVIEW_DATE = "2023-11-10";
     private static final Review.Rating REVIEW_RATING = Review.Rating.fourStar;
 
     private static final String REPLY_CONTENT = "Agreed! I loved this game.";

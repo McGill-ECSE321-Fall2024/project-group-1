@@ -68,11 +68,11 @@ public class ReviewIntegrationTests {
     private static final String CUST_PHONE_NUMBER = "604604604";
 
     private static final String VALID_CONTENT = "Great game! 4/5";
-    private static final LocalDate VALID_DATE = java.sql.Date.valueOf("2023-11-10").toLocalDate();
+    private static final String VALID_DATE = "2023-11-10";
     private static final Review.Rating VALID_RATING = Review.Rating.fourStar;
 
     private static final String NEW_CONTENT = "Terrible game! 1/5";
-    private static final LocalDate NEW_DATE = java.sql.Date.valueOf("2023-11-13").toLocalDate();
+    private static final String NEW_DATE = "2023-11-13";
     private static final Review.Rating NEW_RATING = Review.Rating.oneStar; 
 
     private static final String REPLY_CONTENT = "Agreed! I loved this game.";

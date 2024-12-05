@@ -30,7 +30,7 @@
             <td>${{ order.price.toFixed(2) }}</td>
             <td>{{ order.discount ? order.discount + '%' : 'No Discount' }}</td>
             <td>
-              <button class="btn-primary" @click="openReviewModal(order.games)">New Review</button>
+              <button class="btn-primary" @click="openReviewModal(order)">New Review</button>
             </td>
           </tr>
         </tbody>
@@ -44,14 +44,6 @@
     <div v-if="showReviewModal" class="modal-overlay" @click.self="closeReviewModal">
       <div class="modal">
         <h2>New Review</h2>
-        <div class="form-group">
-          <label for="game-select">Select Game</label>
-          <select id="game-select" v-model="selectedGame">
-            <option v-for="game in reviewableGames" :key="game.name" :value="game.name">
-              {{ game.name }}
-            </option>
-          </select>
-        </div>
         <div class="form-group">
           <label for="rating-select">Rating</label>
           <select id="rating-select" v-model="review.rating">
@@ -121,9 +113,10 @@ export default {
       window.location.href = "http://localhost:8087";
       sessionStorage.setItem("user", null)
     },
-    openReviewModal(games) {
-      this.reviewableGames = games;
-      this.selectedGame = games[0]?.name || "";
+    openReviewModal(order) {
+      console.log(order);
+      this.reviewableGames = order.purchased;
+      this.selectedGame = order.purchased;
       this.showReviewModal = true;
     },
     closeReviewModal() {
@@ -134,14 +127,28 @@ export default {
         comment: "",
       };
     },
-    submitReview() {
+    async submitReview() {
       if (!this.selectedGame || !this.review.rating) {
         alert("Please select a game and provide a rating.");
         return;
       }
+      try {
+          const params = {
+            content: this.review.comment,
+            date: "2023-11-10",
+            rating: this.review.rating,
+            videoGameId: this.selectedGame.id,
+            customerId: JSON.parse(sessionStorage.getItem("user")).id
+          }
+          await axiosClient.post("/review", params);
+      } catch (e) {
+        alert(e?.response?.data?.error);
+        return
+      }
       alert(
-        `Review submitted for ${this.selectedGame}:\nRating: ${this.review.rating} Star(s)\nComment: ${this.review.comment}`
+        `Review submitted for ${this.selectedGame.name}:\nRating: ${this.review.rating} Star(s)\nComment: ${this.review.comment}`
       );
+      alert("NOTE: reviews cannot currently be viewed. Replies are not implemented at all. To view the reviews that were created, please check the database. Many backend functions, such as for the review, have been implemented in the backend but not the frontend.")
       this.closeReviewModal();
     },
   },
