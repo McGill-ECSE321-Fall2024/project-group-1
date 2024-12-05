@@ -126,4 +126,20 @@ public class CustomerOrderController {
 
         customerOrderService.setSatisfied(true, orderList);
     }
+
+    /**
+     * Get all customer orders
+     * @param cid The customer ID of the customer whom you want to get all orders for.
+     * @return All customer order of a customer 
+     */
+    public CustomerOrderListDto getSpecificCustomerOrder(@PathVariable int cid) {
+        List<CustomerOrder> orders = customerOrderService.getAllOrders(cid);
+        List<CustomerOrderResponseDto> = dtoList = new ArrayList<>();
+
+        for (CustomerOrder order : orders) {
+            dtoList.add(new CustomerOrderResponseDto(order));
+        }
+
+        return new CustomerOrderListDto(dtoList);
+    }
 }
