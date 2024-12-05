@@ -196,7 +196,7 @@ export default {
         this.games.splice(index, 1);
         console.log("Successfully removed game");
       } catch (e) {
-        console.error("Failed to delete video game.")
+        alert("Failed to delete video game.")
       }
     },
     editGame(game) {

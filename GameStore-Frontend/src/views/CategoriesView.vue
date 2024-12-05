@@ -73,7 +73,7 @@ export default {
     }
     catch (e) {
       // this.errorMessage = "Failed to create category.";
-      console.error("Failed to fetch categories.");
+      alert("Failed to fetch categories.");
     }
   },
   methods: {
@@ -116,7 +116,14 @@ export default {
     //   this.categories.push(category);
     //   this.resetForm();
     // },
-    removeCategory(id) {
+    async removeCategory(id) {
+      const url = `/category/${id}`;
+      try {
+        await axiosClient.delete(url);
+      } catch (e) {
+        alert(e.response.data.error + ". Failed to delete category (video games still attached to category)");
+        return;
+      }
       this.categories = this.categories.filter((category) => category.id !== id);
       alert("Category removed successfully.");
     },
