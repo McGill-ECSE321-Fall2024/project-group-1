@@ -6,6 +6,7 @@ import ca.mcgill.ecse321group1.gamestore.repository.OwnerRepository;
 import ca.mcgill.ecse321group1.gamestore.repository.StaffRepository;
 import jakarta.transaction.Transactional;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +76,12 @@ public class StaffService {
             if (c.getUsername().equals(username) && c.getPasswordHash().equals(hash)) C.set(c);
         });
         return C.get();
+    }
+
+    /** returns all Staff */
+    public ArrayList<Staff> getAllStaff() {
+        ArrayList<Staff> a = new ArrayList<>();
+        staffRepo.findAll().forEach(a::add);
+        return a;
     }
 }

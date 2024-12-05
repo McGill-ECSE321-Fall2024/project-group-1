@@ -63,21 +63,15 @@
 
 <script setup>
 import { reactive } from 'vue';
+import axios from "axios";
+
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8080",
+});
+
 
 const state = reactive({
   staffList: [
-    {
-      id: 1,
-      name: 'Alice Johnson',
-      email: 'alice@example.com',
-      password: 'password123',
-    },
-    {
-      id: 2,
-      name: 'Bob Smith',
-      email: 'bob@example.com',
-      password: 'password456',
-    },
   ],
   newStaff: {
     name: '',
@@ -105,7 +99,15 @@ const logout = () => {
   sessionStorage.setItem("user", null)
 };
 
-const addStaff = () => {
+const addStaff = async () => {
+  let response = null;
+
+  try {
+    response = await axiosClient.get("")
+  } catch (e) {
+    alert(e.response.data)
+  }
+
   const newId = state.staffList.length ? state.staffList[state.staffList.length - 1].id + 1 : 1;
   const newStaff = { id: newId, ...state.newStaff };
   state.staffList.push(newStaff);
