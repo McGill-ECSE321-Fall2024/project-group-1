@@ -174,4 +174,11 @@ public class CustomerService {
         });
         return C.get();
     }
+
+    /**Gets all customers*/
+    public ArrayList<Customer> getAllCustomers() {
+        ArrayList<Customer> c = new ArrayList<>();
+        customerRepo.findAll().forEach(c::add);
+        return c;
+    }
 }

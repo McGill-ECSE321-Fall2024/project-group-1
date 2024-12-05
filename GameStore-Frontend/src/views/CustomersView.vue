@@ -94,6 +94,15 @@ export default {
       currentCustomer: null,
     };
   },
+  async created() {
+      try {
+        let temp_customers = await axiosClient.get("/customer/all");
+        //console.log(temp_customers.data.customers);
+        this.customers = temp_customers.data.customers;
+      } catch (e) {
+        alert(e?.response?.data?.error);
+      }
+  },
   methods: {
     goToGamesView() {
       this.$router.push("/games");
