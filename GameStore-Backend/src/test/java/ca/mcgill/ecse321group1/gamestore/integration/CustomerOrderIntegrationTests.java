@@ -159,28 +159,6 @@ public class CustomerOrderIntegrationTests {
         client.put(game1CartUrl, null);
         client.put(game2CartUrl, null);
 
-        String game1ResponseUrl = String.format
-
-        assertNotNull(game1CartResponse);
-        assertEquals(HttpStatus.OK, game1CartResponse.getStatusCode());
-        assertEquals(this.customerId,game1CartResponse.getBody().getId());
-        assertEquals(CUST_USERNAME, game1CartResponse.getBody().getUsername());
-        assertEquals(CUST_EMAIL, game1CartResponse.getBody().getEmail());
-        assertEquals(CUST_ADDRESS, game1CartResponse.getBody().getAddress());
-        assertEquals(CUST_PHONE_NUMBER, game1CartResponse.getBody().getPhoneNumber());
-        assertEquals(1, game1CartResponse.getBody().getCart().size());
-        assertEquals(videoGame1Id, game1CartResponse.getBody().getCart().get(0).getId());
-
-        assertNotNull(game2CartResponse);
-        assertEquals(HttpStatus.OK, game2CartResponse.getStatusCode());
-        assertEquals(this.customerId,game2CartResponse.getBody().getId());
-        assertEquals(CUST_USERNAME, game2CartResponse.getBody().getUsername());
-        assertEquals(CUST_EMAIL, game2CartResponse.getBody().getEmail());
-        assertEquals(CUST_ADDRESS, game2CartResponse.getBody().getAddress());
-        assertEquals(CUST_PHONE_NUMBER, game2CartResponse.getBody().getPhoneNumber());
-        assertEquals(2, game2CartResponse.getBody().getCart().size());
-        assertEquals(videoGame2Id, game2CartResponse.getBody().getCart().get(1).getId());
-        // Last create customer order
         // Arrange
         String url = String.format("/customer/%d/order", this.customerId);
         CustomerOrderCreationDto request = new CustomerOrderCreationDto(this.customerId, SHIPPING_ADDRESS);

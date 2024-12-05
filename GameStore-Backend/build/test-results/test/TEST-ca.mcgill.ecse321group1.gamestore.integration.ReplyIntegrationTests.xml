@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-12-05T01:15:45" hostname="Ivans-MacBook-Air.local" time="0.105">
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-12-05T01:35:24" hostname="Ivans-MacBook-Air.local" time="0.102">
   <properties/>
-  <testcase name="testCreateReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.067"/>
-  <testcase name="testGetReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.006"/>
+  <testcase name="testCreateReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.065"/>
+  <testcase name="testGetReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.005"/>
   <testcase name="testEditReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.009"/>
-  <testcase name="testGetAllReplies()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.014"/>
+  <testcase name="testGetAllReplies()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.013"/>
   <testcase name="testDeleteReply()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests" time="0.009"/>
-  <system-out><![CDATA[2024-12-04T20:15:45.707-05:00  INFO 25379 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests]: ReplyIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-12-04T20:15:45.708-05:00  INFO 25379 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests
+  <system-out><![CDATA[2024-12-04T20:35:24.143-05:00  INFO 32557 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests]: ReplyIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T20:35:24.144-05:00  INFO 32557 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
