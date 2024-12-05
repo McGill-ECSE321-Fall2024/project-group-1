@@ -132,6 +132,7 @@ public class CustomerOrderController {
      * @param cid The customer ID of the customer whom you want to get all orders for.
      * @return All customer order of a customer 
      */
+    @GetMapping("/order/customer/{cid}")
     public CustomerOrderListDto getSpecificCustomerOrder(@PathVariable int cid) {
         List<CustomerOrder> orders = customerOrderService.getAllOrders(cid);
         List<CustomerOrderResponseDto> dtoList = new ArrayList<>();

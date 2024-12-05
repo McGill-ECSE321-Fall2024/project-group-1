@@ -109,7 +109,7 @@ export default {
     try {
       customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
       console.log(customer);
-      this.orderHistory = customer.order;
+      orderHistory = (await axiosClient.get("/order/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data
     } catch (e) {
       alert(e.response?.data?.error);
     }
