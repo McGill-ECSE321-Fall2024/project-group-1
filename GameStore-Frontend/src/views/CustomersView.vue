@@ -55,21 +55,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="order in currentCustomer.orders" :key="order.id">
-              <td>{{ order.id }}</td>
-              <td>
-                <ul>
-                  <li v-for="game in order.games" :key="game.name">{{ game.name }}</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li v-for="game in order.games" :key="game.name">{{ game.quantity }}</li>
-                </ul>
-              </td>
-              <td>${{ order.totalPrice.toFixed(2) }}</td>
-              <td>{{ order.discount ? order.discount + '%' : 'No Discount' }}</td>
-            </tr>
+            <tr v-for="order in orderHistory" :key="order.id">
+            <td>{{ order.id }}</td>
+            <td>{{ order.purchased.name }}</td>
+            <td>{{ 1 }}</td>
+            <td>${{ order.price.toFixed(2) }}</td>
+            <td>{{ order.discount ? order.discount + '%' : 'No Discount' }}</td>
+          </tr>
           </tbody>
         </table>
         <button class="btn-secondary" @click="closeOrderHistory">Close</button>
@@ -91,6 +83,7 @@ export default {
     return {
       customers: [],
       showOrderHistory: false,
+      orderHistory: [],
       currentCustomer: null,
     };
   },
@@ -98,7 +91,7 @@ export default {
       try {
         let temp_customers = await axiosClient.get("/customer/all");
         //console.log(temp_customers.data.customers);
-        this.customers = temp_customers.data.customers;
+        this.customers = temp_customers.data.customers; 
       } catch (e) {
         alert(e?.response?.data?.error);
       }
@@ -117,8 +110,9 @@ export default {
       window.location.href = "http://localhost:8087";
       sessionStorage.setItem("user", null)
     },
-    viewOrderHistory(customer) {
+    async viewOrderHistory(customer) {
       this.currentCustomer = customer;
+      this.orderHistory = (await axiosClient.get("/order/customer/" + customer.id)).data.orders;
       this.showOrderHistory = true;
     },
     closeOrderHistory() {

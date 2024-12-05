@@ -10,13 +10,13 @@ public class ReviewRequestDto {
     @NotBlank(message = "Review must not be blank!")
     private String content;
     @NotNull(message = "Review date must exist!")
-    private LocalDate date;
+    private String date;
     @NotBlank(message = "Review rating must not be blank!")
     private String rating;
     private int videoGameId;
     private int customerId;
 
-    public ReviewRequestDto(String content, LocalDate date, Review.Rating rating, int videoGameId, int customerId){
+    public ReviewRequestDto(String content, String date, Review.Rating rating, int videoGameId, int customerId){
         this.content = content;
         this.date = date;
         this.rating = rating.toString(); 
@@ -28,7 +28,7 @@ public class ReviewRequestDto {
         return content;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
