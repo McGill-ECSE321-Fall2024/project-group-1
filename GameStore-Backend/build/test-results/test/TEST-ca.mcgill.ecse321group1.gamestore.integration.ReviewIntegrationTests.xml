@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" tests="10" skipped="0" failures="6" errors="0" timestamp="2024-12-05T04:46:31" hostname="Ivans-MacBook-Air.local" time="0.076">
+  <properties/>
+  <testcase name="testCreateReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.021">
+    <failure message="org.opentest4j.AssertionFailedError: expected: java.lang.String@305e7ccb&lt;2023-11-10&gt; but was: java.time.LocalDate@43bad436&lt;2023-11-10&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: java.lang.String@305e7ccb&lt;2023-11-10&gt; but was: java.time.LocalDate@43bad436&lt;2023-11-10&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.testCreateReview(ReviewIntegrationTests.java:143)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testCreateInvalidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.006"/>
+  <testcase name="testGetValidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.004">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.testGetValidReview(ReviewIntegrationTests.java:175)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testGetInvalidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.006"/>
+  <testcase name="testEditValidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.007">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.testEditValidReview(ReviewIntegrationTests.java:210)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testEditInvalidReview()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.007">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.testEditInvalidReview(ReviewIntegrationTests.java:231)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testGetReviewsForValidVideoGameId()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.007">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;Terrible game! 1/5&gt; but was: &lt;Great game! 4/5&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;Terrible game! 1/5&gt; but was: &lt;Great game! 4/5&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.testGetReviewsForValidVideoGameId(ReviewIntegrationTests.java:254)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <testcase name="testGetReviewsForInvalidVideoGameId()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.005"/>
+  <testcase name="testDeleteReviewById()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.006"/>
+  <testcase name="testDeleteReviewWithReplies()" classname="ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests" time="0.006">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;200 OK&gt; but was: &lt;400 BAD_REQUEST&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.testDeleteReviewWithReplies(ReviewIntegrationTests.java:298)
+	at java.base@21.0.5/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.5/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <system-out><![CDATA[2024-12-04T23:46:31.125-05:00  INFO 94147 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests]: ReviewIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T23:46:31.125-05:00  INFO 94147 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests
+2024-12-04T23:46:31.174-05:00  WARN 94147 --- [gamestore] [o-auto-1-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.ReviewResponseDto ca.mcgill.ecse321group1.gamestore.controller.ReviewController.editReviewById(int,ca.mcgill.ecse321group1.gamestore.dto.ReviewRequestDto): [Field error in object 'reviewRequestDto' on field 'content': rejected value [null]; codes [NotBlank.reviewRequestDto.content,NotBlank.content,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [reviewRequestDto.content,content]; arguments []; default message [content]]; default message [Review must not be blank!]] ]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

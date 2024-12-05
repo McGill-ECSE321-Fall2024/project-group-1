@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-12-05T04:46:30" hostname="Ivans-MacBook-Air.local" time="0.114">
+  <properties/>
+  <testcase name="testCreateCustomerOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.055"/>
+  <testcase name="testGetCustomerOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.006"/>
+  <testcase name="testGetOrderTotalPrice()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.009"/>
+  <testcase name="testGetUnsatisfiedOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.007"/>
+  <testcase name="testSatisfyOrder()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.018"/>
+  <testcase name="testGetOrderString()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.008"/>
+  <testcase name="testDeleteOrdersBySharedId()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests" time="0.01"/>
+  <system-out><![CDATA[2024-12-04T23:46:30.740-05:00  INFO 94147 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests]: CustomerOrderIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T23:46:30.741-05:00  INFO 94147 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

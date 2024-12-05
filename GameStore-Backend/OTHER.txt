@@ -1,5 +1,1 @@
-ca.mcgill.ecse321group1.gamestore.model.CustomerOrder@3d3156e8[id:0,sharedId:438027129,price:32003.0,quantity:1,satisfied:false,address:123 brook rasdfdsoad]
-  date=2024-12-04
-  offerApplied=null
-  purchased = 2c969320
-  customer = 6ef87a5e
+qwerty

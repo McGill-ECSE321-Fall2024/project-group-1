@@ -20,13 +20,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">4</div>
+<div class="counter">173</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">12</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.094s</div>
+<div class="counter">2.175s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">93%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,13 +58,69 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Packages</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Classes</a>
+<a href="#tab1">Packages</a>
+</li>
+<li>
+<a href="#tab2">Classes</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html">ReplyIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html#testCreateReply()">testCreateReply()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html">ReplyIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html#testEditReply()">testEditReply()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html">ReplyIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html#testGetAllReplies()">testGetAllReplies()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html">ReplyIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html#testGetReply()">testGetReply()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html">ReviewIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html#testCreateReview()">testCreateReview()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html">ReviewIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html#testDeleteReviewWithReplies()">testDeleteReviewWithReplies()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html">ReviewIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html#testEditInvalidReview()">testEditInvalidReview()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html">ReviewIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html#testEditValidReview()">testEditValidReview()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html">ReviewIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html#testGetReviewsForValidVideoGameId()">testGetReviewsForValidVideoGameId()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html">ReviewIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html#testGetValidReview()">testGetValidReview()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests.html">VideoGameIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests.html#testDeleteVideoGames()">testDeleteVideoGames()</a>
+</li>
+<li>
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests.html">VideoGameIntegrationTests</a>.
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests.html#testGetAverageRating()">testGetAverageRating()</a>
+</li>
+</ul>
+</div>
+<div id="tab1" class="tab">
 <h2>Packages</h2>
 <table>
 <thead>
@@ -80,18 +136,48 @@
 <tbody>
 <tr>
 <td class="success">
+<a href="packages/ca.mcgill.ecse321group1.gamestore.html">ca.mcgill.ecse321group1.gamestore</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.318s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="packages/ca.mcgill.ecse321group1.gamestore.Repository.html">ca.mcgill.ecse321group1.gamestore.Repository</a>
+</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0.295s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
 <a href="packages/ca.mcgill.ecse321group1.gamestore.Service.html">ca.mcgill.ecse321group1.gamestore.Service</a>
 </td>
-<td>4</td>
+<td>78</td>
 <td>0</td>
 <td>0</td>
-<td>0.094s</td>
+<td>0.254s</td>
 <td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="packages/ca.mcgill.ecse321group1.gamestore.integration.html">ca.mcgill.ecse321group1.gamestore.integration</a>
+</td>
+<td>85</td>
+<td>12</td>
+<td>0</td>
+<td>1.308s</td>
+<td class="failures">85%</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Classes</h2>
 <table>
 <thead>
@@ -107,13 +193,283 @@
 <tbody>
 <tr>
 <td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests.html">ca.mcgill.ecse321group1.gamestore.GamestoreApplicationTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.318s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.CategoryRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.154s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.CustomerOrderRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.032s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.CustomerRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.013s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.OfferRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.OfferRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.025s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.OwnerRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.OwnerRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.006s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.ReplyRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.029s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.ReviewRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.019s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.StaffRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.007s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests.html">ca.mcgill.ecse321group1.gamestore.Repository.VideoGameRepositoryTests</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.010s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.CategoryServiceTests</a>
+</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0.058s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
 <a href="classes/ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.CustomerOrderServiceTests</a>
 </td>
 <td>4</td>
 <td>0</td>
 <td>0</td>
-<td>0.094s</td>
+<td>0.043s</td>
 <td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests</a>
+</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0.033s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.OfferServiceTests</a>
+</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0.021s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.OwnerServiceTests</a>
+</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0.020s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.ReplyServiceTests</a>
+</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0.014s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.ReviewServiceTests</a>
+</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0.022s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.StaffServiceTests</a>
+</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0.017s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests.html">ca.mcgill.ecse321group1.gamestore.Service.VideoGameServiceTests</a>
+</td>
+<td>15</td>
+<td>0</td>
+<td>0</td>
+<td>0.026s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.CategoryIntegrationTests</a>
+</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0.457s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests</a>
+</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>0.237s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.CustomerOrderIntegrationTests</a>
+</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>0.113s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.OfferIntegrationTests</a>
+</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0.079s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests</a>
+</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+<td>0.065s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.ReplyIntegrationTests</a>
+</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>0.079s</td>
+<td class="failures">20%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.ReviewIntegrationTests</a>
+</td>
+<td>10</td>
+<td>6</td>
+<td>0</td>
+<td>0.075s</td>
+<td class="failures">40%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.StaffIntegrationTests</a>
+</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+<td>0.045s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests.html">ca.mcgill.ecse321group1.gamestore.integration.VideoGameIntegrationTests</a>
+</td>
+<td>19</td>
+<td>2</td>
+<td>0</td>
+<td>0.158s</td>
+<td class="failures">89%</td>
 </tr>
 </tbody>
 </table>
@@ -126,7 +482,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Dec 4, 2024, 9:54:50 PM</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Dec 4, 2024, 11:46:31 p.m.</p>
 </div>
 </div>
 </body>

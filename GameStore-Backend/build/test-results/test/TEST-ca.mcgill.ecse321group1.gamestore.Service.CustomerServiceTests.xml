@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" tests="10" skipped="0" failures="0" errors="0" timestamp="2024-12-05T04:46:28" hostname="Ivans-MacBook-Air.local" time="0.045">
+  <properties/>
+  <testcase name="testReadCustomerByValidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.005"/>
+  <testcase name="testEditValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.004"/>
+  <testcase name="testCreateInvalidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.004"/>
+  <testcase name="testDeleteCustomerByInvalidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
+  <testcase name="testCreateValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
+  <testcase name="testReadCustomerByInvalidId()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
+  <testcase name="testCreateInvalidDuplicateCustomer()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
+  <testcase name="testAddToCartOrWishlist()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
+  <testcase name="testDeleteCustomerByValidID()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.002"/>
+  <testcase name="testRemoveFromCartWishlist()" classname="ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests" time="0.003"/>
+  <system-out><![CDATA[2024-12-04T23:46:28.720-05:00  INFO 94147 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests]: CustomerServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T23:46:28.722-05:00  INFO 94147 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.Service.CustomerServiceTests
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

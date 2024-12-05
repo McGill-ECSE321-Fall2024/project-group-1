@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2024-12-05T04:46:30" hostname="Ivans-MacBook-Air.local" time="0.067">
+  <properties/>
+  <testcase name="testCreateValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.008"/>
+  <testcase name="testCreateInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.004"/>
+  <testcase name="testGetValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.005"/>
+  <testcase name="testGetInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.003"/>
+  <testcase name="testEditInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.008"/>
+  <testcase name="testEditValidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.009"/>
+  <testcase name="testDeleteInvalidOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.007"/>
+  <testcase name="testDeleteLastOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.007"/>
+  <testcase name="testCreateNewOwnerAndDeleteOldOwner()" classname="ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests" time="0.014"/>
+  <system-out><![CDATA[2024-12-04T23:46:30.959-05:00  INFO 94147 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests]: OwnerIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T23:46:30.960-05:00  INFO 94147 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.OwnerIntegrationTests
+2024-12-04T23:46:30.983-05:00  WARN 94147 --- [gamestore] [-auto-1-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.OwnerController.editOwnerById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" tests="11" skipped="0" failures="0" errors="0" timestamp="2024-12-05T04:46:30" hostname="Ivans-MacBook-Air.local" time="0.239">
+  <properties/>
+  <testcase name="testCreateValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.059"/>
+  <testcase name="testCreateInvalidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.02"/>
+  <testcase name="testGetValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.01"/>
+  <testcase name="testGetInvalidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.005"/>
+  <testcase name="testEditInvalidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.011"/>
+  <testcase name="testEditValidCustomer()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.015"/>
+  <testcase name="testAddGameToCustomerCart()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.037"/>
+  <testcase name="testAddGameToWishlist()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.016"/>
+  <testcase name="testRemoveGameFromWishlist()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.015"/>
+  <testcase name="testRemoveGameFromCart()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.013"/>
+  <testcase name="testClearCart()" classname="ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests" time="0.036"/>
+  <system-out><![CDATA[2024-12-04T23:46:30.485-05:00  INFO 94147 --- [gamestore] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests]: CustomerIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-04T23:46:30.486-05:00  INFO 94147 --- [gamestore] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration ca.mcgill.ecse321group1.gamestore.GamestoreApplication for test class ca.mcgill.ecse321group1.gamestore.integration.CustomerIntegrationTests
+2024-12-04T23:46:30.554-05:00  WARN 94147 --- [gamestore] [o-auto-1-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.createCustomer(ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+2024-12-04T23:46:30.585-05:00  WARN 94147 --- [gamestore] [o-auto-1-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto ca.mcgill.ecse321group1.gamestore.controller.CustomerController.editCustomerById(int,ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto): [Field error in object 'personRequestDto' on field 'username': rejected value [null]; codes [NotBlank.personRequestDto.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [personRequestDto.username,username]; arguments []; default message [username]]; default message [Person username is required.]] ]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
