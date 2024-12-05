@@ -72,7 +72,6 @@ export default {
       this.categories = response.data.categories;
     }
     catch (e) {
-      // this.errorMessage = "Failed to create category.";
       alert("Failed to fetch categories.");
     }
   },
@@ -87,8 +86,7 @@ export default {
         this.categories.push(response.data);
       }
       catch (e) {
-        // this.errorMessage = "Failed to create category.";
-        console.error("Failed to create category.");
+        alert("Failed to create category.");
       }
       this.resetForm();
     },

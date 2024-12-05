@@ -70,36 +70,19 @@
 </template>
 
 <script>
+import axios from "axios";
+
+const axiosClient = axios.create({
+	baseURL: "http://localhost:8080"
+});
+
 export default {
   name: "StaffGamesView",
   data() {
     return {
       games: [
-        {
-          id: 1,
-          name: "The Legend of Zelda",
-          description: "Adventure game",
-          price: 59.99,
-          quantity: 10,
-          date: "2023-11-01",
-          status: "Active",
-          category: "Action",
-        },
-        {
-          id: 2,
-          name: "Minecraft",
-          description: "Sandbox game",
-          price: 19.99,
-          quantity: 50,
-          date: "2023-10-10",
-          status: "Active",
-          category: "Sandbox",
-        },
       ],
       categories: [
-        { id: 1, name: "Action" },
-        { id: 2, name: "Adventure" },
-        { id: 3, name: "RPG" },
       ],
       newGame: {
         name: "",
@@ -114,6 +97,30 @@ export default {
       editingGame: null,
     };
   },
+  async created() {
+    try {
+      const response = await axiosClient.get("/videogame");
+      const transformedGames = response.data.videoGames.map(game => ({
+        id: game.id,
+        name: game.name,
+        description: game.description,
+        price: game.price,
+        quantity: game.quantity,
+        date: game.date,
+        status: game.status,
+        category: game.category.name,
+      }));
+      this.games = transformedGames;
+    }
+    catch (e) {
+      console.error("Failed to fetch video games.");
+    }
+    try {
+      this.categories = (await axiosClient.get("/category")).data.categories;
+    } catch (e) {
+      alert("Failed to get categories.");
+    }
+  },
   computed: {
     currentGame() {
       return this.isEditing ? this.editingGame : this.newGame;
@@ -124,16 +131,48 @@ export default {
       window.location.href = "http://localhost:8087";
       sessionStorage.setItem("user", null)
     },
-    addGame() {
+    async addGame() {
       if (!this.currentGame.category) {
         alert("Please select a category.");
         return;
       }
-      const newId = this.games.length > 0 ? Math.max(...this.games.map((g) => g.id)) + 1 : 1;
-      const newGame = { id: newId, ...this.newGame, status: "Pending" };
 
-      this.games.push(newGame);
-      this.resetNewGameForm();
+      const index = this.categories.findIndex(category => category.name === this.newGame.category);
+      var categoryFoundId = this.categories[index].id;
+
+      const videoGameToCreate = {
+        name: this.newGame.name,
+        description: this.newGame.description,
+        price: this.newGame.price,
+        quantity: this.newGame.quantity,
+        date: this.newGame.date,
+        status: this.newGame.status,
+        categoryId: categoryFoundId
+      };
+
+      try {
+        const response = await axiosClient.post("/videogame", videoGameToCreate);
+        const parsedResponse = {
+          id: response.data.id,
+          name: response.data.name,
+          description: response.data.description,
+          price: response.data.price,
+          quantity: response.data.quantity,
+          date: response.data.date,
+          status: response.data.status,
+          category: response.data.category.name
+        };
+        this.games.push(parsedResponse);
+        this.resetNewGameForm();
+      } catch (e) {
+        console.error("Failed to create video game.");
+      }
+
+      //const newId = this.games.length > 0 ? Math.max(...this.games.map((g) => g.id)) + 1 : 1;
+      //const newGame = { id: newId, ...this.newGame, status: "Pending" };
+
+      //this.games.push(newGame);
+      //this.resetNewGameForm();
     },
     resetNewGameForm() {
       this.newGame = {
@@ -146,20 +185,77 @@ export default {
         category: "",
       };
     },
-    removeGame(id) {
-      this.games = this.games.filter((game) => game.id !== id);
+    async removeGame(id) {
+      try {
+        const url = `/videogame/${id}`;
+        await axiosClient.delete(url);
+        const index = this.games.findIndex(game => game.id === id);
+        this.games.splice(index, 1);
+        console.log("Successfully removed game");
+      } catch (e) {
+        alert("Failed to delete video game.")
+      }
+      //this.games = this.games.filter((game) => game.id !== id);
     },
     editGame(game) {
       this.isEditing = true;
       this.editingGame = { ...game };
     },
-    saveEdit() {
+    async saveEdit() {
       if (!this.currentGame.category) {
         alert("Please select a category.");
         return;
       }
+
+
       const index = this.games.findIndex((g) => g.id === this.editingGame.id);
       if (index !== -1) {
+
+        try {
+          var categories = (await axiosClient.get("/category")).data.categories;
+          console.log(categories);
+        } catch (e) {
+          alert(e.response.data.error);
+        }
+        var categoryFoundId;
+        const categoryIndex = categories.findIndex(category => category.name === this.editingGame.category);
+        if (categoryIndex < 0) {
+          alert("Category " + this.editingGame.category + " does not exist.");
+          return;
+        }
+        categoryFoundId = categories[categoryIndex].id;        
+          const url = `/videogame/${this.editingGame.id}`;
+          const videoGameToEdit = {
+           name: this.editingGame.name,
+            description: this.editingGame.description,
+            price: this.editingGame.price,
+            quantity: this.editingGame.quantity,
+            date: this.editingGame.date,
+            status: this.editingGame.status,
+            categoryId: categoryFoundId
+      }; 
+      try {
+          await axiosClient.put(url, videoGameToEdit);
+        } catch (e) {
+          alert(e.response.data.error);
+        }
+
+        if (this.editingGame.status === 'Active' && this.games[index].status === 'Pending') {
+          try {
+            axiosClient.put(`/videogame/approve/${this.editingGame.id}`);
+          } catch (e) {
+            alert(e.response.data.error);
+          }
+        }
+
+        if (this.editingGame.status == 'Inactive') {
+          try {
+            axiosClient.put(`/videogame/deactivate/${this.editingGame.id}`);
+          } catch (e) {
+            alert(e.response.data.error);
+          }
+        }
+      
         this.games[index] = { ...this.editingGame };
         this.cancelEdit();
       }

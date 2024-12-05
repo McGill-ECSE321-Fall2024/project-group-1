@@ -234,6 +234,23 @@ export default {
         } catch (e) {
           alert(e.response.data.error);
         }
+
+        if (this.editingGame.status === 'Active' && this.games[index].status === 'Pending') {
+          try {
+            axiosClient.put(`/videogame/approve/${this.editingGame.id}`);
+          } catch (e) {
+            alert(e.response.data.error);
+          }
+        }
+
+        if (this.editingGame.status == 'Inactive') {
+          try {
+            axiosClient.put(`/videogame/deactivate/${this.editingGame.id}`);
+          } catch (e) {
+            alert(e.response.data.error);
+          }
+        }
+
         this.games[index] = { ...this.editingGame };
         this.cancelEdit();
       }

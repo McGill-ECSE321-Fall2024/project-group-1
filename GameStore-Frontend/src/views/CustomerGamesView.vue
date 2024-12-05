@@ -54,7 +54,7 @@ const axiosClient = axios.create({
   baseURL: "http://localhost:8080",
 });
 
-let customer = JSON.parse(sessionStorage.getItem("user")).data;
+let customer = null//JSON.parse(sessionStorage.getItem("user")).data;
 export default {
   name: "CustomerGamesView",
   data() {
