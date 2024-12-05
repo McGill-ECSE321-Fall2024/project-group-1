@@ -73,11 +73,13 @@ public class CustomerService {
     /**Adds quantity number of a single game to customer cart*/
     @Transactional
     public Customer addToCart(int customer_id, int game_id, int quantity) {
+        Customer customer = getCustomer(customer_id);
         if (!gamerepo.existsById(game_id))
             throw new IllegalArgumentException(game_id + " cannot be added to cart as it does not correspond to an extant VideoGame!");
         if (quantity < 1)
             throw new IllegalArgumentException("Quantity of games added must be positive!");
-        Customer customer = getCustomer(customer_id);
+        for (VideoGame game : customer.getCart()) if (game.getId() == game_id)
+            throw new IllegalArgumentException(game_id + " is already in the cart!");
         VideoGame game = gamerepo.findVideoGameById(game_id);
         for (int i = 0; i < quantity; i++) customer.addCart(game);
         return customerRepo.save(customer);

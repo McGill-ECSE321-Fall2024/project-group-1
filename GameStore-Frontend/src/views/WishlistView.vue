@@ -44,27 +44,14 @@
 </template>
 
 <script>
+let customer = null;
 export default {
   name: "WishlistView",
   data() {
+    customer = JSON.parse(sessionStorage.getItem("user")).data
     return {
-      wishlist: [
-        {
-          id: 3,
-          name: "Super Mario Odyssey",
-          description: "Platformer game",
-          price: 49.99,
-          category: "Platformer",
-        },
-        {
-          id: 4,
-          name: "Elden Ring",
-          description: "Fantasy action RPG",
-          price: 59.99,
-          category: "RPG",
-        },
-      ],
-      cart: [],
+      wishlist: [],
+      cart: []
     };
   },
   methods: {
@@ -80,12 +67,13 @@ export default {
     logout() {
       window.location.href = "http://localhost:8087";
     },
-    addToCart(game) {
-      if (!this.cart.includes(game)) {
-        this.cart.push(game);
-        alert(`${game.name} added to the cart!`);
-      } else {
-        alert(`${game.name} is already in the cart.`);
+    async addToCart(game) {
+      try {
+        console.log(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
+        await axiosClient.put(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
+      } catch (e) {
+        console.log(e);
+        alert(e?.response?.data?.error);
       }
     },
     removeFromWishlist(game) {

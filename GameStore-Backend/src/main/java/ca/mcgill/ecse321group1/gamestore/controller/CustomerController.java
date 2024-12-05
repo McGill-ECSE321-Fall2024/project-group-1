@@ -80,7 +80,7 @@ public class CustomerController {
      * @param q Quantity of the game you want to add to the customer's cart.
      * @return The customer with the updated cart
      */
-    @PostMapping("/customer/{cid}/cart/{gid}/quantity/{q}")
+    @PutMapping("/customer/{cid}/cart/{gid}/quantity/{q}")
     public PersonResponseDto addGameToCustomerCartById(@PathVariable int cid, @PathVariable int gid, @PathVariable int q) {
         return new PersonResponseDto(customerService.addToCart(cid, gid, q));
     }

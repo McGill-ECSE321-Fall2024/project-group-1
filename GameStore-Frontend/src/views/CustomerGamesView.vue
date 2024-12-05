@@ -26,7 +26,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="game in games" :key="game.id">
+          <tr v-for="game in truegames" :key="game.id">
             <td>{{ game.id }}</td>
             <td>{{ game.name }}</td>
             <td>{{ game.description }}</td>
@@ -34,7 +34,7 @@
             <td>{{ game.quantity }}</td>
             <td>{{ game.date }}</td>
             <td>{{ game.status }}</td>
-            <td>{{ game.category }}</td>
+            <td>{{ game.category.name }}</td>
             <td>
               <button class="btn-primary" @click="addToCart(game)">Add to Cart</button>
               <button class="btn-secondary" @click="addToWishlist(game)">Add to Wishlist</button>
@@ -47,35 +47,31 @@
 </template>
 
 <script>
+import axios from "axios";
+
+//export customer = null;
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8080",
+});
+
+let customer = JSON.parse(sessionStorage.getItem("user")).data;
 export default {
   name: "CustomerGamesView",
   data() {
     return {
-      games: [
-        {
-          id: 1,
-          name: "The Legend of Zelda",
-          description: "Adventure game",
-          price: 59.99,
-          quantity: 10,
-          date: "2023-11-01",
-          status: "Active",
-          category: "Action",
-        },
-        {
-          id: 2,
-          name: "Minecraft",
-          description: "Sandbox game",
-          price: 19.99,
-          quantity: 50,
-          date: "2023-10-10",
-          status: "Active",
-          category: "Sandbox",
-        },
-      ],
+      truegames: [],
       cart: [],
       wishlist: [],
     };
+  },
+  async created() {
+    try {
+      const response = await axiosClient.get("/videogame");
+      console.log(response.data.videoGames);
+      this.truegames = response.data.videoGames;
+    } catch (e) {
+      alert(e.response?.data?.error || "Failed to fetch games.");
+    }
   },
   methods: {
     goToCartView() {
@@ -90,20 +86,20 @@ export default {
     logout() {
       window.location.href = "http://localhost:8087";
     },
-    addToCart(game) {
-      if (!this.cart.includes(game)) {
-        this.cart.push(game);
-        alert(`${game.name} added to cart!`);
-      } else {
-        alert(`${game.name} is already in your cart.`);
+    async addToCart(game) {
+      try {
+        console.log(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
+        await axiosClient.put(`/customer/${customer.id}/cart/${game.id}/quantity/1`);
+      } catch (e) {
+        console.log(e);
+        alert(e?.response?.data?.error);
       }
     },
-    addToWishlist(game) {
-      if (!this.wishlist.includes(game)) {
-        this.wishlist.push(game);
-        alert(`${game.name} added to wishlist!`);
-      } else {
-        alert(`${game.name} is already in your wishlist.`);
+    async addToWishlist(game) {
+      try {
+        await axiosClient.put(`/customer/${customer.id}/wishlist/${game.id}`);
+      } catch (e) {
+        alert(e?.response?.data?.error);
       }
     },
   },
