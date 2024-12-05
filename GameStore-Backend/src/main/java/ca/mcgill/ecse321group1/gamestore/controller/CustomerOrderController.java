@@ -134,7 +134,7 @@ public class CustomerOrderController {
      */
     public CustomerOrderListDto getSpecificCustomerOrder(@PathVariable int cid) {
         List<CustomerOrder> orders = customerOrderService.getAllOrders(cid);
-        List<CustomerOrderResponseDto> = dtoList = new ArrayList<>();
+        List<CustomerOrderResponseDto> dtoList = new ArrayList<>();
 
         for (CustomerOrder order : orders) {
             dtoList.add(new CustomerOrderResponseDto(order));
