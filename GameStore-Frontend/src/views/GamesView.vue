@@ -135,6 +135,7 @@ export default {
     },
     logout() {
       window.location.href = "http://localhost:8087";
+      sessionStorage.setItem("user", null)
     },
     async createVideoGame() {
       const categories = (await axiosClient.get("/category")).data.categories;

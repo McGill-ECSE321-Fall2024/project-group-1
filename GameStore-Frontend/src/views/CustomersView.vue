@@ -145,6 +145,7 @@ export default {
     },
     logout() {
       window.location.href = "http://localhost:8087";
+      sessionStorage.setItem("user", null)
     },
     viewOrderHistory(customer) {
       this.currentCustomer = customer;
