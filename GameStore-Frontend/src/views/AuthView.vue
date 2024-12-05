@@ -70,8 +70,8 @@ const handleSubmit = async () => {
       alert("Username and password do not match!");
       return;
     } 
-    console.log(response);
-    sessionStorage.setItem('user', JSON.stringify(response));
+    console.log(response.data);
+    sessionStorage.setItem('user', JSON.stringify(response.data));
 
     if (form.value.type === "customer") {
       router.push("/customergames");
@@ -110,7 +110,7 @@ const handleSubmit = async () => {
       //console.log("RESPONSERESPONSERESPONSE");
       //console.log(customer);
       // Redirect to the customer games page after signup
-      sessionStorage.setItem('user', JSON.stringify(customer));
+      sessionStorage.setItem('user', JSON.stringify(customer.data));
       router.push("/customergames");
     } catch (qwerty) {
       alert("Signup failed: " + qwerty.response.data.error);

@@ -54,7 +54,7 @@ const axiosClient = axios.create({
   baseURL: "http://localhost:8080",
 });
 
-let customer = null//JSON.parse(sessionStorage.getItem("user")).data;
+let customer = null;
 export default {
   name: "CustomerGamesView",
   data() {
@@ -69,6 +69,8 @@ export default {
       const response = await axiosClient.get("/videogame");
       console.log(response.data.videoGames);
       this.truegames = response.data.videoGames;
+      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).id)).data;
+      sessionStorage.setItem("user", JSON.stringify(customer));
     } catch (e) {
       alert(e.response?.data?.error || "Failed to fetch games.");
     }

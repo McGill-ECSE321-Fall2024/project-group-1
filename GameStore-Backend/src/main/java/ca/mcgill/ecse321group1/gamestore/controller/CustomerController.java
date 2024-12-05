@@ -1,6 +1,7 @@
 package ca.mcgill.ecse321group1.gamestore.controller;
 
 
+import ca.mcgill.ecse321group1.gamestore.dto.PersonListDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,9 @@ import ca.mcgill.ecse321group1.gamestore.dto.PersonResponseDto;
 import ca.mcgill.ecse321group1.gamestore.dto.LoginDto;
 import ca.mcgill.ecse321group1.gamestore.dto.PersonRequestDto;
 import ca.mcgill.ecse321group1.gamestore.model.Customer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -154,5 +158,22 @@ public class CustomerController {
         } else {
             return new PersonResponseDto(cust);
         }
+    }
+
+    /**
+     * Get all customers
+     *
+     * @return A list of all customers as a personListDto
+     */
+    @GetMapping("/customer/all")
+    public PersonListDto getAllCustomers() {
+        List<Customer> customersRaw = customerService.getAllCustomers();
+        List<PersonResponseDto> dtoList = new ArrayList<>();
+
+        for (Customer cust : customersRaw) {
+            dtoList.add(new PersonResponseDto(cust));
+        }
+
+        return new PersonListDto(dtoList);
     }
 }

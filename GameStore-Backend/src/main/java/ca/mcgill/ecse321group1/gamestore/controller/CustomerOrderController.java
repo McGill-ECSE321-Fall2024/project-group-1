@@ -1,5 +1,8 @@
 package ca.mcgill.ecse321group1.gamestore.controller;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,13 +47,30 @@ public class CustomerOrderController {
     public CustomerOrderListDto generateOrders(@PathVariable int cid, @Valid @RequestBody CustomerOrderCreationDto request) {
         Customer customer = customerService.getCustomer(cid);
         Date curDate = new Date(System.currentTimeMillis());
-
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter("output.txt"));
+            writer.write("WE ARE HERE\n");
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {}
         List<CustomerOrder> customerOrders = customerOrderService.generateOrdersFromCustomerCart(customer, curDate, request.getAddress(), videoGameService);
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true));
+            writer.write("THE SEQUEL\n");
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {}
         List<CustomerOrderResponseDto> dtoList = new ArrayList<>();
-        
+
         for (CustomerOrder customerOrder : customerOrders) {
             dtoList.add(new CustomerOrderResponseDto(customerOrder));
         }
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter("output.txt", true));
+            writer.write("ELECTRIC BOOGALOO\n");
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {}
 
         return new CustomerOrderListDto(dtoList);
     }

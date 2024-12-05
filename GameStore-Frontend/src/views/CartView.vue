@@ -70,6 +70,10 @@
             <input id="cardName" v-model="paymentDetails.cardName" type="text" required />
           </div>
           <div class="form-group">
+            <label for="address">Address</label>
+            <input id="address" v-model="paymentDetails.address" type="text" required />
+          </div>
+          <div class="form-group">
             <label for="cardNumber">Card Number</label>
             <input id="cardNumber" v-model="paymentDetails.cardNumber" type="text" required />
           </div>
@@ -108,12 +112,14 @@ export default {
         cardNumber: "",
         expiryDate: "",
         cvv: "",
+        address: ""
       },
     };
   },
   async created() {
     try {
-      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+      customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).id)).data;
+      sessionStorage.setItem("user", JSON.stringify(customer));
       this.cart = customer.cart;
     } catch (e) {
       alert(e.response?.data?.error);
@@ -147,7 +153,8 @@ export default {
       }
       //update wishlist
       try {
-        customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).data.id)).data;
+        customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).id)).data;
+        sessionStorage.setItem("user", JSON.stringify(customer));
         this.cart = customer.cart;
       } catch (e) {
         alert(e.response?.data?.error);
@@ -163,11 +170,33 @@ export default {
         cardNumber: "",
         expiryDate: "",
         cvv: "",
+        address: ""
       };
     },
-    processPayment() {
+    async processPayment() {
+      try {
+        const args = {
+          address: this.paymentDetails.address,
+          customerId: customer.id
+        }
+        throw 12312;
+        //console.log(args);
+        //await axiosClient.post("/customer/" + customer.id + "/order", args);
+        //console.logs("past!");
+        //await axiosClient.delete("/customer/" + customer.id + "/cart");
+        //console.log("ALL DONE")
+        //customer = (await axiosClient.get("/customer/" + JSON.parse(sessionStorage.getItem("user")).id)).data;
+        //sessionStorage.setItem("user", JSON.stringify(customer));
+        //this.cart = customer.cart; // Clear the cart after purchase
+      } catch (e) {
+        console.error(e?.response?.data?.error);
+        alert("Issue in BackEnd: Post API generation of customer orders fails horribly. Only works via curl, and only if the customer_order database has been 'delete from customer_order;'ed since last generation. Tests still pass fine, but try {} catch {} fails to catch the issue with repo.save(). \nIn the meantime, use \"curl --request POST http://localhost:8080/customer/34/order --data '{\"address\":\"123 Brook Avenue\", \"customerId\":\"34\"}\' --header \'Content-Type: application/json\' \" to create customer orders FROM CUSTOMER 34's CART, for instance.");
+        alert(e?.response?.data?.error)
+        alert("Payment Error!");
+        this.closeModal();
+        return;
+      }
       alert("Payment Successful!");
-      this.cart = []; // Clear the cart after purchase
       this.closeModal();
     },
   },
